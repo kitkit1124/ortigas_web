@@ -1,0 +1,53 @@
+#estate_active_photo{
+	border-radius: 4px;
+	max-width: 200px;
+	margin-bottom: 10px;
+	user-drag: none; 
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+#upload_button{
+    max-width: 200px;
+    width: 100%;
+}
+
+#estate_text{
+	min-height: 350px;
+}
+
+#pac-input {
+    margin-top: 10px;
+    padding: 6px;
+    width: 60%;
+}
+#map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .col-sm-9 {
+	    -ms-flex: 0 0 100%;
+	    flex: 0 0 100%;
+	    max-width: 100%;
+	}
+
+	.col-sm-3 {
+		-ms-flex: 0 0 100%;
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+    #pac-input{
+    	left: 10px !important;
+    	margin-top: 53px;
+    	width: 92%;
+    }
+}

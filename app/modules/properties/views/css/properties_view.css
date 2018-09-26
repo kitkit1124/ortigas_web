@@ -1,0 +1,106 @@
+h1, p, span, a {
+	color: #666666;
+}
+
+.estate_button{
+	cursor: pointer;
+}
+
+.specific_estate_tabs {
+	margin-top: -100px;
+}
+
+.specific_estate_tabs .estate_button{
+	background-color: #34644e;
+	padding: auto 20px;
+	height: 100px;
+	color: #fff;
+}
+
+.specific_estate_tabs .estate_button p{
+	color: #FFF;
+	font-size: 20px;
+	font-weight: bold;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    padding-top: 40px;
+
+}
+
+.carousel-indicator_button{
+	border: 1px solid #FFF;
+	margin: auto 10px;
+	object-fit: cover;
+}
+
+.carousel-indicator_button.active{
+	object-fit: cover; opacity: 0.6;
+}
+
+.carousel-indicators {
+	justify-content: flex-end;
+	margin-right: 7px !important;
+	margin-bottom: 14px !important;
+	bottom: 0px !important; 
+}
+
+#unit-floorplan img{
+	object-fit: cover;
+	max-width: 500px;
+}
+
+#unit-floorplan ul{
+	display: inline-flex;
+	text-align: center;
+}
+    
+
+#unit-floorplan ul li{
+	text-transform: uppercase;
+	border-right: 1px solid #666;
+	padding: 0px 20px;
+}
+
+#unit-floorplan ul li a:hover{
+	color: #666666;
+	border-bottom: 2px solid #07793f;
+}
+
+#unit-floorplan ul li a{
+	text-decoration: none;
+}
+
+#unit-floorplan ul li a.active{
+	color: #07793f;
+}
+
+#unit-floorplan ul li:last-child{
+	border-right: none;
+}
+
+#check_available_button{
+	padding: 20px 30px;
+    height: 100px;
+    background-color: #07793f;
+    text-transform: uppercase;
+    margin: auto;
+    color: #FFF !important;
+    line-height: 60px;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+#select-floorplan{
+    height: 70px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.image_wrapper .property {
+	top: auto;
+    bottom: 35px;
+}
+
+.image_wrapper .property p {
+	color: #FFF;
+}

@@ -1,0 +1,118 @@
+.search_tab{
+	min-height: 111px;
+}
+.search_tab .form-control{
+    border-radius: 0px;
+}
+
+.default_search i{
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    color: #666;
+    cursor: pointer;
+}
+
+.default_search label{
+	color: #07793f;
+	padding-top: 8px;
+	letter-spacing: 1px;
+	font-size: 13px;
+}
+
+.prop_search_link{
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #666;
+	font-size: 12px;
+	text-align: right;
+	padding-top: 10px;
+	cursor: pointer;
+}
+
+
+.button_search{
+	width: 100%;
+    border: 0;
+    background-color: #07793f;
+    bottom: 0px;
+	height: 39px;
+    margin-top: 29px;
+}
+
+.button_search i{
+	color: #fff;
+}
+
+.advance_search{
+	display: none;
+}
+
+.advance_search .col-sm-4{
+    padding-right: 0px;
+}
+
+
+.advance_search label{
+	color: #07793f;
+	letter-spacing: 1px;
+	font-size: 12px;
+    text-transform: uppercase;
+}
+
+.adv_prop_search_link{
+	float: right;
+    margin-left: -24px;
+    text-transform: uppercase;
+    padding-top: 10px;
+    letter-spacing: 1px;
+	color: #666;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.filter label{
+	padding-top: 10px;
+	margin-bottom: 0px;
+	font-size: 13px;
+	text-transform: uppercase;
+	cursor: pointer;
+	color: #666;
+}
+
+.filterby{
+    float: left;
+    margin: 0 10px;
+    text-transform: uppercase;
+    color: #666;
+    font-size: 13px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.filter i{
+    margin-left: -14px;
+    margin-top: 2px;
+    position: absolute;
+    color: #07793f !important;
+    font-size: 12px;
+    opacity: 0;
+}
+
+.filter i.i_true{
+	opacity: 1;
+}
+
+.filter_cointainer{
+	display: inline-block;
+}
+
+.filter_cointainer label{
+	padding: 8px 30px;
+	border: 2px solid transparent;
+    transition: border .5s;
+}
+.filter_true{
+	border: 2px solid #07793f !important;
+	color: #07793f !important;
+}

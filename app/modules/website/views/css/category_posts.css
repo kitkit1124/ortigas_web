@@ -1,0 +1,15 @@
+
+.post-title {
+	font-size: 1.4em;
+	margin-bottom: 5px;
+}
+
+.post-info {
+	font-style: italic;
+}
+
+.post-body {
+	margin-top: 10px;
+	border-bottom: 1px solid #F5F5F5;
+	padding-bottom: 10px;
+}

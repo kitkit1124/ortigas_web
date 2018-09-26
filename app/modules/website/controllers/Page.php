@@ -1,0 +1,243 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Page Class
+ *
+ * @package		Codifire
+ * @version		1.0
+ * @author 		Randy Nivales <randynivales@gmail.com>
+ * @copyright 	Copyright (c) 2014-2015, Randy Nivales
+ * @link		
+ */
+class Page extends CI_Controller 
+{
+	/**
+	 * Constructor
+	 *
+	 * @access	public
+	 *
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+
+		$this->load->dbutil();
+		if (! $this->db->table_exists('pages'))
+		{
+			show_error('This page requires the Websites module');
+		}
+
+		// check for dependencies
+		if (! $this->db->table_exists('metatags'))
+		{
+			show_error('This page requires the Metatags module');
+		}
+
+		$this->load->driver('cache', $this->config->item('cache_drivers'));
+		// $this->load->model('navigations_model');
+		$this->load->model('pages_model');
+		$this->load->language('page');
+
+		if (! $this->db->table_exists('properties'))
+		{
+			show_error('This page requires the Properties module');
+		}
+
+		$this->load->model('properties/categories_model','property_category');
+		$this->load->model('properties/estates_model','estates');
+		$this->load->model('properties/properties_model','properties');
+	}
+	
+	// --------------------------------------------------------------------
+
+	/**
+	 * _remap
+	 *
+	 * @access	public
+	 * @param	string $method
+	 * @param	array $params
+	 * @author 	Randy Nivales <randynivales@gmail.com>
+	 */
+	public function _remap($method, $params = array())
+	{
+		$this->$method($params);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * index
+	 *
+	 * @access	public
+	 * @param	none
+	 * @author 	Randy Nivales <randynivales@gmail.com>
+	 */
+	private function index()
+	{
+		// if (ENVIRONMENT == 'production')
+		// {
+		// 	$this->output->cache(5);
+		// }
+
+		if ($page = $this->pages_model->find_by(array('page_uri' => 'home', 'page_status' => 'Posted', 'page_deleted' => 0)))
+		{
+			// page title
+			$data['page_heading'] = $page->page_title;
+			$data['record'] = $page;
+		}
+		else
+		{
+			show_404();
+			// redirect('notfound', 'refresh');
+		}
+		
+		// page layout
+		$data['page_layout'] = $page->page_layout;
+
+		// homepage
+		$data['is_home'] = TRUE;
+
+		// meta tags
+		$this->load->model('metatags_model');
+		$metatags = $this->metatags_model->get_metatags($page->page_metatag_id);
+
+		$fields = [
+		    'rand'	=> true,
+		    'limit'	=> 3
+		];
+
+		$data['properties'] = $this->properties->get_properties($fields);
+
+		$fields = [
+		    'rand'	=> true,
+		    'limit'	=> 2,
+		    'category_id' => 2 //residences
+		];
+
+		$data['residences'] = $this->properties->get_properties($fields);
+
+		$fields = [
+		    'rand'	=> true,
+		    'limit'	=> 1,
+		    'category_id' => 3 //malls
+		];
+
+		$data['malls'] 		= $this->properties->get_properties($fields);
+		
+		$fields = [
+		    'rand'	=> true,
+		    'limit'	=> 1,
+		    'category_id' => 4 //offices
+		];
+
+		$data['offices'] 	= $this->properties->get_properties($fields);
+		
+	
+		// template
+		$this->template->write('head', $metatags);
+		$this->template->add_css(module_css('website', 'page_index'), 'embed');
+		$this->template->add_js(module_js('website', 'page_index'), 'embed');
+		$this->template->write_view('content', 'page_index', $data);
+		$this->template->render();
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * view
+	 *
+	 * @access	public
+	 * @param	string $slug
+	 * @author 	Randy Nivales <randynivales@gmail.com>
+	 */
+	private function view($params)
+	{
+		// if (ENVIRONMENT == 'production')
+		// {
+		// 	$this->output->cache(5);
+		// }
+
+		// should have at least one param
+		if (count($params) === 0) redirect('notfound', 'refresh');
+
+		// combine the slugs
+		$uri = implode('/', $params);
+
+		// if homepage
+		if ($uri == 'home')
+		{
+			redirect('', 'refresh');
+		}
+
+		// get the page content
+		if ($page = $this->pages_model->find_by(array('page_uri' => $uri, 'page_status' => 'Posted', 'page_deleted' => 0)))
+		{
+			// page title
+			$data['page_heading'] = $page->page_title;
+			$data['record'] = $page;
+		}
+		else
+		{
+			show_404();
+			// redirect('notfound', 'refresh');
+		}
+
+		// breadcrumbs
+		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
+		$crumbs = $this->pages_model->get_page_crumbs($page->page_id);
+		if ($crumbs)
+		{
+			foreach ($crumbs as $crumb)
+			{
+				$this->breadcrumbs->push($crumb['name'], site_url($crumb['uri']));
+			}
+		}
+
+		// page layout
+		$data['page_layout'] = $page->page_layout;
+
+		// page sidebar
+		// $data['page_sidebar'] = $page->page_sidebar_id;
+
+		// template
+		$this->template->set_template(config_item('website_theme'));
+
+		// meta tags
+		if (isset($page->page_metatag_id) && ($page->page_metatag_id))
+		{
+			$this->load->model('metatags_model');
+			$metatags = $this->metatags_model->get_metatags($page->page_metatag_id);
+			$this->template->write('head', $metatags);
+		}
+
+		$this->template->add_css(module_css('website', 'page_view'), 'embed');
+		$this->template->add_js(module_js('website', 'page_view'), 'embed');
+		$this->template->write_view('content', 'page_view', $data);
+		$this->template->render();
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * notfound
+	 *
+	 * @access	public
+	 * @param	none
+	 * @author 	Randy Nivales <randynivales@gmail.com>
+	 */
+	// public function notfound($params = FALSE)
+	// {
+	// 	// page title
+	// 	$data['page_heading'] = lang('not_found_heading');
+
+	// 	// page layout
+	// 	$data['page_layout'] = 'full_width';
+
+	// 	// template
+	// 	$this->template->set_template(config_item('website_theme'));
+	// 	$this->template->write_view('content', 'page_notfound', $data);
+	// 	$this->template->render();
+	// }
+}
+
+/* End of file Page.php */
+/* Location: ./application/modules/page/controllers/Page.php */
