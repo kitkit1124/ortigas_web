@@ -1,0 +1,86 @@
+.color_default{
+	color: #666;
+}
+
+.terms, .privacy{
+	color: #07793f;
+}
+
+.modal-header { 
+	margin: auto;
+}
+
+.modal-header span.title{ 
+	font-size: 1.6rem;
+	color: #07793f;
+}
+.modal-body .row{
+	margin: 0 10px 10px 10px; 
+}
+.modal-body label, .dropzone .dz-message .upload{
+	color: #07793f;
+	letter-spacing: 1px;
+	font-size: 11px;
+	padding-top: 8px;
+	text-transform: uppercase;
+	text-align: left;
+	width: 99%;
+}
+
+.modal-body input{
+	font-size: 12px;
+	border-radius: 0px;
+	height: 40px;
+}
+
+.modal-body .agreement label{
+	width: auto !important;
+	font-size: 14px;
+	padding-top: 4px;
+}
+.modal-body #agreement{
+	height: 15px;
+    width: 15px;
+    position: absolute;
+    margin-left: -20px;
+    margin-top: 8px;
+}
+
+.modal-body .pointer{
+	color: #666;
+	text-transform: none;
+	cursor: pointer;
+}
+
+.modal-footer button{
+	border-radius: 0px;
+    padding: 8px 30px;
+    background-color: #07793f;
+    border: none;
+    margin: auto;
+    color: #fff;
+    cursor: pointer;
+}
+
+.modal-footer button:hover, .modal-footer button:focus, .modal-footer button:focus-within{
+    background-color: #07693f;
+}
+
+#times_button {
+	position: absolute;
+    right: 20px;
+}
+
+#form_landing h1 {color: #07793f;}
+#form_landing .modal-body { padding: 3rem 1rem; }
+
+.modal-dialog {
+  min-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+  @media(max-width: 768px) {
+    min-height: calc(100vh - 40px);
+  }
+}

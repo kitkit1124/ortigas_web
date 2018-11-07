@@ -54,7 +54,7 @@ class Contact extends MX_Controller
 			}
 		}
 
-		$this->template->add_css('components/bootstrap-float-label/bootstrap-float-label.min.css');
+		// $this->template->add_css('npm/bootstrap-float-label/bootstrap-float-label.min.css');
 		$this->template->add_css(module_css('website', 'contact_index'), 'embed');
 		$this->template->add_js(module_js('website', 'contact_index'), 'embed');
 		$this->template->write_view('content', 'contact_index', $data);

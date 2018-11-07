@@ -38,7 +38,6 @@ $lang['property_status']			= 'Status';
 $lang['property_map_location']		= 'Map Location';
 $lang['property_nearby_facilities']	= 'Nearby Facilities';
 $lang['property_social_page']		= 'Social Page';
-$lang['property_slider']			= 'Slider';
 
 // Buttons
 $lang['button_add']					= 'Add Property';

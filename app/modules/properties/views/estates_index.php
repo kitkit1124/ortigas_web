@@ -2,12 +2,22 @@
 	<?php if($category){ ?>
 	<div id="banner_image">
 		<div id="banner_logo_image"></div>
-		<img src="<?php echo config_item('website_url').$category->category_image; ?>" draggable="false" />		
+		<img src="<?php echo site_url().$category->category_image; ?>" draggable="false" />		
 		<h1><?php echo $category->category_name; ?></h1>			
 	</div>
 	<?php } ?>
 	<main role="main" class="container">
 		<div class="content">	
+		
+			<div class="estate_heading">
+				<?php echo parse_content($category->category_description); ?>
+				<a href="#" class="inquiry_button green_button" data-anchor="inquiry_form_container"><?php if($button_text) { echo parse_content($button_text->partial_content); } ?></a>
+			</div>
+
+			<div class="estate_page_select_location">
+				<?php echo form_dropdown('locations_id', $select_locations, set_value('locations_id', (isset($_GET['lid'])) ? $_GET['lid'] : ''), 'id="locations_id" class="form-control"'); ?>
+			</div>
+			
 			<?php
 			if(isset($estates) && $estates){ $properties = $estates; $estates = 1;}  else{ $estates = 0; }
 		    if(isset($properties) && $properties){
@@ -27,10 +37,11 @@
 						 } ?>
 
 						<div class="image_wrapper">
-							<div class="property"><p><?php if($estates){ echo $val->estate_name; } else { echo $val->property_name; } ?></p></div>
+							<div class="property"><p><?php if($estates){ } else { echo $val->property_name; } ?></p></div>
 							<div class="image_container">
-									<img src="<?php if($estates){ echo config_item('website_url').$val->estate_image; } else { echo  config_item('website_url').$val->property_image; }?>" width="100%" alt="" draggable="false"/>
+									<img src="<?php if($estates){ echo site_url().$val->estate_image; } else { echo  config_item('website_url').$val->property_image; }?>" width="100%" alt="" draggable="false"/>
 							</div>
+							<div class="estate"><?php echo $val->estate_name; ?></div>
 						</div>
 
 						</a>
@@ -38,6 +49,36 @@
 				<?php	} //end foreach ?>
 			</div>
 			<?php }?>
+
+
+
+			<div class="seo_content">
+				<?php if($category) { echo parse_content($category->category_bottom_description); } ?>
+			</div>
+
+			<div class="inquiry_form_container">
+				<?php echo $this->load->view('website/inquiry_form')?>
+			</div>
+
+			<?php if(isset($news_result) && $news_result){ ?>
+				<div class="news_related">
+			
+					<h2 class="related_news_title"><?php echo 'Related News'; ?></h2>
+					
+			
+					<div class="news_related_content">
+						<?php
+							$news_data['related_news'] = 1;
+							$news_data['cols_img'] = 'col-sm-5';
+							$news_data['cols_data'] = 'col-sm-7';
+							echo $this->load->view('website/news_result', $news_data); 
+						?>
+					</div>
+				</div>
+			<?php } ?>
+		
+
 		</div>
 	</main>
+		<?php echo $this->load->view('properties/recommended_links')?>
 </section>

@@ -42,9 +42,17 @@ class Page extends CI_Controller
 			show_error('This page requires the Properties module');
 		}
 
-		$this->load->model('properties/categories_model','property_category');
+		$this->load->model('posts_model');
+		$this->load->model('news_tags_model');
+		$this->load->model('post_tags_model');
+		$this->load->model('banners_model');
+		$this->load->model('properties/categories_model');
+		$this->load->model('properties/price_range_model');
+		$this->load->model('properties/locations_model');
 		$this->load->model('properties/estates_model','estates');
 		$this->load->model('properties/properties_model','properties');
+		$this->load->model('properties/image_sliders_model');
+		$this->load->model('files/video_uploads_model');
 	}
 	
 	// --------------------------------------------------------------------
@@ -94,44 +102,61 @@ class Page extends CI_Controller
 		$data['page_layout'] = $page->page_layout;
 
 		// homepage
+		$data['page_content'] = $this->pages_model->find(1); 
+
 		$data['is_home'] = TRUE;
+
+		$data['main_video'] = $this->video_uploads_model->where('video_status','Active')->find(1);
+		$data['sliders'] = $this->banners_model->get_banners(1);
+
+		$data['category_estate'] = $this->categories_model->find(1);
+		$data['category_residence'] = $this->categories_model->find(2);
+		$data['category_mall'] = $this->categories_model->find(3);
+		$data['category_office'] = $this->categories_model->find(4);
+
+		$category = $this->categories_model->get_active_categories();
+		$category[''] = "ALL";
+		$data['select_categories'] = $category;
+
+
+		$locations = $this->locations_model->get_active_locations();
+		$locations[''] = "ALL";
+		$data['select_locations'] = $locations;
+
+		$range = $this->price_range_model->get_active_price_range();
+		$range[''] = "ALL";
+		$data['select_price_range'] = $range;
 
 		// meta tags
 		$this->load->model('metatags_model');
 		$metatags = $this->metatags_model->get_metatags($page->page_metatag_id);
 
-		$fields = [
-		    'rand'	=> true,
-		    'limit'	=> 3
-		];
+		$fields = ['rand'=>true,'limit'=>3];
+		$data['estates'] = $this->estates->get_estates($fields);
 
-		$data['properties'] = $this->properties->get_properties($fields);
+		$fields = ['rand'=>true,'limit'=>1,'category_id'=>2];
+		$residence = $this->properties->get_properties($fields);
 
-		$fields = [
-		    'rand'	=> true,
-		    'limit'	=> 2,
-		    'category_id' => 2 //residences
-		];
-
-		$data['residences'] = $this->properties->get_properties($fields);
-
-		$fields = [
-		    'rand'	=> true,
-		    'limit'	=> 1,
-		    'category_id' => 3 //malls
-		];
-
+		if($residence){
+			$data['carousel'] = $this->image_sliders_model->find_all_by(array('image_slider_section_type' => 'properties', 'image_slider_section_id' => 1)); //$residence[0]->property_id
+		}
+		$fields = ['rand'=>true,'limit'=>1,'category_id'=>3];
 		$data['malls'] 		= $this->properties->get_properties($fields);
-		
-		$fields = [
-		    'rand'	=> true,
-		    'limit'	=> 1,
-		    'category_id' => 4 //offices
-		];
 
+		$fields = ['rand'=>true,'limit'=>1,'category_id'=>4];
 		$data['offices'] 	= $this->properties->get_properties($fields);
 		
-	
+		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
+
+		$fields = ['limit' => 2];
+		$news = $this->posts_model->get_active_news($fields);
+
+		foreach ($news as $key => $result) {
+			$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+		}
+
+		$data['news_result'] = $news;
+
 		// template
 		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('website', 'page_index'), 'embed');

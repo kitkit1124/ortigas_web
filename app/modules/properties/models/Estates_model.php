@@ -61,6 +61,15 @@ class Estates_model extends BF_Model {
 
 	public function get_estates($fields = null){
 
+		if(isset($fields['limit'])){ 
+			$this->limit($fields['limit']);
+		}
+
+		if(isset($fields['rand'])){ 
+			$this->order_by('RAND()');
+		}
+				
+
 		if(isset($fields['estate_id'])){ 
 			$this->where('estate_id', $fields['estate_id']);
 		}

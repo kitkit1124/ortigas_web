@@ -1,0 +1,33 @@
+.estate_heading h1{
+	color: #07793f;
+	font-family: Didot;
+}
+
+.estate_heading p{
+	text-align: left;
+	color: #666;
+}
+
+.estate_heading a{
+	padding: 15px 25px;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #FFF;
+    display: block;
+    width: 200px;
+    margin: 30px auto;
+}
+
+.estate_heading a p{
+    color: #FFF;
+    margin: 0px;
+}
+
+.estate_page_select_location select{
+    max-width: 400px;
+    border-radius: 0;
+    height: 60px;
+    font-size: .85rem;
+    margin: 20px auto;
+}
+

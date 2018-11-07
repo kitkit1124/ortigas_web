@@ -23,7 +23,10 @@ class Search extends MX_Controller {
 		// $this->load->library('users/acl');
 
 		$this->load->model('categories_model');
+		$this->load->model('price_range_model');
+		$this->load->model('locations_model');
 		$this->load->model('properties_model');
+		$this->load->model('searches_model');
 	}
 	
 	// --------------------------------------------------------------------
@@ -51,22 +54,58 @@ class Search extends MX_Controller {
 
 		$data['categories'] = $this->categories_model->where_not_in('category_id',1)->find_all();
 		
+		$data['select_categories'] = $this->categories_model->get_active_categories();
+
+		$data['select_locations']  = $this->locations_model->get_active_locations();
+		
+		$data['select_price_range'] = $this->price_range_model->get_active_price_range();
+
 		if($_POST){
-			echo json_encode(array('success' => true, 'filter' => $_POST['q'].'&'.$_POST['filter_by'])); exit;			
+			$data = array(
+				'search_keyword'	 => $_POST['filter'],
+				'search_loc_id' 	 => $_POST['location_id'],
+				'search_cat_id' 	 => $_POST['category_id'],
+				'search_price_id' 	 => $_POST['price_range_id']
+			);
+			$this->searches_model->insert($data);
+			echo json_encode(
+				array(
+					'success' 	 => true,
+					'filter'	 => $_POST['filter'],
+					'location' 	 => $_POST['location_id'],
+					'category' 	 => $_POST['category_id'],
+					'range' 	 => $_POST['price_range_id']
+				)
+			); 
+			exit;			
 		}
-		if(isset($_GET['q']) && $_GET['q']){
-			if(isset($_GET['r'])){
-				$fields = ['filter' => $_GET['q'], 'category_id' => 2 ];
-				$data['residences'] = $this->properties_model->get_search($fields);		
-			}
-			if (isset($_GET['m'])){
-				$fields = ['filter' => $_GET['q'], 'category_id' => 3 ];
-				$data['malls'] = $this->properties_model->get_search($fields);	
-			}
-			if(isset($_GET['o'])){
-				$fields = ['filter' => $_GET['q'], 'category_id' => 4 ];
-				$data['offices'] = $this->properties_model->get_search($fields);	
-			}
+
+		if($_GET){
+			$fields = [
+				'filter'		 => $_GET['keyword'],
+				'category_id' 	 => 2, 
+				'location_id' 	 => isset($_GET['location']) ? $_GET['location'] : '', 
+				'price_range_id' => isset($_GET['range']) ? $_GET['range'] : ''
+			];
+			$data['residences'] = $this->properties_model->get_search($fields);	
+	
+			$fields = [
+				'filter'		 => $_GET['keyword'],
+				'category_id' 	 => 3, 
+				'location_id' 	 => isset($_GET['location']) ? $_GET['location'] : '', 
+				'price_range_id' => isset($_GET['range']) ? $_GET['range'] : '',
+			];
+			$data['malls'] = $this->properties_model->get_search($fields);	
+	
+
+	
+			$fields = [
+				'filter'		 => $_GET['keyword'],
+				'category_id' 	 => 4, 
+				'location_id' 	 => isset($_GET['lid']) ? $_GET['lid'] : '', 
+				'price_range_id' => isset($_GET['range']) ? $_GET['range'] : '',
+			];
+			$data['offices'] = $this->properties_model->get_search($fields);		
 		}
 
 		// render the page
@@ -76,6 +115,19 @@ class Search extends MX_Controller {
 		$this->template->write_view('content', 'search_index', $data);
 		$this->template->render();
 	}
+
+	public function encrypt( $q ) {
+	    $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
+	    $qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $q, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
+	    return( $qEncoded );
+	}
+
+	public function decrypt( $q ) {
+	    $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
+	    $qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $q ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
+	    return( $qDecoded );
+	}
+
 }
 
 /* End of file Search.php */
