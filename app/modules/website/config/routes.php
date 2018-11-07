@@ -9,4 +9,7 @@ $route['account/reset_password/(:any)'] = 'website/account/reset_password/$1';
 $route['account/activate/(:num)/(:any)'] = 'website/account/activate/$1/$2';
 $route['contact-us'] = 'website/contact/index';
 
+$route['news'] = 'website/news/index';
+$route['news/(:any)'] = 'website/news/view/$1';
+
 $route['([a-z0-9\-]+)'] = 'website/page/view/$1';

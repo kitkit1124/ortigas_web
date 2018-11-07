@@ -158,12 +158,22 @@ class Properties_model extends BF_Model {
 			')');
 		}	
 
+
+		if(isset($fields['location_id']) && $fields['location_id']){
+			$this->where('location_id', $fields['location_id']);
+		}	
+
+		if(isset($fields['price_range_id']) && $fields['price_range_id']){
+			$this->where('price_range_id', $fields['price_range_id']);
+		}
+
 		$query  =  $this->where('category_id', $fields['category_id'])
 						->where('property_status', 'Active')
 						->where('property_deleted', 0)
 						->join('estates', 'estates.estate_id = property_estate_id', 'LEFT')
 						->join('property_locations', 'property_locations.location_id = property_location_id', 'LEFT')
 						->join('property_categories', 'property_categories.category_id = property_category_id', 'LEFT')
+						->join('price_range', 'price_range.price_range_id = property_price_range_id', 'LEFT')
 						->find_all();
 
 		return $query;		

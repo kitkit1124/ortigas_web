@@ -1,3 +1,10 @@
+<?php if(isset($_GET['adv']) && $_GET['adv']){ ?>
+<style type="text/css">
+	.default_search{ display: none; }
+	.advance_search{ display: block; }
+</style>
+<?php } ?>
+
 <section id="roles">
 	<main role="main" class="container">
 		<div class="content">	
@@ -5,12 +12,13 @@
 				<div class="search_tab_content">
 					<div class="default_search row">
 						<div class="col-sm-3">
+							<input type="hidden" id="csrf" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 							<label>WHAT ARE YOU LOOKING FOR?</label>
 						</div>
 						<div class="col-sm-9">
-							<input class="form-control" type=" " aria-label="Search" value="<?php echo isset($_GET['filter']) ? $_GET['filter'] : ''?>">
+							<input class="form-control" type="text" aria-label="Search" id="keyword" value="<?php echo isset($_GET['q']) ? $_GET['q'] : ''?>">
 							<i class="fa fa-search"></i>
-							<p class="prop_search_link">property search</p>
+							
 						</div>
 					</div>
 					<div class="advance_search">
@@ -19,54 +27,33 @@
 								<div class="row">
 									<div class="col-sm-4">
 										<label>Location</label>
-										<input name="location" class="form-control" type="text" paria-label="Search">
+										<?php echo form_dropdown('locations_id', $select_locations, set_value('locations_id', (isset($_GET['lid'])) ? $_GET['lid'] : ''), 'id="locations_id" class="form-control"'); ?>
 									</div>
 									<div class="col-sm-4">
 										<label>Development Type</label>
-										<input name="devtype" class="form-control" type="text" aria-label="Search">
+										<?php echo form_dropdown('categories_id', $select_categories, set_value('categories_id', (isset($_GET['cid'])) ? $_GET['cid'] : ''), 'id="categories_id" class="form-control"'); ?>
 									</div>
 									<div class="col-sm-4">
 										<label>Price Range</label>
-										<input name="price" class="form-control" type="text" aria-label="Search">
+
+
+										<?php echo form_dropdown('price_range_id', $select_price_range, set_value('price_range_id', (isset($_GET['pid'])) ? $_GET['pid'] : ''), 'id="price_range_id" class="form-control"'); ?>
 									</div>
 								</div>
 							</div>
 							<div class="col-sm-2">
+								<label>&nbsp;</label>
 								<button class="button_search" type="submit"><i class="fa fa-search"></i></button>
-								<p class="adv_prop_search_link">keyword search</p>
+								<p class="search_option">SEARCH OPTION</p>
 							</div>
 						</div>
 					</div><!--advance_search-->
 				</div><!--search_tab_content-->
 			</div><!--search_tab-->
-			<div class="filter">
-				<div class="row">
-					<div>
-						<label>Filter by:</label>
-					</div>
-					<form action="<?php echo site_url();?>properties/search/view">
-						<?php foreach ($categories as $key => $value) {
-							$field_name = substr(strtolower($value->category_name),0,1);
-						?>
-							<div class="filter_cointainer">
-								<label class="<?php echo isset($_GET[$field_name]) ? 'filter_true' : ''; ?>" for="<?php echo $field_name; ?>"><?php echo $value->category_name; ?></label><i class="fa fa-times <?php echo isset($_GET[$field_name]) ? 'i_true' : ''; ?>" aria-hidden="true"></i>
-								<input type="checkbox" class="filterby" name="<?php echo $field_name; ?>" id="<?php echo $field_name; ?>" value="1">
-							</div>
-						<?php } 
-						?>
-						<div class="filter_cointainer">
-							<label class="<?php echo isset($_GET['n']) ? 'filter_true' : ''; ?>" for="n">News</label><i class="fa fa-times <?php echo isset($_GET['n']) ? 'i_true' : ''; ?>" aria-hidden="true"></i>
-							<input type="checkbox" class="filterby" name="n" id="n" value="1">
-						</div>
-						<div class="filter_cointainer">
-							<label class="<?php echo isset($_GET['c']) ? 'filter_true' : ''; ?>" for="c">Careers</label><i class="fa fa-times <?php echo isset($_GET['c']) ? 'i_true' : ''; ?>" aria-hidden="true"></i>
-							<input type="checkbox" class="filterby" name="c" id="c" value="1">
-						</div>
-					</form>
-				</div>
-			</div>
+			
 			<div class="search_result">
 				<?php if(isset($residences) && $residences) {?>
+				<div class="r">
 				<h1>Residences</h1>
 				<div class="row">
 					<?php
@@ -84,9 +71,12 @@
 						</div>
 					<?php	} //end foreach ?>
 				</div>
+				</div>
 				<?php }?>
-
+				
+				
 				<?php if(isset($malls) && $malls) {?>
+				<div class="m">
 				<h1>Malls</h1>
 				<div class="row">
 					<?php
@@ -104,9 +94,11 @@
 						</div>
 					<?php	} //end foreach ?>
 				</div>
+				</div>
 				<?php }?>
 
 				<?php if(isset($offices) && $offices) {?>
+				<div class="o">
 				<h1>Offices</h1>
 				<div class="row">
 					<?php
@@ -124,6 +116,7 @@
 						</div>
 					<?php	} //end foreach ?>
 				</div>
+				</div>
 				<?php }?>
 
 		
@@ -134,12 +127,4 @@
 <script type="text/javascript">
 	var post_url = '<?php echo current_url() ?>';
 	var site_url = "<?php echo site_url(); ?>"
-	var cms_url = "<?php echo config_item('website_url'); ?>"
-	
-	var c =   "<?php echo isset($_GET['c']) ? 1 : ''; ?>";
-	var r =   "<?php echo isset($_GET['r']) ? 1 : ''; ?>";
-	var o =   "<?php echo isset($_GET['o']) ? 1 : ''; ?>";
-	var m =   "<?php echo isset($_GET['m']) ? 1 : ''; ?>";
-	var n =   "<?php echo isset($_GET['n']) ? 1 : ''; ?>";
-
 </script>

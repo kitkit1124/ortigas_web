@@ -1,0 +1,51 @@
+#banner_image img{
+	height: 410px;
+	object-fit: cover;
+}
+
+#banner_image h1{
+    position: absolute;
+    top: 274px;
+    font-size: 70px;
+    left: 100px;
+    color: #fff;
+}
+
+.career_content_details{
+	text-align: left;
+	color: #666;
+}
+
+.career_content_details .title{
+	color: #07793f;
+	font-size: 1.8rem;
+	font-weight: bold;
+	font-family: Didot;
+}
+
+.career_content_details .dept{
+	margin-bottom: 5px;
+}
+
+.career_content_details .loc{
+	text-transform: capitalize;
+	color: #07793F;
+}
+
+.career_content_details .loc i.fa{
+		font-size: 1.8rem;
+		margin-right: 10px;
+}
+
+.res_head,.req_head{
+	color: #07793F;
+	font-size: 1.5rem;
+}
+
+.filesize_note{
+	font-size: .8rem;
+	text-indent: 20px;
+	margin-left: 20px;
+}
+
+.page_overview_button{ margin-left: 20px;}

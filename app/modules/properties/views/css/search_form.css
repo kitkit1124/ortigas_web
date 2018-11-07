@@ -1,0 +1,48 @@
+.search_tab{ 
+  margin: 40px 0;
+  text-align: left;
+}
+
+.search_tab input, .search_tab select{ 
+  font-size: 12px;
+}
+
+.search_tab .default_search{
+  margin-bottom: 20px;
+}
+
+.search_tab .form-control{
+    border-radius: 0px;
+}
+
+.search_tab label{
+  color: #07793f;
+  padding-top: 8px;
+  letter-spacing: 1px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: left;
+}
+
+.search_tab .button_search{
+  width: 100%;
+    border: 0;
+    background-color: #07793f;
+    bottom: 0px;
+  height: 38px;
+    cursor: pointer;
+}
+
+.search_tab .button_search i{
+  color: #fff;
+}
+
+.search_tab select:invalid, option:first-child
+{
+    color: #ccc;
+}
+
+.search_tab:selection{
+  color: #ccc !important;
+}

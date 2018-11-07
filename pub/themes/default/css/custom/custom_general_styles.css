@@ -1,0 +1,344 @@
+body {
+    padding-top: 100px;
+    font-family: Gotham-Book;
+}
+
+.content a{
+      text-decoration: none;
+      cursor: pointer;
+}
+
+#slider img{
+  object-fit: cover;
+  height: 410px;
+}
+
+h1{
+    font-family: Didot; 
+}
+
+#slider h1{
+    font-family: Didot;
+    position: absolute;
+    top: 34%;
+    font-size: 70px;
+    left: 100px;
+    color: #fff;
+}
+
+#banner_image h1 {
+    font-family: Didot;
+    width: 100%;
+}
+
+.content{
+	margin: 40px 0;
+}
+
+.noselect, h1, h2, h3, h4, h5, p, a, label, span, ul, li, td, th, img{
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+@font-face {
+    font-family: Didot;
+    src: url('../../../../data/fonts/DidotLTStd-Roman.otf');
+}
+
+@font-face {
+    font-family: Gotham-Book;
+    src: url('../../../../data/fonts/Gotham-Book.otf');
+}
+
+@font-face {
+    font-family: Gotham-Medium;
+    src: url('../../../../data/fonts/Gotham-Medium.otf');
+}
+
+
+img{
+	user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+	cursor: pointer;
+}
+
+#banner_image img{
+	height: 410px;
+	width: 100%;
+	object-fit: cover;
+	object-position: 50% 50%;
+}
+
+#banner_image h1{
+    position: absolute;
+    top: 274px;
+    font-size: 70px;
+    left: 100px;
+    color: #fff;
+    width: auto;
+}
+
+#banner_logo_image{
+    background-image: url(http://ortigas.web.local/data/images/ortigas_logo_image.png);
+    height: 410px;
+    width: 100%;
+    z-index: 0;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.estates {
+	padding: 20px 15px;
+    text-align: center;
+}
+
+/** zoom **/
+.image_wrapper{
+  overflow: hidden;
+}
+
+.category_title{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #07793f;
+}
+
+.category_title h1{
+    font-family: Didot;
+    color: #07793f;
+    text-align: left;
+}
+
+.category_title a{
+    margin-top: 20px;
+    text-align: right;
+    color: #666;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+}
+
+.image_wrapper .image_container {
+ 	visibility: visible;
+ 	-webkit-transform: translateY(0) scale(1);
+ 	transform: translateY(0) scale(1);
+ 	-webkit-transition: -webkit-transform .7s ease-in-out 0.2s; 
+ 	transition: transform .7s ease-in-out 0.2s; 
+}
+
+.image_wrapper:hover .image_container {
+	-webkit-transform: translateY(0) scale(1.1);
+ 	transform: translateY(0) scale(1.1);
+	-webkit-transition: -webkit-transform 1s; 
+ 	transition: transform 1s; 
+}
+
+.image_wrapper .image_container img{
+  object-fit: cover;
+  width: 100%;
+  height: 280px;
+}
+/* zoom */
+
+.image_wrapper .property{
+    position: absolute;
+    z-index: 1;
+    text-decoration: none;
+    color: #fff;
+    bottom: 60px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    width: -moz-calc(100% - (30px));
+    width: : -webkit-calc(100% - (30px));
+    width: calc(100% - (30px));
+
+    margin: auto;
+    font-size: 20px;
+}
+
+
+.image_wrapper .property p{
+	margin-bottom: 0px;
+	padding: 0px;
+}
+
+.image_wrapper .estate {
+    position: absolute;
+    z-index: 1;
+    margin: auto;
+    text-decoration: none;
+    color: #fff;
+    bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+
+    width: -moz-calc(100% - (30px));
+    width: : -webkit-calc(100% - (30px));
+    width: calc(100% - (30px));
+}
+
+.green_button{
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: #07793f;
+    color: #FFF;
+}
+
+.hide{
+    display: none;
+}
+
+.related_properties_result{
+    margin-top: 15px;
+}
+
+
+.news_related{
+    margin-top: 40px;
+    text-align: left;
+}
+
+.related_news_title{
+    color:  #07793f;
+    font-family: Didot;
+    font-size: 45px;
+    text-align: center;
+}
+
+.news_related_content{
+  margin-top: -20px;
+}
+
+.inquiry_form_container{
+    margin-top: 60px;
+}
+
+.inquiry_form_container h1{
+    text-align: center;
+    font-size: 2.5rem;
+}
+.inquiry_form_container a{
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.specific_estate .estate_button{
+    background-color: #34644e;
+    padding: auto 20px;
+    height: 70px;
+    color: #fff;
+}
+
+.specific_estate .estate_button p{
+    color: #FFF;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    width: 85%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+}
+
+.specific_estate .estate_button span{
+    font-size: .75rem;
+    color: #FFF;
+    width: 85%;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    text-transform: initial;
+}
+
+.seo_content{
+    margin-top: 60px;
+    color: #666;
+    text-align: left;
+}
+
+.seo_content h1{
+    margin-bottom: 20px;
+    color: #07793f;
+    text-align: center;
+    font-family: Didot;
+}
+
+.carousels .carousel-indicators {
+    position: initial; 
+}
+.carousels .carousel-indicators img {
+    max-height: 100px !important;
+    margin: 20px 5px 10px 5px;
+}
+
+#location {
+    margin-top: 60px;
+}
+
+.recommended_links_container{
+    padding: 30px 0;
+    background-color: #9a9a9a;
+    color: #FFF;
+}
+
+.clear{ clear: both; }
+
+.page_overview h1{
+    color: #07793f;
+}
+
+.dtpost { border-right: 0; }
+.news_tags, .news_details i.fa{ display: none !important; }
+
+
+.page_overview a{
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: #FFF !important;
+    display: inline-block;
+}
+
+
+/*.error_field{
+    top: 65px;
+    left: 5px;
+    position: absolute;
+    background-color: antiquewhite;
+    border-radius: 5px;
+    margin: 0px;
+    padding: 5px 10px;
+    color: #333;
+    width: auto;
+    z-index: 1;
+}*/
+.error_field p{
+    display: inline-block;
+    margin-left: 10px;
+    font-size: .8rem;
+    margin-bottom: 0px;
+}
+
+.error_field i{
+    display: inline-block;
+    margin-top: 3px;
+    color: #f7b217;
+}

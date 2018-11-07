@@ -1,11 +1,10 @@
-#banner_image h1 {
-    text-align: center;
-    width: 100%;
-    left: auto !important;
+.estates_description{
+	text-align: center;
 }
 
 .specific_estate {
 	margin-top: -100px;
+	cursor: pointer;
 }
 
 .specific_estate .estate_button{
@@ -15,16 +14,107 @@
 	color: #fff;
 }
 
-.specific_estate .estate_button p{
+/*.specific_estate .estate_button p{
 	font-size: 20px;
 	font-weight: bold;
     letter-spacing: 3px;
     margin-top: 20px;
     padding-top: 40px;
 
+}*/
+
+.content_residence{
+	max-width: 1110px;
+	margin: auto;
 }
 
-.image_wrapper .image_container img{
+
+.content_residence .residences{
+	width: 50%;
+	flex: 50%;
+	float: right;
+}
+
+.content_residence .estates{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.content_residence .property{
+	position: relative;
+    z-index: 1;
+    text-decoration: none;
+    color: #fff;
+    bottom: 45px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: auto;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.content_residence label{
+	cursor: pointer;
+}
+
+.mo_result{
+	margin-top: -40px;
+}
+
+.cat_heading_res, .cat_heading{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.res_title{
+    border-right: 1px solid #666;
+}
+
+.res_title h1{
+    color:  #07793f;
+    text-align: left;
+}
+
+.res_desc{
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
+    padding: 0 10px 0 100px;
+    text-align: left;
+}
+
+.res_link a{
+    background-color: #FFF;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    border: 2px solid #666;
+    text-align: center;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.cat_title h1{
+	font-family: Didot;
+    font-size: 45px !important;
+	color:  #07793f;
+}
+
+.cat_desc{
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
+    padding: 0 100px;
+   }
+
+.mo_title{
+    color:  #07793f;
+    font-family: Didot;
+    font-size: 45px;
+}
+/*.image_wrapper .image_container img{
   object-fit: cover;
   width: 100%;
   height: 400px !important;
@@ -33,4 +123,9 @@
 .residences{
 	height: 400px;
 	padding: 20px 0px !important;
+}*/
+
+#slider{
+    max-width: 920px;
+    margin: auto;
 }
