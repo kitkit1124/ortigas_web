@@ -5,9 +5,9 @@ module.exports = function(grunt) {
 		copy: {
 			main: {
 				files: [
-					// {expand: true, cwd: 'node_modules/bootstrap/dist/', src: ['**'], dest: 'pub/npm/bootstrap/'},
-					// {expand: true, cwd: 'node_modules/popper.js/dist/', src: ['**'], dest: 'pub/npm/popper.js/'},
-					// {expand: true, cwd: 'node_modules/jquery/dist/', src: ['**'], dest: 'pub/npm/jquery/'}
+					{expand: true, cwd: 'node_modules/bootstrap/dist/', src: ['**'], dest: 'pub/npm/bootstrap/'},
+					{expand: true, cwd: 'node_modules/popper.js/dist/', src: ['**'], dest: 'pub/npm/popper.js/'},
+					{expand: true, cwd: 'node_modules/jquery/dist/', src: ['**'], dest: 'pub/npm/jquery/'}
 				],
 			},
 		},
