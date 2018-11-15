@@ -43,6 +43,14 @@ class Posts_model extends BF_Model
 	 */
 	public function get_active_news($fields = null)
 	{
+		if(isset($fields['keyword']) && $fields['keyword']){
+			$f = $fields['keyword'];
+			$this->where('('.
+				'post_title like "%'.$f.'%"'.' or '.
+				'post_content like "%'.$f.'%"'.
+			')');
+		}
+
 		if(isset($fields['limit']) && $fields['limit']){
 			$this->limit($fields['limit']);
 		}

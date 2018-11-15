@@ -196,6 +196,19 @@ class Estates extends MX_Controller {
 
 
 	// --------------------------------------------------------------------
+
+
+
+	public function search()
+	{
+
+		$fields = [
+			'location_id' => $this->input->post('location_id'),
+		];
+				
+		$result = $this->properties_model->get_careers($fields);
+		echo json_encode(array('success' => true, 'result' => $result)); exit;		
+	}
 }
 
 /* End of file Estates.php */

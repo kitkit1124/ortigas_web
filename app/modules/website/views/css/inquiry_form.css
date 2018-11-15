@@ -35,3 +35,11 @@
     background-color: #aed0bf;
     display: none;
 }
+
+@media (max-width: 768px){
+	.inquiry_form_container .form_container {
+		-ms-flex: 0 0 100%;
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+}

@@ -6,11 +6,10 @@ app/logs/log-*.php
 app/cache/*
 !app/cache/index.html
 !app/cache/.htaccess
-node_modules/*
-pub/data/uploads/*
 !pub/data/uploads/index.html
+pub/data/uploads/*
 pub/data/photos/*
-!pub/data/photos/index.html
+node_modules/*
 pub/npm/*
 !pub/npm/index.html
 pub/mods/*
@@ -18,7 +17,7 @@ pub/mods/*
 pub/npm/*
 .idea/*
 .idea/scopes/*
-node_modules/
 vendor/*
 .vs
 .vscode
+!.env

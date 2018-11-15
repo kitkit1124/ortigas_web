@@ -1,6 +1,6 @@
 
 <?php if(isset($main_video) && $main_video){ ?>
-	<div style="height: 700px; overflow: hidden;">
+	<div class="video_division">
 		<video width="100%"  controls autoplay loop>
 		  <source src="<?php echo site_url().$main_video->video_location ?>" type="video/mp4">
 		</video>
@@ -27,8 +27,11 @@
 		<div class="page_content">
 			<?php if($page_content) { echo parse_content($page_content->page_content); } ?>
 		</div>
-		<?php echo $this->load->view('properties/search_form'); ?>
 
+		<div class="page_index">
+			<?php echo $this->load->view('properties/search_form'); ?>
+		</div>
+		
 		<?php if($estates) { ?>
 		<div class="main_page">
 			<div class="row cat_heading">
@@ -51,13 +54,16 @@
 					</div>
 				<?php	} //end foreach ?>
 			</div>
+			<div class="est_link2"><a href="<?php echo site_url('').strtolower($category_estate->category_name); ?>">View All</a></div>
 		</div>
+		
+
 		<?php }?>
 		<?php if(isset($carousel) && $carousel) {?>
 		<div class="main_page">
 			<div class="row">
 				<div class="estates residences col-sm-4">
-					<div class="res_title" style="margin: 30px 0;"><h2><?php echo $category_residence->category_name; ?></h2></div>
+					<div class="res_title"><h2><?php echo $category_residence->category_name; ?></h2></div>
 					<div class="res_desc"><?php echo $category_residence->category_description; ?></div>
 					<div class="res_link"><a href="<?php echo site_url('').'estates/category/'.strtolower($category_residence->category_name); ?>">View All</a></div>
 				</div>			
@@ -152,8 +158,11 @@
 			</div>
 		</div>
 
+		<div class="footer_border"></div>
+
 		<div class="seo_content">
 			<?php if($page_content) { echo parse_content($page_content->page_bottom_content); } ?>
 		</div>
+
 	</div>
 </main>

@@ -1,5 +1,5 @@
 <?php $this->template->add_css(module_css('website', 'news_result'), 'embed'); ?>
-<?php if(isset($related_news) && $related_news) { ?>
+<?php if(isset($related_news) && $related_news) { ?> 
 	<div class="row">
 <?php } ?>
 <?php
@@ -10,12 +10,14 @@ foreach ($news_result as $key => $value) {
 		$dtpost = date_create($dtraw); 
 
 		$news_tags = '';
-		foreach ($value->post_tags as $key => $tag_result ){
-			$news_tags .= $tag_result->news_tag_name.'&nbsp; & ';
-		} 
+		if(isset($value->post_tags) && $value->post_tags){
+			foreach ($value->post_tags as $key => $tag_result ){
+				$news_tags .= $tag_result->news_tag_name.'&nbsp; & ';
+			}
+		}
 	?>
 	<?php if(isset($related_news) && $related_news) { ?>
-		<div class="col-sm-6">
+		<div class="col-sm-6 news_result_container">
 	<?php } ?>
 	<div class="news_result">
 		<div class="row">
@@ -28,8 +30,10 @@ foreach ($news_result as $key => $value) {
 					<span class="dtpost">
 						<i><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></i>
 					</span>
-					<i class="fa fa-tag"></i>
-					<span class="news_tags"><?php echo substr($news_tags,0,-2)?></span>
+					<?php if(isset($value->post_tags) && $value->post_tags){ ?>
+						<i class="fa fa-tag"></i>
+						<span class="news_tags"><?php echo substr($news_tags,0,-2)?></span>
+					<?php } ?>
 				</label>
 				<span class="news_text"> <?php echo $value->post_content; ?></span>
 				<a href="<?php echo site_url().'news/'.$value->post_slug;?>" class="green_button">Read More</a>

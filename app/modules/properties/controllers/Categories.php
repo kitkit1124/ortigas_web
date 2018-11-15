@@ -131,6 +131,18 @@ class Categories extends MX_Controller {
 
 	// --------------------------------------------------------------------
 
+	public function search()
+	{
+
+		$fields = [
+			'location_id' => $this->input->post('location_id'),
+			'category_name' => $this->input->post('category_name'),
+		];
+				
+		$properties = $this->properties_model->get_properties($fields);
+		echo json_encode(array('success' => true, 'result' => $properties)); exit;		
+	}
+
 }
 
 /* End of file Categories.php */

@@ -38,7 +38,10 @@ class Banners_model extends BF_Model {
 	 */
 	public function get_banners($banner_group_id = null)
 	{
-		return $this->where('banner_group_id', $banner_group_id)
+		return $this
+					->where('banner_status', 'Active')
+					->where('banner_deleted', 0)
+					->where('banner_group_id', $banner_group_id)
 					->join('banner_groups', 'banner_groups.banner_group_id = banner_banner_group_id')
 					->find_all();
 	}

@@ -16,6 +16,7 @@
     display: block;
     width: 200px;
     margin: 30px auto;
+    text-decoration: none;
 }
 
 .estate_heading a p{
@@ -31,3 +32,41 @@
     margin: 20px auto;
 }
 
+@media (max-width: 768px){
+    .properties {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 768px){
+    .properties {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 740px){
+    .image_wrapper .image_container img{
+        height: 230px;
+    }
+}
+
+@media (max-width: 425px){
+    .image_wrapper .image_container img{
+        height: 300px;
+    }
+    .properties {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 320px){
+    .image_wrapper .image_container img{
+        height: 230px;
+    }
+}

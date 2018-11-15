@@ -15,14 +15,16 @@
 			</div>
 
 			<div class="estate_page_select_location">
-				<?php echo form_dropdown('locations_id', $select_locations, set_value('locations_id', (isset($_GET['lid'])) ? $_GET['lid'] : ''), 'id="locations_id" class="form-control"'); ?>
+				<input type="hidden" id="csrf" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+
+				<?php echo form_dropdown('location_id', $select_locations, set_value('location_id', (isset($_GET['lid'])) ? $_GET['lid'] : ''), 'id="location_id" class="form-control"'); ?>
 			</div>
 			
 			<?php
 			if(isset($estates) && $estates){ $properties = $estates; $estates = 1;}  else{ $estates = 0; }
 		    if(isset($properties) && $properties){
 			?>
-			<div class="row">
+			<div class="row properties_of_estate">
 				<?php
 				foreach ($properties as $key => $val) { ?>
 					<div class="estates properties col-sm-4">
@@ -82,3 +84,8 @@
 	</main>
 		<?php echo $this->load->view('properties/recommended_links')?>
 </section>
+
+<script type="text/javascript">
+	var site_url = "<?php echo site_url(); ?>"
+	var category_name = "<?php echo $category->category_name; ?>"
+</script>

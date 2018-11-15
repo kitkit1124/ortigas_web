@@ -52,6 +52,7 @@ class Page extends CI_Controller
 		$this->load->model('properties/estates_model','estates');
 		$this->load->model('properties/properties_model','properties');
 		$this->load->model('properties/image_sliders_model');
+		$this->load->model('properties/property_types_model');
 		$this->load->model('files/video_uploads_model');
 	}
 	
@@ -118,6 +119,9 @@ class Page extends CI_Controller
 		$category[''] = "ALL";
 		$data['select_categories'] = $category;
 
+		$dev_types = $this->property_types_model->get_active_property_types();
+		$dev_types[''] = "ALL";
+		$data['select_dev_types'] = $dev_types;		
 
 		$locations = $this->locations_model->get_active_locations();
 		$locations[''] = "ALL";

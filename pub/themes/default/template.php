@@ -12,34 +12,41 @@ header('X-Frame-Options: SAMEORIGIN'); // FF 3.6.9+ Chrome 4.1+ IE 8+ Safari 4+ 
 	<?php echo $head; ?>
 
 	<!-- bootstrap & fontawesome -->
-	<link rel="stylesheet" href="<?php echo site_url('npm/bootstrap/css/bootstrap.min.css'); ?>">
-	<link rel="stylesheet" href="<?php echo site_url('npm/font-awesome/css/font-awesome.min.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo site_url('npm/bootstrap/css/bootstrap.min.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo site_url('npm/font-awesome/css/font-awesome.min.css'); ?>">
 	
-	<link rel="stylesheet" href="<?php echo site_url('npm/alertify/themes/alertify.core.css'); ?>" />
-	<link rel="stylesheet" href="<?php echo site_url('npm/alertify/themes/alertify.bootstrap.css'); ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo site_url('npm/alertify/themes/alertify.core.css'); ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo site_url('npm/alertify/themes/alertify.bootstrap.css'); ?>" />
 	
 	
-	<link rel="stylesheet" href="<?php echo site_url('themes/default/css/styles.min.css'); ?>">
-	<link rel="shortcut icon" href="<?php echo site_url('themes/default/img/favicon.png'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo site_url('themes/default/css/styles.min.css'); ?>">
+	<link rel="shortcut icon" type="text/css" href="<?php echo site_url('themes/default/img/favicon.png'); ?>">
 
-	<link rel="stylesheet" href="<?php echo site_url('themes/default/css/custom/navigation_styles.css'); ?>">
-	<link rel="stylesheet" href="<?php echo site_url('themes/default/css/custom/custom_general_styles.css'); ?>">
-	<link rel="stylesheet" href="<?php echo site_url('themes/default/css/custom/footer_styles.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo site_url('themes/default/css/custom/navigation_styles.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo site_url('themes/default/css/custom/custom_general_styles.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo site_url('themes/default/css/custom/footer_styles.css'); ?>">
 
 
 	<?php echo $_styles; // loads additional css files ?>
 </head>
 
 <body>
+
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top">
 		
-		<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_navbar" aria-controls="main_navbar" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
-		</button> -->
+		</button>
 
-		<?php $request = str_replace(base_url(),'',current_url()); ?>
+		<div class="oclogo_mobile">
+			<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo base_url(); ?>data/images/ortigaslogo.png"></a>
+		</div>
+
+
+		<?php $request = str_replace(base_url(),'',current_url()); preg_match("/".substr(preg_quote($request,'/'),0,6)."/", $request, $url_current);  ?>
+		<!-- 	<a class="nav-link base_nav <?php //echo ($url_current[0]=='search') ? 'base_nav_active' : ''; ?>" href="<?php echo site_url('search'); ?>">Inquire</a>  -->
 				
-		<div class="main_menu collapse navbar-collapse" id="navbarsExampleDefault">
+		<div class="main_menu collapse navbar-collapse" id="main_navbar">
 			<div class="oclogo">
 				<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo base_url(); ?>data/images/ortigaslogo.png"></a>
 			</div>
@@ -53,7 +60,7 @@ header('X-Frame-Options: SAMEORIGIN'); // FF 3.6.9+ Chrome 4.1+ IE 8+ Safari 4+ 
 					foreach ($navigations as $key => $value) {?>
 
 						<li class="nav-item">
-							<a class="nav-link base_nav nav_estates <?php echo ($request == $value->navigation_link) ? 'base_nav_active' : ''; ?>" href="<?php echo site_url($value->navigation_link); ?>"><?php echo $value->navigation_name; ?></a>
+							<a class="nav-link base_nav nav_estates <?php echo ($url_current[0] == substr($value->navigation_link,0,6)) ? 'base_nav_active' : ''; ?>" href="<?php echo site_url($value->navigation_link); ?>"><?php echo $value->navigation_name; ?></a>
 							<?php if($value->navigation_link == "estates"){?>
 								<div class = "sub_menu_estates">
 									<ul class = "ul_sub_menu_estates">
@@ -131,28 +138,44 @@ header('X-Frame-Options: SAMEORIGIN'); // FF 3.6.9+ Chrome 4.1+ IE 8+ Safari 4+ 
 					}
 				?>								
 			</ul>
-			<i class="fa fa-search nav_search_button" aria-hidden="true"></i>
-			<form class="form-inline my-2 my-lg-0 d-none">
+
+			<div class="nav_search_button">
+				<i class="fa fa-search " aria-hidden="true"></i>
+			</div>
+		
+			<!-- <form class="form-inline my-2 my-lg-0 d-none">
 				<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
+			</form> -->
 		</div>
+
+		<div id="global_search_container">
+				<?php if($url_current[0] != "search"){ echo $this->load->view('website/global_search_index'); } ?>
+		</div>
+
 	</nav>
+
+		<div class="nav_search_button_mobile">
+			<i class="fa fa-search " aria-hidden="true"></i>
+		</div>
+
 	<?php echo $content; ?>
 	<?php $this->load->model('website/pages_model'); ?>
 	<div id="footer">
 		<div class="footer_content container">
 			<div class="row">
 				<div class="col-sm-4 address">
-					<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo base_url(); ?>data/images/ortigaslogo-white.png" width="300px"></a>
+					<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo base_url(); ?>data/photos/ortigaslogo_white.png"></a>
 
 					<?php $footer = $this->partials_model->find(1); if($footer) { echo parse_content($footer->partial_content); } ?>
 				</div>
+				<div class="footer_border"></div>
 				<div class="col-sm-4 link">
 					<ul>
 						<?php echo $this->navigations_model->get_footer_navigation(2); ?>
 					</ul>
 				</div>
+				<div class="footer_border"></div>
 				<div class="col-sm-4 subscribe">
 					<?php $subscribe = $this->partials_model->find(2); 
 						if($subscribe) {
