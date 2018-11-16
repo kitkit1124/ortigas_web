@@ -128,6 +128,10 @@ class Properties_model extends BF_Model {
 					$this->group_by($fields['group_by']);
 				}
 
+				if(isset($fields['featured']) && $fields['featured']){
+					$this->where('property_is_featured', $fields['featured']);
+				}
+
 				$query  =  $this->where('property_status', 'Active')
 								->where('property_deleted', 0)
 								->join('estates', 'estates.estate_id = property_estate_id', 'LEFT')

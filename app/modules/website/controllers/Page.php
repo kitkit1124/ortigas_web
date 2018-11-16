@@ -138,11 +138,13 @@ class Page extends CI_Controller
 		$fields = ['rand'=>true,'limit'=>3];
 		$data['estates'] = $this->estates->get_estates($fields);
 
-		$fields = ['rand'=>true,'limit'=>1,'category_id'=>2];
+		$fields = ['featured'=>1, 'rand'=>true,'limit'=>1,'category_id'=>2];
 		$residence = $this->properties->get_properties($fields);
 
+		$this->properties->get_properties($fields);
+
 		if($residence){
-			$data['carousel'] = $this->image_sliders_model->find_all_by(array('image_slider_section_type' => 'properties', 'image_slider_section_id' => 1)); //$residence[0]->property_id
+			$data['carousel'] = $this->image_sliders_model->find_all_by(array('image_slider_section_type' => 'properties', 'image_slider_section_id' => $residence[0]->property_id)); //$residence[0]->property_id
 		}
 		$fields = ['rand'=>true,'limit'=>1,'category_id'=>3];
 		$data['malls'] 		= $this->properties->get_properties($fields);
