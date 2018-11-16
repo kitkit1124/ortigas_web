@@ -107,12 +107,13 @@ class Search extends MX_Controller {
 			];
 			$result = $this->properties_model->get_search($fields);	
 			
-			foreach ($result as $key => $value) {
-				$result[$key]->unit_types = $this->room_types_model->get_active_room_types($value->property_id);
+			if($result){
+				foreach ($result as $key => $value) {
+					$result[$key]->unit_types = $this->room_types_model->get_active_room_types($value->property_id);
+				}
+				
+				$data['residences'] = $result;
 			}
-			
-			$data['residences'] = $result;
-
 			$data['page_content'] = $this->pages_model->find(12); 
 			 
 				
@@ -136,9 +137,7 @@ class Search extends MX_Controller {
 
 		// render the page
 		$this->template->add_css(module_css('properties', 'estates_index'), 'embed');
-		$this->template->add_css(module_css('properties', 'search_index'), 'embed');
-		$this->template->add_js(module_js('properties', 'search_index'), 'embed');
-		
+		$this->template->add_css(module_css('properties', 'search_index'), 'embed');	
 		$this->template->write_view('content', 'search_index', $data);
 		$this->template->render();
 	}

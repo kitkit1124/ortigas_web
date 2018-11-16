@@ -83,6 +83,8 @@ class Categories extends MX_Controller {
 
 		if($params){
 		
+		$category = $this->categories_model->find_by('category_name', $params);
+
 		$data['button_text'] = $this->partials_model->find(3); 
 
 		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
@@ -119,6 +121,8 @@ class Categories extends MX_Controller {
 
 		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $properties[0]->category_id, 'related_link_section_type' => 'categories'));
 
+		$data['section_id'] = $category->category_id;
+		$data['section'] = $category->category_name;
 		}
 				
 		// render the page

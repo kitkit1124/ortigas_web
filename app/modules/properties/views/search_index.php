@@ -56,6 +56,11 @@
 		
 				<?php }?>
 
+				<?php else{ ?>
+					<h1 class="pull-left"> No result found... </h1>
+					<div class="clear"></div>
+				<?php } ?>
+
 				<div class="seo_content">
 					<?php if($page_content) { echo parse_content($page_content->page_content); } ?>
 				</div>

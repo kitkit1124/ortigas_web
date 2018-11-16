@@ -59,7 +59,7 @@
 			</div>
 
 			<div class="inquiry_form_container">
-				<?php echo $this->load->view('website/inquiry_form')?>
+				<?php echo $this->load->view('messages/messages_form')?>
 			</div>
 
 			<?php if(isset($news_result) && $news_result){ ?>

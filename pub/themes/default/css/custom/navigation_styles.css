@@ -245,12 +245,11 @@ a.nav-link.base_nav.nav_estates{
   }
 
   .navbar-toggler{
-    display: block;
+    display: block !important;
   	margin: 20px 0;
   	color: #07793f;
   	z-index: 2001;
   }
-
 }
 
 @media(max-width: 600px) {
