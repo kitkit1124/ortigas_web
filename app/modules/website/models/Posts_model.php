@@ -51,6 +51,15 @@ class Posts_model extends BF_Model
 			')');
 		}
 
+		if(isset($fields['related_property']) && $fields['related_property']){
+			$this->where('property_id', $fields['related_property'])
+			->join('post_properties', 'post_properties_post_id = posts.post_id')
+			->join('properties', 'post_properties_property_id = property_id');
+			
+		}
+
+
+
 		if(isset($fields['limit']) && $fields['limit']){
 			$this->limit($fields['limit']);
 		}

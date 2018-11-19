@@ -98,14 +98,14 @@ header('X-Frame-Options: SAMEORIGIN'); // FF 3.6.9+ Chrome 4.1+ IE 8+ Safari 4+ 
 																					$properties = $this->properties_model->get_properties($fields);
 																					if($properties){
 																						foreach ($properties as $key => $property) {
-																							if ($property->property_category_id == 3){
-																								$link = $property->property_website;
-																								$target = '_blank';
-																							}
-																							else{
+																							// if ($property->property_category_id == 3){
+																							// 	$link = $property->property_website;
+																							// 	$target = '_blank';
+																							// }
+																							// else{
 																								$link = site_url('').'estates/property/'.$property->property_slug;
 																								$target = null;
-																							}
+																							// }
 																						
 																				?>
 																							<li class="nav-item">

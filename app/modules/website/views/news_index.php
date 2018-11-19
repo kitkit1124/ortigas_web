@@ -24,7 +24,8 @@
 	
 				</div>
 				<div class="news_sidebar col-sm-4">
-					<?php echo $this->load->view('website/inquiry_form'); ?>
+					<?php echo $this->load->view('messages/messages_form')?>
+					
 					<div class="related_properties_result">
 						<?php
 							$data = [];

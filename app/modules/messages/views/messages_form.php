@@ -30,7 +30,9 @@
 	
 	<a class="inquiry_submit green_button">SUBMIT</a>
 
-	<div class="inquiry_border_bottom"></div>
+	<?php if(isset($remove_this)){ ?>
+		<div class="inquiry_border_bottom"></div>
+	<?php } ?>
 </div>
 
 

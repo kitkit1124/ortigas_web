@@ -57,7 +57,7 @@ class Careers extends MX_Controller {
 
 		$data['careers_landing'] = $this->partials_model->find(4); 
 
-		$data['sliders'] = $this->banners_model->get_banners(8);
+		$data['sliders'] = $this->banners_model->get_banners(4);
 
 		$data['careers'] = $this->careers_model->get_careers();
 

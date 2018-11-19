@@ -1,4 +1,4 @@
-<?php if($floors) { ?>
+<?php if(isset($floors) && $floors) { ?>
 <div id="building-floorplan">
 	<div>
 		<!-- <div class="row">

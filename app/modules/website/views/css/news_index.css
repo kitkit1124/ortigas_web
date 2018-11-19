@@ -37,3 +37,26 @@
 
 
 .news_tags, .news_details i.fa{ display: inline-block !important; }
+
+@media (max-width: 1024px){
+	.news_content, .news_sidebar {
+		-ms-flex: 0 0 100%;
+		flex: 0 0 100%;
+		max-width: 100%;
+		
+	}
+
+	.related_properties_result {
+	    width: 100%;
+	    max-width: 300px;
+	    margin: auto;
+	}
+
+	.news_sidebar {
+	    padding-left: 15px;
+	}
+}
+@media (max-width: 768px){
+
+.related_properties_result .estates { width: 50%;}
+}

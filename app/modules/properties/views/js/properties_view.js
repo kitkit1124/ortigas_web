@@ -112,7 +112,7 @@ $(function() {
 });
 
 function scrollToAnchor(aid){
-    $('html,body').animate({scrollTop: $(aid).offset().top}, 1000);
+    $('html,body').animate({scrollTop: $(aid).offset().top - 150}, 1000);
 }
 
 

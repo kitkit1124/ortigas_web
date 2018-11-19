@@ -64,6 +64,9 @@ class Estates extends MX_Controller {
 
 		$category = $this->categories_model->find(1); //get estate name = 'estate'
 		$estates = $this->estates_model->get_estates();
+
+		$data['section_id'] = $category->category_id;
+		$data['section'] = $category->category_name;
 		
 		if($estates && $category){
 			$data['estates'] = $estates;
@@ -92,18 +95,19 @@ class Estates extends MX_Controller {
 
 		$fields = ['limit' => 4];
 		$news = $this->posts_model->get_active_news($fields);
-
-		foreach ($news as $key => $result) {
-			$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+		if($news){
+			foreach ($news as $key => $result) {
+				$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+			}
 		}
-
 		$data['news_result'] = $news;
+
+
 
 		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => 1, 'related_link_section_type' => 'categories'));
 
 		// render the page
 		
-		$this->template->add_css(module_css('properties', 'estates_index'), 'embed');
 		$this->template->add_css(module_css('properties', 'estates_index'), 'embed');
 		$this->template->add_css(module_css('properties', 'categories_view'), 'embed');
 		$this->template->write_view('content', 'estates_index', $data);
@@ -166,11 +170,16 @@ class Estates extends MX_Controller {
 		$fields = ['limit' => 4];
 		$news = $this->posts_model->get_active_news($fields);
 
-		foreach ($news as $key => $result) {
-			$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+		if($news){
+			foreach ($news as $key => $result) {
+				$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+			}
+
+			$data['news_result'] = $news;
 		}
 
-		$data['news_result'] = $news;
+		$data['section_id'] = $estates[0]->estate_id;
+		$data['section'] = 'Estates';
 
 		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $estates[0]->estate_id, 'related_link_section_type' => 'estates'));
 		

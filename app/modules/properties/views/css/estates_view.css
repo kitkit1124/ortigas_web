@@ -1,3 +1,28 @@
+.content{
+    min-height: auto;
+}
+
+.specific_estate{
+    margin: auto;
+    max-width: 1100px;
+    min-height: 50px;
+}
+
+.specific_estate .btn_est{
+    margin: auto;
+}
+.specific_estate .btn_est:first-child .estate_button{ 
+   background-color: #34644e;
+}
+
+.specific_estate .btn_est:nth-child(2) .estate_button{ 
+    background-color: #34866b;
+}
+
+.specific_estate .btn_est:last-child .estate_button{ 
+  background-color: #589980;
+}
+
 .estates_description{
 	text-align: center;
 }
@@ -8,7 +33,6 @@
 }
 
 .specific_estate .estate_button{
-	background-color: #34644e;
 	padding: auto 20px;
 	height: 100px;
 	color: #fff;
@@ -64,12 +88,7 @@
 }
 
 .cat_heading_res, .cat_heading{
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
-.res_title{
-    border-right: 1px solid #666;
+    margin: 40px 0;
 }
 
 .res_title h1{
@@ -128,4 +147,79 @@
 #slider{
     max-width: 920px;
     margin: auto;
+}
+
+.estates {
+    max-width: 350px;
+    margin: auto;
+}
+
+.office_custom_width{ max-width: 700px; margin: auto;}
+
+@media (max-width: 1024px){
+
+    .res_desc {
+        padding: 0 10px 0 20px;
+    }
+
+}
+
+@media (max-width: 768px){
+    .btn_est{
+        padding: 0;
+    }
+
+    .content{
+        margin-top: 0;
+    }
+
+    .estates {
+        max-width: unset;
+    }
+
+    .specific_estate{
+        margin: 0;
+    }
+    .res_title, .res_desc {
+        -ms-flex: 0 0 100%;
+        flex: 100%;
+        max-width: 100%;
+    }
+
+    .residences {
+        padding: 0 20px;
+    }
+    .malls:last-child{
+        display: none;
+    }
+    .malls{
+        -ms-flex: 0 0 50%;
+        flex: 50%;
+        max-width: 50%;
+    }
+
+    .image_wrapper .image_container img{
+        height: auto;
+    }
+
+   
+
+}
+
+@media (max-width: 650px){
+    .specific_estate .estate_button{
+        height: 60px;
+    }
+
+    .malls, .content_residence .residences {
+        -ms-flex: 0 0 100%;
+        flex: 100%;
+        max-width: 100%;
+        width: 100% !important;
+    }
+
+    .cat_desc{
+    padding: 0 20px;
+   }
+
 }

@@ -27,7 +27,9 @@ class News extends MX_Controller
 		$this->load->model('banners_model');
 		$this->load->model('news_tags_model');
 		$this->load->model('post_tags_model');
+		$this->load->model('partials_model');
 		$this->load->model('properties/properties_model');
+
 
 	}
 
@@ -48,7 +50,7 @@ class News extends MX_Controller
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
 		$this->breadcrumbs->push(lang('index_heading'), current_url());
 
-		$data['sliders'] = $this->banners_model->get_banners(5);
+		$data['sliders'] = $this->banners_model->get_banners(3);
 		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
 		$news = $this->posts_model->get_active_news();
 
@@ -66,6 +68,9 @@ class News extends MX_Controller
 
 		$fields = ['rand'=>true,'limit'=>4,'category_id'=>4];
 		$data['offices'] 	= $this->properties_model->get_properties($fields);
+
+		$data['section_id'] = 0;
+		$data['section'] = 'News';
 
 		$this->template->add_css(module_css('website', 'news_index'), 'embed');
 		$this->template->add_js(module_js('website', 'news_index'), 'embed');

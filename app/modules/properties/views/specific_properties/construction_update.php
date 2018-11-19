@@ -1,3 +1,4 @@
+<?php if(isset($properties->property_construction_update) && $properties->property_construction_update) :?>
 <div class="construction_update">
 						
 	<div class="property_construction_update">
@@ -41,3 +42,4 @@
 	<div class="button_progress"><a href="#">VIEW PROGRESS</a></div>
 
 </div>
+<?php endif; ?>

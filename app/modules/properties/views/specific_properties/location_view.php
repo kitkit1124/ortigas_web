@@ -1,6 +1,5 @@
 <div id="location_view">
-	
-
+	<?php if($properties->category_id==2) : ?>
 	<div class="row location_heading">
 		<div class="col-sm-4 location_title">
 			<h1>Location</h1>
@@ -27,7 +26,9 @@
 		    </ul>
 		</div>
 	</div>  
+	<?php endif; ?>
 
+<?php if(isset($properties->property_latitude) && isset($properties->property_longitude) && $properties->property_latitude && $properties->property_longitude) {?>
 	<div id="map-location">
 	<iframe 
 	  width="100%" 
@@ -40,7 +41,9 @@
 	 >
 	 </iframe>
 	</div><!--map-location-->
+<?php } ?>
 
+		<?php if($properties->category_id==2) : ?>
 		<div id="nearby">
 			<div class="tab-content">
 				<div id="all" class="tab-pane active">
@@ -65,4 +68,6 @@
 
 			</div><!--tab-content-->
 		</div><!--nearby-->
+	<?php endif; ?>
+
 </div><!--location-->

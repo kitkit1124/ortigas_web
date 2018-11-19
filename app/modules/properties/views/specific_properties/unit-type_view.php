@@ -1,4 +1,4 @@
-<?php if($room_types) { ?>
+<?php if(isset($room_types) && $room_types)  { ?>
 <div id="unit-floorplan">
 	<h1>Unit Floor Plan</h1>
     <ul class="nav" role="tablist">

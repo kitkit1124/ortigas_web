@@ -32,6 +32,7 @@ class Properties extends MX_Controller {
 		$this->load->model('categories_model');
 		$this->load->model('price_range_model');
 		$this->load->model('locations_model');
+		$this->load->model('property_types_model');
 		$this->load->model('settings_model');
 		$this->load->model('related_links_model');
 		$this->load->model('website/banners_model');
@@ -39,6 +40,7 @@ class Properties extends MX_Controller {
 		$this->load->model('website/news_tags_model');
 		$this->load->model('website/post_tags_model');
 		$this->load->model('website/pages_model');
+		$this->load->model('website/partials_model');
 	}
 	
 	// --------------------------------------------------------------------
@@ -69,6 +71,10 @@ class Properties extends MX_Controller {
 		
 		$data['sliders'] = $this->banners_model->get_banners(2);
 
+		$dev_types = $this->property_types_model->get_active_property_types();
+	  	$dev_types[''] = "ALL";
+	  	$data['select_dev_types'] = $dev_types;		
+
 		$category = $this->categories_model->get_active_categories();
 		$category[''] = "ALL";
 		$data['select_categories'] = $category;
@@ -98,13 +104,20 @@ class Properties extends MX_Controller {
 		$fields = ['limit' => 4];
 		$news = $this->posts_model->get_active_news($fields);
 
-		foreach ($news as $key => $result) {
-			$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+		if($news){
+			foreach ($news as $key => $result) {
+				$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+			}
 		}
 
 		$data['news_result'] = $news;
 
+		$data['button_text'] = $this->partials_model->find(3);
+
 		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => 2, 'related_link_section_type' => 'pages'));
+
+		$data['section_id'] = 0;
+		$data['section'] = 'Projects';
 
 		// render the page
 		$this->template->add_css(module_css('properties', 'properties_index'), 'embed');
@@ -155,16 +168,17 @@ class Properties extends MX_Controller {
 
 				$data['division_order'] = $this->settings_model->order_by('setting_order')->find_all();
 
-				$fields = ['limit'=>2];
+				$fields = ['related_property' => $id];
 				$news = $this->posts_model->get_active_news($fields);
-			
+				
+				if($news){
+					foreach ($news as $key => $result) {
+						$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+					}
 
-				foreach ($news as $key => $result) {
-					$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+					$data['news_result'] = $news;
 				}
-
-				$data['news_result'] = $news;
-
+				
 				$fields = ['rand'=>true,'limit'=>4,'category_id'=>2];
 				$data['residences'] = $this->properties_model->get_properties($fields);
 
@@ -173,6 +187,11 @@ class Properties extends MX_Controller {
 
 				$fields = ['rand'=>true,'limit'=>4,'category_id'=>4];
 				$data['offices'] 	= $this->properties_model->get_properties($fields);
+
+				$data['section_id'] = $id;
+				$data['section'] = 'Properties';
+
+				$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $id, 'related_link_section_type' => 'properties'));
 
 			}
 			else{

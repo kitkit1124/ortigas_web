@@ -1,7 +1,11 @@
 h1, p, span, a {
-	color: #666666;
+	/*color: #666666;*/
 }
-
+#banner_image h1{
+	text-align: center;
+    left: 0;
+    width: 100%;
+}
 .estate_button{
 	text-align: center;
 	cursor: pointer;
@@ -16,8 +20,20 @@ h1, p, span, a {
 }
 
 
-.specific_estate .col-sm-4{
+.specific_estate .btn_est{
 	padding: 0 5px;
+}
+
+.specific_estate .btn_est:first-child .estate_button{ 
+   background-color: #34644e;
+}
+
+.specific_estate .btn_est:nth-child(2) .estate_button{ 
+    background-color: #34866b;
+}
+
+.specific_estate .btn_est:last-child .estate_button{ 
+  background-color: #589980;
 }
 
 .carousel-indicator_button{
@@ -55,6 +71,7 @@ h1, p, span, a {
 	margin: 20px auto;
 	object-fit: cover;
 	max-width: 500px;
+	width: 100%;
 }
 
 #unit-floorplan ul{
@@ -98,12 +115,18 @@ h1, p, span, a {
     letter-spacing: 2px;
 }
 
-#building-floorplan{ margin: 60px; }
+#building-floorplan{ margin: 60px 0; }
 .floorplan_heading h1{
 	text-align: center;
 	font-family: Didot;
 	color: #07793f;
 }
+
+#floorplan_image{
+	width: 100%;
+	max-width: 500px;
+}
+
 #select-floorplan, #select-floorplan2{
     height: 50px;
     max-width: 270px;
@@ -256,8 +279,8 @@ h1, p, span, a {
 }
 
 .inquiry_form .form_container{
-	flex: 100%;
-	max-width: 100%;
+/*	flex: 100%;
+	max-width: 100%;*/
 }
 
 .inquiry_border_bottom{ display: block !important; }
@@ -271,6 +294,7 @@ h1, p, span, a {
 #location_view{
    	color: #666;
    	margin-bottom: 60px;
+   	text-align: left;
 }
 
 #location_view h1{
@@ -395,4 +419,124 @@ h1, p, span, a {
     position: relative;
     margin-right: 10px;
     color: #07793f;
+}
+
+.tabs_view_outer{ display: none; }
+.tabs_view_inner{ display: block; }
+
+@media (max-width: 1024px){
+
+	.tabs_view_outer{ display: block; }
+	.tabs_view_inner{ display: none; }
+
+	.specific_estate .estate_button p {
+		font-size: .9rem;
+	}
+	.property_view_content , .news_sidebar{
+		-ms-flex: 0 0 100%;
+		flex: 0 0 100%;
+		max-width: 100%;
+
+	} 
+	.specific_estate .btn_est{
+		padding: 0;
+	}
+
+	.specific_estate{
+		margin: 0;
+	}
+
+	.content{
+		margin-top: 0px;
+	}
+
+	.related_properties_result{
+		width: 300px;
+		margin: auto;
+	}
+
+	.news_sidebar{
+		padding-left: 15px;
+	}
+}
+
+@media (max-width: 768px){
+	#location_view div{
+		-ms-flex: 0 0 100%;
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+
+	#location_view h1{
+		border-right: none;
+	}
+
+	.related_properties_result{
+		width: 100%;
+		max-width: 300px;
+	}
+   	.related_properties_result .estates { width: 50%;}
+
+   	.construction_update h1{
+   		font-size: 1.5rem;
+   	}
+   	.construction_update .button_progress a{
+   		font-size: .9rem;
+   		padding: 10px;
+   		max-width: 200px;
+   	}
+
+   	.property_construction_update{
+   		padding: 0 40px;
+   	}
+
+   	.construction_stages{
+   		width:auto;
+   	}
+
+   	.construction_stages label{
+   		font-style: .75rem;
+   	}
+
+   	.property_construction_update .all_stages{
+   		top: 170px;
+   	}
+
+   	.property_construction_update .current_stage_value{
+   		top: 155px;
+   	}
+   	.ground, .presell, .turnover{
+   		max-width: 33%;
+   		flex: 33%;
+   		-ms-flex: 33%;
+   	}
+}
+
+@media (max-width: 425px){
+	.floorplan_heading h1{
+		font-size: 2rem;
+	}
+
+}
+
+@media (max-width: 320px){
+	.nearby li{
+		float: initial !important;
+		width: 100% !important;
+	}
+
+	#check_available_button{
+		padding: 20px 10px;
+	}
+
+	#unit-floorplan li{
+		width: 100%;
+		border-right: 0 !important;
+		text-align: left;
+	}
+
+	#select-floorplan, #select-floorplan2{
+		height: 30px;
+   	 max-width: 200px;
+   	}
 }

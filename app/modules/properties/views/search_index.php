@@ -54,9 +54,7 @@
 					<?php	} //end foreach ?>
 				
 		
-				<?php }?>
-
-				<?php else{ ?>
+				<?php } else{ ?>
 					<h1 class="pull-left"> No result found... </h1>
 					<div class="clear"></div>
 				<?php } ?>

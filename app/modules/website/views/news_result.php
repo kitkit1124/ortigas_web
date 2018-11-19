@@ -3,7 +3,7 @@
 	<div class="row">
 <?php } ?>
 <?php
-if($news_result){
+if(isset($news_result) && $news_result){
 foreach ($news_result as $key => $value) { 
 
 	if($value->post_modified_on){ $dtraw = $value->post_modified_on; } else { $dtraw = $value->post_created_on; }		
