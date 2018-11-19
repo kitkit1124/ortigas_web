@@ -154,7 +154,7 @@
 
 
 			<div class="seo_content">
-				<?php if($page_content) { echo parse_content($page_content->page_content); } ?>
+				<?php if($page_content) { echo parse_content($page_content->page_bottom_content); } ?>
 			</div>
 				
 		</div><!--content-->
