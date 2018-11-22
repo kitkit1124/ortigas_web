@@ -43,8 +43,9 @@ header('X-Frame-Options: SAMEORIGIN'); // FF 3.6.9+ Chrome 4.1+ IE 8+ Safari 4+ 
 		</div>
 
 
-		<?php $request = str_replace(base_url(),'',current_url()); preg_match("/".substr(preg_quote($request,'/'),0,6)."/", $request, $url_current);  ?>
-		<!-- 	<a class="nav-link base_nav <?php //echo ($url_current[0]=='search') ? 'base_nav_active' : ''; ?>" href="<?php echo site_url('search'); ?>">Inquire</a>  -->
+		<?php $request = str_replace(base_url(),'',current_url()); preg_match("/".substr(preg_quote($request,'/'),0,4)."/", $request, $url_current);  ?>
+
+		<!-- 	<a class="nav-link base_nav <?php //echo ($url_current[0]=='search') ? 'base_nav_active' : ''; ?>" href="<?php //echo site_url('search'); ?>">Inquire</a>  -->
 				
 		<div class="main_menu collapse navbar-collapse" id="main_navbar">
 			<div class="oclogo">
@@ -60,7 +61,7 @@ header('X-Frame-Options: SAMEORIGIN'); // FF 3.6.9+ Chrome 4.1+ IE 8+ Safari 4+ 
 					foreach ($navigations as $key => $value) {?>
 
 						<li class="nav-item">
-							<a class="nav-link base_nav nav_estates <?php echo ($url_current[0] == substr($value->navigation_link,0,6)) ? 'base_nav_active' : ''; ?>" href="<?php echo site_url($value->navigation_link); ?>"><?php echo $value->navigation_name; ?></a>
+							<a class="nav-link base_nav nav_estates <?php echo (substr($request,0,4) == substr($value->navigation_link,0,4)) ? 'base_nav_active' : ''; ?>" href="<?php echo site_url($value->navigation_link); ?>"><?php echo $value->navigation_name; ?></a>
 							<?php if($value->navigation_link == "estates"){?>
 								<div class = "sub_menu_estates">
 									<ul class = "ul_sub_menu_estates">
@@ -150,7 +151,7 @@ header('X-Frame-Options: SAMEORIGIN'); // FF 3.6.9+ Chrome 4.1+ IE 8+ Safari 4+ 
 		</div>
 
 		<div id="global_search_container">
-				<?php if($url_current[0] != "search"){ echo $this->load->view('website/global_search_index'); } ?>
+				<?php if( substr($request,0,4) != "sear"){ echo $this->load->view('website/global_search_index'); } ?>
 		</div>
 
 	</nav>

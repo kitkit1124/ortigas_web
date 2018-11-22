@@ -123,6 +123,7 @@ class Estates extends MX_Controller {
 	 */
 	public function view($params)
 	{
+
 		// page title
 		$data['page_heading'] = lang('index_heading');
 		$data['page_subhead'] = lang('index_subhead');
@@ -131,7 +132,16 @@ class Estates extends MX_Controller {
 
 		$fields = [ 'estate_slug' => $params ];
 		$estates = $this->estates_model->get_estates($fields);
-		//pr($estates[0]->estate_id);
+
+
+		if($estates){
+			$data['estates'] = $estates[0];
+		}
+		else{
+			show_404();
+			exit();
+		}
+
 		$data['sliders'] = $this->image_sliders_model->find_all_by(array('image_slider_section_id'=> $estates[0]->estate_id, 'image_slider_section_type'=>'estates'));
 		
 		$fields = [
@@ -183,12 +193,6 @@ class Estates extends MX_Controller {
 
 		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $estates[0]->estate_id, 'related_link_section_type' => 'estates'));
 		
-		if($estates){
-			$data['estates'] = $estates[0];
-		}
-		else{
-			show_404();
-		}
 
 		// breadcrumbs
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));

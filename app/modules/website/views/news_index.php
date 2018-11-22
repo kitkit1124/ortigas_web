@@ -38,6 +38,12 @@
 					</div>
 				</div>
 			</div>
+
+			 <div class="seo_content">
+				<?php if($news_page) { echo parse_content($news_page->page_bottom_content); } ?>
+			</div>
+
 		</div><!--content-->
 	</main>
+	<?php echo $this->load->view('properties/recommended_links')?>
 </section>

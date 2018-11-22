@@ -25,6 +25,7 @@ class Careers extends MX_Controller {
 		$this->load->model('departments_model');
 		$this->load->model('divisions_model');
 		$this->load->model('jobs_model');
+		$this->load->model('properties/related_links_model');
 		$this->load->model('website/banners_model');
 		$this->load->model('website/pages_model');
 		$this->load->model('website/partials_model');
@@ -57,7 +58,7 @@ class Careers extends MX_Controller {
 
 		$data['careers_landing'] = $this->partials_model->find(4); 
 
-		$data['sliders'] = $this->banners_model->get_banners(4);
+		$data['sliders'] = $this->banners_model->get_banners(5);
 
 		$data['careers'] = $this->careers_model->get_careers();
 
@@ -73,6 +74,8 @@ class Careers extends MX_Controller {
 		$departments = $this->departments_model->get_active_departments();
 		$departments[''] = "ALL";
 		$data['select_departments'] = $departments;
+
+		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $data['careers_page']->page_id, 'related_link_section_type' => 'pages'));
 
 		// render the page
 		$this->template->add_css('npm/dropzone/dropzone.min.css');

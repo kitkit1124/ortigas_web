@@ -1,11 +1,14 @@
 #footer{
 	background-color: #07793f; /*9a9a9a*/
 	padding: 20px 0;
+	color: #FFF;
 }
 
 .footer_content{
 	padding: 10px 15px 0px 15px;
+	color: #FFF;
 }
+
 
 .footer_content .address p{
 	padding: 0;

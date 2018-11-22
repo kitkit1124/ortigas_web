@@ -94,7 +94,7 @@ img{
 #banner_image h1 {
     width: 100%;
     position: absolute;
-    top: 274px;
+    top: 254px;
     font-size: 70px;
     left: 100px;
     color: #fff;
@@ -105,7 +105,7 @@ img{
     width: 100%;
     text-align: center;
     position: absolute;
-    top: 370px;
+    top: 350px;
     text-transform: uppercase;
     color: #FFF;
     letter-spacing: 1px;
@@ -470,6 +470,26 @@ img{
     height: 100px;
 }
 
+
+.social_media_properties{
+    top: 110px;
+    position: absolute;
+    right: 40px;
+}
+
+.social_media_properties a{
+    margin: 0 8px;
+    font-size: 2rem;
+    color: #FFF;
+    cursor: pointer;
+}
+
+@media(max-width: 1440px) {
+    .social_media_properties a{
+        font-size: 1.8rem;
+    }
+}
+
 @media(max-width: 1024px) {
    body{
         padding-top: 80px;
@@ -481,6 +501,17 @@ img{
         height: 75px;
     }
 
+    .social_media_properties{
+        top: initial;
+        right: unset;
+        -ms-transform: translateY(-300%);
+        transform: translateY(-300%);
+        width: 100%;
+        text-align: center;
+    }
+    .social_media_properties a{
+        font-size: 1.6rem;
+    }
 }
 
 @media(max-width: 768px) {
@@ -493,14 +524,14 @@ img{
         font-size: 4rem;
         left: 30px;
         top: initial;
-        -ms-transform: translateY(-260%);
-        transform: translateY(-260%);
+        -ms-transform: translateY(-300%);
+        transform: translateY(-300%);
     }
 
     #banner_image h5{
         top: initial;
-        -ms-transform: translateY(-480%);
-        transform: translateY(-480%);
+        -ms-transform: translateY(-600%);
+        transform: translateY(-600%);
     }
 
     #banner_image img,#slider img{
@@ -516,37 +547,80 @@ img{
         width: : 30px !important;
         margin: 20px 5px 10px 5px;
     }
+
+    .social_media_properties{
+        -ms-transform: translateY(-360%);
+        transform: translateY(-360%);
+    }
+    .social_media_properties a{
+        font-size: 1.4rem;
+    }
 }
 
 
 @media(max-width: 600px) {
     #banner_image h1,  #slider h1{
-        -ms-transform: translateY(-220%);
-        transform: translateY(-220%);
+        -ms-transform: translateY(-300%);
+        transform: translateY(-300%);
+        font-size: 3.1rem;
     }
 
     #banner_image h5{
-        top: initial;
-        -ms-transform: translateY(-430%);
-        transform: translateY(-430%);
-        font-size: 1rem;
+        -ms-transform: translateY(-630%);
+        transform: translateY(-630%);
+        font-size: .9rem;
+    }
+
+    .social_media_properties{
+        -ms-transform: translateY(-290%);
+        transform: translateY(-290%);
+    }
+    .social_media_properties a{
+        font-size: 1.2rem;
     }
 
 }
 
+@media(max-width: 500px) {
+    #banner_image h1,  #slider h1{
+        -ms-transform: translateY(-250%);
+        transform: translateY(-250%);
+    }
+
+    #banner_image h5{
+        -ms-transform: translateY(-550%);
+        transform: translateY(-550%);
+        font-size: .8rem;
+    }
+
+    .social_media_properties{
+        -ms-transform: translateY(-240%);
+        transform: translateY(-240%);
+    }
+    .social_media_properties a{
+        font-size: 1.1rem;
+    }
+
+}
+
+
+
 @media(max-width: 375px) {
 
     #banner_image h1, #slider h1{
-        font-size: 3rem;
-        -ms-transform: translateY(-200%);
-        transform: translateY(-200%);
+        font-size: 2.3rem;
+        -ms-transform: translateY(-260%);
+        transform: translateY(-260%);
     }
 
-     #banner_image h5{
-        top: initial;
-        -ms-transform: translateY(-330%);
-        transform: translateY(-330%);
-         font-size: .85rem;
+    #banner_image h5{
+        -ms-transform: translateY(-200%);
+        transform: translateY(-450%);
+    }
+
+    .social_media_properties{
+        -ms-transform: translateY(-180%);
+        transform: translateY(-180%);
     }
 
 }

@@ -72,9 +72,14 @@
 					</div>
 					<?php } ?>
 			 </div>
+
+			 <div class="seo_content">
+				<?php if($careers_page) { echo parse_content($careers_page->page_bottom_content); } ?>
+			</div>
 			
 		</div><!--content-->
 	</main>
+	<?php echo $this->load->view('properties/recommended_links')?>
 </section>
 <script type="text/javascript">
 	var post_url = '<?php echo current_url() ?>';

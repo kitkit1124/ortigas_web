@@ -13,3 +13,4 @@ $route['news'] = 'website/news/index';
 $route['news/(:any)'] = 'website/news/view/$1';
 
 $route['([a-z0-9\-]+)'] = 'website/page/view/$1';
+

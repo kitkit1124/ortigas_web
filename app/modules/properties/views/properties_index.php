@@ -26,26 +26,26 @@
 			<div class="inquiry_form_container">
 				<?php echo $this->load->view('messages/messages_form')?>
 			</div>
-
-			<?php if(isset($news_result) && $news_result){ ?>
-				<div class="news_related">
-			
-					<h2 class="related_news_title"><?php echo 'Related News'; ?></h2>
-					
-			
-					<div class="news_related_content">
-						<?php
-							$news_data['related_news'] = 1;
-							$news_data['cols_img'] = 'col-sm-5';
-							$news_data['cols_data'] = 'col-sm-7';
-							echo $this->load->view('website/news_result', $news_data); 
-						?>
-					</div>
-				</div>
-			<?php } ?>
-
 		</div><!--content-->
 
 	</main>
+
+	<?php if(isset($news_result) && $news_result){ ?>
+		<div class="news_related">
+	
+			<h2 class="related_news_title"><?php echo 'Related News'; ?></h2>
+			
+	
+			<div class="news_related_content">
+				<?php
+					$news_data['related_news'] = 1;
+					$news_data['cols_img'] = 'col-sm-5';
+					$news_data['cols_data'] = 'col-sm-7';
+					echo $this->load->view('website/news_result', $news_data); 
+				?>
+			</div>
+		</div>
+	<?php } ?>
+
 	<?php echo $this->load->view('properties/recommended_links')?>
 </section>

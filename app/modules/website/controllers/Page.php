@@ -205,6 +205,8 @@ class Page extends CI_Controller
 			// page title
 			$data['page_heading'] = $page->page_title;
 			$data['record'] = $page;
+
+			$data['sliders'] = $this->banners_model->get_banners($page->page_id);
 		}
 		else
 		{
@@ -240,6 +242,46 @@ class Page extends CI_Controller
 			$this->template->write('head', $metatags);
 		}
 
+
+		$fields = ['limit' => 4, 'page_related_news' => $page->page_id ];
+		$news = $this->posts_model->get_active_news($fields);
+
+		if($news){
+			foreach ($news as $key => $result) {
+				$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+			}
+
+			$data['news_result'] = $news;
+		}
+
+		if($page->page_uri == 'about-us'){
+
+			$data['projects'] = $this->pages_model->find(3);
+
+			$fields = ['rand'=>true,'limit'=>4,'category_id'=>2];
+			$data['residences'] = $this->properties->get_properties($fields);	
+
+			$this->template->add_css(module_css('website', 'page_view/abouts_us'), 'embed');
+			$this->template->add_js(module_js('website', 'page_view/about_us'), 'embed');
+		}
+
+
+		if($page->page_uri == 'established-communities'){
+			$this->template->add_css(module_css('website', 'page_view/established_communites'), 'embed');
+			$this->template->add_js(module_js('website', 'page_view/about_us'), 'embed');
+		}
+
+		if($page->page_uri == 'supplier-and-contractor-accreditation'){
+			$this->template->add_css(module_css('website', 'page_view/established_communites'), 'embed');
+		}
+
+		
+		
+		
+
+
+
+
 		$this->template->add_css(module_css('website', 'page_view'), 'embed');
 		$this->template->add_js(module_js('website', 'page_view'), 'embed');
 		$this->template->write_view('content', 'page_view', $data);
@@ -248,26 +290,6 @@ class Page extends CI_Controller
 
 	// --------------------------------------------------------------------
 
-	/**
-	 * notfound
-	 *
-	 * @access	public
-	 * @param	none
-	 * @author 	Randy Nivales <randynivales@gmail.com>
-	 */
-	// public function notfound($params = FALSE)
-	// {
-	// 	// page title
-	// 	$data['page_heading'] = lang('not_found_heading');
-
-	// 	// page layout
-	// 	$data['page_layout'] = 'full_width';
-
-	// 	// template
-	// 	$this->template->set_template(config_item('website_theme'));
-	// 	$this->template->write_view('content', 'page_notfound', $data);
-	// 	$this->template->render();
-	// }
 }
 
 /* End of file Page.php */

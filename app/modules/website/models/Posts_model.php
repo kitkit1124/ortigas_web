@@ -58,6 +58,11 @@ class Posts_model extends BF_Model
 			
 		}
 
+		if(isset($fields['page_related_news']) && $fields['page_related_news']){
+			$this->where('page_tagposts_page_id', $fields['page_related_news'])
+			->join('page_tagposts', 'page_tagposts_post_id = posts.post_id');			
+		}
+
 
 
 		if(isset($fields['limit']) && $fields['limit']){

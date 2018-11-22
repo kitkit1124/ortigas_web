@@ -1,4 +1,3 @@
-
 <?php if(isset($main_video) && $main_video){ ?>
 	<div class="video_division">
 		<video width="100%"  controls autoplay loop>
@@ -26,6 +25,8 @@
 	<div class="content">	
 		<div class="page_content">
 			<?php if($page_content) { echo parse_content($page_content->page_content); } ?>
+			<br>
+			<?php if($page_content) { echo '<h1>'.parse_content($page_content->page_heading_text).'</h1>'; } ?>
 		</div>
 
 		<div class="page_index">
