@@ -7,10 +7,13 @@ $(function() {
 	$('.inquiry_submit').click(function(){
 		$.ajax({method: "POST",url: site_url + 'messages/messages/form',
 			data: { 
+				message_type	    : 'Inquiry',
 				message_section	    : section,
 				message_section_id	: section_id,
 				message_name		: $('#inquiry_name').val(),
 				message_email		: $('#inquiry_email').val(),
+				message_mobile		: 'N/A',
+				message_location	: 'N/A',
 				message_content		: $('#inquiry_message').val(),
 				message_status  	: 0,
 

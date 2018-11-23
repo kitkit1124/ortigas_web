@@ -21,6 +21,12 @@ class Contact extends MX_Controller
 		parent::__construct();
 
 		$this->load->language('contact');
+		$this->load->model('pages_model');
+		$this->load->model('posts_model');
+		$this->load->model('post_tags_model');
+		$this->load->model('partials_model');
+		$this->load->model('banners_model');
+		$this->load->model('properties/properties_model');
 	}
 
 	// --------------------------------------------------------------------
@@ -52,6 +58,22 @@ class Contact extends MX_Controller
 			{	
 				$data['error_message'] = lang('validation_error');
 			}
+		}
+
+		$data['sliders'] = $this->banners_model->get_banners(6);
+		$data['page_content'] = $this->pages_model->find_by(array('page_uri' => 'inquire', 'page_status' => 'Posted', 'page_deleted' => 0));
+		$data['contact_address'] = $this->partials_model->find(1);
+		$data['properties'] = $this->properties_model->get_select_properties();
+
+		$fields = ['limit' => 4, 'page_related_news' => 6 ];
+		$news = $this->posts_model->get_active_news($fields);
+
+		if($news){
+			foreach ($news as $key => $result) {
+				$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+			}
+
+			$data['news_result'] = $news;
 		}
 
 		// $this->template->add_css('npm/bootstrap-float-label/bootstrap-float-label.min.css');
@@ -112,4 +134,25 @@ class Contact extends MX_Controller
 
 		return TRUE;
 	}
+
+
+	public function get_projects(){
+		if (!$this->input->is_ajax_request()) {	show_404();	}
+		
+		$message_section = $_POST['message_section'];
+		if($message_section == 'Estates'){
+		
+			$result = $this->estates_model->get_estates();
+			echo json_encode($result);
+		}
+
+		if($message_section == 'Properties'){
+		
+			$result = $this->properties_model->get_select_properties();
+			echo json_encode($result);
+		}
+
+		return $result;
+	}
+
 }

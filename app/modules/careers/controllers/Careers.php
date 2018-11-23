@@ -43,7 +43,7 @@ class Careers extends MX_Controller {
 	public function index()
 	{
 		// page title
-		$data['page_heading'] = lang('index_heading');
+		$data['page_heading'] = 'Careers';
 		$data['page_subhead'] = lang('index_subhead');
 		$data['page_layout'] = 'full_width';
 		
@@ -106,7 +106,7 @@ class Careers extends MX_Controller {
 	public function view($params)
 	{
 		// page title
-		$data['page_heading'] = lang('index_heading');
+		$data['page_heading'] = 'Careers';
 		$data['page_subhead'] = lang('index_subhead');
 		$data['page_layout'] = 'full_width';
 		

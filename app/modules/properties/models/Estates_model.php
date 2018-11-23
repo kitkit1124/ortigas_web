@@ -84,4 +84,13 @@ class Estates_model extends BF_Model {
 
 		return $query;	
 	}
+
+	public function get_select_estates(){
+		$query = $this
+				->where('estate_status', 'Active')
+				->where('estate_deleted', 0)
+				->order_by('estate_name', 'ASC')
+				->format_dropdown('estate_id', 'estate_name', TRUE);
+		return $query;		
+	}
 }

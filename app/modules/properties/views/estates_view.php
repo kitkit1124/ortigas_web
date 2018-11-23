@@ -99,7 +99,7 @@
 				<?php
 				foreach ($malls as $key => $val) { ?>
 					<div class="estates malls col-sm-4">
-						<a href="<?php echo $val->property_website; ?>" target="_blank">
+						<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 						<div class="image_wrapper">
 							<div class="property"><p><?php echo $val->property_name; ?></p></div>
 							<div class="image_container">

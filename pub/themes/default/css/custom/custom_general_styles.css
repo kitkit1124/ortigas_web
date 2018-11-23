@@ -221,6 +221,7 @@ img{
     text-transform: uppercase;
     background-color: #07793f;
     color: #FFF;
+    cursor: pointer;
 }
 
 .hide{
