@@ -31,6 +31,40 @@
     margin: 20px auto;
 }
 
+.estates{
+    text-align: left;
+}
+
+.estates a{
+    text-decoration: none;
+    color: #666;
+ 
+}
+
+.property_content_wrapper .property_title{
+    padding-top: .9rem;
+    font-size: 1.2rem;
+}
+
+.property_content_wrapper .estate_title{
+    font-size: 1rem;
+}
+
+.estates_content_wrapper .estate_title{
+    padding-top: .9rem;
+    font-size: 1.1rem;
+}
+
+.estate_content{
+    font-size: .9rem;
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+
+
 @media (max-width: 768px){
     .properties {
         -ms-flex: 0 0 50%;

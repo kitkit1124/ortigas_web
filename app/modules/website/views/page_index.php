@@ -47,7 +47,7 @@
 						<a href="<?php echo site_url('').'estates/'.$val->estate_slug; ?>">
 						<div class="image_wrapper">
 							<div class="image_container">
-								<img src="<?php echo config_item('website_url').$val->estate_image; ?>" width="100%" alt="" draggable="false"/>
+								<img src="<?php echo site_url().$val->estate_image; ?>" width="100%" alt="" draggable="false"/>
 							</div>
 							<div class="estate"><center><?php echo $val->estate_name; ?></center></div>
 						</div>
@@ -112,11 +112,12 @@
 						<div class="col-sm-6 mo_title"><h2><?php echo $category_mall->category_name; ?></h2></div>
 						<div class="col-sm-6 mo_link"><a href="<?php echo site_url('').'estates/category/'.strtolower($category_mall->category_name); ?>">View All</a></div>
 					</div>
-					<a href="<?php echo $val->property_website; ?>" target="_blank">
+					<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
+					<!-- <a href="<?php //echo $val->property_website; ?>" target="_blank"> -->
 					<div class="image_wrapper">
 						<div class="property"><?php echo $val->property_name; ?></div>
 						<div class="image_container">
-							<img src="<?php echo config_item('website_url').$val->property_image; ?>" width="100%" alt="" draggable="false"/>
+							<img src="<?php echo site_url().$val->property_image; ?>" width="100%" alt="" draggable="false"/>
 						</div>
 						<div class="estate"><?php echo $val->estate_name; ?></div>
 					</div>
@@ -134,7 +135,7 @@
 					<div class="image_wrapper">
 						<div class="property"><?php echo $val->property_name; ?></div>
 						<div class="image_container">
-							<img src="<?php echo config_item('website_url').$val->property_image; ?>" width="100%" alt="" draggable="false"/>
+							<img src="<?php echo site_url().$val->property_image; ?>" width="100%" alt="" draggable="false"/>
 						</div>
 						<div class="estate"><?php echo $val->estate_name; ?></div>
 					</div>

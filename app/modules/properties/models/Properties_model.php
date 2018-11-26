@@ -132,6 +132,14 @@ class Properties_model extends BF_Model {
 					$this->where('property_is_featured', $fields['featured']);
 				}
 
+				if(isset($fields['featured']) && $fields['featured']){
+					$this->where('property_is_featured', $fields['featured']);
+				}
+
+				if(isset($fields['wo_property_id']) && $fields['wo_property_id']){
+		 			$this->where_not_in('property_id', $fields['wo_property_id']);
+				}
+
 				$query  =  $this->where('property_status', 'Active')
 								->where('property_deleted', 0)
 								->join('estates', 'estates.estate_id = property_estate_id', 'LEFT')

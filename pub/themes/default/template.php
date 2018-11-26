@@ -38,7 +38,7 @@ $this->load->model('properties/properties_model');
 	<?php $seo = $this->seo_model->find(1); echo parse_content($seo->seo_content);  ?>
 
 	<?php $seo = $this->seo_model->find(2); echo parse_content($seo->seo_content);  ?>
-	
+
 </head>
 
 <body>
@@ -68,8 +68,8 @@ $this->load->model('properties/properties_model');
 					$navigations = $this->navigations_model->get_frontend_navigations(1); 
 					foreach ($navigations as $key => $value) {?>
 
-						<li class="nav-item">
-							<a class="nav-link base_nav nav_estates <?php echo (substr($request,0,4) == substr($value->navigation_link,0,4)) ? 'base_nav_active' : ''; ?>" href="<?php echo site_url($value->navigation_link); ?>"><?php echo $value->navigation_name; ?></a>
+						<li class="nav-item">		<!-- 	/** base_nav_actives remove 's' to show highlights **/ -->
+							<a class="nav-link base_nav nav_estates <?php echo (substr($request,0,4) == substr($value->navigation_link,0,4)) ? 'base_nav_actives' : ''; ?>" href="<?php echo site_url($value->navigation_link); ?>"><?php echo $value->navigation_name; ?></a>
 							<?php if($value->navigation_link == "estates"){?>
 								<div class = "sub_menu_estates">
 									<ul class = "ul_sub_menu_estates">

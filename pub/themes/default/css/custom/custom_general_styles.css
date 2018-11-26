@@ -133,7 +133,6 @@ img{
 }
 
 .category_title h1{
-    font-family: Didot;
     color: #07793f;
     text-align: left;
 }
@@ -449,10 +448,17 @@ img{
     cursor: pointer;
 }
 
+
 .footer_border{
     display: none;
     width: 100%;
     border-bottom: 2px solid #84bc9f;
+}
+
+#footer a{
+    color: #FFF;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
 .green{

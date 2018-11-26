@@ -158,7 +158,7 @@ class Properties extends MX_Controller {
 				
 				$data['floors'] = $this->floors_model->get_floors_dropdown($id);		
 
-				$fields = [ 'rand' => true, 'limit'	=> 2, 'estate_id' => $properties[0]->property_estate_id];
+				$fields = [ 'rand' => true, 'limit'	=> 2, 'estate_id' => $properties[0]->property_estate_id,'wo_property_id' => $id];
 
 				$data['other_residences'] = $this->properties_model->get_properties($fields);
 
@@ -179,14 +179,14 @@ class Properties extends MX_Controller {
 					$data['news_result'] = $news;
 				}
 				
-				$fields = ['rand'=>true,'limit'=>4,'category_id'=>2];
+				$fields = ['rand'=>true,'limit'=>4,'category_id'=>2, 'estate_id' => $properties[0]->property_estate_id, 'wo_property_id' => $id];
 				$data['residences'] = $this->properties_model->get_properties($fields);
 
-				$fields = ['rand'=>true,'limit'=>4,'category_id'=>3];
+				/*$fields = ['rand'=>true,'limit'=>4,'category_id'=>3];
 				$data['malls'] 		= $this->properties_model->get_properties($fields);
 
 				$fields = ['rand'=>true,'limit'=>4,'category_id'=>4];
-				$data['offices'] 	= $this->properties_model->get_properties($fields);
+				$data['offices'] 	= $this->properties_model->get_properties($fields);*/
 
 				$data['section_id'] = $id;
 				$data['section'] = 'Properties';

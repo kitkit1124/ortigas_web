@@ -30,21 +30,31 @@
 					<div class="estates properties col-sm-4">
 						<?php if($estates){  ?>
 							<a href="<?php echo site_url('').'estates/'.$val->estate_slug; ?>">
-						<?php } else { 
-						 		if($val->property_category_id == 3){ ?>
-						 			<a href="<?php echo $val->property_website; ?>" target="_blank">		
-						 		<?php } else{ ?>
-						 			<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
-						 <?php	}
-						 } ?>
+						<?php } else { ?>
+							<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
+						 <?php } ?>
 
 						<div class="image_wrapper">
-							<div class="property"><p><?php if($estates){ } else { echo $val->property_name; } ?></p></div>
+							<!-- <div class="property"><p><?php //if($estates){ } else { echo $val->property_name; } ?></p></div> -->
 							<div class="image_container">
 									<img src="<?php if($estates){ echo site_url().$val->estate_image; } else { echo  config_item('website_url').$val->property_image; }?>" width="100%" alt="" draggable="false"/>
 							</div>
-							<div class="estate"><?php echo $val->estate_name; ?></div>
+							<!-- <div class="estate"><?php //echo $val->estate_name; ?></div> -->
+
 						</div>
+						<?php if($estates){ ?>
+							<div class="estates_content_wrapper">
+								<div class="estate_title"><?php echo $val->estate_name; ?></div>
+								<div class="estate_content"><?php echo $val->estate_text; ?></div>
+							</div>
+						<?php } else { ?>
+							<div class="property_content_wrapper">
+								<div class="property_title"><?php  echo $val->property_name; ?></div>
+								<div class="estate_title_dup"><?php echo $val->estate_name; ?></div>
+								<div class="estate_content"><?php echo $val->estate_text; ?></div>
+							</div>
+						<?php } ?>
+						
 
 						</a>
 					</div>
