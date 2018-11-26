@@ -1,9 +1,9 @@
 body {
     padding-top: 100px;
-    font-family: Gotham-Book;+
+    font-family: Helvetica;
 }
 
-.content, #footer, #slider{
+.content , #footer , #slider{
     display: none;
 }
 
@@ -17,11 +17,6 @@ body {
       text-decoration: none;
       cursor: pointer;
 }
-
-h1{
-    font-family: Didot; 
-}
-
 
 select option{
     height: 30px;
@@ -242,7 +237,6 @@ img{
 
 .related_news_title{
     color:  #07793f;
-    font-family: Didot;
     font-size: 45px;
     text-align: center;
 }
@@ -306,7 +300,6 @@ img{
     margin-bottom: 20px;
     color: #07793f;
     text-align: center;
-    font-family: Didot;
 }
 
 .carousels .carousel-indicators {

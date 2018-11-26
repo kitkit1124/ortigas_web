@@ -116,7 +116,6 @@
     letter-spacing: 1px;
 }
 .cat_title h1{
-	font-family: Didot;
     font-size: 45px !important;
 	color:  #07793f;
 }
@@ -130,7 +129,6 @@
 
 .mo_title{
     color:  #07793f;
-    font-family: Didot;
     font-size: 45px;
 }
 /*.image_wrapper .image_container img{

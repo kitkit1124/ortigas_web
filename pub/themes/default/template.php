@@ -1,6 +1,12 @@
 <?php // Adds X-Frame-Options to HTTP header, so that page can only be shown in an iframe of the same site.
 header('X-Frame-Options: SAMEORIGIN'); // FF 3.6.9+ Chrome 4.1+ IE 8+ Safari 4+ Opera 10.5+
 // $user = $this->ion_auth->user()->row();
+$this->load->model('website/navigations_model'); 
+$this->load->model('website/partials_model'); 
+$this->load->model('website/pages_model'); 
+$this->load->model('website/seo_model'); 
+$this->load->model('properties/estates_model');
+$this->load->model('properties/properties_model');
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -28,10 +34,15 @@ header('X-Frame-Options: SAMEORIGIN'); // FF 3.6.9+ Chrome 4.1+ IE 8+ Safari 4+ 
 
 
 	<?php echo $_styles; // loads additional css files ?>
+
+	<?php $seo = $this->seo_model->find(1); echo parse_content($seo->seo_content);  ?>
+
+	<?php $seo = $this->seo_model->find(2); echo parse_content($seo->seo_content);  ?>
+	
 </head>
 
 <body>
-
+	<?php $seo = $this->seo_model->find(3); echo parse_content($seo->seo_content);  ?>
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top">
 		
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_navbar" aria-controls="main_navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,10 +65,7 @@ header('X-Frame-Options: SAMEORIGIN'); // FF 3.6.9+ Chrome 4.1+ IE 8+ Safari 4+ 
 			<ul class="navbar-nav mr-auto">
 
 				<?php 
-					$this->load->model('website/navigations_model'); 
-					$this->load->model('website/partials_model'); 
 					$navigations = $this->navigations_model->get_frontend_navigations(1); 
-					
 					foreach ($navigations as $key => $value) {?>
 
 						<li class="nav-item">
@@ -66,12 +74,7 @@ header('X-Frame-Options: SAMEORIGIN'); // FF 3.6.9+ Chrome 4.1+ IE 8+ Safari 4+ 
 								<div class = "sub_menu_estates">
 									<ul class = "ul_sub_menu_estates">
 											<?php
-											$this->load->model('properties/estates_model');
-									
 											$estates = $this->estates_model->find_all();
-
-											$this->load->model('properties/properties_model');
-											
 											if($estates){
 												foreach ($estates as $key => $estate) { 
 											?>		
@@ -161,7 +164,7 @@ header('X-Frame-Options: SAMEORIGIN'); // FF 3.6.9+ Chrome 4.1+ IE 8+ Safari 4+ 
 		</div>
 
 	<?php echo $content; ?>
-	<?php $this->load->model('website/pages_model'); ?>
+
 	<div id="footer">
 		<div class="footer_content container">
 			<div class="row">

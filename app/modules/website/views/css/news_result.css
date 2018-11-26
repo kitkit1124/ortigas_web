@@ -7,7 +7,7 @@
 	box-shadow: 10px 10px 15px -6px #9a9a9a;
 }
 
-.news_content .news_title{ font-family: Didot; color: #07793f; }
+.news_content .news_title{ color: #07793f; }
 .news_content .news_filter_label { color: #666; }
 .news_content .news_filter {
     padding: 4px 8px;

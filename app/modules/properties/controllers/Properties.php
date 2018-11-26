@@ -69,7 +69,7 @@ class Properties extends MX_Controller {
 		// session breadcrumb
 		$this->session->set_userdata('redirect', current_url());
 		
-		$data['sliders'] = $this->banners_model->get_banners(2);
+		$data['sliders'] = $this->banners_model->get_banners(3);
 
 		$dev_types = $this->property_types_model->get_active_property_types();
 	  	$dev_types[''] = "ALL";
@@ -79,7 +79,7 @@ class Properties extends MX_Controller {
 		$category[''] = "ALL";
 		$data['select_categories'] = $category;
 
-		$data['projects'] = $this->pages_model->find(2); 
+		$data['projects'] = $this->pages_model->find(3); 
 
 		$locations = $this->locations_model->get_active_locations();
 		$locations[''] = "ALL";
