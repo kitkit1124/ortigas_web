@@ -98,6 +98,7 @@
 					<div class="form-group">
 						<div class="g-recaptcha" data-sitekey="6Ledg30UAAAAAHixIxThPUv1CLlvuPV1S-NvgWtX"></div>
 						<?php echo form_error('g-recaptcha-response'); ?>
+						<div id="error-message_captcha" class="error_field"></div>
 					</div>
 					
 					<div class="form-group agreement">
