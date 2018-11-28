@@ -96,7 +96,7 @@
 					<br>
 
 					<div class="form-group">
-						<div class="g-recaptcha" data-sitekey="6Ld1hH0UAAAAAJz97OavdCNllSX4eS9i-1T53u1H"></div>
+						<div class="g-recaptcha" data-sitekey="6Ld1hH0UAAAAAMEkhVLwf9p4KPwQvkZWsgMzYeZK"></div>
 						<?php echo form_error('g-recaptcha-response'); ?>
 					</div>
 					
