@@ -44,6 +44,7 @@ $(function() {
 				message_status  	: 0,
 
 				message_agreement	: $('#message_agreement:checked').val(),
+				message_captcha		: grecaptcha.getResponse(), 
 
 				[csrf_name]: $('#csrf').val()
 			} 
