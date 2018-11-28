@@ -64,6 +64,7 @@ class Messages extends MX_Controller {
 					'message_location'		=> form_error('message_location'),
 					'message_content'		=> form_error('message_content'),
 					'message_status'		=> form_error('message_status'),
+					'message_agreement'		=> form_error('message_agreement'),
 				);
 				echo json_encode($response);
 				exit;
@@ -91,15 +92,16 @@ class Messages extends MX_Controller {
 		$this->form_validation->set_rules('message_type', lang('message_type'), 'required');
 		$this->form_validation->set_rules('message_section', lang('message_section'), 'required');
 		$this->form_validation->set_rules('message_section_id', lang('message_section_id'), 'required');
-		$this->form_validation->set_rules('message_name', lang('message_name'), 'required');
-		$this->form_validation->set_rules('message_email', lang('message_email'), 'required');
-		$this->form_validation->set_rules('message_mobile', lang('message_mobile'), 'required');
-		$this->form_validation->set_rules('message_location', lang('message_location'), 'required');
-		$this->form_validation->set_rules('message_content', lang('message_content'), 'required');
+		$this->form_validation->set_rules('message_name', lang('message_name'), 'required|min_length[1]|max_length[255]|alpha_dash_spaces');
+		$this->form_validation->set_rules('message_email', lang('message_email'), 'required|valid_email|min_length[6]|max_length[255]');
+		$this->form_validation->set_rules('message_mobile', lang('message_mobile'), 'required|min_length[1]|max_length[11]|numeric');
+		$this->form_validation->set_rules('message_location', lang('message_location'), 'required|min_length[1]|max_length[255]');
+		$this->form_validation->set_rules('message_content', lang('message_content'), 'min_length[1]|max_length[2000]');
 		$this->form_validation->set_rules('message_status', lang('message_status'), 'required');
+		$this->form_validation->set_rules('message_agreement', lang('message_agreement'), 'required');
 
-		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
-		
+		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');	
+
 		if ($this->form_validation->run($this) == FALSE)
 		{
 			return FALSE;

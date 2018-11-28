@@ -31,6 +31,11 @@
 	color: #07793f;
 }
 
+
+.agreement label{
+  cursor: pointer;
+}
+
 .page_content{
 	margin-bottom: 20px;
 }

@@ -36,9 +36,9 @@
 		<?php if($estates) { ?>
 		<div class="main_page">
 			<div class="row cat_heading">
-				<div class="col-sm-2 est_title"><h2><?php echo $category_estate->category_name; ?></h2></div>
-				<div class="col-sm-8 est_desc"><?php echo $category_estate->category_description; ?></div>
-				<div class="col-sm-2 est_link"><a href="<?php echo site_url('').strtolower($category_estate->category_name); ?>">View All</a></div>
+				<div class="col-sm-2 est_title"><h2><?php echo $page_estates->page_title; ?></h2></div>
+				<div class="col-sm-8 est_desc"><?php echo $page_estates->page_content; ?></div>
+				<div class="col-sm-2 est_link"><a href="<?php echo site_url('').strtolower($page_estates->page_slug); ?>">View All</a></div>
 			</div>
 			<div class="row">
 			<?php
@@ -55,7 +55,7 @@
 					</div>
 				<?php	} //end foreach ?>
 			</div>
-			<div class="est_link2"><a href="<?php echo site_url('').strtolower($category_estate->category_name); ?>">View All</a></div>
+			<div class="est_link2"><a href="<?php echo site_url('').strtolower($page_estates->page_slug); ?>">View All</a></div>
 		</div>
 		
 

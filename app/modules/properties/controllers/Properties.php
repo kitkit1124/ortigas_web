@@ -79,7 +79,7 @@ class Properties extends MX_Controller {
 		$category[''] = "ALL";
 		$data['select_categories'] = $category;
 
-		$data['projects'] = $this->pages_model->find(3); 
+		$data['projects'] = $this->pages_model->find_by('page_uri','projects'); 
 
 		$locations = $this->locations_model->get_active_locations();
 		$locations[''] = "ALL";
@@ -90,18 +90,19 @@ class Properties extends MX_Controller {
 		$data['select_price_range'] = $range;
 
 
-		$fields = [	'category_id' 	 => 2 ];
+		$fields = [	'category_id' 	 => 1 ];
 		$data['residences'] = $this->properties_model->get_search($fields);	
 
-		$fields = [	'category_id' 	 => 3 ];
+		$fields = [	'category_id' 	 => 2 ];
 		$data['malls'] = $this->properties_model->get_search($fields);	
 
-		$fields = [	'category_id' 	 => 4 ];
+		$fields = [	'category_id' 	 => 3 ];
 		$data['offices'] = $this->properties_model->get_search($fields);	
+
 
 		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
 
-		$fields = ['limit' => 4];
+		$fields = ['limit' => 4, 'page_related_news' => 3 ];
 		$news = $this->posts_model->get_active_news($fields);
 
 		if($news){
@@ -114,7 +115,7 @@ class Properties extends MX_Controller {
 
 		$data['button_text'] = $this->partials_model->find(3);
 
-		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => 2, 'related_link_section_type' => 'pages'));
+		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => 3, 'related_link_section_type' => 'pages'));
 
 		$data['section_id'] = 0;
 		$data['section'] = 'Projects';
@@ -179,13 +180,13 @@ class Properties extends MX_Controller {
 					$data['news_result'] = $news;
 				}
 				
-				$fields = ['rand'=>true,'limit'=>4,'category_id'=>2, 'estate_id' => $properties[0]->property_estate_id, 'wo_property_id' => $id];
+				$fields = ['rand'=>true,'limit'=>4,'category_id'=>1, 'estate_id' => $properties[0]->property_estate_id, 'wo_property_id' => $id];
 				$data['residences'] = $this->properties_model->get_properties($fields);
 
-				/*$fields = ['rand'=>true,'limit'=>4,'category_id'=>3];
+				/*$fields = ['rand'=>true,'limit'=>4,'category_id'=>2];
 				$data['malls'] 		= $this->properties_model->get_properties($fields);
 
-				$fields = ['rand'=>true,'limit'=>4,'category_id'=>4];
+				$fields = ['rand'=>true,'limit'=>4,'category_id'=>3];
 				$data['offices'] 	= $this->properties_model->get_properties($fields);*/
 
 				$data['section_id'] = $id;

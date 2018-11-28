@@ -96,17 +96,18 @@
 					<br>
 
 					<div class="form-group">
-						<div class="g-recaptcha" data-sitekey="6LesgDEUAAAAACnHdg78NXeQ--Iy1Fp7C4b32RF9"></div>
-						<?php //echo form_error('g-recaptcha-response'); ?>
+						<div class="g-recaptcha" data-sitekey="6Ld1hH0UAAAAAJz97OavdCNllSX4eS9i-1T53u1H"></div>
+						<?php echo form_error('g-recaptcha-response'); ?>
 					</div>
 					
 					<div class="form-group agreement">
-	          		<input type="checkbox" id="agreement" name="agreement" class="pointer">
-	          		<label for="agreement" class="pointer"><span class="color_default">* I accept the Website</span><span class="green">OCLP</span> <span class="color_default">and</span><span class="green">CCC<span> data privacy.</label>
+	          		<input type="checkbox" id="message_agreement" name="message_agreement" class="pointer message_agreement">
+	          		<label for="message_agreement" class="pointer"><span class="color_default">* I accept the Website</span><span class="green">OCLP</span> <span class="color_default">and</span><span class="green">CCC<span> data privacy.</label>
+	          			<div id="error-message_agreement" class="error_field"></div>
 	    		    </div>
 			
 					<div class="form-group">
-						 <button type="button" class="btn contact_submit green_button" disabled="disabled">SUBMIT</button>
+						 <button type="button" class="btn contact_submit green_button">SUBMIT</button>
 					</div>
 
 					<?php echo form_hidden('submit', 1); ?>
@@ -162,4 +163,4 @@
 <?php //} ?>
 
 
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src='https://www.google.com/recaptcha/api.js?render=6Ld1hH0UAAAAAMEkhVLwf9p4KPwQvkZWsgMzYeZK'></script>

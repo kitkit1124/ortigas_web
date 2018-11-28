@@ -1581,4 +1581,15 @@ class CI_Form_validation {
 		return $this;
 	}
 
+
+	public function alpha_dash_spaces($str)
+	{
+		if ( !preg_match ("/^[a-zA-Z\s-. ]+$/", $str)) {
+			return FALSE;
+		}
+		else{
+			return TRUE;
+		}
+	}
+
 }

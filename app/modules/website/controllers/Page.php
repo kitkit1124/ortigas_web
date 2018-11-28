@@ -103,17 +103,17 @@ class Page extends CI_Controller
 		$data['page_layout'] = $page->page_layout;
 
 		// homepage
-		$data['page_content'] = $this->pages_model->find(1); 
+		$data['page_content'] = $this->pages_model->find_by('page_uri','home'); 
 
 		$data['is_home'] = TRUE;
 
 		$data['main_video'] = $this->video_uploads_model->where('video_status','Active')->find(1);
 		$data['sliders'] = $this->banners_model->get_banners(1);
 
-		$data['category_estate'] = $this->categories_model->find(1);
-		$data['category_residence'] = $this->categories_model->find(2);
-		$data['category_mall'] = $this->categories_model->find(3);
-		$data['category_office'] = $this->categories_model->find(4);
+		$data['page_estates'] = $this->pages_model->find_by('page_uri','estates');
+		$data['category_residence'] = $this->categories_model->find(1);
+		$data['category_mall'] = $this->categories_model->find(2);
+		$data['category_office'] = $this->categories_model->find(3);
 
 		$category = $this->categories_model->get_active_categories();
 		$category[''] = "ALL";
@@ -138,7 +138,7 @@ class Page extends CI_Controller
 		$fields = ['rand'=>true,'limit'=>3];
 		$data['estates'] = $this->estates->get_estates($fields);
 
-		$fields = ['featured'=>1, 'rand'=>true,'limit'=>1,'category_id'=>2];
+		$fields = ['featured'=>1, 'rand'=>true,'limit'=>1,'category_id'=>1];
 		$residence = $this->properties->get_properties($fields);
 
 		$this->properties->get_properties($fields);
@@ -146,10 +146,10 @@ class Page extends CI_Controller
 		if($residence){
 			$data['carousel'] = $this->image_sliders_model->find_all_by(array('image_slider_section_type' => 'properties', 'image_slider_section_id' => $residence[0]->property_id)); //$residence[0]->property_id
 		}
-		$fields = ['rand'=>true,'limit'=>1,'category_id'=>3];
+		$fields = ['rand'=>true,'limit'=>1,'category_id'=>2];
 		$data['malls'] 		= $this->properties->get_properties($fields);
 
-		$fields = ['rand'=>true,'limit'=>1,'category_id'=>4];
+		$fields = ['rand'=>true,'limit'=>1,'category_id'=>3];
 		$data['offices'] 	= $this->properties->get_properties($fields);
 		
 		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
@@ -256,9 +256,9 @@ class Page extends CI_Controller
 
 		if($page->page_uri == 'about-us'){
 
-			$data['projects'] = $this->pages_model->find(3);
+			$data['projects'] = $this->pages_model->find_by('page_uri','projects');
 
-			$fields = ['rand'=>true,'limit'=>4,'category_id'=>2];
+			$fields = ['rand'=>true,'limit'=>4,'category_id'=>1];
 			$data['residences'] = $this->properties->get_properties($fields);	
 
 			$this->template->add_css(module_css('website', 'page_view/abouts_us'), 'embed');

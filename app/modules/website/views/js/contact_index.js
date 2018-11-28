@@ -20,13 +20,13 @@ $(function() {
 	// 	});
 	// });
 
-	$('#agreement').change(function(){
-		if($(this).prop("checked") == true){
-		  $('.contact_submit').removeAttr('disabled');
-		}
-		else{
-		  $('.contact_submit').prop('disabled','disabled');
-		}
+	$('#message_agreement').change(function(){
+		// if($(this).prop("checked") == true){
+		//   $('.contact_submit').removeAttr('disabled');
+		// }
+		// else{
+		//   $('.contact_submit').prop('disabled','disabled');
+		// }
 	});
 
 	$('.contact_submit').click(function(){
@@ -42,6 +42,8 @@ $(function() {
 				message_location	: $('#message_location').val(),
 				message_content		: $('#message_content').val(),
 				message_status  	: 0,
+
+				message_agreement	: $('#message_agreement:checked').val(),
 
 				[csrf_name]: $('#csrf').val()
 			} 

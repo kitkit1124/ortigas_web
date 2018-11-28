@@ -1,11 +1,16 @@
 <section id="roles">
-		<?php echo $this->load->view('website/slider_index'); ?>
-		<?php $this->template->add_js(module_js('website', 'slider_index'), 'embed'); ?>
+	<?php if($category){ ?>
+	<div id="banner_image">
+		<div id="banner_logo_image"></div>
+		<img src="<?php echo site_url().$category->category_image; ?>" draggable="false" />		
+		<h1><?php echo $category->category_name; ?></h1>			
+	</div>
+	<?php } ?>
 	<main role="main" class="container">
 		<div class="content">	
 		
 			<div class="estate_heading">
-				<?php echo parse_content($category->page_content); ?>
+				<?php echo parse_content($category->category_description); ?>
 				<a href="#" class="inquiry_button green_button" data-anchor="inquiry_form_container"><?php if($button_text) { echo parse_content($button_text->partial_content); } ?></a>
 			</div>
 
@@ -60,7 +65,7 @@
 
 
 			<div class="seo_content">
-				<?php if($category) { echo parse_content($category->page_bottom_content); } ?>
+				<?php if($category) { echo parse_content($category->category_bottom_description); } ?>
 			</div>
 
 			<div class="inquiry_form_container">
@@ -89,5 +94,5 @@
 
 <script type="text/javascript">
 	var site_url = "<?php echo site_url(); ?>"
-	var category_name = "<?php echo $category->page_title; ?>"
+	var category_name = "<?php echo $category->category_name; ?>"
 </script>

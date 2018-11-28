@@ -129,7 +129,7 @@ class Categories extends MX_Controller {
 		$this->template->add_css(module_css('properties', 'property_style'), 'embed');
 		$this->template->add_css(module_css('properties', 'categories_view'), 'embed');
 		$this->template->add_js(module_js('properties', 'estates_index'), 'embed');
-		$this->template->write_view('content', 'estates_index', $data);
+		$this->template->write_view('content', 'categories_view', $data);
 		$this->template->render();
 	}
 

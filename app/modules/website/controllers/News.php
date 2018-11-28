@@ -53,7 +53,7 @@ class News extends MX_Controller
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
 		$this->breadcrumbs->push(lang('index_heading'), current_url());
 
-		$data['news_page'] = $this->pages_model->find(4); 
+		$data['news_page'] = $this->pages_model->find_by('pages_uri','news'); 
 
 		$data['sliders'] = $this->banners_model->get_banners(4);
 		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
@@ -65,13 +65,13 @@ class News extends MX_Controller
 
 		$data['news_result'] = $news;
 
-		$fields = ['rand'=>true,'limit'=>4,'category_id'=>2];
+		$fields = ['rand'=>true,'limit'=>4,'category_id'=>1];
 		$data['residences'] = $this->properties_model->get_properties($fields);
 
-		$fields = ['rand'=>true,'limit'=>4,'category_id'=>3];
+		$fields = ['rand'=>true,'limit'=>4,'category_id'=>2];
 		$data['malls'] 		= $this->properties_model->get_properties($fields);
 
-		$fields = ['rand'=>true,'limit'=>4,'category_id'=>4];
+		$fields = ['rand'=>true,'limit'=>4,'category_id'=>3];
 		$data['offices'] 	= $this->properties_model->get_properties($fields);
 
 		$data['section_id'] = 0;

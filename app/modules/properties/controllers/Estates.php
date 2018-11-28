@@ -34,6 +34,8 @@ class Estates extends MX_Controller {
 		$this->load->model('website/news_tags_model');
 		$this->load->model('website/post_tags_model');
 		$this->load->model('website/partials_model');
+		$this->load->model('website/pages_model');
+		$this->load->model('website/banners_model');
 	}
 	
 	// --------------------------------------------------------------------
@@ -62,11 +64,12 @@ class Estates extends MX_Controller {
 		// session breadcrumb
 		$this->session->set_userdata('redirect', current_url());
 
-		$category = $this->categories_model->find(1); //get estate name = 'estate'
+		$category = $this->pages_model->find_by('page_uri','estates'); //get estate name = 'estate'
+		$data['sliders'] = $this->banners_model->get_banners(2);
 		$estates = $this->estates_model->get_estates();
 
-		$data['section_id'] = $category->category_id;
-		$data['section'] = $category->category_name;
+		$data['section_id'] = $category->page_id;
+		$data['section'] = $category->page_title;
 		
 		if($estates && $category){
 			$data['estates'] = $estates;
@@ -93,7 +96,7 @@ class Estates extends MX_Controller {
 
 		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
 
-		$fields = ['limit' => 4];
+		$fields = ['limit' => 4, 'page_related_news' => 2 ];
 		$news = $this->posts_model->get_active_news($fields);
 		if($news){
 			foreach ($news as $key => $result) {
@@ -104,7 +107,7 @@ class Estates extends MX_Controller {
 
 
 
-		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => 1, 'related_link_section_type' => 'categories'));
+		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => 2, 'related_link_section_type' => 'pages'));
 
 		// render the page
 		
@@ -148,7 +151,7 @@ class Estates extends MX_Controller {
 		    'rand'	=> true,
 		    'limit'	=> 2,
 		    'estate_id' => $estates[0]->estate_id,
-		    'category_id' => 2 //residences
+		    'category_id' => 1 //residences
 		];
 
 		$data['residences'] = $this->properties_model->get_properties($fields);
@@ -157,7 +160,7 @@ class Estates extends MX_Controller {
 		    'rand'	=> true,
 		    'limit'	=> 3,
 		    'estate_id' => $estates[0]->estate_id,
-		    'category_id' => 3 //malls
+		    'category_id' => 2 //malls
 		];
 
 		$data['malls'] = $this->properties_model->get_properties($fields);
@@ -166,14 +169,14 @@ class Estates extends MX_Controller {
 		    'rand'	=> true,
 		    'limit'	=> 2,
 		    'estate_id' => $estates[0]->estate_id,
-		    'category_id' => 4 //offices
+		    'category_id' => 3 //offices
 		];
 
 		$data['offices'] = $this->properties_model->get_properties($fields);
 
-		$data['category_residence'] = $this->categories_model->find(2);
-		$data['category_mall'] = $this->categories_model->find(3);
-		$data['category_office'] = $this->categories_model->find(4);
+		$data['category_residence'] = $this->categories_model->find(1);
+		$data['category_mall'] = $this->categories_model->find(2);
+		$data['category_office'] = $this->categories_model->find(3);
 
 		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
 
