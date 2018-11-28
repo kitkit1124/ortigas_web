@@ -35,7 +35,7 @@ foreach ($news_result as $key => $value) {
 						<span class="news_tags"><?php echo substr($news_tags,0,-2)?></span>
 					<?php } ?>
 				</label>
-				<span class="news_text"> <?php echo $value->post_content; ?></span>
+				<span class="news_text"><?php echo substr($value->post_content,0,100); ?></span>
 				<a href="<?php echo site_url().'news/'.$value->post_slug;?>" class="default-button">Read More</a>
 			</div>
 		</div>
