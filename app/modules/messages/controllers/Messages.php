@@ -65,6 +65,7 @@ class Messages extends MX_Controller {
 					'message_content'		=> form_error('message_content'),
 					'message_status'		=> form_error('message_status'),
 					'message_agreement'		=> form_error('message_agreement'),
+					'message_captcha'		=> form_error('message_captcha'),
 				);
 				echo json_encode($response);
 				exit;
