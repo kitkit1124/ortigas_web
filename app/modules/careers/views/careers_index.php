@@ -8,7 +8,7 @@
 			 <?php echo $this->load->view('careers/careers_form'); ?>
 			<div class="page_overview">
 				<?php if($careers_page) {	echo parse_content($careers_page->page_content); } ?>
-				<label><a class="page_overview_button green_button" data-toggle="modal" data-target="#form_application">Submit Resume</a></label>			
+				<label><a class="page_overview_button default-button" data-toggle="modal" data-target="#form_application">Submit Resume</a></label>			
 			</div>
 			 <div class="search_tab">
 				<div class="search_tab_content">
@@ -38,7 +38,7 @@
 								</div>
 								<div class="col-sm-2">
 									<label>&nbsp;</label>
-									<button class="button_search" type="button"><i class="fa fa-search"></i></button>
+									<a class="button_search default-button" ><i class="fa fa-search"></i></a>
 								</div>
 							</div>
 						</div><!--advance_search-->
@@ -61,7 +61,7 @@
 										<p class="dept"><?php echo $val->department_name; ?></p>
 										<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
 										<p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $val->career_location; ?></p>
-										<a href="<?php echo site_url('').'careers/post/'.$val->career_slug; ?>">View Details</a>
+										<a href="<?php echo site_url('').'careers/post/'.$val->career_slug; ?>" class="default-button">View Details</a>
 									</div>
 									<div class="image_container">
 											<!-- <img src="<?php //echo  site_url().$val->career_image; ?>" width="100%" alt="" draggable="false"/> -->

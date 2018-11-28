@@ -26,16 +26,19 @@
 }
 
 .search_tab .button_search{
-  width: 100%;
+  /*  width: 100%;
     border: 0;
     background-color: #07793f;
     bottom: 0px;
-  height: 38px;
-    cursor: pointer;
+    height: 38px;
+    cursor: pointer;*/
+    display: block;
+    padding: 8px;
+    text-align: center;
 }
 
 .search_tab .button_search i{
-  color: #fff;
+ /* color: #fff;*/
 }
 
 .search_tab select:invalid, option:first-child

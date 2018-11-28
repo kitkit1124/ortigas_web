@@ -340,8 +340,8 @@ h1, p, span, a {
 
 
 .construction_update{
-	color: #FFF;
-	background-color: #377659;
+	color: #666;
+	/*background-color: #377659;*/
 }
 
 .construction_update .year{
@@ -349,7 +349,7 @@ h1, p, span, a {
 }
 
 .construction_update h1{
-	color: #FFF;
+	color: #07793F;
 	text-align: center;
 	padding-top: 10px;
 }
@@ -401,6 +401,10 @@ h1, p, span, a {
 	background-color: #4ead81;
 	position: relative;
     top: 175px;
+}
+
+.construction_update img{
+    filter: brightness(50%);
 }
 
 .amenities{

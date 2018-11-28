@@ -8,19 +8,18 @@
 }
 
 .estate_heading a{
-	padding: 15px 25px;
+    display: inline-block;
+/*	padding: 15px 25px;
     font-size: 18px;
     text-transform: uppercase;
     color: #FFF;
     display: block;
     width: 200px;
     margin: 30px auto;
-    text-decoration: none;
+    text-decoration: none;*/
 }
 
 .estate_heading a p{
-    color: #FFF;
-    margin: 0px;
 }
 
 .estate_page_select_location select{

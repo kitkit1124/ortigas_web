@@ -53,7 +53,7 @@ class News extends MX_Controller
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
 		$this->breadcrumbs->push(lang('index_heading'), current_url());
 
-		$data['news_page'] = $this->pages_model->find_by('pages_uri','news'); 
+		$data['news_page'] = $this->pages_model->find_by('page_uri','news'); 
 
 		$data['sliders'] = $this->banners_model->get_banners(4);
 		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));

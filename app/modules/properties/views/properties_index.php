@@ -6,7 +6,7 @@
 
 			<div class="page_overview">
 				<?php if($projects) {	echo parse_content($projects->page_content); } ?>
-				<a href="#" class="inquiry_button green_button" data-anchor="inquiry_form_container"><?php if($button_text) { echo parse_content($button_text->partial_content); } ?></a>
+				<a class="inquiry_button default-button" data-anchor="inquiry_form_container"><?php if($button_text) { echo strip_tags(parse_content($button_text->partial_content)); } ?></a>
 			</div>
 
 			<?php echo $this->load->view('properties/search_form'); ?>

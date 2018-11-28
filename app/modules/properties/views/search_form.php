@@ -24,7 +24,7 @@
 				</div>
 				<div class="col-sm-2">
 					<label>&nbsp;</label>
-					<button class="button_search" type="submit"><i class="fa fa-search"></i></button>
+					<a class="button_search default-button"><i class="fa fa-search"></i></a>
 				</div>
 			</div>
 		</div><!--advance_search-->

@@ -36,7 +36,7 @@ foreach ($news_result as $key => $value) {
 					<?php } ?>
 				</label>
 				<span class="news_text"> <?php echo $value->post_content; ?></span>
-				<a href="<?php echo site_url().'news/'.$value->post_slug;?>" class="green_button">Read More</a>
+				<a href="<?php echo site_url().'news/'.$value->post_slug;?>" class="default-button">Read More</a>
 			</div>
 		</div>
 	</div>

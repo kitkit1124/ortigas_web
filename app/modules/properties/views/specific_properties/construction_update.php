@@ -39,7 +39,7 @@
 	  	</div>
 	 
 	</div>
-	<div class="button_progress"><a href="#">VIEW PROGRESS</a></div>
+	<div class="button_progress hide"><a href="#">VIEW PROGRESS</a></div>
 
 </div>
 <?php endif; ?>

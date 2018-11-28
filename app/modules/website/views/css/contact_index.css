@@ -73,12 +73,20 @@
 	text-transform: uppercase;
 }
 
+.message_agreement_label{
+  text-transform: unset !important;
+}
+
 .contact_form span{
 	color: #989898;
 	font-weight: unset;
 	letter-spacing: 1px;
 	margin-left: 10px;
 }
+
+.contact_form input.form-control, .contact_form textarea, .contact_form select{ 
+  font-size: .8rem; 
+} 
 
 .contact_submit{
 	border-radius: 0;

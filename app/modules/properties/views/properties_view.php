@@ -6,9 +6,9 @@
 	<main role="main" class="container">
 		<div class="content">	
 			<div class="row">	
-				<?php if (isset($properties->category_id) && $properties->category_id == 2){ $cols='8'; } else { $cols = '12'; } ?>
+				<?php if (isset($properties->category_id) && $properties->category_id ==1){ $cols='8'; } else { $cols = '12'; } ?>
 				<div class="property_view_content col-sm-<?php echo $cols; ?>">
-					<?php if($properties->category_id==2) : ?>
+					<?php if($properties->category_id==1) : ?>
 						<div class="tabs_view_inner">
 							<?php echo $this->load->view('properties/specific_properties/tabs_view'); ?>
 						</div>
@@ -20,7 +20,7 @@
 						}
 					
 						if($value->setting_division == 'Amenities'){
-							if($properties->category_id==2) :
+							if($properties->category_id==1) :
 								echo $this->load->view('properties/specific_properties/properties_amenities');
 							endif;
 						}				
@@ -32,17 +32,17 @@
 							echo $this->load->view('properties/specific_properties/location_view');
 						}
 						if($value->setting_division == 'Building Floorplan'){
-							if($properties->category_id==2) :
+							if($properties->category_id==1) :
 								echo $this->load->view('properties/specific_properties/floorplan_view');
 							endif;
 						}
 						if($value->setting_division == 'Unit Floorplan'){
-							if($properties->category_id==2) :
+							if($properties->category_id==1) :
 								echo $this->load->view('properties/specific_properties/unit-type_view');
 							endif;
 						}
 						if($value->setting_division == 'Construction Update'){
-							if($properties->category_id==2) :
+							if($properties->category_id==1) :
 								echo $this->load->view('properties/specific_properties/construction_update');
 							endif;
 						}
@@ -50,19 +50,19 @@
 							echo $this->load->view('properties/specific_properties/seo_content');
 						}
 						if($value->setting_division == 'Related News'){
-							if($properties->category_id==2) :
+							if($properties->category_id==1) :
 								echo $this->load->view('properties/specific_properties/news_related');
 							endif;
 						}
 						if($value->setting_division == 'Related Residences'){
-							if($properties->category_id==2) :
+							if($properties->category_id==1) :
 								echo $this->load->view('properties/specific_properties/other-residences_view');
 							endif;
 						}
 					}
 
 					?>
-					<?php if($properties->category_id!=2) : ?>
+					<?php if($properties->category_id!=1) : ?>
 						<div class="inquiry_form_container">
 							<?php echo $this->load->view('messages/messages_form')?>
 						</div>
@@ -73,7 +73,7 @@
 						
 				</div>
 
-				<?php if($properties->category_id==2) : ?>
+				<?php if($properties->category_id==1) : ?>
 					<style>
 						.inquiry_form .form_container{
 							flex: 100%;
@@ -112,7 +112,7 @@
 	var property_id = "<?php echo $properties->property_id; ?>"
 </script>
 
-<?php if($properties->category_id!=2) : ?>
+<?php if($properties->category_id!=1) : ?>
 <?php echo $this->load->view('properties/specific_properties/news_related'); ?>
 <?php echo $this->load->view('properties/recommended_links')?>
 <?php endif; ?>

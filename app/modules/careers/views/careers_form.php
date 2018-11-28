@@ -77,7 +77,7 @@ $this->template->add_js(module_js('careers', 'careers_form'), 'embed');
      
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn" id="form_submit" disabled="disabled">SUBMIT</button>
+        <a class="default-button" id="form_submit">SUBMIT</a>
       </div>
     </div>
   </div>

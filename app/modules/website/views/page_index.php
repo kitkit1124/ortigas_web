@@ -7,7 +7,7 @@
 	<div id="video_label" class="noselect">
 	<h1>We Build Great Places for Life</h1>
 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-	<button>Inquire Now</button>
+	<a class="default-button">Inquire Now</a>
 	</div>
 <?php } else{ ?>
 			<?php $this->template->add_js(module_js('website', 'slider_index'), 'embed'); ?>
@@ -38,7 +38,7 @@
 			<div class="row cat_heading">
 				<div class="col-sm-2 est_title"><h2><?php echo $page_estates->page_title; ?></h2></div>
 				<div class="col-sm-8 est_desc"><?php echo $page_estates->page_content; ?></div>
-				<div class="col-sm-2 est_link"><a href="<?php echo site_url('').strtolower($page_estates->page_slug); ?>">View All</a></div>
+				<div class="col-sm-2 est_link"><a href="<?php echo site_url('').strtolower($page_estates->page_slug); ?>" class="default-button">View All</a></div>
 			</div>
 			<div class="row">
 			<?php
@@ -55,7 +55,7 @@
 					</div>
 				<?php	} //end foreach ?>
 			</div>
-			<div class="est_link2"><a href="<?php echo site_url('').strtolower($page_estates->page_slug); ?>">View All</a></div>
+			<div class="est_link2"><a href="<?php echo site_url('').strtolower($page_estates->page_slug); ?>" class="default-button">View All</a></div>
 		</div>
 		
 
@@ -66,7 +66,7 @@
 				<div class="estates residences col-sm-4">
 					<div class="res_title"><h2><?php echo $category_residence->category_name; ?></h2></div>
 					<div class="res_desc"><?php echo $category_residence->category_description; ?></div>
-					<div class="res_link"><a href="<?php echo site_url('').'estates/category/'.strtolower($category_residence->category_name); ?>">View All</a></div>
+					<div class="res_link"><a href="<?php echo site_url('').'estates/category/'.strtolower($category_residence->category_name); ?>" class="default-button">View All</a></div>
 				</div>			
 				<div class="estates residences col-sm-8">
 					<?php if($carousel) { ?>

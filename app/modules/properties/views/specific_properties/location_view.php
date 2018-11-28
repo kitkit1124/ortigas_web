@@ -1,5 +1,5 @@
 <div id="location_view">
-	<?php if($properties->category_id==2) : ?>
+	<?php if($properties->category_id==1) : ?>
 	<div class="row location_heading">
 		<div class="col-sm-4 location_title">
 			<h1>Location</h1>
@@ -43,7 +43,7 @@
 	</div><!--map-location-->
 <?php } ?>
 
-		<?php if($properties->category_id==2) : ?>
+		<?php if($properties->category_id==1) : ?>
 		<div id="nearby">
 			<div class="tab-content">
 				<div id="all" class="tab-pane active">

@@ -16,14 +16,6 @@ video::-webkit-media-controls{
 font-size: 60px;
 }
 
-#video_label button{
-  border: none;
-  background: #FFF;
-  cursor: pointer;
-  text-transform: uppercase;
-  padding: 15px 30px;
-  margin-top: 20px;
-}
 
 .video_division{
   height: auto;
@@ -142,16 +134,13 @@ font-size: 60px;
     text-align: left;
 }
 
-.main_page .est_link a, .main_page .res_link a{
-    background-color: #FFF;
-    text-decoration: none;
-    padding: 10px;
-    display: block;
-    border: 2px solid #666;
-    text-align: center;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.main_page .est_desc h1{
+   display: none;
+}
+
+
+.main_page .est_link a{
+  display: block;
 }
 
 .main_page .res_desc{
@@ -161,14 +150,13 @@ font-size: 60px;
     text-align: left;
 }
 
+.main_page .res_link{
+  text-align: left;
+}
+
 .main_page .res_link a {
     margin-top: 30px;
-    width: 165px;
-    border: 0;
-    background-color: #07793f;
-    bottom: 0px;
-    padding: 20px;
-    color: #FFF;
+    display: inline-block;
 }
 
 .mo_link {
@@ -265,7 +253,6 @@ font-size: 60px;
   }
 
   .search_tab .button_search {
-      width: 150px !important;
       display: block;
       margin: auto;
   }
@@ -291,7 +278,8 @@ font-size: 60px;
   }
 
   .est_link2{
-    background-color: #FFF;
+     display: block;
+/*    background-color: #FFF;
     text-decoration: none;
     padding: 10px;
     display: block;
@@ -300,9 +288,9 @@ font-size: 60px;
     color: #666 !important;
     text-transform: uppercase;
     letter-spacing: 1px;
-    display: block;
+   
     margin: auto;
-    width: 130px;
+    width: 130px;*/
   }
 
   .est_link2 a{

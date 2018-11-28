@@ -41,7 +41,7 @@ select option{
 	margin: 40px 0;
 }
 
-.noselect, h1, h2, h3, h4, h5, p, a, label, span, ul, li, td, th, img{
+.noselect, h1, h2, h3, h4, h5, p, a, label, span, ul, li, td, th, img, button{
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -76,6 +76,31 @@ img{
     -webkit-user-select: none;
     -ms-user-select: none;
 	cursor: pointer;
+}
+
+a.default-button{
+    width: auto;
+    max-width: 200px;
+    min-width: 140px;
+    padding: 15px 30px;
+    border: 2px solid #07793f;
+    background-color: #FFF;
+    color: #07793f !important;
+    text-transform: uppercase;
+    font-size: .8rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+
+    -webkit-transition: background-color .5s ease-out,  color 1s ease-out;
+    -moz-transition: background-color .5s ease-out,  color 1s ease-out;
+    -o-transition: background-color .5s ease-out,  color 1s ease-out;
+    transition: background-color .5s ease-out,  color 1s ease-out;
+}
+
+.default-button:hover{ 
+    background-color: #07793f;
+    color: #FFF !important;
 }
 
 #banner_image img, #slider img{
@@ -328,17 +353,8 @@ img{
 .dtpost { border-right: 0; }
 .news_tags, .news_details i.fa{ display: none !important; }
 
-
-.page_overview a{
-    padding: 15px 25px;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    color: #FFF !important;
+a.inquiry_button {
     display: inline-block;
-}
-
-.inquiry_button p{
-    margin-bottom: 0px;
 }
 
 

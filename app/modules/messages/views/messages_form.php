@@ -28,7 +28,7 @@
 		<div id="error-message_content" class="error_field"></div>
 	</div>
 	
-	<a class="inquiry_submit green_button">SUBMIT</a>
+	<a class="inquiry_submit default-button">SUBMIT</a>
 
 	<?php if(isset($remove_this)){ ?>
 		<div class="inquiry_border_bottom"></div>

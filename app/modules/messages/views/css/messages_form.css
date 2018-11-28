@@ -24,13 +24,14 @@
 }
 
 .inquiry_form a{
-	color: #FFF !important;
+  display: inline-block;
+	/*color: #FFF !important;
     padding: 15px 40px;
     margin: auto;
     margin-top: 30px;
     font-size: .7rem;
     display: block;
-    width: 150px;
+    width: 150px;*/
 }
 
 .inquiry_border_bottom { 

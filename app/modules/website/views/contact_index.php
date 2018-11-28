@@ -29,7 +29,7 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="message_section">Inquiry Type</label>
+								<label for="message_section">Inquiry Type *</label>
 
 								<?php $options = create_dropdown('array', 'Project'); ?>
 								<?php echo form_dropdown('message_section', $options, '', 'id="message_section" class="form-control"'); ?>
@@ -39,7 +39,7 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="message_section_id">Select Project*</label>
+								<label for="message_section_id">Select Project *</label>
 								<?php echo form_dropdown('message_section_id', $properties, '', 'id="message_section_id" class="form-control"'); ?>
 								<?php echo form_error('error-message_section_id'); ?>
 								<div id="error-message_section_id" class="error_field"></div>
@@ -50,7 +50,7 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="message_name">Name</label>
+								<label for="message_name">Name *</label>
 								<?php echo form_input(array('id'=>'message_name', 'name'=>'message_name', 'value'=>set_value('message_name'), 'class'=>'form-control'));?>
 								<?php echo form_error('error-message_name'); ?>
 								<div id="error-message_name" class="error_field"></div>
@@ -58,8 +58,8 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="message_email">E-Mail</label>
-								<?php echo form_input(array('id'=>'message_email', 'name'=>'message_email', 'value'=>set_value('message_email'), 'class'=>'form-control'));?>
+								<label for="message_email">E-Mail Address *</label>
+								<?php echo form_input(array('id'=>'message_email', 'name'=>'message_email', 'value'=>set_value('message_email'), 'class'=>'form-control', 'placeholder'=>'sample@email.com'));?>
 								<?php echo form_error('error-message_email'); ?>
 								<div id="error-message_email" class="error_field"></div>
 							</div>
@@ -71,14 +71,14 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="message_mobile">Mobile Number</label>
-								<?php echo form_input(array('id'=>'message_mobile', 'name'=>'message_mobile', 'value'=>set_value('message_mobile'), 'class'=>'form-control'));?>
+								<?php echo form_input(array('id'=>'message_mobile', 'name'=>'message_mobile', 'value'=>set_value('message_mobile'), 'class'=>'form-control', 'placeholder'=>'0917-XXX-XXXX'));?>
 								<?php echo form_error('error-message_mobile'); ?>
 								<div id="error-message_mobile" class="error_field"></div>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="message_location">Location</label>
+								<label for="message_location">Your Location</label>
 								<?php echo form_input(array('id'=>'message_location', 'name'=>'message_location', 'value'=>set_value('message_location'), 'class'=>'form-control'));?>
 								<?php echo form_error('error-message_location'); ?>
 								<div id="error-message_location" class="error_field"></div>
@@ -103,12 +103,12 @@
 					
 					<div class="form-group agreement">
 	          		<input type="checkbox" id="message_agreement" name="message_agreement" class="pointer message_agreement">
-	          		<label for="message_agreement" class="pointer"><span class="color_default">* I accept the Website</span><span class="green">OCLP</span> <span class="color_default">and</span><span class="green">CCC<span> data privacy.</label>
+	          		<label for="message_agreement" class="pointer message_agreement_label"><span class="color_default">* I agree to the</span><span class="green">OCLP</span> <span class="color_default">and</span><span class="green">CCC<span> Data privacy.</label>
 	          			<div id="error-message_agreement" class="error_field"></div>
 	    		    </div>
 			
 					<div class="form-group">
-						 <button type="button" class="btn contact_submit green_button">SUBMIT</button>
+						 <a class="btn contact_submit default-button">SUBMIT</a>
 					</div>
 
 					<?php echo form_hidden('submit', 1); ?>
