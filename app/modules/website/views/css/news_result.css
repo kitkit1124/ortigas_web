@@ -27,8 +27,11 @@
 .news_details{}
 .news_details h2{
 	margin-top: 10px;
-	font-size: 1.2rem;
-	text-transform: uppercase;
+	margin-right: 15px;
+    font-size: 1.2rem;
+    height: 1.2rem;
+    text-transform: uppercase;
+    overflow: hidden;
 }
 .news_details label span.dtpost{
 	font-size: .8rem;
