@@ -99,6 +99,11 @@ class Messages extends MX_Controller {
 		$this->form_validation->set_rules('message_content', lang('message_content'), 'min_length[1]|max_length[2000]');
 		$this->form_validation->set_rules('message_status', lang('message_status'), 'required');
 		$this->form_validation->set_rules('message_agreement', lang('message_agreement'), 'required');
+		
+		if ($this->input->post('message_type') == "Contact") {
+			$this->form_validation->set_rules('g-recaptcha-response', 'reCAPTCHA', 'required');
+		}
+		
 
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');	
 
