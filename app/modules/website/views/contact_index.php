@@ -96,7 +96,7 @@
 					<br>
 
 					<div class="form-group">
-						<div class="g-recaptcha" data-sitekey="6Ld1hH0UAAAAAMEkhVLwf9p4KPwQvkZWsgMzYeZK"></div>
+						<div class="g-recaptcha" data-sitekey="6Ledg30UAAAAAHixIxThPUv1CLlvuPV1S-NvgWtX"></div>
 						<?php echo form_error('g-recaptcha-response'); ?>
 					</div>
 					
@@ -163,4 +163,4 @@
 <?php //} ?>
 
 
-<script src='https://www.google.com/recaptcha/api.js?render=6Ld1hH0UAAAAAMEkhVLwf9p4KPwQvkZWsgMzYeZK'></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
