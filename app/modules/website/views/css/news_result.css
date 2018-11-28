@@ -48,12 +48,13 @@
 	display: inline-block;
 }
 
-.news_details span.news_text{
+.news_details .news_text{
 	color: #666;
 	font-size: .9rem;
     height: 4.5em;
     overflow: hidden;
-    margin-right: 10px;
+    margin-right: 15px;
+    margin-bottom: 15px;
 }
 .news_details a{
 	padding: 14px 19px;
