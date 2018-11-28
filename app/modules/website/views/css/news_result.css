@@ -48,7 +48,7 @@
 	display: inline-block;
 }
 
-.news_details span.news_text p{
+.news_details span.news_text{
 	color: #666;
 	font-size: .9rem;
     height: 4.5em;
@@ -78,7 +78,7 @@
 		box-shadow: initial;
 	}
 
-	.news_details span.news_text p {
+	.news_details span.news_text{
 	    height: 3.1em;
 	}
 
