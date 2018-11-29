@@ -29,6 +29,7 @@ class Careers extends MX_Controller {
 		$this->load->model('website/banners_model');
 		$this->load->model('website/pages_model');
 		$this->load->model('website/partials_model');
+		$this->load->model('website/metatags_model');
 	}
 	
 	// --------------------------------------------------------------------
@@ -54,13 +55,34 @@ class Careers extends MX_Controller {
 		// session breadcrumb
 		$this->session->set_userdata('redirect', current_url());
 
-		$data['careers_page'] = $this->pages_model->find(5); 
+		$careers_page = $this->pages_model->find(5); 
+		$data['careers_page'] = $careers_page;
 
 		$data['careers_landing'] = $this->partials_model->find(4); 
 
 		$data['sliders'] = $this->banners_model->get_banners(5);
 
 		$data['careers'] = $this->careers_model->get_careers();
+
+		$page_description = $this->metatags_model->clean_page_description($careers_page->page_content);
+
+        $metafields = [
+        	'metatag_title'					=> config_item('website_name') . ' | ' . $careers_page->page_title,
+        	'metatag_description'			=> $page_description,
+        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+        	'metatag_author'				=> config_item('website_name'),
+        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $careers_page->page_title,
+        	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        	'metatag_og_url'				=> current_url(),
+        	'metatag_og_description'		=> $page_description,
+        	'metatag_twitter_card'			=> 'photo',
+        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $careers_page->page_title,
+        	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        	'metatag_twitter_url'			=> current_url(),
+        	'metatag_twitter_description'	=> $page_description,
+        ];
+
+        $metatags = $this->metatags_model->get_metatags($metafields);
 
 		$careers = $this->careers_model->get_select_careers();
 		$careers[''] = "ALL";
@@ -78,6 +100,7 @@ class Careers extends MX_Controller {
 		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $data['careers_page']->page_id, 'related_link_section_type' => 'pages'));
 
 		// render the page
+		$this->template->write('head', $metatags);
 		$this->template->add_css('npm/dropzone/dropzone.min.css');
 		$this->template->add_js('npm/dropzone/dropzone.min.js');
 		$this->template->add_css(module_css('careers', 'careers_document'), 'embed');
@@ -120,10 +143,32 @@ class Careers extends MX_Controller {
 		$fields = ['career_slug' => $params];
 		$career = $this->careers_model->get_careers($fields);
 		$data['career'] = $career[0];
-
+		$data['sliders'] = $this->banners_model->get_banners(5);
+		
 		$data['careers_landing'] = $this->partials_model->find(4); 
 
+		$page_description = $this->metatags_model->clean_page_description($career[0]->career_res);
+
+        $metafields = [
+        	'metatag_title'					=> config_item('website_name') . ' | ' . $career[0]->career_position_title,
+        	'metatag_description'			=> $page_description,
+        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+        	'metatag_author'				=> config_item('website_name'),
+        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $career[0]->career_position_title,
+        	'metatag_og_image'				=> isset($career[0]->career_image) ? $career[0]->career_image : '',
+        	'metatag_og_url'				=> current_url(),
+        	'metatag_og_description'		=> $page_description,
+        	'metatag_twitter_card'			=> 'photo',
+        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $career[0]->career_position_title,
+        	'metatag_twitter_image'			=> isset($career[0]->career_image) ? $career[0]->career_image : '',
+        	'metatag_twitter_url'			=> current_url(),
+        	'metatag_twitter_description'	=> $page_description,
+        ];
+
+        $metatags = $this->metatags_model->get_metatags($metafields);
+
 		// render the page
+		$this->template->write('head', $metatags);
 		$this->template->add_css('npm/dropzone/dropzone.min.css');
 		$this->template->add_js('npm/dropzone/dropzone.min.js');
 		$this->template->add_css(module_css('careers', 'careers_document'), 'embed');

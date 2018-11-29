@@ -1,8 +1,6 @@
 <section id="roles">
-	<div id="banner_image">
-		<img src="<?php echo site_url().$career->career_image; ?>" draggable="false" width="100%" />		
-		<h1><?php echo "Careers"; ?></h1>		
-	</div>
+		<?php echo $this->load->view('website/slider_index'); ?>
+		<?php $this->template->add_js(module_js('website', 'slider_index'), 'embed'); ?>
 	<main role="main" class="container">
 		<div class="content">	
 			<?php echo $this->load->view('careers/careers_landing'); ?>
@@ -20,9 +18,11 @@
 				<p class="res"><?php echo parse_content($career->career_res); ?></p>
 				<p class="req_head">Requirements</p>
 				<p class="req"><?php echo parse_content($career->career_req); ?></p>
-				<div class="page_overview"><a id="post_data" class="page_overview_button green_button" data-toggle="modal" data-target="#form_application">SUBMIT RESUME</a></div>
+				<br>
+				<div class="page_overview"><a id="post_data" class="page_overview_button default-button" data-toggle="modal" data-target="#form_application">SUBMIT RESUME</a></div>
 
-				<br><span class="filesize_note">*max ﬁle size 25mb (doc, docx or PDF ﬁles only)</span>
+				<br>
+				<span class="filesize_note">*max ﬁle size 25mb (doc, docx or PDF ﬁles only)</span>
 			</div>
 
 		

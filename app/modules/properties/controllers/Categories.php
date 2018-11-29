@@ -31,6 +31,7 @@ class Categories extends MX_Controller {
 		$this->load->model('website/news_tags_model');
 		$this->load->model('website/post_tags_model');
 		$this->load->model('website/partials_model');
+		$this->load->model('website/metatags_model');
 
 	}
 	
@@ -93,15 +94,33 @@ class Categories extends MX_Controller {
 		$news = $this->posts_model->get_active_news($fields);
 
 		if($news){
-		foreach ($news as $key => $result) {
-			$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+			foreach ($news as $key => $result) {
+				$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+			}
+
+			$data['news_result'] = $news;
 		}
 
-		$data['news_result'] = $news;
 
-		
+		$page_description = $this->metatags_model->clean_page_description($category->category_description);
 
-		}
+        $metafields = [
+        	'metatag_title'					=> config_item('website_name') . ' | ' . $category->category_name,
+        	'metatag_description'			=> $page_description,
+        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+        	'metatag_author'				=> config_item('website_name'),
+        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $category->category_name,
+        	'metatag_og_image'				=> isset($category->category_image) ? $category->category_image : '',
+        	'metatag_og_url'				=> current_url(),
+        	'metatag_og_description'		=> $page_description,
+        	'metatag_twitter_card'			=> 'photo',
+        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $category->category_name,
+        	'metatag_twitter_image'			=> isset($category->category_image) ? $category->category_image : '',
+        	'metatag_twitter_url'			=> current_url(),
+        	'metatag_twitter_description'	=> $page_description,
+        ];
+
+        $metatags = $this->metatags_model->get_metatags($metafields);
 
 		$locations = $this->locations_model->get_active_locations();
 		$locations[''] = "VIEW ALL ".strtoupper($params);
@@ -123,9 +142,12 @@ class Categories extends MX_Controller {
 
 		$data['section_id'] = $category->category_id;
 		$data['section'] = $category->category_name;
+
+
 		}
 				
 		// render the page
+		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('properties', 'property_style'), 'embed');
 		$this->template->add_css(module_css('properties', 'categories_view'), 'embed');
 		$this->template->add_js(module_js('properties', 'estates_index'), 'embed');

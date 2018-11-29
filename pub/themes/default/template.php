@@ -12,10 +12,9 @@ $this->load->model('properties/properties_model');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<?php echo $head; ?>
 
 	<title><?php echo config_item('website_name'); ?> | <?php echo $page_heading; ?></title>
-
-	<?php echo $head; ?>
 
 	<!-- bootstrap & fontawesome -->
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url('npm/bootstrap/css/bootstrap.min.css'); ?>">

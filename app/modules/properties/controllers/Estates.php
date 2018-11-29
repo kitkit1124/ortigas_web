@@ -30,6 +30,7 @@ class Estates extends MX_Controller {
 		$this->load->model('locations_model');
 		$this->load->model('related_links_model');
 		$this->load->model('image_sliders_model');
+		$this->load->model('website/metatags_model');
 		$this->load->model('website/posts_model');
 		$this->load->model('website/news_tags_model');
 		$this->load->model('website/post_tags_model');
@@ -80,6 +81,26 @@ class Estates extends MX_Controller {
 			show_404();
 		}
 
+		$page_description = $this->metatags_model->clean_page_description($category->page_content);
+
+        $metafields = [
+        	'metatag_title'					=> config_item('website_name') . ' | ' . $category->page_title,
+        	'metatag_description'			=> $page_description,
+        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+        	'metatag_author'				=> config_item('website_name'),
+        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $category->page_title,
+        	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        	'metatag_og_url'				=> current_url(),
+        	'metatag_og_description'		=> $page_description,
+        	'metatag_twitter_card'			=> 'photo',
+        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $category->page_title,
+        	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        	'metatag_twitter_url'			=> current_url(),
+        	'metatag_twitter_description'	=> $page_description,
+        ];
+
+        $metatags = $this->metatags_model->get_metatags($metafields);
+
 		$category = $this->categories_model->get_active_categories();
 		$category[''] = "ALL";
 		$data['select_categories'] = $category;
@@ -105,12 +126,10 @@ class Estates extends MX_Controller {
 		}
 		$data['news_result'] = $news;
 
-
-
 		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => 2, 'related_link_section_type' => 'pages'));
 
 		// render the page
-		
+		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('properties', 'estates_index'), 'embed');
 		$this->template->add_css(module_css('properties', 'categories_view'), 'embed');
 		$this->template->write_view('content', 'estates_index', $data);
@@ -201,8 +220,29 @@ class Estates extends MX_Controller {
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
 		$this->breadcrumbs->push(lang('crumb_module'), site_url('estates'));
 		//$this->breadcrumbs->push($data['article']->article_title, site_url('estates'));
+
+		$page_description = $this->metatags_model->clean_page_description($estates[0]->estate_text);
+
+        $metafields = [
+        	'metatag_title'					=> config_item('website_name') . ' | ' . $estates[0]->estate_name,
+        	'metatag_description'			=> $page_description,
+        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+        	'metatag_author'				=> config_item('website_name'),
+        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $estates[0]->estate_name,
+        	'metatag_og_image'				=> isset($estates[0]->estate_image) ? $estates[0]->estate_image : '',
+        	'metatag_og_url'				=> current_url(),
+        	'metatag_og_description'		=> $page_description,
+        	'metatag_twitter_card'			=> 'photo',
+        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $estates[0]->estate_name,
+        	'metatag_twitter_image'			=> isset($estates[0]->estate_image) ? $estates[0]->estate_image : '',
+        	'metatag_twitter_url'			=> current_url(),
+        	'metatag_twitter_description'	=> $page_description,
+        ];
+
+        $metatags = $this->metatags_model->get_metatags($metafields);
 		
 		// render the page
+		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('properties', 'estates_index'), 'embed');
 		$this->template->add_css(module_css('properties', 'estates_view'), 'embed');
 		$this->template->add_js(module_js('properties', 'estates_view'), 'embed');

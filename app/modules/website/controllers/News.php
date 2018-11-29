@@ -30,6 +30,7 @@ class News extends MX_Controller
 		$this->load->model('partials_model');
 		$this->load->model('pages_model');
 		$this->load->model('partials_model');
+		$this->load->model('metatags_model');
 		$this->load->model('properties/related_links_model');
 		$this->load->model('properties/properties_model');
 
@@ -53,7 +54,8 @@ class News extends MX_Controller
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
 		$this->breadcrumbs->push(lang('index_heading'), current_url());
 
-		$data['news_page'] = $this->pages_model->find_by('page_uri','news'); 
+		$news_page = $this->pages_model->find_by('page_uri','news'); 
+		$data['news_page'] = $news_page;
 
 		$data['sliders'] = $this->banners_model->get_banners(4);
 		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
@@ -64,6 +66,26 @@ class News extends MX_Controller
 		}
 
 		$data['news_result'] = $news;
+
+		$page_description = $this->metatags_model->clean_page_description($news_page->page_content);
+
+        $metafields = [
+        	'metatag_title'					=> config_item('website_name') . ' | ' . $news_page->page_title,
+        	'metatag_description'			=> $page_description,
+        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+        	'metatag_author'				=> config_item('website_name'),
+        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $news_page->page_title,
+        	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        	'metatag_og_url'				=> current_url(),
+        	'metatag_og_description'		=> $page_description,
+        	'metatag_twitter_card'			=> 'photo',
+        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $news_page->page_title,
+        	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        	'metatag_twitter_url'			=> current_url(),
+        	'metatag_twitter_description'	=> $page_description,
+        ];
+
+        $metatags = $this->metatags_model->get_metatags($metafields);
 
 		$fields = ['rand'=>true,'limit'=>4,'category_id'=>1];
 		$data['residences'] = $this->properties_model->get_properties($fields);
@@ -79,6 +101,7 @@ class News extends MX_Controller
 
 		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $data['news_page']->page_id, 'related_link_section_type' => 'pages'));
 		
+		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('website', 'news_index'), 'embed');
 		$this->template->add_js(module_js('website', 'news_index'), 'embed');
 		$this->template->write_view('content', 'news_index', $data);
@@ -87,7 +110,7 @@ class News extends MX_Controller
 
 	public function view($params)
 	{
-		$data['page_heading'] = lang('index_heading');
+		$data['page_heading'] = 'News';
 		$data['page_subhead'] = lang('index_subhead');
 		$data['page_layout'] = 'full_width';
 
@@ -111,6 +134,28 @@ class News extends MX_Controller
 
 		$data['archive'] = $archive;
 
+		$page_description = $this->metatags_model->clean_page_description($news[0]->post_content);
+
+        $metafields = [
+        	'metatag_title'					=> config_item('website_name') . ' | ' . $news[0]->post_title,
+        	'metatag_description'			=> $page_description,
+        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+        	'metatag_author'				=> config_item('website_name'),
+        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $news[0]->post_title,
+        	'metatag_og_image'				=> isset($news[0]->post_image) ? $news[0]->post_image : '',
+        	'metatag_og_url'				=> current_url(),
+        	'metatag_og_description'		=> $page_description,
+        	'metatag_twitter_card'			=> 'photo',
+        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $news[0]->post_title,
+        	'metatag_twitter_image'			=> isset($news[0]->post_image) ? $news[0]->post_image : '',
+        	'metatag_twitter_url'			=> current_url(),
+        	'metatag_twitter_description'	=> $page_description,
+        ];
+
+        $metatags = $this->metatags_model->get_metatags($metafields);
+
+
+		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('website', 'news_view'), 'embed');
 		$this->template->add_js(module_js('website', 'news_view'), 'embed');
 		$this->template->write_view('content', 'news_view', $data);

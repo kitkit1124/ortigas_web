@@ -46,6 +46,7 @@ class Page extends CI_Controller
 		$this->load->model('news_tags_model');
 		$this->load->model('post_tags_model');
 		$this->load->model('banners_model');
+		$this->load->model('metatags_model');
 		$this->load->model('properties/categories_model');
 		$this->load->model('properties/price_range_model');
 		$this->load->model('properties/locations_model');
@@ -132,8 +133,25 @@ class Page extends CI_Controller
 		$data['select_price_range'] = $range;
 
 		// meta tags
-		$this->load->model('metatags_model');
-		$metatags = $this->metatags_model->get_metatags($page->page_metatag_id);
+		$page_description = $this->metatags_model->clean_page_description($page->page_content);
+
+        $metafields = [
+        	'metatag_title'					=> config_item('website_name') . ' | ' . $page->page_title,
+        	'metatag_description'			=> $page_description,
+        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+        	'metatag_author'				=> config_item('website_name'),
+        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $page->page_title,
+        	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        	'metatag_og_url'				=> current_url(),
+        	'metatag_og_description'		=> $page_description,
+        	'metatag_twitter_card'			=> 'photo',
+        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $page->page_title,
+        	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        	'metatag_twitter_url'			=> current_url(),
+        	'metatag_twitter_description'	=> $page_description,
+        ];
+
+        $metatags = $this->metatags_model->get_metatags($metafields);
 
 		$fields = ['rand'=>true,'limit'=>3];
 		$data['estates'] = $this->estates->get_estates($fields);
@@ -234,13 +252,25 @@ class Page extends CI_Controller
 		// template
 		$this->template->set_template(config_item('website_theme'));
 
-		// meta tags
-		if (isset($page->page_metatag_id) && ($page->page_metatag_id))
-		{
-			$this->load->model('metatags_model');
-			$metatags = $this->metatags_model->get_metatags($page->page_metatag_id);
-			$this->template->write('head', $metatags);
-		}
+		$page_description = $this->metatags_model->clean_page_description($page->page_content);
+
+        $metafields = [
+        	'metatag_title'					=> config_item('website_name') . ' | ' . $page->page_title,
+        	'metatag_description'			=> $page_description,
+        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+        	'metatag_author'				=> config_item('website_name'),
+        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $page->page_title,
+        	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        	'metatag_og_url'				=> current_url(),
+        	'metatag_og_description'		=> $page_description,
+        	'metatag_twitter_card'			=> 'photo',
+        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $page->page_title,
+        	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        	'metatag_twitter_url'			=> current_url(),
+        	'metatag_twitter_description'	=> $page_description,
+        ];
+
+        $metatags = $this->metatags_model->get_metatags($metafields);
 
 
 		$fields = ['limit' => 4, 'page_related_news' => $page->page_id ];
@@ -275,13 +305,7 @@ class Page extends CI_Controller
 			$this->template->add_css(module_css('website', 'page_view/established_communites'), 'embed');
 		}
 
-		
-		
-		
-
-
-
-
+		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('website', 'page_view'), 'embed');
 		$this->template->add_js(module_js('website', 'page_view'), 'embed');
 		$this->template->write_view('content', 'page_view', $data);

@@ -26,6 +26,7 @@ class Contact extends MX_Controller
 		$this->load->model('post_tags_model');
 		$this->load->model('partials_model');
 		$this->load->model('banners_model');
+		$this->load->model('website/metatags_model');
 		$this->load->model('properties/properties_model');
 	}
 
@@ -61,9 +62,32 @@ class Contact extends MX_Controller
 		}
 
 		$data['sliders'] = $this->banners_model->get_banners(6);
-		$data['page_content'] = $this->pages_model->find_by(array('page_uri' => 'inquire', 'page_status' => 'Posted', 'page_deleted' => 0));
+		$page = $this->pages_model->find_by(array('page_uri' => 'inquire', 'page_status' => 'Posted', 'page_deleted' => 0));
+		$data['page_content'] = $page;
 		$data['contact_address'] = $this->partials_model->find(1);
 		$data['properties'] = $this->properties_model->get_select_properties();
+
+		
+		$page_description = $this->metatags_model->clean_page_description($page->page_content);
+
+        $metafields = [
+        	'metatag_title'					=> config_item('website_name') . ' | ' . $page->page_title,
+        	'metatag_description'			=> $page_description,
+        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+        	'metatag_author'				=> config_item('website_name'),
+        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $page->page_title,
+        	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        	'metatag_og_url'				=> current_url(),
+        	'metatag_og_description'		=> $page_description,
+        	'metatag_twitter_card'			=> 'photo',
+        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $page->page_title,
+        	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        	'metatag_twitter_url'			=> current_url(),
+        	'metatag_twitter_description'	=> $page_description,
+        ];
+
+        $metatags = $this->metatags_model->get_metatags($metafields);
+
 
 		$fields = ['limit' => 4, 'page_related_news' => 6 ];
 		$news = $this->posts_model->get_active_news($fields);
@@ -77,6 +101,7 @@ class Contact extends MX_Controller
 		}
 
 		// $this->template->add_css('npm/bootstrap-float-label/bootstrap-float-label.min.css');
+		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('website', 'contact_index'), 'embed');
 		$this->template->add_js(module_js('website', 'contact_index'), 'embed');
 		$this->template->write_view('content', 'contact_index', $data);

@@ -41,6 +41,7 @@ class Properties extends MX_Controller {
 		$this->load->model('website/post_tags_model');
 		$this->load->model('website/pages_model');
 		$this->load->model('website/partials_model');
+		$this->load->model('website/metatags_model');
 	}
 	
 	// --------------------------------------------------------------------
@@ -69,7 +70,29 @@ class Properties extends MX_Controller {
 		// session breadcrumb
 		$this->session->set_userdata('redirect', current_url());
 		
+		$projects = $this->pages_model->find_by('page_uri','projects'); 
 		$data['sliders'] = $this->banners_model->get_banners(3);
+		$data['projects'] = $projects;
+
+		$page_description = $this->metatags_model->clean_page_description($projects->page_content);
+
+        $metafields = [
+        	'metatag_title'					=> config_item('website_name') . ' | ' . $projects->page_title,
+        	'metatag_description'			=> $page_description,
+        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+        	'metatag_author'				=> config_item('website_name'),
+        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $projects->page_title,
+        	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        	'metatag_og_url'				=> current_url(),
+        	'metatag_og_description'		=> $page_description,
+        	'metatag_twitter_card'			=> 'photo',
+        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $projects->page_title,
+        	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        	'metatag_twitter_url'			=> current_url(),
+        	'metatag_twitter_description'	=> $page_description,
+        ];
+
+        $metatags = $this->metatags_model->get_metatags($metafields);
 
 		$dev_types = $this->property_types_model->get_active_property_types();
 	  	$dev_types[''] = "ALL";
@@ -78,8 +101,6 @@ class Properties extends MX_Controller {
 		$category = $this->categories_model->get_active_categories();
 		$category[''] = "ALL";
 		$data['select_categories'] = $category;
-
-		$data['projects'] = $this->pages_model->find_by('page_uri','projects'); 
 
 		$locations = $this->locations_model->get_active_locations();
 		$locations[''] = "ALL";
@@ -121,6 +142,7 @@ class Properties extends MX_Controller {
 		$data['section'] = 'Projects';
 
 		// render the page
+		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('properties', 'properties_index'), 'embed');
 		$this->template->add_js(module_js('properties', 'properties_index'), 'embed');
 		$this->template->write_view('content', 'properties_index', $data);
@@ -189,6 +211,28 @@ class Properties extends MX_Controller {
 				$fields = ['rand'=>true,'limit'=>4,'category_id'=>3];
 				$data['offices'] 	= $this->properties_model->get_properties($fields);*/
 
+
+				$page_description = $this->metatags_model->clean_page_description($properties[0]->property_overview);
+
+		        $metafields = [
+		        	'metatag_title'					=> config_item('website_name') . ' | ' . $properties[0]->property_name,
+		        	'metatag_description'			=> $page_description,
+		        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+		        	'metatag_author'				=> config_item('website_name'),
+		        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $properties[0]->property_name,
+		        	'metatag_og_image'				=> isset($properties[0]->property_image) ? $properties[0]->property_image : '',
+		        	'metatag_og_url'				=> current_url(),
+		        	'metatag_og_description'		=> $page_description,
+		        	'metatag_twitter_card'			=> 'photo',
+		        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $properties[0]->property_name,
+		        	'metatag_twitter_image'			=> isset($properties[0]->property_image) ? $properties[0]->property_image : '',
+		        	'metatag_twitter_url'			=> current_url(),
+		        	'metatag_twitter_description'	=> $page_description,
+		        ];
+
+		        $metatags = $this->metatags_model->get_metatags($metafields);
+
+
 				$data['section_id'] = $id;
 				$data['section'] = 'Properties';
 
@@ -202,6 +246,7 @@ class Properties extends MX_Controller {
 		}
 				
 		// render the page
+		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('properties', 'properties_view'), 'embed');
 		$this->template->add_js(module_js('properties', 'properties_view'), 'embed');
 		$this->template->write_view('content', 'properties_view', $data);
