@@ -3,24 +3,43 @@ video::-webkit-media-controls{
     -webkit-appearance: none;
 }
 
+video{
+  margin: auto;
+
+}
+
 #video_label{
-  top: 30%;
+  top: 40%;
   position: absolute;
-  text-align: center;
   width: 100%;
   color: #FFF;
   cursor: default;
+  padding: 0 40px;
+}
+
+#video_label .Left{
+  text-align: left;
+}
+
+#video_label .Right{
+  text-align: right;
+}
+
+#video_label .Center{
+  text-align: center;
 }
 
 #video_label h1{
-font-size: 60px;
+font-size: 3.5rem;
 }
 
 
 .video_division{
-  height: auto;
-  max-height: 700px; 
   overflow: hidden;
+}
+
+#video_label a {
+  display: inline-block;
 }
 
 .estates img{
@@ -234,6 +253,10 @@ font-size: 60px;
     max-width: 50% !important;
     text-align: center;
   }
+
+  #video_label h1{
+  font-size: 3.2rem;
+  }
 }
 
 @media(max-width: 768px) {
@@ -314,10 +337,15 @@ font-size: 60px;
       margin-bottom: 10px;
   }
 
+  #video_label h1 {
+      font-size: 2.3rem;
+  }
+
+
 }
 
 
-@media (min-width: 576px){
+@media (max-width: 576px){
   
   .main_page .est_desc {
     padding: 0 20px;
@@ -326,10 +354,24 @@ font-size: 60px;
   p, a {
       font-size: .9rem;
   }
+
+
+  #video_label h1 {
+     font-size: 1.6rem;
+  }
+
 }
 
 
 @media(max-width: 425px) {
+  #video_label h1 {
+     font-size: 1.1rem;
+  }
+
+  #video_label p {
+     font-size: .7rem;
+  }
+
   .page_content h1 {
       font-size: 1.8rem;
   }

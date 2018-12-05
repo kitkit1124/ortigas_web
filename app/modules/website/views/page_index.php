@@ -1,13 +1,15 @@
-<?php if(isset($main_video) && $main_video){ ?>
+<?php if(isset($video) && $video){ ?>
 	<div class="video_division">
-		<video width="100%"  controls autoplay loop>
-		  <source src="<?php echo site_url().$main_video->video_location ?>" type="video/mp4">
+		<video height="100%"  controls autoplay loop>
+		  <source src="<?php echo site_url().$video->video_location ?>" type="video/mp4">
 		</video>
 	</div>
 	<div id="video_label" class="noselect">
-	<h1>We Build Great Places for Life</h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-	<a class="default-button">Inquire Now</a>
+		<div class="<?php echo $video->video_text_pos; ?>">
+			<h1><?php echo $video->video_title; ?></h1>
+			<p><?php echo $video->video_caption; ?></p>
+			<a href="<?php echo $video->video_link; ?>" class="default-button"><?php echo $video->video_button_text; ?></a>
+		</div>
 	</div>
 <?php } else{ ?>
 			<?php $this->template->add_js(module_js('website', 'slider_index'), 'embed'); ?>

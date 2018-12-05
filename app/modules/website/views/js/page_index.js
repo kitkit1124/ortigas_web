@@ -3,10 +3,15 @@ $(function() {
     $("#carousel .carousel-indicator_button").first().addClass('active');
 
  		transparent_nav();
+ 		set_video_height();
+
 		$(window).scroll(function() {
 		   transparent_nav();
 		});
 
+		$(window).resize(function() {
+		   set_video_height();
+		});
 
 });
 
@@ -17,4 +22,14 @@ function transparent_nav(){
 	else{
 		$(".navbar").css({"background-color": "transparent", "border-bottom":"1px solid transparent"});
 	}
+}
+
+function set_video_height(){
+	var height = $(window).height();
+	$('.video_division').css('height', height);
+
+	// var vertical_center = height / 2;
+
+	// $('#video_label').css('top', '50%');
+
 }

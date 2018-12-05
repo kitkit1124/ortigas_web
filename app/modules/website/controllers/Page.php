@@ -108,7 +108,7 @@ class Page extends CI_Controller
 
 		$data['is_home'] = TRUE;
 
-		$data['main_video'] = $this->video_uploads_model->where('video_status','Active')->find(1);
+		$data['video'] = $this->video_uploads_model->where('video_status','Active')->find(1);
 		$data['sliders'] = $this->banners_model->get_banners(1);
 
 		$data['page_estates'] = $this->pages_model->find_by('page_uri','estates');
