@@ -11,7 +11,7 @@
 <div class="carousel-inner">
 <?php foreach ($sliders as $key => $value) { ?>
 <div class="carousel-item">
-  <img src="<?php echo site_url().$value->banner_image; ?>" width="100%">
+  <img src="<?php echo site_url().$value->banner_image; ?>" width="100%" alt="<?php echo $value->banner_alt_image; ?>" title="<?php echo $value->banner_alt_image; ?>" />
 </div>
 <?php } ?>	
 </div>

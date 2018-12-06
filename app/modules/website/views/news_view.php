@@ -1,7 +1,7 @@
 <section id="news">
 	<?php if($news){ ?>
 	<div id="banner_image">
-		<img src="<?php echo config_item('website_url').$news->post_image; ?>" draggable="false" />			
+		<img src="<?php echo config_item('website_url').$news->post_image; ?>" draggable="false" alt="<?php echo $news->post_alt_image; ?>" title="<?php echo $news->post_alt_image; ?>" />	
 	</div>
 	<?php } ?>
 
@@ -9,19 +9,11 @@
 		<div class="content">
 			<div class="row">	
 				<div class="news_content col-sm-8">
-
 					<h1><?php echo $news->post_title; ?></h1>
-
 					<?php if($news->post_modified_on){ $dtraw = $news->post_modified_on; } else { $dtraw = $news->post_created_on; } $dtpost = date_create($dtraw); ?>
 					<p><?php echo 'Date posted '. date_format($dtpost,"F j, Y");  ?></p>
-
-				
 					<p class="news_filter"><?php echo $news->news_tag_name; ?></p>
-
-					<?php echo parse_content($news->post_content); ?>
-
-
-				
+					<?php echo parse_content($news->post_content); ?>			
 				</div>
 				<div class="news_sidebar col-sm-4">
 					<?php if($news_tags) : ?>

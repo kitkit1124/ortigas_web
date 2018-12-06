@@ -1,7 +1,7 @@
 <section id="roles">
 	<?php if($estates){ ?>
 	<div id="banner_image">
-		<img src="<?php echo config_item('website_url').$estates->estate_image; ?>" draggable="false" />		
+		<img src="<?php echo config_item('website_url').$estates->estate_image; ?>" draggable="false" alt="<?php echo $estates->estate_alt_image; ?>" title="<?php echo $estates->estate_alt_image; ?>" />		
 		<h1><?php echo $estates->estate_name; ?></h1>			
 	</div>
 	<?php } ?>
@@ -75,7 +75,7 @@
 					<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 	
 						<div class="image_container">
-								<img src="<?php echo  config_item('website_url').$val->property_image; ?>" width="100%" alt="" draggable="false"/>
+								<img src="<?php echo  config_item('website_url').$val->property_image; ?>" width="100%" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
 						</div>
 						<div class="property"><label><?php echo $val->property_name; ?></label></div>
 					</div>
@@ -103,7 +103,7 @@
 						<div class="image_wrapper">
 							<div class="property"><p><?php echo $val->property_name; ?></p></div>
 							<div class="image_container">
-									<img src="<?php echo  config_item('website_url').$val->property_image; ?>" width="100%" alt="" draggable="false"/>
+									<img src="<?php echo  config_item('website_url').$val->property_image; ?>" width="100%" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
 							</div>
 						</div>
 						</a>
@@ -127,7 +127,7 @@
 							<div class="image_wrapper">
 								<div class="property"><p><?php echo $val->property_name; ?></p></div>
 								<div class="image_container">
-										<img src="<?php echo  config_item('website_url').$val->property_image; ?>" width="100%" alt="" draggable="false"/>
+										<img src="<?php echo  config_item('website_url').$val->property_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
 								</div>
 							</div>
 							</a>

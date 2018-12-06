@@ -2,7 +2,7 @@
 	<?php if($category){ ?>
 	<div id="banner_image">
 		<div id="banner_logo_image"></div>
-		<img src="<?php echo site_url().$category->category_image; ?>" draggable="false" />		
+		<img src="<?php echo site_url().$category->category_image; ?>" draggable="false" alt="<?php echo $category->category_alt_image; ?>" title="<?php echo $category->category_alt_image; ?>" />	
 		<h1><?php echo $category->category_name; ?></h1>			
 	</div>
 	<?php } ?>
@@ -37,7 +37,12 @@
 						<div class="image_wrapper">
 							<!-- <div class="property"><p><?php //if($estates){ } else { echo $val->property_name; } ?></p></div> -->
 							<div class="image_container">
-									<img src="<?php if($estates){ echo site_url().$val->estate_image; } else { echo  config_item('website_url').$val->property_image; }?>" width="100%" alt="" draggable="false"/>
+
+									<?php if($estates){ ?>
+										<img src="<?php echo site_url().$val->estate_image; ?>" width="100%" draggable="false" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" />
+									<?php } else { ?>
+										<img src="<?php echo site_url().$val->property_image; ?>" width="100%" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />	 
+									<?php } ?>
 							</div>
 							<!-- <div class="estate"><?php //echo $val->estate_name; ?></div> -->
 

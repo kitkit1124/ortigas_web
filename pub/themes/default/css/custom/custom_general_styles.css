@@ -75,7 +75,7 @@ img{
     -webkit-user-drag: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-	cursor: pointer;
+	cursor: pointer !important;
 }
 
 a.default-button{
@@ -134,7 +134,8 @@ a.default-button{
 #banner_logo_image{
     background-image: url(http://ortigas.web.local/data/images/ortigas_logo_image.png);
     height: 410px;
-    width: 100%;
+    width: 410px;
+    right: 0;
     z-index: 0;
     position: absolute;
     background-repeat: no-repeat;
