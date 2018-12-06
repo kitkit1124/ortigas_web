@@ -12,7 +12,7 @@
 	<div class="tab-content">
 		<?php foreach ($room_types as $key => $value) { ?>
 		<div id="room-menu<?php echo $key; ?>" class="tab-pane fade">
-			<img src="<?php echo site_url().$value->room_type_image; ?>" >
+			<img src="<?php echo site_url().$value->room_type_image; ?>" alt="<?php echo $value->room_type_alt_image; ?>" title="<?php echo $value->room_type_alt_image; ?>" />
     	</div>
     	
     	<?php } ?>

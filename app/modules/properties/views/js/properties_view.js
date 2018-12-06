@@ -142,7 +142,10 @@ function get_specific_floor($id){
 		.done(function( data ) {
 			data = jQuery.parseJSON(data);
 			$('#floorplan_image').fadeOut(100, function(){
-				$('#floorplan_image').attr("src", site_url + data.floor_image);
+				$('#floorplan_image')
+                    .attr("src", site_url + data.floor_image)
+                    .attr("alt", data.floor_alt_image)
+                    .attr("title", data.floor_alt_image);
 			    $('#floorplan_image').fadeIn(100);
 			});
 		});
