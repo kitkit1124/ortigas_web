@@ -175,7 +175,14 @@ class Properties extends MX_Controller {
 				
 				$data['properties'] = $properties[0];
 				
-				$data['sliders'] = $this->image_sliders_model->find_all_by(array('image_slider_section_id'=> $id, 'image_slider_section_type'=>'properties'));
+				$data['sliders'] = $this->image_sliders_model->find_all_by(
+					array(
+						'image_slider_section_id'=> $id,
+						'image_slider_section_type'=>'properties',
+						'image_slider_deleted' => 0,
+						'image_slider_status' => 'Active'
+					)
+				);
 				
 				$data['room_types'] = $this->room_types_model->find_all_by('room_type_property_id', $id);	
 				

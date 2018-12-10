@@ -164,7 +164,14 @@ class Estates extends MX_Controller {
 			exit();
 		}
 
-		$data['sliders'] = $this->image_sliders_model->find_all_by(array('image_slider_section_id'=> $estates[0]->estate_id, 'image_slider_section_type'=>'estates'));
+		$data['sliders'] = $this->image_sliders_model->find_all_by(
+			array(
+				'image_slider_section_id'=> $estates[0]->estate_id,
+				'image_slider_section_type'=>'estates',
+				'image_slider_deleted' => 0,
+				'image_slider_status' => 'Active',
+			)
+		);
 		
 		$fields = [
 		    'rand'	=> true,

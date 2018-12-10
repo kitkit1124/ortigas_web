@@ -162,7 +162,12 @@ class Page extends CI_Controller
 		$this->properties->get_properties($fields);
 
 		if($residence){
-			$data['carousel'] = $this->image_sliders_model->find_all_by(array('image_slider_section_type' => 'properties', 'image_slider_section_id' => $residence[0]->property_id)); //$residence[0]->property_id
+			$data['carousel'] = $this->image_sliders_model->find_all_by(
+			array(
+				'image_slider_section_type' => 'properties',
+				'image_slider_section_id' => $residence[0]->property_id,
+				'image_slider_deleted' => 0,'image_slider_status' => 'Active')
+			); //$residence[0]->property_id
 		}
 		$fields = ['rand'=>true,'limit'=>1,'category_id'=>2];
 		$data['malls'] 		= $this->properties->get_properties($fields);

@@ -1,12 +1,18 @@
 <?php if($sliders) { ?>
 
+
 <div id="slider" class="carousel slide" data-ride="carousel">
+
+ <?php if(count($sliders) > 1 ) { ?>
 <!-- Indicators -->
 <ul class="carousel-indicators">
 <?php foreach ($sliders as $key => $value) { ?>
  	<li class="carousel-indicator_button" data-target="#slider" data-slide-to="<?php echo $key; ?>"> </li>
 <?php } ?>	
 </ul>
+<?php } ?>	
+
+
 <!-- The slideshow -->
 <div class="carousel-inner">
 <?php foreach ($sliders as $key => $value) { ?>
@@ -16,6 +22,7 @@
 <?php } ?>	
 </div>
 
+<?php if(count($sliders) > 1 ) { ?>
 <!-- Left and right controls -->
 <a class="carousel-control-prev" href="#slider" data-slide="prev">
 <span class="carousel-control-prev-icon"></span>
@@ -23,6 +30,8 @@
 <a class="carousel-control-next" href="#slider" data-slide="next">
 <span class="carousel-control-next-icon"></span>
 </a>
+<?php } ?>	
+
 <h1><?php echo $value->banner_group_name; ?></h1>
 </div>
 <?php } ?>	
