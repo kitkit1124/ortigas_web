@@ -34,14 +34,14 @@ $this->load->model('properties/properties_model');
 
 	<?php echo $_styles; // loads additional css files ?>
 
-	<?php $seo = $this->seo_model->find(1); echo parse_content($seo->seo_content);  ?>
+	<?php $seo = $this->seo_model->find(1); echo parse_content(html_entity_decode(strip_tags($seo->seo_content)));  ?>
 
-	<?php $seo = $this->seo_model->find(2); echo parse_content($seo->seo_content);  ?>
+	<?php $seo = $this->seo_model->find(2); echo parse_content(html_entity_decode(strip_tags($seo->seo_content)));  ?>
 
 </head>
 
-<body>
-	<?php $seo = $this->seo_model->find(3); echo parse_content($seo->seo_content);  ?>
+<body> 
+	<?php $seo = $this->seo_model->find(3); echo parse_content(html_entity_decode(strip_tags($seo->seo_content)));  ?>
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top">
 		
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_navbar" aria-controls="main_navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,7 +73,7 @@ $this->load->model('properties/properties_model');
 								<div class = "sub_menu_estates">
 									<ul class = "ul_sub_menu_estates">
 											<?php
-											$estates = $this->estates_model->find_all();
+											$estates = $this->estates_model->where('estate_deleted',0)->where('estate_status','Active')->find_all();
 											if($estates){
 												foreach ($estates as $key => $estate) { 
 											?>		
