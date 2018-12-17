@@ -19,7 +19,7 @@ $(function(){
 
     });
 
-     $('.li_nav_estates_active, .nav_estates, .li_nav_estates_active_list') .mouseout(function(){
+    $('.li_nav_estates_active, .nav_estates, .li_nav_estates_active_list') .mouseout(function(){
         $('.li_nav_estates_active').css('background-color','#e6f1eb');
     });
 
@@ -42,7 +42,6 @@ $(function(){
     });
 
 
-
     $('.global_search .default_search input').keydown(function(event){
         if(event.keyCode == 13) {
             searchGlobal();
@@ -54,10 +53,15 @@ $(function(){
     });
 
     resize()
+     set_banner_position()
     $(window).resize(function(){
          resize()
+         set_banner_position()
     });
+
    
+
+    
 });
 
 function scrollToAnchor(aid, top){
@@ -89,4 +93,24 @@ function searchGlobal(){
 
 function resize(){
     $('#banner_logo_image').css('height',$('#banner_image img').height());
+}
+
+function set_banner_position(){
+    var banner_canvas = $('#banner_image img').height();
+    var banner_text_canvas = $('#banner_image h1').height();
+    var navbar_canvas = $('.navbar').height();
+    var banner_estate_canvas = $('#banner_image h5').height();
+  //  var social_canvas = $('#.social_media_properties').height();
+    
+    
+    
+    var banner_text_position = (banner_canvas - banner_text_canvas) / 2 + navbar_canvas;
+    var banner_estate_position = (banner_canvas - banner_estate_canvas) / 2 + navbar_canvas - 6 + banner_text_canvas;
+    // var social_canvas_position = (banner_canvas - social_canvas) / 2 + navbar_canvas - 6 + banner_text_canvas ;
+
+
+    $('#banner_image h1').css({'top':banner_text_position + 'px'});
+    $('#banner_image h5').css({'top':banner_estate_position + 'px'});
+    // $('.social_media_properties').css({'top':social_canvas_position + 'px'});
+
 }

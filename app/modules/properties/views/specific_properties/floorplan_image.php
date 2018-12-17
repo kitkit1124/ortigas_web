@@ -5,6 +5,8 @@
 </div>
 <div class="modal-body">
 	<div class="form">	
-			<center><img class="floorplan_image" src="<?php echo base_url(); ?>data/images/building-floorplan.png" width="100%"></center>
+			<center>
+				<img class="floorplan_image" src="<?php echo $floorplan_image; ?>" width="100%">
+			</center>
 	</div>
 </div>

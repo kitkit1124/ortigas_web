@@ -308,6 +308,8 @@ class Properties extends MX_Controller {
 		$data['page_subhead'] = '';
 		$data['action'] = '';
 
+		$data['floorplan_image'] = $_GET['img'];
+
 		$this->template->set_template('modal');
 		$this->template->write_view('content', 'specific_properties/floorplan_image', $data);
 		$this->template->render();

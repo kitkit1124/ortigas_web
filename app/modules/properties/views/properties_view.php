@@ -28,6 +28,7 @@
 						if($value->setting_division == 'Slider'){
 							echo $this->load->view('properties/specific_properties/slider_view');
 						}
+
 						if($value->setting_division == 'Locations'){
 							echo $this->load->view('properties/specific_properties/location_view');
 						}
@@ -66,42 +67,42 @@
 						<div class="inquiry_form_container">
 							<?php echo $this->load->view('messages/messages_form')?>
 						</div>
-					
-						
-
+				
 					<?php endif; ?>
 						
 				</div>
-			</div>
 
-			<?php if($properties->category_id==1) : ?>
-					<style>
-						.inquiry_form .form_container{
-							flex: 100%;
-							max-width: 100%;
-						}
-					</style>
+				<?php if($properties->category_id==1) : ?>
+				<style>
+					.inquiry_form .form_container{
+						flex: 100%;
+						max-width: 100%;
+					}
+				</style>
 
 				<div class="news_sidebar col-sm-4">
-
-						<?php 
-						$data = [];
-						$data['remove_this'] = 1;
-						echo $this->load->view('messages/messages_form',$data); ?>
-				
-					<div class="related_properties_result">
-						<?php
+					<div class="stick_side">
+							<?php 
 							$data = [];
-							$data['display'] = 'hide';
-							$data['cols'] = 'col-sm-6';
-							$data['image'] = 'property_logo';
+							$data['remove_this'] = 1;
+							echo $this->load->view('messages/messages_form',$data); ?>
+					
+						<div class="related_properties_result">
+							<?php
+								$data = [];
+								$data['display'] = 'hide';
+								$data['cols'] = 'col-sm-6';
+								$data['image'] = 'property_logo';
 
-						 	echo $this->load->view('properties/properties_result', $data); 
-						 ?>
+							 	echo $this->load->view('properties/properties_result', $data); 
+							 ?>
+						</div>
 					</div>
 				</div>
 
 				<?php endif; ?>
+			</div>
+
 		</div>
 	</main>
 </section>

@@ -257,6 +257,23 @@ h1, p, span, a {
 }
 .news_sidebar{ padding-left: 50px; }
 
+.stick_side label{
+	font-size: .8rem !important;
+}
+
+.stick_side .related_properties_result{
+	margin-top: 0 !important;
+}
+
+.stick_side .inquiry_border_bottom{
+	margin-top: 20px !important;
+	margin-bottom: 0 !important;
+}
+
+.stick_side .inquiry_form{
+	margin-bottom: 0 !important
+}
+
 .related_properties_result .estates{ padding: 10px;}
 
 .related_properties_result .category_title{ 
@@ -280,6 +297,7 @@ h1, p, span, a {
 /*	flex: 100%;
 	max-width: 100%;*/
 }
+
 
 .inquiry_border_bottom{ display: block !important; }
 

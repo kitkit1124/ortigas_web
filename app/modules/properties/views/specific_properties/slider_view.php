@@ -26,7 +26,8 @@
       <a class="carousel-control-next" href="#slider" data-slide="next">
         <span class="carousel-control-next-icon"></span>
       </a>
-     </div>
+
     <?php } ?>  
+    </div>
  <?php } ?> 
 </div>

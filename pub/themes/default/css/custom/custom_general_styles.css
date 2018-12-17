@@ -28,7 +28,7 @@ select option{
 }
 
 #slider h1{
-      position: absolute;
+    position: absolute;
     top: 34%;
     font-size: 70px;
     left: 100px;
@@ -104,6 +104,7 @@ a.default-button{
 }
 
 #banner_image img, #slider img{
+    max-height: 410px;
 	height: 410px;
 	width: 100%;
 	object-fit: cover;
@@ -112,13 +113,11 @@ a.default-button{
 
 
 #banner_image h1 {
-    width: 100%;
+    width: 500px;
     position: absolute;
-    top: 254px;
     font-size: 70px;
-    left: 100px;
+    left: 50px;
     color: #fff;
-    width: auto;
 }
 
 #banner_image h5 {
@@ -529,6 +528,11 @@ a.inquiry_button {
     .social_media_properties a{
         font-size: 1.6rem;
     }
+
+    #banner_image h1, #slider h1{
+        font-size: 3.5rem;
+        left: 30px;
+    }
 }
 
 @media(max-width: 768px) {
@@ -538,17 +542,14 @@ a.inquiry_button {
         height: 2px;
     }
     #banner_image h1,  #slider h1{
-        font-size: 4rem;
-        left: 30px;
-        top: initial;
-        -ms-transform: translateY(-300%);
-        transform: translateY(-300%);
+        font-size: 3.2rem;
+        left: 20px;
     }
 
     #banner_image h5{
-        top: initial;
+    /*    top: initial;
         -ms-transform: translateY(-600%);
-        transform: translateY(-600%);
+        transform: translateY(-600%);*/
     }
 
     #banner_image img,#slider img{
@@ -576,15 +577,16 @@ a.inquiry_button {
 
 
 @media(max-width: 600px) {
-    #banner_image h1,  #slider h1{
-        -ms-transform: translateY(-300%);
-        transform: translateY(-300%);
-        font-size: 3.1rem;
+    #banner_image h1{
+        font-size: 2.8rem;
+        width: 300px;
+    }
+
+    #slider h1{
+        font-size: 3.5rem;
     }
 
     #banner_image h5{
-        -ms-transform: translateY(-630%);
-        transform: translateY(-630%);
         font-size: .9rem;
     }
 
@@ -600,13 +602,10 @@ a.inquiry_button {
 
 @media(max-width: 500px) {
     #banner_image h1,  #slider h1{
-        -ms-transform: translateY(-250%);
-        transform: translateY(-250%);
+          font-size: 3.5rem;
     }
 
     #banner_image h5{
-        -ms-transform: translateY(-550%);
-        transform: translateY(-550%);
         font-size: .8rem;
     }
 
@@ -624,20 +623,13 @@ a.inquiry_button {
 
 @media(max-width: 375px) {
 
-    #banner_image h1, #slider h1{
-        font-size: 2.3rem;
-        -ms-transform: translateY(-260%);
-        transform: translateY(-260%);
+    #banner_image h1{
+        font-size: 1.5rem;
+        width: 200px;
     }
 
-    #banner_image h5{
-        -ms-transform: translateY(-200%);
-        transform: translateY(-450%);
-    }
-
-    .social_media_properties{
-        -ms-transform: translateY(-180%);
-        transform: translateY(-180%);
+    #slider_image h1{
+        font-size: 3rem;
     }
 
 }

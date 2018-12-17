@@ -1,5 +1,66 @@
 $(function() {
-      
+    
+
+    $(window).scroll(function() {
+
+        if($(window).width() > 1024) {
+            if($(window).scrollTop() > 440) {
+               
+                    $(".stick_side").css({
+                        "position":"fixed",
+                        "top":"100px",
+                        "-ms-flex":"0 0 15%",
+                        "flex":"0 0 15%",
+                        "max-width":"315px"
+                    });
+               
+            }
+            else{
+                 $(".stick_side").css({
+                    "position":"unset",
+                    "top":"unset",
+                    "-ms-flex":"unset",
+                    "flex":"unset",
+                    "max-width":"unset"
+                });
+            }
+
+            var footer_section = $('#footer').offset().top - 1000;
+
+            if($(window).scrollTop() > footer_section) {
+                $(".related_properties_result").hide();
+                $(".stick_side").css({"top":"80px"});
+                $(".inquiry_border_bottom").css({"height":"0"});
+                $(".inquiry_form").css({"padding-bottom":"0"});
+                
+                
+            }
+            else{
+                $(".related_properties_result").show();
+                $(".stick_side").css({"top":"80px"});
+                $(".inquiry_border_bottom").css({"height":"3px"});
+                $(".inquiry_form").css({"padding-bottom":"20px"});
+            }
+
+        }
+    });
+
+    $(window).resize(function(){
+        if($(window).width() < 1024) {
+            $(".stick_side").css({
+                "position":"relative",
+                "top":"unset",
+                "-ms-flex":"unset",
+                "flex":"unset",
+                "max-width":"unset"
+            });
+            $(".related_properties_result").show();
+            $(".stick_side").css({"top":"unset"});
+            $(".inquiry_border_bottom").css({"height":"3px"});
+            $(".inquiry_form").css({"padding-bottom":"20px"});
+        }
+    })
+
     $('.estate_button').click(function(){
         var anchor = $(this).attr('data-anchor');
         scrollToAnchor('#' + anchor);
@@ -109,7 +170,6 @@ $(function() {
     	});
     });
 
-
 });
 
 function scrollToAnchor(aid){
@@ -147,6 +207,9 @@ function get_specific_floor($id){
                     .attr("src", upload_url + data.floor_image)
                     .attr("alt", data.floor_alt_image)
                     .attr("title", data.floor_alt_image);
+
+                $('.floorplan_image_link').attr('href', site_url+'properties/properties/floorplan_image?img='+ upload_url + data.floor_image);
+
 			    $('#floorplan_image').fadeIn(100);
 			});
 		});

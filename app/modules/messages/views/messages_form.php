@@ -24,7 +24,7 @@
 
 	<div class="form_container">
 		<label for="inquiry_message">Your Message*</label>
-		<?php echo form_textarea(array('id'=>'inquiry_message', 'name'=>'inquiry_message', 'rows'=>'5', 'value'=>set_value('inquiry_message', isset($record->inquiry_message) ? $record->inquiry_message : '', false), 'class'=>'form-control')); ?>
+		<?php echo form_textarea(array('id'=>'inquiry_message', 'name'=>'inquiry_message', 'rows'=>'4', 'value'=>set_value('inquiry_message', isset($record->inquiry_message) ? $record->inquiry_message : '', false), 'class'=>'form-control')); ?>
 		<div id="error-message_content" class="error_field"></div>
 	</div>
 	
@@ -36,7 +36,7 @@
 </div>
 
 
-<a id="form_landing_button" data-toggle="modal" data-target="#form_landing">&nbsp;</a>
+<a id="form_landing_button" class="hide" data-toggle="modal" data-target="#form_landing">&nbsp;</a>
 <!-- Modal -->
 <div class="modal fade" id="form_landing" tabindex="-1" role="dialog" aria-labelledby="Form" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
