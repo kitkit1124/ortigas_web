@@ -109,6 +109,7 @@ $(function() {
     	});
     });
 
+
 });
 
 function scrollToAnchor(aid){
@@ -143,7 +144,7 @@ function get_specific_floor($id){
 			data = jQuery.parseJSON(data);
 			$('#floorplan_image').fadeOut(100, function(){
 				$('#floorplan_image')
-                    .attr("src", site_url + data.floor_image)
+                    .attr("src", upload_url + data.floor_image)
                     .attr("alt", data.floor_alt_image)
                     .attr("title", data.floor_alt_image);
 			    $('#floorplan_image').fadeIn(100);

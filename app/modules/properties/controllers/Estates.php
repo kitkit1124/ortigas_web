@@ -146,14 +146,18 @@ class Estates extends MX_Controller {
 	public function view($params)
 	{
 
-		// page title
-		$data['page_heading'] = lang('index_heading');
-		$data['page_subhead'] = lang('index_subhead');
-		$data['page_layout'] = 'full_width';
+		
+	
 
 
 		$fields = [ 'estate_slug' => $params ];
 		$estates = $this->estates_model->get_estates($fields);
+
+		// page title
+		$data['page_heading'] = $estates[0]->estate_name;
+		$data['page_subhead'] = lang('index_subhead');
+		$data['page_layout'] = 'full_width';
+
 
 
 		if($estates){

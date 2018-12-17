@@ -128,11 +128,7 @@ class Careers extends MX_Controller {
 
 	public function view($params)
 	{
-		// page title
-		$data['page_heading'] = 'Careers';
-		$data['page_subhead'] = lang('index_subhead');
-		$data['page_layout'] = 'full_width';
-		
+				
 		// breadcrumbs
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
 		$this->breadcrumbs->push(lang('crumb_module'), site_url('estates'));
@@ -143,6 +139,12 @@ class Careers extends MX_Controller {
 		$fields = ['career_slug' => $params];
 		$career = $this->careers_model->get_careers($fields);
 		$data['career'] = $career[0];
+
+		// page title
+		$data['page_heading'] = $career[0]->career_position_title;
+		$data['page_subhead'] = lang('index_subhead');
+		$data['page_layout'] = 'full_width';
+
 		$data['sliders'] = $this->banners_model->get_banners(5);
 		
 		$data['careers_landing'] = $this->partials_model->find(4); 

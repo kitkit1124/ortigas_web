@@ -47,9 +47,13 @@
 		<div id="nearby">
 			<div class="tab-content">
 				<div id="all" class="tab-pane active">
+				   <div class="nearby_title"><p>Nearby Malls</p></div>
 				   <div class="nearby"><?php echo $properties->property_nearby_malls; ?></div>
+				     <div class="nearby_title"><p>Nearby Markets</p></div>
 				   <div class="nearby"><?php echo $properties->property_nearby_markets; ?></div>
+				     <div class="nearby_title"><p>Nearby Hospitals</p></div>
 				   <div class="nearby"><?php echo $properties->property_nearby_hospitals; ?></div>
+				     <div class="nearby_title"><p>Nearby Schools</p></div>
 				   <div class="nearby"><?php echo $properties->property_nearby_schools; ?></div>
 				   <div class="clear"></div>
 				</div>

@@ -32,7 +32,7 @@
 						<div class="image_wrapper">
 							<!-- <div class="property"><p><?php //if($estates){ } else { echo $val->property_name; } ?></p></div> -->
 							<div class="image_container">
-									<img src="<?php if($estates){ echo site_url().$val->estate_image; } else { echo  config_item('website_url').$val->property_image; }?>" width="100%" draggable="false" width="100%" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" />
+									<img src="<?php if($estates){ echo getenv('UPLOAD_ROOT').$val->estate_image; } else { echo  getenv('UPLOAD_ROOT').$val->property_image; }?>" width="100%" draggable="false" width="100%" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" />
 							</div>
 							<!-- <div class="estate"><?php //echo $val->estate_name; ?></div> -->
 
@@ -89,5 +89,6 @@
 
 <script type="text/javascript">
 	var site_url = "<?php echo site_url(); ?>"
+	var upload_url = "<?php echo getenv('UPLOAD_ROOT'); ?>"
 	var category_name = "<?php echo $category->page_title; ?>"
 </script>

@@ -2,7 +2,7 @@
 	<?php if($category){ ?>
 	<div id="banner_image">
 		<div id="banner_logo_image"></div>
-		<img src="<?php echo site_url().$category->category_image; ?>" draggable="false" alt="<?php echo $category->category_alt_image; ?>" title="<?php echo $category->category_alt_image; ?>" />	
+		<img src="<?php echo  getenv('UPLOAD_ROOT').$category->category_image; ?>" draggable="false" alt="<?php echo $category->category_alt_image; ?>" title="<?php echo $category->category_alt_image; ?>" />	
 		<h1><?php echo $category->category_name; ?></h1>			
 	</div>
 	<?php } ?>
@@ -39,9 +39,9 @@
 							<div class="image_container">
 
 									<?php if($estates){ ?>
-										<img src="<?php echo site_url().$val->estate_image; ?>" width="100%" draggable="false" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" />
+										<img src="<?php echo getenv('UPLOAD_ROOT').$val->estate_image; ?>" width="100%" draggable="false" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" />
 									<?php } else { ?>
-										<img src="<?php echo site_url().$val->property_image; ?>" width="100%" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />	 
+										<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />	 
 									<?php } ?>
 							</div>
 							<!-- <div class="estate"><?php //echo $val->estate_name; ?></div> -->
@@ -99,5 +99,6 @@
 
 <script type="text/javascript">
 	var site_url = "<?php echo site_url(); ?>"
+	var upload_url = "<?php echo getenv('UPLOAD_ROOT'); ?>"
 	var category_name = "<?php echo $category->category_name; ?>"
 </script>

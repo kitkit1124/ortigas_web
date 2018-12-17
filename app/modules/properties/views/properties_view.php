@@ -72,8 +72,9 @@
 					<?php endif; ?>
 						
 				</div>
+			</div>
 
-				<?php if($properties->category_id==1) : ?>
+			<?php if($properties->category_id==1) : ?>
 					<style>
 						.inquiry_form .form_container{
 							flex: 100%;
@@ -101,8 +102,6 @@
 				</div>
 
 				<?php endif; ?>
-
-			</div>
 		</div>
 	</main>
 </section>
@@ -110,6 +109,7 @@
 	var site_url = "<?php echo site_url(); ?>"
 	var app_url = "<?php echo base_url(); ?>"
 	var property_id = "<?php echo $properties->property_id; ?>"
+	var upload_url = "<?php echo getenv('UPLOAD_ROOT'); ?>"
 </script>
 
 <?php if($properties->category_id!=1) : ?>

@@ -48,7 +48,7 @@ class News extends MX_Controller
 	 */
 	public function index()
 	{
-		$data['page_heading'] = lang('index_heading');
+		$data['page_heading'] = 'News';
 		$data['page_layout'] = 'full_width';
 
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
@@ -110,14 +110,16 @@ class News extends MX_Controller
 
 	public function view($params)
 	{
-		$data['page_heading'] = 'News';
+		
+		$fields = [ 'post_slug' => $params ];
+		$news = $this->posts_model->get_specific_news($fields);
+		$data['news'] = $news[0];
+
+		$data['page_heading'] = $news[0]->post_title;
 		$data['page_subhead'] = lang('index_subhead');
 		$data['page_layout'] = 'full_width';
 
 
-		$fields = [ 'post_slug' => $params ];
-		$news = $this->posts_model->get_specific_news($fields);
-		$data['news'] = $news[0];
 
 		$data['news_tags'] = $this->news_tags_model->find_all();
 

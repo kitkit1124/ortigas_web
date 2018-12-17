@@ -6,7 +6,7 @@
   <div class="carousel-inner">
     <?php foreach ($sliders as $key => $value) { ?>
     <div class="carousel-item">
-      <img src="<?php echo site_url().$value->image_slider_image; ?>" width="100%" height="400" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>">
+      <img src="<?php echo getenv('UPLOAD_ROOT').$value->image_slider_image; ?>" width="100%" height="400" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>">
     </div>
     <?php } ?>	
   </div>

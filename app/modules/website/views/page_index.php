@@ -1,7 +1,7 @@
 <?php if(isset($video) && $video){ ?>
 	<div class="video_division">
 		<video height="100%"  controls autoplay loop>
-		  <source src="<?php echo site_url().$video->video_location ?>" type="video/mp4">
+		  <source src="<?php echo getenv('UPLOAD_ROOT').$video->video_location ?>" type="video/mp4">
 		</video>
 	</div>
 	<div id="video_label" class="noselect">
@@ -12,8 +12,18 @@
 		</div>
 	</div>
 <?php } else{ ?>
+
 			<?php $this->template->add_js(module_js('website', 'slider_index'), 'embed'); ?>
 			<?php echo $this->load->view('website/slider_index'); ?>
+
+			<div id="video_label" class="noselect">
+				<div class="<?php echo $video_details->video_text_pos; ?>">
+					<h1><?php echo $video_details->video_title; ?></h1>
+					<p><?php echo $video_details->video_caption; ?></p>
+					<a href="<?php echo $video_details->video_link; ?>" class="default-button"><?php echo $video_details->video_button_text; ?></a>
+				</div>
+			</div>
+
 <?php } ?>
 
 
@@ -49,7 +59,7 @@
 						<a href="<?php echo site_url('').'estates/'.$val->estate_slug; ?>">
 						<div class="image_wrapper">
 							<div class="image_container">
-								<img src="<?php echo site_url().$val->estate_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" />
+								<img src="<?php echo getenv('UPLOAD_ROOT').$val->estate_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" />
 							</div>
 							<div class="estate"><center><?php echo $val->estate_name; ?></center></div>
 						</div>
@@ -83,7 +93,7 @@
 					<div class="carousel-inner">
 					<?php foreach ($carousel as $key => $value) { ?>
 					<div class="carousel-item">
-					  <img class="carousel-indicator_button" data-target="#carousel" data-slide-to="<?php echo $key; ?>" src="<?php echo site_url().$value->image_slider_image; ?>"  width="100" height="100" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>" />
+					  <img class="carousel-indicator_button" data-target="#carousel" data-slide-to="<?php echo $key; ?>" src="<?php echo getenv('UPLOAD_ROOT').$value->image_slider_image; ?>"  width="100" height="100" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>" />
 					</div>
 					<?php } ?>	
 					</div>
@@ -119,7 +129,7 @@
 					<div class="image_wrapper">
 						<div class="property"><?php echo $val->property_name; ?></div>
 						<div class="image_container">
-							<img src="<?php echo site_url().$val->property_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
+							<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
 						</div>
 						<div class="estate"><?php echo $val->estate_name; ?></div>
 					</div>
@@ -137,7 +147,7 @@
 					<div class="image_wrapper">
 						<div class="property"><?php echo $val->property_name; ?></div>
 						<div class="image_container">
-							<img src="<?php echo site_url().$val->property_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
+							<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
 						</div>
 						<div class="estate"><?php echo $val->estate_name; ?></div>
 					</div>

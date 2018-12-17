@@ -32,12 +32,16 @@ function searchEstate(id){
 				html = '<div class="estates properties col-sm-4">'+
 				'<a href="' + site_url + '"estates/property/"' + value.property_slug + '">'+
 				'<div class="image_wrapper">'+
-				'<div class="property"><p>' + value.property_name + '</p></div>'+
 				'<div class="image_container">'+
-				'<img src="' + site_url +  value.property_image + '" width="100%" alt="" draggable="false"/>'+
+				'<img src="' + upload_url +  value.property_image + '" width="100%" alt="" draggable="false"/>'+
 				'</div>'+
-				'<div class="estate">' + value.estate_name + '</div>'+
-				'</div></a></div>';
+				'</div>'+
+				'<div class="property_content_wrapper">'+
+				'<div class="property_title">'+ value.property_name +'</div>'+
+				'<div class="estate_title_dup">'+ value.estate_name +'</div>'+
+				'<div class="estate_content">'+ value.estate_text +'</div>'+
+				'</div>'+
+				'</a></div>';
 
 				$('.properties_of_estate').append(html);
 			});

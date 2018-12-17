@@ -49,7 +49,7 @@ $this->load->model('properties/properties_model');
 		</button>
 
 		<div class="oclogo_mobile">
-			<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo base_url(); ?>data/images/ortigaslogo.png"></a>
+			<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png"></a>
 		</div>
 
 
@@ -59,7 +59,7 @@ $this->load->model('properties/properties_model');
 				
 		<div class="main_menu collapse navbar-collapse" id="main_navbar">
 			<div class="oclogo">
-				<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo base_url(); ?>data/images/ortigaslogo.png"></a>
+				<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png"></a>
 			</div>
 			<ul class="navbar-nav mr-auto">
 
@@ -168,7 +168,7 @@ $this->load->model('properties/properties_model');
 		<div class="footer_content container">
 			<div class="row">
 				<div class="col-sm-4 address">
-					<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo base_url(); ?>data/photos/ortigaslogo_white.png"></a>
+					<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png"></a>
 
 					<?php $footer = $this->partials_model->find(1); if($footer) { echo parse_content($footer->partial_content); } ?>
 				</div>
@@ -192,6 +192,50 @@ $this->load->model('properties/properties_model');
 			</div>
 		</div>
 	</div>
+
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+		<div class="modal-dialog modal" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalLabel"><?php echo lang('loading')?></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="text-center">
+						<img src="<?php echo site_url('ui/images/loading3.gif')?>" alt="<?php echo lang('loading')?>" />
+						<p><?php echo lang('loading')?></p>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade bd-example-modal-lg" id="modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title"><?php echo lang('loading')?></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="text-center">
+						<img src="<?php echo site_url('ui/images/loading3.gif')?>" alt="<?php echo lang('loading')?>" />
+						<p><?php echo lang('loading')?></p>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 
 	<script>
@@ -206,6 +250,7 @@ $this->load->model('properties/properties_model');
 	<script src="<?php echo site_url('npm/jquery.cookie/jquery.cookie.js'); ?>"></script>
 	<script src="<?php echo site_url('npm/alertify/lib/alertify.min.js'); ?>"></script>
 	
+	<script src="<?php echo site_url('themes/default/js/scripts.js'); ?>"></script>
 	<script src="<?php echo site_url('themes/default/js/scripts.min.js'); ?>"></script>
 	<script src="<?php echo site_url('themes/default/js/template_custom.js'); ?>"></script>
 

@@ -27,6 +27,7 @@ function transparent_nav(){
 function set_video_height(){
 	var height = $(window).height();
 	$('.video_division').css('height', height);
+	$('#slider img').css('height', height);
 
 	// var vertical_center = height / 2;
 

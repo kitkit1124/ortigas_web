@@ -152,12 +152,7 @@ class Properties extends MX_Controller {
 
 	public function view($params)
 	{
-				
-		// page title
-		$data['page_heading'] = lang('index_heading');
-		$data['page_subhead'] = lang('index_subhead');
-		$data['page_layout'] = 'full_width';
-		
+						
 		// breadcrumbs
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
 		$this->breadcrumbs->push(lang('crumb_module'), site_url('estates'));
@@ -171,6 +166,13 @@ class Properties extends MX_Controller {
 		$properties = $this->properties_model->get_properties($fields);
 			
 			if($properties){
+
+				// page title
+				$data['page_heading'] =  $properties[0]->property_name;
+				$data['page_subhead'] = lang('index_subhead');
+				$data['page_layout'] = 'full_width';
+
+
 				$id = $properties[0]->property_id;
 				
 				$data['properties'] = $properties[0];
@@ -297,6 +299,18 @@ class Properties extends MX_Controller {
 		$floor_id = $_GET['floor_id'];
 		$units = $this->units_model->find_all_by('unit_floor_id',$floor_id);	
 		echo json_encode($units); exit;
+	}
+
+	public function floorplan_image(){
+
+		// page title
+		$data['page_heading'] = '';
+		$data['page_subhead'] = '';
+		$data['action'] = '';
+
+		$this->template->set_template('modal');
+		$this->template->write_view('content', 'specific_properties/floorplan_image', $data);
+		$this->template->render();
 	}
 
 

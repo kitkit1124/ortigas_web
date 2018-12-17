@@ -13,3 +13,10 @@ $template['default']['regions'] = array('head', 'styles', 'header', 'content', '
 $template['default']['parser'] = 'parser';
 $template['default']['parser_method'] = 'parse';
 $template['default']['parse_template'] = FALSE;
+
+// modal
+$template['modal']['template'] = 'default/modal';
+$template['modal']['regions'] = array('styles', 'content', 'scripts');
+$template['modal']['parser'] = 'parser';
+$template['modal']['parser_method'] = 'parse';
+$template['modal']['parse_template'] = FALSE;

@@ -54,10 +54,7 @@ class Categories extends MX_Controller {
 
 	public function view($params)
 	{
-		// page title
-		$data['page_heading'] = lang('index_heading');
-		$data['page_subhead'] = lang('index_subhead');
-		$data['page_layout'] = 'full_width';
+		
 		
 
 		$category = $this->categories_model->get_active_categories();
@@ -85,6 +82,12 @@ class Categories extends MX_Controller {
 		if($params){
 		
 		$category = $this->categories_model->find_by('category_name', $params);
+
+		// page title
+		$data['page_heading'] = $category->category_name;
+		$data['page_subhead'] = lang('index_subhead');
+		$data['page_layout'] = 'full_width';
+
 
 		$data['button_text'] = $this->partials_model->find(3); 
 

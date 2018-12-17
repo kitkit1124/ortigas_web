@@ -109,6 +109,9 @@ class Page extends CI_Controller
 		$data['is_home'] = TRUE;
 
 		$data['video'] = $this->video_uploads_model->where('video_status','Active')->find(1);
+
+		$data['video_details'] = $this->video_uploads_model->find(1);
+
 		$data['sliders'] = $this->banners_model->get_banners(1);
 
 		$data['page_estates'] = $this->pages_model->find_by('page_uri','estates');
@@ -289,7 +292,8 @@ class Page extends CI_Controller
 			$data['news_result'] = $news;
 		}
 
-		if($page->page_uri == 'about-us'){
+		//if($page->page_uri == 'about-us'){
+		if($page->page_id == 7){
 
 			$data['projects'] = $this->pages_model->find_by('page_uri','projects');
 
@@ -300,13 +304,14 @@ class Page extends CI_Controller
 			$this->template->add_js(module_js('website', 'page_view/about_us'), 'embed');
 		}
 
-
-		if($page->page_uri == 'established-communities'){
+		//if($page->page_uri == 'established-communities'){
+		if($page->page_id == 8){
 			$this->template->add_css(module_css('website', 'page_view/established_communites'), 'embed');
 			$this->template->add_js(module_js('website', 'page_view/about_us'), 'embed');
 		}
 
-		if($page->page_uri == 'supplier-and-contractor-accreditation'){
+		//if($page->page_uri == 'supplier-and-contractor-accreditation'){
+		if($page->page_id == 10){
 			$this->template->add_css(module_css('website', 'page_view/established_communites'), 'embed');
 		}
 

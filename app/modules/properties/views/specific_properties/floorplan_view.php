@@ -15,7 +15,11 @@
 		</div>
 		
 		<div id="unit-img" >
-			<center><img id="floorplan_image" data-toggle="modal" data-target="#enlarge_image" src="<?php echo base_url(); ?>data/images/building-floorplan.png"></center>
+			<center>
+				<a class="" href="<?php echo site_url('properties/properties/floorplan_image')?>" data-target="#modal-lg" data-toggle="modal">
+					<img id="floorplan_image" src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/building-floorplan.png">
+				</a>
+			</center>
 		</div>
 		<div id="unit-reserve">
 			<table>
@@ -27,14 +31,5 @@
 		<div style="clear: both;"></div>
 	</div>
 </div><!--building-floorplan-->
-
-	<!-- The Modal -->
-	<div class="modal fade" id="enlarge_image">
-	<div class="modal-dialog modal-dialog-centered">
-	  <div class="modal-content">
-	  		<img id="floorplan_image" src="<?php echo base_url(); ?>data/images/building-floorplan.png" draggable="false"/>
-	  </div>
-	</div>
-</div>
 <?php } ?>	
 

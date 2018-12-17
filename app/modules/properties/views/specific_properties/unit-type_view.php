@@ -12,17 +12,17 @@
 	<div class="tab-content">
 		<?php foreach ($room_types as $key => $value) { ?>
 		<div id="room-menu<?php echo $key; ?>" class="tab-pane fade">
-			<img src="<?php echo site_url().$value->room_type_image; ?>" alt="<?php echo $value->room_type_alt_image; ?>" title="<?php echo $value->room_type_alt_image; ?>" />
+			<img src="<?php echo getenv('UPLOAD_ROOT').$value->room_type_image; ?>" alt="<?php echo $value->room_type_alt_image; ?>" title="<?php echo $value->room_type_alt_image; ?>" />
     	</div>
     	
     	<?php } ?>
     	<p id="range_size">&nbsp;</p>
-    	<a id="check_available_button" data-action="check"><?php echo lang('button_check_available'); ?></a>
+    	<a id="check_available_button" class="hide" data-action="check"><?php echo lang('button_check_available'); ?></a>
 	</div>
 </div><!--unit-floorplan-->
  <?php } ?>	
 
- <div class="unit-reservation-heading">
+ <div class="unit-reservation-heading hide">
 	 <div class="row">
 	 	<div class="col-sm-7">
 			<p>Unit Availability</p>

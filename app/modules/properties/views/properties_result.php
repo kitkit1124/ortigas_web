@@ -16,7 +16,7 @@
 			<div class="image_wrapper">
 				<div class="property <?php echo $display; ?>"><?php echo $val->property_name; ?></div>
 				<div class="image_container">
-					<img src="<?php echo config_item('website_url').$val->$image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>"/>
+					<img src="<?php echo getenv('UPLOAD_ROOT').$val->$image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>"/>
 				</div>
 				<div class="estate <?php echo $display; ?>"><?php echo $val->estate_name; ?></div>
 			</div>
@@ -44,7 +44,7 @@
 			<div class="image_wrapper">
 				<div class="property <?php echo $display; ?>"><?php echo $val->property_name; ?></div>
 				<div class="image_container">
-					<img src="<?php echo config_item('website_url').$val->$image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>"/>
+					<img src="<?php echo getenv('UPLOAD_ROOT').$val->$image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>"/>
 				</div>
 				<div class="estate <?php echo $display; ?>"><?php echo $val->estate_name; ?></div>
 			</div>
@@ -71,7 +71,7 @@
 			<div class="image_wrapper">
 				<div class="property <?php echo $display; ?>"><?php echo $val->property_name; ?></div>
 				<div class="image_container">
-					<img src="<?php echo config_item('website_url').$val->$image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>"/>
+					<img src="<?php echo getenv('UPLOAD_ROOT').$val->$image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>"/>
 				</div>
 				<div class="estate <?php echo $display; ?>"><?php echo $val->estate_name; ?></div>
 			</div>
