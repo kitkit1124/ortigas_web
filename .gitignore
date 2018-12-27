@@ -20,4 +20,4 @@ pub/npm/*
 vendor/*
 .vs
 .vscode
-!.env
+.env
