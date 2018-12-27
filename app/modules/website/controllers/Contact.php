@@ -162,7 +162,7 @@ class Contact extends MX_Controller
 
 
 	public function get_projects(){
-		if (!$this->input->is_ajax_request()) {	show_404();	}
+		if (!$this->input->is_ajax_request()) {	redirect(base_url().'search');	}
 		
 		$message_section = $_POST['message_section'];
 		if($message_section == 'Estates'){

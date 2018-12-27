@@ -1,6 +1,10 @@
 <section id="roles">
-		<?php echo $this->load->view('website/slider_index'); ?>
-		<?php $this->template->add_js(module_js('website', 'slider_index'), 'embed'); ?>
+	<?php if($career){ ?>
+	<div id="banner_image">
+		<img src="<?php echo config_item('website_url').$career->career_image; ?>" draggable="false" alt="<?php echo $career->career_alt_image; ?>" title="<?php echo $career->career_alt_image; ?>" />	
+		<h1><?php echo $career->career_position_title; ?></h1>			
+	</div>
+	<?php } ?>
 	<main role="main" class="container">
 		<div class="content">	
 			<?php echo $this->load->view('careers/careers_landing'); ?>

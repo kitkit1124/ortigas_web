@@ -5,10 +5,24 @@
 }
 
 .footer_content{
-	padding: 10px 15px 0px 15px;
 	color: #FFF;
 }
 
+.footer_border{
+    display: none;
+    width: 100%;
+    border-bottom: 2px solid #84bc9f;
+}
+
+#footer a{
+    color: #FFF;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+#footer .link a{
+    font-size: .8rem;
+}
 
 .footer_content .address p{
 	padding: 0;
@@ -40,6 +54,7 @@
 	padding: 10px 0;
 	font-size: 14px;
 	opacity: .8;
+	font-size: .7rem;
 }
 
 .footer_content .link li a{

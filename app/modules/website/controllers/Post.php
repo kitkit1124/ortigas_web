@@ -53,7 +53,7 @@ class Post extends CI_Controller
 		// 	$this->output->cache(5);
 		// }
 
-		if (! $slug) show_404();
+		if (! $slug) redirect(base_url().'search');
 
 		// get the post info
 		$post = $this->posts_model
@@ -62,7 +62,7 @@ class Post extends CI_Controller
 
 		$data['post'] = $post;
 
-		if (! $post) show_404();
+		if (! $post) redirect(base_url().'search');
 
 		// page title
 		$data['page_heading'] = $post->post_title;

@@ -80,82 +80,89 @@ class Categories extends MX_Controller {
 
 
 		if($params){
-		
-		$category = $this->categories_model->find_by('category_name', $params);
+			
+			$category = $this->categories_model->find_by('category_name', $params);
 
-		// page title
-		$data['page_heading'] = $category->category_name;
-		$data['page_subhead'] = lang('index_subhead');
-		$data['page_layout'] = 'full_width';
+			if($category){
 
-
-		$data['button_text'] = $this->partials_model->find(3); 
-
-		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
-
-		$fields = ['limit' => 4];
-		$news = $this->posts_model->get_active_news($fields);
-
-		if($news){
-			foreach ($news as $key => $result) {
-				$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
-			}
-
-			$data['news_result'] = $news;
-		}
+				// page title
+				$data['page_heading'] = $category->category_name;
+				$data['page_subhead'] = lang('index_subhead');
+				$data['page_layout'] = 'full_width';
 
 
-		$page_description = $this->metatags_model->clean_page_description($category->category_description);
+				$data['button_text'] = $this->partials_model->find(3); 
 
-        $metafields = [
-        	'metatag_title'					=> config_item('website_name') . ' | ' . $category->category_name,
-        	'metatag_description'			=> $page_description,
-        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-        	'metatag_author'				=> config_item('website_name'),
-        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $category->category_name,
-        	'metatag_og_image'				=> isset($category->category_image) ? $category->category_image : '',
-        	'metatag_og_url'				=> current_url(),
-        	'metatag_og_description'		=> $page_description,
-        	'metatag_twitter_card'			=> 'photo',
-        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $category->category_name,
-        	'metatag_twitter_image'			=> isset($category->category_image) ? $category->category_image : '',
-        	'metatag_twitter_url'			=> current_url(),
-        	'metatag_twitter_description'	=> $page_description,
-        ];
+				$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
 
-        $metatags = $this->metatags_model->get_metatags($metafields);
+				$fields = ['limit' => 4];
+				$news = $this->posts_model->get_active_news($fields);
 
-		$locations = $this->locations_model->get_active_locations();
-		$locations[''] = "VIEW ALL ".strtoupper($params);
-		$data['select_locations'] = $locations;
+				if($news){
+					foreach ($news as $key => $result) {
+						$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+					}
+
+					$data['news_result'] = $news;
+				}
 
 
-		$fields = [ 'category_name' => $params ];
-		$properties = $this->properties_model->get_properties($fields);
-		
-			if($properties){
-				$data['properties'] = $properties;
-				$data['category'] = $properties[0];
-			}
-			else{
-				show_404();
-			}
+				$page_description = $this->metatags_model->clean_page_description($category->category_description);
 
-		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $properties[0]->category_id, 'related_link_section_type' => 'categories'));
+		        $metafields = [
+		        	'metatag_title'					=> config_item('website_name') . ' | ' . $category->category_name,
+		        	'metatag_description'			=> $page_description,
+		        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+		        	'metatag_author'				=> config_item('website_name'),
+		        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $category->category_name,
+		        	'metatag_og_image'				=> isset($category->category_image) ? $category->category_image : '',
+		        	'metatag_og_url'				=> current_url(),
+		        	'metatag_og_description'		=> $page_description,
+		        	'metatag_twitter_card'			=> 'photo',
+		        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $category->category_name,
+		        	'metatag_twitter_image'			=> isset($category->category_image) ? $category->category_image : '',
+		        	'metatag_twitter_url'			=> current_url(),
+		        	'metatag_twitter_description'	=> $page_description,
+		        ];
 
-		$data['section_id'] = $category->category_id;
-		$data['section'] = $category->category_name;
+		        $metatags = $this->metatags_model->get_metatags($metafields);
+
+				$locations = $this->locations_model->get_active_locations();
+				$locations[''] = "VIEW ALL ".strtoupper($params);
+				$data['select_locations'] = $locations;
 
 
-		}
+				$fields = [ 'category_name' => $params ];
+				$properties = $this->properties_model->get_properties($fields);
 				
-		// render the page
-		$this->template->write('head', $metatags);
-		$this->template->add_css(module_css('properties', 'property_style'), 'embed');
-		$this->template->add_css(module_css('properties', 'categories_view'), 'embed');
-		$this->template->add_js(module_js('properties', 'estates_index'), 'embed');
-		$this->template->write_view('content', 'categories_view', $data);
-		$this->template->render();
+					if($properties){
+						$data['properties'] = $properties;
+						$data['category'] = $properties[0];
+					}
+					else{
+						redirect(base_url().'search');
+					}
+
+				$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $properties[0]->category_id, 'related_link_section_type' => 'categories'));
+
+				$data['section_id'] = $category->category_id;
+				$data['section'] = $category->category_name;
+
+
+				}
+					
+			// render the page
+			$this->template->write('head', $metatags);
+			$this->template->add_css(module_css('properties', 'property_style'), 'embed');
+			$this->template->add_css(module_css('properties', 'categories_view'), 'embed');
+			$this->template->add_js(module_js('properties', 'estates_index'), 'embed');
+			$this->template->write_view('content', 'categories_view', $data);
+			$this->template->render();
+
+		}
+		else{
+			redirect(base_url().'search');
+		}
 	}
 
 	// --------------------------------------------------------------------

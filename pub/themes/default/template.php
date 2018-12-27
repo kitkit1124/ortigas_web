@@ -14,7 +14,7 @@ $this->load->model('properties/properties_model');
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<?php echo $head; ?>
 
-	<title><?php echo config_item('website_name'); ?> | <?php echo $page_heading; ?></title>
+	<title><?php echo $page_heading; ?> | <?php echo config_item('website_name'); ?></title>
 
 	<!-- bootstrap & fontawesome -->
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url('npm/bootstrap/css/bootstrap.min.css'); ?>">
@@ -25,7 +25,7 @@ $this->load->model('properties/properties_model');
 	
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url('themes/default/css/styles.min.css'); ?>">
-	<link rel="shortcut icon" type="text/css" href="<?php echo site_url('themes/default/img/favicon.png'); ?>">
+	<link rel="shortcut icon" type="text/css" href="<?php echo site_url('themes/default/img/favicon.ico'); ?>">
 
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url('themes/default/css/custom/navigation_styles.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url('themes/default/css/custom/custom_general_styles.css'); ?>">

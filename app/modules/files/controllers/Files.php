@@ -41,7 +41,7 @@ class Files extends MX_Controller
 	 */
 	public function index()
 	{
-		show_404();
+		redirect(base_url().'search');
 	}
 
 	// --------------------------------------------------------------------

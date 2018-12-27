@@ -186,10 +186,10 @@ class Properties extends MX_Controller {
 					)
 				);
 				
-				$data['room_types'] = $this->room_types_model->find_all_by('room_type_property_id', $id);	
+				$data['room_types'] = $this->room_types_model->where('room_type_deleted',0)->where('room_type_status','Active')->find_all_by('room_type_property_id', $id);	
 				
-				$data['floors'] = $this->floors_model->get_floors_dropdown($id);		
-
+				$data['floors'] = $this->floors_model->get_floors_dropdown($id);
+		
 				$fields = [ 'rand' => true, 'limit'	=> 2, 'estate_id' => $properties[0]->property_estate_id,'wo_property_id' => $id];
 
 				$data['other_residences'] = $this->properties_model->get_properties($fields);
@@ -249,7 +249,7 @@ class Properties extends MX_Controller {
 
 			}
 			else{
-				show_404();
+				redirect(base_url().'search');
 			}
 
 		}

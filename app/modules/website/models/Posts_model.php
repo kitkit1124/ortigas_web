@@ -69,6 +69,7 @@ class Posts_model extends BF_Model
 			$this->limit($fields['limit']);
 		}
 		$result = $this
+					->order_by('post_posted_on','DESC')
 					->where('post_deleted',0)
 					->where('post_status', 'Posted')
 					->find_all();

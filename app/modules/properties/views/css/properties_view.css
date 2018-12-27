@@ -258,11 +258,17 @@ h1, p, span, a {
 .news_sidebar{ padding-left: 50px; }
 
 .stick_side label{
-	font-size: .8rem !important;
+	font-size: .7rem !important;
+	padding: 0;
+	margin: 0;
+}
+.inquiry_form{
+	padding-bottom: 0px !important;
 }
 
 .stick_side .related_properties_result{
 	margin-top: 0 !important;
+	margin: 0 20px;	
 }
 
 .stick_side .inquiry_border_bottom{
@@ -449,6 +455,7 @@ h1, p, span, a {
 	text-transform: capitalize;
 }
 .amenities h1{
+	text-align: left;
 	color: #07793f;
 }
 .amenities i{

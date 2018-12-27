@@ -96,7 +96,7 @@ class Page extends CI_Controller
 		}
 		else
 		{
-			show_404();
+			redirect(base_url().'search');
 			// redirect('notfound', 'refresh');
 		}
 		
@@ -236,7 +236,7 @@ class Page extends CI_Controller
 		}
 		else
 		{
-			show_404();
+			redirect(base_url().'search');
 			// redirect('notfound', 'refresh');
 		}
 

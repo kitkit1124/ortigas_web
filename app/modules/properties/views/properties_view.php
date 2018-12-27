@@ -20,9 +20,9 @@
 						}
 					
 						if($value->setting_division == 'Amenities'){
-							if($properties->category_id==1) :
+							// if($properties->category_id==1) :
 								echo $this->load->view('properties/specific_properties/properties_amenities');
-							endif;
+							// endif;
 						}				
 
 						if($value->setting_division == 'Slider'){
@@ -33,14 +33,14 @@
 							echo $this->load->view('properties/specific_properties/location_view');
 						}
 						if($value->setting_division == 'Building Floorplan'){
-							if($properties->category_id==1) :
+							// if($properties->category_id==1) :
 								echo $this->load->view('properties/specific_properties/floorplan_view');
-							endif;
+							// endif;
 						}
 						if($value->setting_division == 'Unit Floorplan'){
-							if($properties->category_id==1) :
+							// if($properties->category_id==1) :
 								echo $this->load->view('properties/specific_properties/unit-type_view');
-							endif;
+							// endif;
 						}
 						if($value->setting_division == 'Construction Update'){
 							if($properties->category_id==1) :

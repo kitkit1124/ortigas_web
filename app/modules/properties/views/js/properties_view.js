@@ -3,45 +3,40 @@ $(function() {
 
     $(window).scroll(function() {
 
-        if($(window).width() > 1024) {
+        if($(window).width() > 1024 && $(window).height() > $(".stick_side").height() + 90) {
+            var footer_section = $('#footer').height() + $(".stick_side").height();
+            var footer_position =  $('#footer').offset().top - footer_section;
+
             if($(window).scrollTop() > 440) {
                
-                    $(".stick_side").css({
-                        "position":"fixed",
-                        "top":"100px",
-                        "-ms-flex":"0 0 15%",
-                        "flex":"0 0 15%",
-                        "max-width":"315px"
-                    });
+                $(".stick_side").css({
+                    "position":"sticky",
+                    "top":"100px",
+                    "-ms-flex":"0 0 15%",
+                    "flex":"0 0 15%",
+                    "max-width":"315px"
+                });
                
             }
+
+            else if($(window).scrollTop() > footer_position) {
+               
+                $(".stick_side").css({
+                    "position":"absolute",
+                    "bottom": $('#footer').height() +'px',
+
+                });  
+            }
+
             else{
                  $(".stick_side").css({
-                    "position":"unset",
+                    "position":"sticky",
                     "top":"unset",
                     "-ms-flex":"unset",
                     "flex":"unset",
                     "max-width":"unset"
                 });
             }
-
-            var footer_section = $('#footer').offset().top - 1000;
-
-            if($(window).scrollTop() > footer_section) {
-                $(".related_properties_result").hide();
-                $(".stick_side").css({"top":"80px"});
-                $(".inquiry_border_bottom").css({"height":"0"});
-                $(".inquiry_form").css({"padding-bottom":"0"});
-                
-                
-            }
-            else{
-                $(".related_properties_result").show();
-                $(".stick_side").css({"top":"80px"});
-                $(".inquiry_border_bottom").css({"height":"3px"});
-                $(".inquiry_form").css({"padding-bottom":"20px"});
-            }
-
         }
     });
 

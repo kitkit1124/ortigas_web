@@ -56,7 +56,7 @@
 }
 
 .navbar-nav{
-	margin-left: 90px;
+	margin-left: 40px;
 	margin-right: 20px !important;
 	text-transform: uppercase;
 }
@@ -77,7 +77,8 @@
 }
 
 .main_menu {
-	max-width: 1180px;
+	max-width: 1140px;
+  padding: 0 20px;
 	margin: auto;
 }
 .main_menu li:hover .sub_menu_estates{
@@ -102,7 +103,7 @@
 }
 
 a.nav-link.base_nav.nav_estates{
-	 padding: 39px 25px;
+	 padding: 39px 15px;
 	 font-size: .9rem;
 }
 .base_nav_active, .base_nav:focus, .base_nav:hover {

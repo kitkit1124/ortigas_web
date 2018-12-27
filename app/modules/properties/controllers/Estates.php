@@ -78,7 +78,7 @@ class Estates extends MX_Controller {
 
 		}
 		else{
-			show_404();
+			redirect(base_url().'search');
 		}
 
 		$page_description = $this->metatags_model->clean_page_description($category->page_content);
@@ -164,7 +164,7 @@ class Estates extends MX_Controller {
 			$data['estates'] = $estates[0];
 		}
 		else{
-			show_404();
+			redirect(base_url().'search');
 			exit();
 		}
 
