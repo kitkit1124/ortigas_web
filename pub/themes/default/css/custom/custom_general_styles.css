@@ -52,20 +52,26 @@ select option{
         word-wrap: break-word;
 }
 
+/*@font-face {
+    font-family: Helvetica;
+    src: url('../../../../data/fonts/Helvetica/Helvetica.ttf');
+}
+
+
 @font-face {
     font-family: Didot;
-    src: url('../../../../data/fonts/DidotLTStd-Roman.otf');
+    src: url('../../../../data/fonts/Didot/DidotLTStd-Roman.otf');
 }
 
 @font-face {
     font-family: Gotham-Book;
-    src: url('../../../../data/fonts/Gotham-Book.otf');
+    src: url('../../../../data/fonts/Gotham/Gotham-Book.otf');
 }
 
 @font-face {
     font-family: Gotham-Medium;
-    src: url('../../../../data/fonts/Gotham-Medium.otf');
-}
+    src: url('../../../../data/fonts/Gotham/Gotham-Medium.otf');
+}*/
 
 
 img{
@@ -486,6 +492,8 @@ a.inquiry_button {
     color: #FFF;
     cursor: pointer;
 }
+
+.sidebar_property_result{display: none;}
 
 @media(max-width: 1440px) {
     .social_media_properties a{

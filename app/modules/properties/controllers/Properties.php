@@ -76,23 +76,28 @@ class Properties extends MX_Controller {
 
 		$page_description = $this->metatags_model->clean_page_description($projects->page_content);
 
-        $metafields = [
-        	'metatag_title'					=> config_item('website_name') . ' | ' . $projects->page_title,
-        	'metatag_description'			=> $page_description,
-        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-        	'metatag_author'				=> config_item('website_name'),
-        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $projects->page_title,
-        	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-        	'metatag_og_url'				=> current_url(),
-        	'metatag_og_description'		=> $page_description,
-        	'metatag_twitter_card'			=> 'photo',
-        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $projects->page_title,
-        	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-        	'metatag_twitter_url'			=> current_url(),
-        	'metatag_twitter_description'	=> $page_description,
-        ];
+        // $metafields = [
+        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $projects->page_title,
+        // 	'metatag_description'			=> $page_description,
+        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+        // 	'metatag_author'				=> config_item('website_name'),
+        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $projects->page_title,
+        // 	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        // 	'metatag_og_url'				=> current_url(),
+        // 	'metatag_og_description'		=> $page_description,
+        // 	'metatag_twitter_card'			=> 'photo',
+        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $projects->page_title,
+        // 	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        // 	'metatag_twitter_url'			=> current_url(),
+        // 	'metatag_twitter_description'	=> $page_description,
+        // ];
 
-        $metatags = $this->metatags_model->get_metatags($metafields);
+        // $metatags = $this->metatags_model->get_metatags($metafields);
+
+        $metatags = "";
+        if(isset($projects->page_metatag_id) && $projects->page_metatag_id){
+        	$metatags = $this->metatags_model->get_metatags($projects->page_metatag_id);
+        }
 
 		$dev_types = $this->property_types_model->get_active_property_types();
 	  	$dev_types[''] = "ALL";
@@ -190,7 +195,7 @@ class Properties extends MX_Controller {
 				
 				$data['floors'] = $this->floors_model->get_floors_dropdown($id);
 		
-				$fields = [ 'rand' => true, 'limit'	=> 2, 'estate_id' => $properties[0]->property_estate_id,'wo_property_id' => $id];
+				$fields = [ 'rand' => true, 'limit'	=> 2, 'estate_id' => $properties[0]->property_estate_id,'wo_property_id' => $id, 'category_id' => 1];
 
 				$data['other_residences'] = $this->properties_model->get_properties($fields);
 
@@ -223,23 +228,26 @@ class Properties extends MX_Controller {
 
 				$page_description = $this->metatags_model->clean_page_description($properties[0]->property_overview);
 
-		        $metafields = [
-		        	'metatag_title'					=> config_item('website_name') . ' | ' . $properties[0]->property_name,
-		        	'metatag_description'			=> $page_description,
-		        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-		        	'metatag_author'				=> config_item('website_name'),
-		        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $properties[0]->property_name,
-		        	'metatag_og_image'				=> isset($properties[0]->property_image) ? $properties[0]->property_image : '',
-		        	'metatag_og_url'				=> current_url(),
-		        	'metatag_og_description'		=> $page_description,
-		        	'metatag_twitter_card'			=> 'photo',
-		        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $properties[0]->property_name,
-		        	'metatag_twitter_image'			=> isset($properties[0]->property_image) ? $properties[0]->property_image : '',
-		        	'metatag_twitter_url'			=> current_url(),
-		        	'metatag_twitter_description'	=> $page_description,
-		        ];
+		        // $metafields = [
+		        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $properties[0]->property_name,
+		        // 	'metatag_description'			=> $page_description,
+		        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+		        // 	'metatag_author'				=> config_item('website_name'),
+		        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $properties[0]->property_name,
+		        // 	'metatag_og_image'				=> isset($properties[0]->property_image) ? $properties[0]->property_image : '',
+		        // 	'metatag_og_url'				=> current_url(),
+		        // 	'metatag_og_description'		=> $page_description,
+		        // 	'metatag_twitter_card'			=> 'photo',
+		        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $properties[0]->property_name,
+		        // 	'metatag_twitter_image'			=> isset($properties[0]->property_image) ? $properties[0]->property_image : '',
+		        // 	'metatag_twitter_url'			=> current_url(),
+		        // 	'metatag_twitter_description'	=> $page_description,
+		        // ];
 
-		        $metatags = $this->metatags_model->get_metatags($metafields);
+		        // $metatags = $this->metatags_model->get_metatags($metafields);
+
+	        	$metatags = $this->metatags_model->get_metatags($properties[0]->property_metatag_id);
+	      
 
 
 				$data['section_id'] = $id;

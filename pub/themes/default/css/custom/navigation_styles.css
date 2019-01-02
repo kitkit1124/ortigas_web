@@ -106,10 +106,24 @@ a.nav-link.base_nav.nav_estates{
 	 padding: 39px 15px;
 	 font-size: .9rem;
 }
+
 .base_nav_active, .base_nav:focus, .base_nav:hover {
+/*  background-color: #07793f; 
+  color: #fff !important;*/
+}
+.navbar-nav li.base_nav_li{
+  cursor: pointer;
+}
+.navbar-nav li.base_nav_li:hover, .navbar-nav li.base_nav_li:hover .base_nav{
   background-color: #07793f; 
   color: #fff !important;
 }
+
+.navbar-nav li.base_nav_li:last-child, .navbar-nav li.base_nav_li:last-child a{
+  background-color: #07793f; 
+  color: #fff !important;
+}
+
 
 .sub_menu_estates ul{
 	background-color:rgba(255,255,255,1);

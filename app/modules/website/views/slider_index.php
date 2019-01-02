@@ -17,7 +17,7 @@
 <div class="carousel-inner">
 <?php foreach ($sliders as $key => $value) { ?>
 <div class="carousel-item">
-  <img src="<?php echo getenv('UPLOAD_ROOT').$value->banner_image; ?>" width="100%" alt="<?php echo $value->banner_alt_image; ?>" title="<?php echo $value->banner_alt_image; ?>" />
+  <img src="<?php echo getenv('UPLOAD_ROOT').$value->banner_image; ?>" alt="<?php echo $value->banner_alt_image; ?>" title="<?php echo $value->banner_alt_image; ?>" />
 </div>
 <?php } ?>	
 </div>

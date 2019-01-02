@@ -109,23 +109,27 @@ class Categories extends MX_Controller {
 
 				$page_description = $this->metatags_model->clean_page_description($category->category_description);
 
-		        $metafields = [
-		        	'metatag_title'					=> config_item('website_name') . ' | ' . $category->category_name,
-		        	'metatag_description'			=> $page_description,
-		        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-		        	'metatag_author'				=> config_item('website_name'),
-		        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $category->category_name,
-		        	'metatag_og_image'				=> isset($category->category_image) ? $category->category_image : '',
-		        	'metatag_og_url'				=> current_url(),
-		        	'metatag_og_description'		=> $page_description,
-		        	'metatag_twitter_card'			=> 'photo',
-		        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $category->category_name,
-		        	'metatag_twitter_image'			=> isset($category->category_image) ? $category->category_image : '',
-		        	'metatag_twitter_url'			=> current_url(),
-		        	'metatag_twitter_description'	=> $page_description,
-		        ];
+		        // $metafields = [
+		        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $category->category_name,
+		        // 	'metatag_description'			=> $page_description,
+		        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+		        // 	'metatag_author'				=> config_item('website_name'),
+		        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $category->category_name,
+		        // 	'metatag_og_image'				=> isset($category->category_image) ? $category->category_image : '',
+		        // 	'metatag_og_url'				=> current_url(),
+		        // 	'metatag_og_description'		=> $page_description,
+		        // 	'metatag_twitter_card'			=> 'photo',
+		        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $category->category_name,
+		        // 	'metatag_twitter_image'			=> isset($category->category_image) ? $category->category_image : '',
+		        // 	'metatag_twitter_url'			=> current_url(),
+		        // 	'metatag_twitter_description'	=> $page_description,
+		        // ];
 
-		        $metatags = $this->metatags_model->get_metatags($metafields);
+		        // $metatags = $this->metatags_model->get_metatags($metafields);
+
+		       
+        		$metatags = $this->metatags_model->get_metatags($category->category_metatag_id);
+        		
 
 				$locations = $this->locations_model->get_active_locations();
 				$locations[''] = "VIEW ALL ".strtoupper($params);

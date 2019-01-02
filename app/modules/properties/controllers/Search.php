@@ -143,7 +143,7 @@ class Search extends MX_Controller {
 	}
 
 
-	public function global()
+	public function sglobal()
 	{
 
 				// page title

@@ -7,23 +7,23 @@
 
 	<div class="social_media_properties">
 		<?php if($properties->property_facebook){  ?>
-		<a href="<?php echo $properties->property_facebook; ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+		<a target="_blank" href="<?php echo $properties->property_facebook; ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 		<?php } ?>
 
 		<?php if($properties->property_twitter){  ?>
-		<a href="<?php echo $properties->property_twitter; ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+		<a target="_blank" href="<?php echo $properties->property_twitter; ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
 		<?php } ?>
 
 		<?php if($properties->property_instagram){  ?>
-		<a href="<?php echo $properties->property_instagram; ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+		<a target="_blank" href="<?php echo $properties->property_instagram; ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a>
 		<?php } ?>
 
 		<?php if($properties->property_linkedin){  ?>
-		<a href="<?php echo $properties->property_linkedin; ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+		<a target="_blank" href="<?php echo $properties->property_linkedin; ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 		<?php } ?>
 
 		<?php if($properties->property_youtube){  ?>
-		<a href="<?php echo $properties->property_youtube; ?>"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+		<a target="_blank" href="<?php echo $properties->property_youtube; ?>"><i class="fa fa-youtube" aria-hidden="true"></i></a>
 		<?php } ?>
 	</div>
 

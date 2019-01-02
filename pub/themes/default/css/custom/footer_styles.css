@@ -17,7 +17,6 @@
 #footer a{
     color: #FFF;
     cursor: pointer;
-    font-size: 2rem;
 }
 
 #footer .link a{
@@ -29,7 +28,7 @@
 	margin: 0;
 	font-weight: lighter;
 	color: #FFF;
-	font-size: 16px;
+	font-size: .9rem;
 	opacity: .9;
 }
 
@@ -42,6 +41,8 @@
 
 .footer_content .link ul{
 	padding: 0;
+	margin-top: 16px;
+	font-weight: bold;
 }
 
 .footer_content .link ul ul{
@@ -60,7 +61,6 @@
 .footer_content .link li a{
 	text-transform: uppercase;
 	text-decoration: none;
-	color: #FFF;
 	font-weight: lighter;
 	font-size: .8rem;
 }
@@ -68,12 +68,12 @@
 
 .footer_content .subscribe h1{
 	text-decoration: none;
-	color: #FFF;
 }
 
 .footer_content .subscribe p{
 	text-decoration: none;
-	color: #FFF;
+	font-size: .8rem !important;
+	color: #F2F2F2;
 }
 /*font-weight: lighter;
 	font-size: 1rem;*/
@@ -105,6 +105,17 @@
 		margin-right: 0 !important; 
 }
 
+@media(max-width: 990px) {
+	.footer_content .subscribe input{
+		width: 50%;
+	}
+	.footer_content .link ul{
+		margin-top: 5px;
+		margin-left: 20px;
+		margin-right: unset !important;
+	}
+
+}
 
 @media(max-width: 768px) {
 	.footer_content .address,
@@ -113,13 +124,12 @@
 		width: 100%;
 		max-width: 100%;
 		-ms-flex: 0 0 100%;
-      	flex: 0 0 100%;
-      	text-align: center;
-      
+      	flex: 0 0 100%;      
 	}
 
 	.footer_content .address{
 		padding-bottom: 15px;
+		text-align: center;
 	}
 
 	.footer_content .link{
@@ -146,6 +156,7 @@
 	}
 
 	#footer .footer_border{ 
+		display: block;
         margin: 0 20px;
     }
 

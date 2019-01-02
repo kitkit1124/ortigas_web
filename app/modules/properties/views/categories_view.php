@@ -56,7 +56,7 @@
 							<div class="property_content_wrapper">
 								<div class="property_title"><?php  echo $val->property_name; ?></div>
 								<div class="estate_title_dup"><?php echo $val->estate_name; ?></div>
-								<div class="estate_content"><?php echo $val->estate_text; ?></div>
+								<div class="estate_content"><?php echo $val->property_overview; ?></div>
 							</div>
 						<?php } ?>
 						

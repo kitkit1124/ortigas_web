@@ -1,7 +1,14 @@
 <div class="global_search">
+	<div style="margin-top: -30px;">&nbsp;
+		<button type="button" class="close close_global_search">
+	      <span aria-hidden="true">×</span>
+	    </button>
+	</div>
 <h5>Search</h5>
 
+
 <div class="default_search row">
+	
 	<div class="col-sm-3 gsearch_labels">
 		<input type="hidden" id="csrf" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 		<label>WHAT ARE YOU LOOKING FOR?</label>

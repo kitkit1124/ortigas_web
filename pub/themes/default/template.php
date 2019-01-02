@@ -28,6 +28,7 @@ $this->load->model('properties/properties_model');
 	<link rel="shortcut icon" type="text/css" href="<?php echo site_url('themes/default/img/favicon.ico'); ?>">
 
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url('themes/default/css/custom/navigation_styles.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo site_url('data/fonts/fontface.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url('themes/default/css/custom/custom_general_styles.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url('themes/default/css/custom/footer_styles.css'); ?>">
 
@@ -67,7 +68,7 @@ $this->load->model('properties/properties_model');
 					$navigations = $this->navigations_model->get_frontend_navigations(1); 
 					foreach ($navigations as $key => $value) {?>
 
-						<li class="nav-item">		<!-- 	/** base_nav_actives remove 's' to show highlights **/ -->
+						<li class="nav-item base_nav_li">		<!-- 	/** base_nav_actives remove 's' to show highlights **/ -->
 							<a class="nav-link base_nav nav_estates <?php echo (substr($request,0,4) == substr($value->navigation_link,0,4)) ? 'base_nav_actives' : ''; ?>" href="<?php echo site_url($value->navigation_link); ?>"><?php echo $value->navigation_name; ?></a>
 							<?php if($value->navigation_link == "estates"){?>
 								<div class = "sub_menu_estates">

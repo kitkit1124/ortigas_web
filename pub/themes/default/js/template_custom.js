@@ -1,6 +1,18 @@
 $(document).ready(function(){
 $('.content, #footer, #slider').fadeIn(500);
 });
+
+$(document).mouseup(function(e) 
+{
+    var container = $(".global_search");
+
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    {
+        container.hide();
+    }
+});
+
 $(function(){
 
     $(".navbar-toggler").click(function(){
@@ -29,7 +41,7 @@ $(function(){
         scrollToAnchor('.' + anchor, 100);
     });   
 
-    $('.nav_search_button').click(function(){
+    $('.nav_search_button, .close_global_search').click(function(){
            $('.global_search').fadeToggle();
     }); 
 
@@ -72,7 +84,7 @@ function scrollToAnchor(aid, top){
 
    
 function searchGlobal(){
-    $.ajax({method: "POST",url: site_url + 'properties/search/global',
+    $.ajax({method: "POST",url: site_url + 'properties/search/sglobal',
         data: { 
             keyword : $('#keyword').val(),
             search_filter : $('input[name="global_search_filter"]:checked').val(),

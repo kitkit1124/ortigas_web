@@ -2,7 +2,7 @@
 	<?php if($estates){ ?>
 	<div id="banner_image">
 		<img src="<?php echo config_item('website_url').$estates->estate_image; ?>" draggable="false" alt="<?php echo $estates->estate_alt_image; ?>" title="<?php echo $estates->estate_alt_image; ?>" />		
-		<h1><?php echo $estates->estate_name; ?></h1>			
+		<div class="banner_margin"><h1><?php echo $estates->estate_name; ?></h1></div>			
 	</div>
 	<?php } ?>
 

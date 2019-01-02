@@ -67,23 +67,28 @@ class Careers extends MX_Controller {
 
 			$page_description = $this->metatags_model->clean_page_description($careers_page->page_content);
 
-	        $metafields = [
-	        	'metatag_title'					=> config_item('website_name') . ' | ' . $careers_page->page_title,
-	        	'metatag_description'			=> $page_description,
-	        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-	        	'metatag_author'				=> config_item('website_name'),
-	        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $careers_page->page_title,
-	        	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-	        	'metatag_og_url'				=> current_url(),
-	        	'metatag_og_description'		=> $page_description,
-	        	'metatag_twitter_card'			=> 'photo',
-	        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $careers_page->page_title,
-	        	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-	        	'metatag_twitter_url'			=> current_url(),
-	        	'metatag_twitter_description'	=> $page_description,
-	        ];
+	        // $metafields = [
+	        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $careers_page->page_title,
+	        // 	'metatag_description'			=> $page_description,
+	        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+	        // 	'metatag_author'				=> config_item('website_name'),
+	        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $careers_page->page_title,
+	        // 	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+	        // 	'metatag_og_url'				=> current_url(),
+	        // 	'metatag_og_description'		=> $page_description,
+	        // 	'metatag_twitter_card'			=> 'photo',
+	        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $careers_page->page_title,
+	        // 	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+	        // 	'metatag_twitter_url'			=> current_url(),
+	        // 	'metatag_twitter_description'	=> $page_description,
+	        // ];
 
-	        $metatags = $this->metatags_model->get_metatags($metafields);
+	        // $metatags = $this->metatags_model->get_metatags($metafields);
+
+	        $metatags = "";
+	        if(isset($careers_page->page_metatag_id) && $careers_page->page_metatag_id){
+	        	$metatags = $this->metatags_model->get_metatags($careers_page->page_metatag_id);
+	        }
 
 			$careers = $this->careers_model->get_select_careers();
 			$careers[''] = "ALL";
@@ -157,23 +162,25 @@ class Careers extends MX_Controller {
 
 				$page_description = $this->metatags_model->clean_page_description($career[0]->career_res);
 
-		        $metafields = [
-		        	'metatag_title'					=> config_item('website_name') . ' | ' . $career[0]->career_position_title,
-		        	'metatag_description'			=> $page_description,
-		        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-		        	'metatag_author'				=> config_item('website_name'),
-		        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $career[0]->career_position_title,
-		        	'metatag_og_image'				=> isset($career[0]->career_image) ? $career[0]->career_image : '',
-		        	'metatag_og_url'				=> current_url(),
-		        	'metatag_og_description'		=> $page_description,
-		        	'metatag_twitter_card'			=> 'photo',
-		        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $career[0]->career_position_title,
-		        	'metatag_twitter_image'			=> isset($career[0]->career_image) ? $career[0]->career_image : '',
-		        	'metatag_twitter_url'			=> current_url(),
-		        	'metatag_twitter_description'	=> $page_description,
-		        ];
+		        // $metafields = [
+		        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $career[0]->career_position_title,
+		        // 	'metatag_description'			=> $page_description,
+		        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+		        // 	'metatag_author'				=> config_item('website_name'),
+		        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $career[0]->career_position_title,
+		        // 	'metatag_og_image'				=> isset($career[0]->career_image) ? $career[0]->career_image : '',
+		        // 	'metatag_og_url'				=> current_url(),
+		        // 	'metatag_og_description'		=> $page_description,
+		        // 	'metatag_twitter_card'			=> 'photo',
+		        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $career[0]->career_position_title,
+		        // 	'metatag_twitter_image'			=> isset($career[0]->career_image) ? $career[0]->career_image : '',
+		        // 	'metatag_twitter_url'			=> current_url(),
+		        // 	'metatag_twitter_description'	=> $page_description,
+		        // ];
 
-		        $metatags = $this->metatags_model->get_metatags($metafields);
+		        // $metatags = $this->metatags_model->get_metatags($metafields);
+
+		        $metatags = $this->metatags_model->get_metatags($career[0]->career_metatag_id);
 
 				// render the page
 				$this->template->write('head', $metatags);

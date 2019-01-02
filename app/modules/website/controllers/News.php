@@ -69,23 +69,28 @@ class News extends MX_Controller
 
 		$page_description = $this->metatags_model->clean_page_description($news_page->page_content);
 
-        $metafields = [
-        	'metatag_title'					=> config_item('website_name') . ' | ' . $news_page->page_title,
-        	'metatag_description'			=> $page_description,
-        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-        	'metatag_author'				=> config_item('website_name'),
-        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $news_page->page_title,
-        	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-        	'metatag_og_url'				=> current_url(),
-        	'metatag_og_description'		=> $page_description,
-        	'metatag_twitter_card'			=> 'photo',
-        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $news_page->page_title,
-        	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-        	'metatag_twitter_url'			=> current_url(),
-        	'metatag_twitter_description'	=> $page_description,
-        ];
+        // $metafields = [
+        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $news_page->page_title,
+        // 	'metatag_description'			=> $page_description,
+        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+        // 	'metatag_author'				=> config_item('website_name'),
+        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $news_page->page_title,
+        // 	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        // 	'metatag_og_url'				=> current_url(),
+        // 	'metatag_og_description'		=> $page_description,
+        // 	'metatag_twitter_card'			=> 'photo',
+        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $news_page->page_title,
+        // 	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
+        // 	'metatag_twitter_url'			=> current_url(),
+        // 	'metatag_twitter_description'	=> $page_description,
+        // ];
 
-        $metatags = $this->metatags_model->get_metatags($metafields);
+        // $metatags = $this->metatags_model->get_metatags($metafields);
+
+        $metatags = "";
+        if(isset($news_page->page_metatag_id) && $news_page->page_metatag_id){
+        	$metatags = $this->metatags_model->get_metatags($news_page->page_metatag_id);
+        }
 
 		$fields = ['rand'=>true,'limit'=>4,'category_id'=>1];
 		$data['residences'] = $this->properties_model->get_properties($fields);
@@ -139,23 +144,25 @@ class News extends MX_Controller
 
 			$page_description = $this->metatags_model->clean_page_description($news[0]->post_content);
 
-	        $metafields = [
-	        	'metatag_title'					=> config_item('website_name') . ' | ' . $news[0]->post_title,
-	        	'metatag_description'			=> $page_description,
-	        	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-	        	'metatag_author'				=> config_item('website_name'),
-	        	'metatag_og_title'				=> config_item('website_name') . ' | ' . $news[0]->post_title,
-	        	'metatag_og_image'				=> isset($news[0]->post_image) ? $news[0]->post_image : '',
-	        	'metatag_og_url'				=> current_url(),
-	        	'metatag_og_description'		=> $page_description,
-	        	'metatag_twitter_card'			=> 'photo',
-	        	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $news[0]->post_title,
-	        	'metatag_twitter_image'			=> isset($news[0]->post_image) ? $news[0]->post_image : '',
-	        	'metatag_twitter_url'			=> current_url(),
-	        	'metatag_twitter_description'	=> $page_description,
-	        ];
+	        // $metafields = [
+	        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $news[0]->post_title,
+	        // 	'metatag_description'			=> $page_description,
+	        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
+	        // 	'metatag_author'				=> config_item('website_name'),
+	        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $news[0]->post_title,
+	        // 	'metatag_og_image'				=> isset($news[0]->post_image) ? $news[0]->post_image : '',
+	        // 	'metatag_og_url'				=> current_url(),
+	        // 	'metatag_og_description'		=> $page_description,
+	        // 	'metatag_twitter_card'			=> 'photo',
+	        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $news[0]->post_title,
+	        // 	'metatag_twitter_image'			=> isset($news[0]->post_image) ? $news[0]->post_image : '',
+	        // 	'metatag_twitter_url'			=> current_url(),
+	        // 	'metatag_twitter_description'	=> $page_description,
+	        // ];
 
-	        $metatags = $this->metatags_model->get_metatags($metafields);
+	        // $metatags = $this->metatags_model->get_metatags($metafields);
+
+	        $metatags = $this->metatags_model->get_metatags($news[0]->post_metatag_id);
 
 
 			$this->template->write('head', $metatags);
