@@ -189,7 +189,7 @@ class Search extends MX_Controller {
 			if($_GET['search_filter'] == "search_properties" || $_GET['search_filter'] == "search_any"){
 			$fields = [
 				'filter'		 => $_GET['keyword'],
-				'category_id' 	 => 2, 
+				'category_id' 	 => 1, 
 				'location_id' 	 => isset($_GET['location']) ? $_GET['location'] : '', 
 				'price_range_id' => isset($_GET['range']) ? $_GET['range'] : ''
 			];
@@ -197,7 +197,7 @@ class Search extends MX_Controller {
 	
 			$fields = [
 				'filter'		 => $_GET['keyword'],
-				'category_id' 	 => 3, 
+				'category_id' 	 => 2, 
 				'location_id' 	 => isset($_GET['location']) ? $_GET['location'] : '', 
 				'price_range_id' => isset($_GET['range']) ? $_GET['range'] : '',
 			];
@@ -207,7 +207,7 @@ class Search extends MX_Controller {
 	
 			$fields = [
 				'filter'		 => $_GET['keyword'],
-				'category_id' 	 => 4, 
+				'category_id' 	 => 3, 
 				'location_id' 	 => isset($_GET['lid']) ? $_GET['lid'] : '', 
 				'price_range_id' => isset($_GET['range']) ? $_GET['range'] : '',
 			];
