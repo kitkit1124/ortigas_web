@@ -1,10 +1,10 @@
 <?php if($properties){ ?>
 <div id="banner_image">
 	<div id="banner_logo_image"></div>
+	<div class="banner_margin container"><h1><?php echo $properties->property_name; ?></h1></div>
 	<img src="<?php echo getenv('UPLOAD_ROOT').$properties->property_image; ?>" draggable="false" alt="<?php echo $properties->property_alt_image; ?>" title="<?php echo $properties->property_alt_image; ?>"/>		
-	<h1><?php echo $properties->property_name; ?></h1>	
 	<h5><?php echo $properties->estate_name; ?></h5>		
-
+	<?php echo $this->load->view('website/breadcrumbs_view'); ?>
 	<div class="social_media_properties">
 		<?php if($properties->property_facebook){  ?>
 		<a target="_blank" href="<?php echo $properties->property_facebook; ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>

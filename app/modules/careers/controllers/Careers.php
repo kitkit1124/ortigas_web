@@ -57,6 +57,9 @@ class Careers extends MX_Controller {
 
 		$careers_page = $this->pages_model->find(5); 
 
+			$data['breadcrumbs']['heading'] = 'home';
+			$data['breadcrumbs']['subhead'] = $careers_page->page_title;
+
 			$data['careers_page'] = $careers_page;
 
 			$data['careers_landing'] = $this->partials_model->find(4); 
@@ -155,6 +158,14 @@ class Careers extends MX_Controller {
 				$data['page_heading'] = $career[0]->career_position_title;
 				$data['page_subhead'] = lang('index_subhead');
 				$data['page_layout'] = 'full_width';
+
+
+				$careers_page = $this->pages_model->find(5); 
+				$data['breadcrumbs']['heading'] = 'home';
+				$data['breadcrumbs']['page_subhead'] = $careers_page->page_title;
+				$data['breadcrumbs']['subhead'] = $career[0]->career_position_title;
+
+
 
 				$data['sliders'] = $this->banners_model->get_banners(5);
 				

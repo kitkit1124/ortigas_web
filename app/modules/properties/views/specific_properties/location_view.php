@@ -2,7 +2,7 @@
 	<?php if($properties->category_id==1) : ?>
 	<div class="row location_heading">
 		<div class="col-sm-4 location_title">
-			<h1>Location</h1>
+			<h2>Location</h2>
 		</div>
 		<div class="col-sm-8">
 			<h3>What's Nearby</h3>
@@ -58,15 +58,19 @@
 				   <div class="clear"></div>
 				</div>
 				<div id="menu1" class="tab-pane fade">
+					<div class="nearby_title"><p>Nearby Malls</p></div>
 					<div class="nearby"><?php echo $properties->property_nearby_malls; ?></div><div class="clear"></div>
 				</div>
 				<div id="menu2" class="tab-pane fade">
+					<div class="nearby_title"><p>Nearby Markets</p></div>
 					<div class="nearby"><?php echo $properties->property_nearby_markets; ?></div><div class="clear"></div>
 				</div>
 				<div id="menu3" class="tab-pane fade">
+					<div class="nearby_title"><p>Nearby Hospitals</p></div>
 				 	<div class="nearby"><?php echo $properties->property_nearby_hospitals; ?></div><div class="clear"></div>
 				</div>
 				<div id="menu4" class="tab-pane fade">
+					<div class="nearby_title"><p>Nearby Schools</p></div>
 					<div class="nearby"><?php echo $properties->property_nearby_schools; ?></div><div class="clear"></div>
 				</div>
 

@@ -1,8 +1,9 @@
 <section id="roles">
 	<?php if($estates){ ?>
 	<div id="banner_image">
-		<img src="<?php echo config_item('website_url').$estates->estate_image; ?>" draggable="false" alt="<?php echo $estates->estate_alt_image; ?>" title="<?php echo $estates->estate_alt_image; ?>" />		
-		<div class="banner_margin"><h1><?php echo $estates->estate_name; ?></h1></div>			
+		<div class="banner_margin container"><h1><?php echo $estates->estate_name; ?></h1></div>
+		<img src="<?php echo config_item('website_url').$estates->estate_image; ?>" draggable="false" alt="<?php echo $estates->estate_alt_image; ?>" title="<?php echo $estates->estate_alt_image; ?>" />
+		<?php echo $this->load->view('website/breadcrumbs_view'); ?>					
 	</div>
 	<?php } ?>
 
@@ -25,7 +26,6 @@
 				<div class="<?php echo "col-sm-".$col_cnt; ?> btn_est">
 					<div class="estate_button" data-anchor="residences">
 						<p>RESIDENCES</p>
-						<span>Lorem Ipsum</span>
 					</div>
 				</div>
 				<?php } ?>
@@ -34,7 +34,6 @@
 				<div class="<?php echo "col-sm-".$col_cnt; ?> btn_est">
 					<div class="estate_button" data-anchor="malls">
 						<p>MALLS</p>
-						<span>Shop 'till you drop</span>
 					</div>
 				</div>
 				<?php } ?>
@@ -42,7 +41,6 @@
 				<div class="<?php echo "col-sm-".$col_cnt; ?> btn_est">
 					<div class="estate_button" data-anchor="offices">
 						<p>OFFICES</p>
-						<span>Spaces for lease</span>
 					</div>
 				</div>
 				<?php } ?>
@@ -64,8 +62,8 @@
 	<?php if(isset($residences) && $residences){ ?>
 	<div class="content_residence">
 		<div class="row cat_heading_res">
-			<div class="col-sm-4 res_title"><h1><?php echo $category_residence->category_name; ?></h1></div>
-			<div class="col-sm-8 res_desc"><?php echo $category_residence->category_description; ?></div>
+			<div class="col-sm-4 res_title"><h2><?php echo $category_residence->category_name; ?></h2></div>
+			<div class="col-sm-8 res_desc"><?php echo $category_residence->category_snippet_quote; ?></div>
 			<!-- <div class="col-sm-2 est_link"><a href="<?php echo site_url('').strtolower($category_residence->category_name); ?>">View All</a></div> -->
 		</div>
 		<?php
@@ -90,8 +88,8 @@
 		<div class="content">	
 			<?php if(isset($malls) && $malls){ ?>
 			<div class="cat_heading">
-				<div class="cat_title"><h1><?php echo $category_mall->category_name; ?></h1></div>
-				<div class="cat_desc"><?php echo $category_mall->category_description; ?></div>
+				<div class="cat_title"><h2><?php echo $category_mall->category_name; ?></h2></div>
+				<div class="cat_desc"><?php echo $category_mall->category_snippet_quote; ?></div>
 			</div>
 
 			
@@ -114,8 +112,8 @@
 
 			<?php if(isset($offices) && $offices){ ?>
 			<div class="cat_heading">
-				<div class="cat_title"><h1><?php echo $category_office->category_name; ?></h1></div>
-				<div class="cat_desc"><?php echo $category_office->category_description; ?></div>
+				<div class="cat_title"><h2><?php echo $category_office->category_name; ?></h2></div>
+				<div class="cat_desc"><?php echo $category_office->category_snippet_quote; ?></div>
 			</div>
 			
 			<div class="office_custom_width">

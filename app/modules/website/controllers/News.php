@@ -57,6 +57,9 @@ class News extends MX_Controller
 		$news_page = $this->pages_model->find_by('page_uri','news'); 
 		$data['news_page'] = $news_page;
 
+		$data['breadcrumbs']['heading'] = 'home';
+		$data['breadcrumbs']['subhead'] = $news_page->page_title;
+
 		$data['sliders'] = $this->banners_model->get_banners(4);
 		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
 		$news = $this->posts_model->get_active_news();
@@ -125,6 +128,11 @@ class News extends MX_Controller
 			$data['page_subhead'] = lang('index_subhead');
 			$data['page_layout'] = 'full_width';
 
+
+			$news_page = $this->pages_model->find_by('page_uri','news');  
+			$data['breadcrumbs']['heading'] = 'home';
+			$data['breadcrumbs']['page_subhead'] = $news_page->page_title;
+			$data['breadcrumbs']['subhead'] = $news[0]->post_title;
 
 
 			$data['news_tags'] = $this->news_tags_model->find_all();

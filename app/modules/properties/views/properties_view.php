@@ -8,11 +8,11 @@
 			<div class="row">	
 				<?php if (isset($properties->category_id) && $properties->category_id ==1){ $cols='8'; } else { $cols = '12'; } ?>
 				<div class="property_view_content col-sm-<?php echo $cols; ?>">
-					<?php if($properties->category_id==1) : ?>
+					<?php //if($properties->category_id==1) : ?>
 						<div class="tabs_view_inner">
 							<?php echo $this->load->view('properties/specific_properties/tabs_view'); ?>
 						</div>
-					<?php endif; ?>
+					<?php //endif; ?>
 					<?php
 					foreach($division_order as $key => $value){
 						if($value->setting_division == 'Overview Description'){

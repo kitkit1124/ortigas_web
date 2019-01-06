@@ -10,7 +10,7 @@
 			<div class="projects_about">
 				<div class="row cat_heading">
 					<div class="col-sm-3 est_title"><h2><?php echo $projects->page_title; ?></h2></div>
-					<div class="col-sm-9 est_desc"><?php echo $projects->page_content; ?></div>
+					<div class="col-sm-9 est_desc"><?php echo  $this->metatags_model->clean_page_description($projects->page_content); ?></div>
 				</div>
 				<div class="related_properties_result">
 					<?php

@@ -6,7 +6,7 @@
 	</div>
 	<div id="video_label" class="noselect">
 		<div class="<?php echo $video->video_text_pos; ?>">
-			<h1><?php echo $video->video_title; ?></h1>
+			<h2><?php echo $video->video_title; ?></h2>
 			<p><?php echo $video->video_caption; ?></p>
 			<a href="<?php echo $video->video_link; ?>" class="default-button"><?php echo $video->video_button_text; ?></a>
 		</div>
@@ -18,7 +18,7 @@
 
 			<div id="video_label" class="noselect">
 				<div class="<?php echo $video_details->video_text_pos; ?>">
-					<h1><?php echo $video_details->video_title; ?></h1>
+					<h2><?php echo $video_details->video_title; ?></h2>
 					<p><?php echo $video_details->video_caption; ?></p>
 					<a href="<?php echo $video_details->video_link; ?>" class="default-button"><?php echo $video_details->video_button_text; ?></a>
 				</div>
@@ -61,7 +61,7 @@
 							<div class="image_container">
 								<img src="<?php echo getenv('UPLOAD_ROOT').$val->estate_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" />
 							</div>
-							<div class="estate"><center><?php echo $val->estate_name; ?></center></div>
+							<div class="estate bgestate"><center><?php echo $val->estate_name; ?></center></div>
 						</div>
 						</a>
 					</div>
@@ -77,7 +77,7 @@
 			<div class="row">
 				<div class="estates residences col-sm-4">
 					<div class="res_title"><h2><?php echo $category_residence->category_name; ?></h2></div>
-					<div class="res_desc"><?php echo $category_residence->category_description; ?></div>
+					<div class="res_desc"><?php echo $category_residence->category_snippet_quote; ?></div>
 					<div class="res_link"><a href="<?php echo site_url('').'estates/category/'.strtolower($category_residence->category_name); ?>" class="default-button">View All</a></div>
 				</div>			
 				<div class="estates residences col-sm-8">

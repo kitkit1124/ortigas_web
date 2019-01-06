@@ -22,7 +22,7 @@
 			<div class="row properties_of_estate">
 				<?php
 				foreach ($properties as $key => $val) { ?>
-					<div class="estates properties col-sm-4">
+					<div class="estates properties col-sm-6">
 						<?php if($estates){  ?>
 							<a href="<?php echo site_url('').'estates/'.$val->estate_slug; ?>">
 						<?php } else { ?>
@@ -40,13 +40,13 @@
 						<?php if($estates){ ?>
 							<div class="estates_content_wrapper">
 								<div class="estate_title"><?php echo $val->estate_name; ?></div>
-								<div class="estate_content"><?php echo $val->estate_text; ?></div>
+								<div class="estate_content"><?php echo $val->estate_snippet_quote; ?></div>
 							</div>
 						<?php } else { ?>
 							<div class="property_content_wrapper">
 								<div class="property_title"><?php  echo $val->property_name; ?></div>
 								<div class="estate_title_dup"><?php echo $val->estate_name; ?></div>
-								<div class="estate_content"><?php echo $val->estate_text; ?></div>
+								<div class="estate_content"><?php echo $val->property_snippet_quote; ?></div>
 							</div>
 						<?php } ?>
 						

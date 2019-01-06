@@ -1,14 +1,15 @@
 <section id="roles">
 	<?php if($career){ ?>
 	<div id="banner_image">
-		<img src="<?php echo config_item('website_url').$career->career_image; ?>" draggable="false" alt="<?php echo $career->career_alt_image; ?>" title="<?php echo $career->career_alt_image; ?>" />	
-		<h1><?php echo $career->career_position_title; ?></h1>			
+		<div class="banner_margin container"><h1><?php echo $career->career_position_title; ?></h1></div>
+		<img src="<?php echo config_item('website_url').$career->career_image; ?>" draggable="false" alt="<?php echo $career->career_alt_image; ?>" title="<?php echo $career->career_alt_image; ?>" />
+		<?php echo $this->load->view('website/breadcrumbs_view'); ?>			
 	</div>
 	<?php } ?>
 	<main role="main" class="container">
 		<div class="content">	
-			<?php echo $this->load->view('careers/careers_landing'); ?>
 			<?php echo $this->load->view('careers/careers_form'); ?>
+			<a id="message_success" class="hide" href="<?php echo site_url().'website/page/show_modal?id=4' ?>" data-target="#modal-lg" data-toggle="modal"></a>
 			<?php 
 			if($career->career_modified_on){ $dtraw = $career->career_modified_on; } else { $dtraw = $career->career_created_on; }		
 			$dtpost = date_create($dtraw);

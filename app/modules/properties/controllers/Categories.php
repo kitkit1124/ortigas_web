@@ -32,6 +32,7 @@ class Categories extends MX_Controller {
 		$this->load->model('website/post_tags_model');
 		$this->load->model('website/partials_model');
 		$this->load->model('website/metatags_model');
+		$this->load->model('website/pages_model');
 
 	}
 	
@@ -89,6 +90,11 @@ class Categories extends MX_Controller {
 				$data['page_heading'] = $category->category_name;
 				$data['page_subhead'] = lang('index_subhead');
 				$data['page_layout'] = 'full_width';
+
+				$estates_page = $this->pages_model->find_by('page_uri','estates');
+				$data['breadcrumbs']['heading'] = 'home';
+				$data['breadcrumbs']['page_subhead'] = $estates_page->page_title;
+				$data['breadcrumbs']['subhead'] = 'ALL '.$category->category_name;
 
 
 				$data['button_text'] = $this->partials_model->find(3); 

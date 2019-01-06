@@ -14,7 +14,7 @@
 		<div class="current_stage_value" style="width: <?php echo $current_stage_value; ?>"></div>
 	</div>
 
-	<h1> Construction Update</h1>
+	<h2> Construction Update</h2>
 	<div class="row year">
 	  	<div class="col-sm-4 ground">
 	  		<div class="construction_stages">

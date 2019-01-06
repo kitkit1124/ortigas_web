@@ -3,7 +3,7 @@
 <div class="residences">
 	<div class="category_title">
 		<div class="row">
-			<div class="col-sm-10"><h1>Residences</h1></div>
+			<div class="col-sm-10"><h2>Residences</h2></div>
 			<div class="col-sm-2 <?php echo $display; ?>"><a href="<?php echo site_url('').'estates/category/residences'; ?>">View All</a></div>
 		</div>
 	</div>
@@ -33,7 +33,7 @@
 <div class="malls">
 	<div class="category_title">
 		<div class="row">
-			<div class="col-sm-10"><h1>Malls</h1></div>
+			<div class="col-sm-10"><h2>Malls</h2></div>
 			<div class="col-sm-2 <?php echo $display; ?>"><a href="<?php echo site_url('').'estates/category/malls'; ?>">View All</a></div>
 		</div>
 	</div>
@@ -60,7 +60,7 @@
 <div class="offices">
 	<div class="category_title">
 		<div class="row">
-			<div class="col-sm-10"><h1>Offices</h1></div>
+			<div class="col-sm-10"><h2>Offices</h2></div>
 			<div class="col-sm-2 <?php echo $display; ?>"><a href="<?php echo site_url('').'estates/category/offices'; ?>">View All</a></div>
 		</div>
 	</div>

@@ -1,7 +1,8 @@
 <section id="news">
 	<?php if($news){ ?>
 	<div id="banner_image">
-		<img src="<?php echo config_item('website_url').$news->post_image; ?>" draggable="false" alt="<?php echo $news->post_alt_image; ?>" title="<?php echo $news->post_alt_image; ?>" />	
+		<img src="<?php echo config_item('website_url').$news->post_image; ?>" draggable="false" alt="<?php echo $news->post_alt_image; ?>" title="<?php echo $news->post_alt_image; ?>" />
+		<?php echo $this->load->view('website/breadcrumbs_view'); ?>	
 	</div>
 	<?php } ?>
 

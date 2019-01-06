@@ -4,8 +4,8 @@
 
 	<main role="main" class="container">
 		<div class="content">	
-			 <?php echo $this->load->view('careers/careers_landing'); ?>
 			 <?php echo $this->load->view('careers/careers_form'); ?>
+			 	<a id="message_success" class="hide" href="<?php echo site_url().'website/page/show_modal?id=4' ?>" data-target="#modal-lg" data-toggle="modal"></a>
 			<div class="page_overview">
 				<?php if($careers_page) {	echo parse_content($careers_page->page_content); } ?>
 				<label><a class="page_overview_button default-button" data-toggle="modal" data-target="#form_application">Submit Resume</a></label>			

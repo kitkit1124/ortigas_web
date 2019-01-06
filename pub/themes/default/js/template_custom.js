@@ -6,14 +6,27 @@ $(document).mouseup(function(e)
 {
     var container = $(".global_search");
 
-    // if the target of the click isn't the container nor a descendant of the container
-    if (!container.is(e.target) && container.has(e.target).length === 0) 
-    {
-        container.hide();
+    if(!is_sGlobal){
+        // if the target of the click isn't the container nor a descendant of the container
+        if (!container.is(e.target) && container.has(e.target).length === 0){
+            container.fadeOut();
+        }
     }
+    
 });
 
 $(function(){
+
+
+    $('.img_link').mouseenter(function(){
+        $('.img_link img').hide();
+        $('.ul_sub_menu_categ img').attr('src', upload_url + $(this).attr('data-img')).fadeIn(500);;
+    });
+
+    // $('.sub_menu_properties li').mouseenter(function(){
+    //   $('.ul_sub_menu_categ img').attr('src', upload_url + $(this).attr('data-img'));
+    // });
+
 
     $(".navbar-toggler").click(function(){
         $("#main_navbar").slideToggle( "slow", function() {
@@ -65,10 +78,55 @@ $(function(){
     });
 
     resize()
-     set_banner_position()
+    set_banner_position()
+
     $(window).resize(function(){
          resize()
          set_banner_position()
+    });
+
+
+
+
+    $('.subscribe_button').click(function(){
+
+        $.ajax({method: "POST",url: site_url + 'subscribers/subscribers/form',
+            data: { 
+                subscriber_email     : $('#subscription_email').val(),
+                [csrf_name]: $('#csrf').val()
+            } 
+        })
+        .done(function(data) {
+
+            var o = jQuery.parseJSON(data);
+            if (o.success === false) {
+                // shows the error message
+                alertify.error(o.message);
+                 $('#subscribe_denied').trigger('click');
+                // displays individual error messages
+                if (o.errors) {
+                  for (var form_name in o.errors) {
+
+                     $('#error-' + form_name).html(o.errors[form_name]);
+
+                    $('#error-' + form_name + ' .text-danger').append('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>');
+                  }
+                }
+            } else {
+                 $('#subscribe_success').trigger('click');
+
+                 $.ajax({method: "GET",url: site_url + 'subscribers/subscribers/form',
+                    data: { 
+                        subscriber_email     : $('#subscription_email').val(),
+                        [csrf_name]: $('#csrf').val()
+                    } 
+                })
+
+                 
+
+            }
+        });
+
     });
 
    
@@ -112,17 +170,24 @@ function set_banner_position(){
     var banner_text_canvas = $('#banner_image h1').height();
     var navbar_canvas = $('.navbar').height();
     var banner_estate_canvas = $('#banner_image h5').height();
-  //  var social_canvas = $('#.social_media_properties').height();
+    var social_canvas = $('.social_media_properties').height();
     
     
     
-    var banner_text_position = (banner_canvas - banner_text_canvas) / 2 + navbar_canvas;
-    var banner_estate_position = (banner_canvas - banner_estate_canvas) / 2 + navbar_canvas - 6 + banner_text_canvas;
-    // var social_canvas_position = (banner_canvas - social_canvas) / 2 + navbar_canvas - 6 + banner_text_canvas ;
+    var banner_text_position = (banner_canvas - banner_text_canvas) / 2;
+    var banner_estate_position = (banner_canvas - banner_estate_canvas) / 2 + navbar_canvas - 12 + banner_text_canvas;
+    var social_canvas_position = (banner_canvas - banner_estate_canvas) / 2 + navbar_canvas - 18 + banner_text_canvas + social_canvas;
 
 
-    $('#banner_image h1').css({'top':banner_text_position + 'px'});
-    $('#banner_image h5').css({'top':banner_estate_position + 'px'});
-    // $('.social_media_properties').css({'top':social_canvas_position + 'px'});
+    $('#banner_image .banner_margin').css({'top':banner_text_position + 'px'}).fadeIn(500);
+    $('#banner_image h5').css({'top':banner_estate_position + 'px'}).fadeIn();
+
+    if($(window).width() < 1024){
+        $('.social_media_properties').css({'top':social_canvas_position + 'px', 'right': 'unset'});
+    }
+    else{
+        $('.social_media_properties').css({'top': '110px', 'right': '40px'});
+    }
 
 }
+

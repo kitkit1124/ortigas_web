@@ -5,7 +5,7 @@
 		<div class="content">
 			<div class="row">	
 				<div class="news_content col-sm-8">
-					<h1 class="news_title">What's New in Ortigas and Company</h1>
+					<h2 class="news_title">What's New in Ortigas and Company</h2>
 					<p class="news_filter_label">Filter by Category:</p>
 					<a class="news_filter" data-id="0">ALL</a>
 					<?php
@@ -23,8 +23,30 @@
 					?>
 	
 				</div>
+
 				<div class="news_sidebar col-sm-4">
-					<?php echo $this->load->view('messages/messages_form')?>
+					<div class="stick_side">
+							<?php 
+							$data = [];
+							$data['remove_this'] = 1;
+							echo $this->load->view('messages/messages_form',$data); ?>
+					
+						<div class="related_properties_result">
+							<?php
+								$data = [];
+								$data['display'] = 'hide';
+								$data['cols'] = 'col-sm-6';
+								$data['image'] = 'property_logo';
+
+							 	echo $this->load->view('properties/properties_result', $data); 
+							 ?>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- <div class="news_sidebar col-sm-4">
+					<?php //echo $this->load->view('messages/messages_form')?>
 					
 					<div class="related_properties_result">
 						<?php
@@ -33,10 +55,10 @@
 							$data['cols'] = 'col-sm-6';
 							$data['image'] = 'property_logo';
 
-						 	echo $this->load->view('properties/properties_result', $data); 
+						 	//echo $this->load->view('properties/properties_result', $data); 
 						 ?>
 					</div>
-				</div>
+				</div> -->
 			</div>
 
 			 <div class="seo_content">

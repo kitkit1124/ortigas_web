@@ -17,10 +17,12 @@
 <div class="carousel-inner">
 <?php foreach ($sliders as $key => $value) { ?>
 <div class="carousel-item">
+	<div class="banner_margin container"><h1><?php echo $value->banner_group_name; ?></h1></div>
   <img src="<?php echo getenv('UPLOAD_ROOT').$value->banner_image; ?>" alt="<?php echo $value->banner_alt_image; ?>" title="<?php echo $value->banner_alt_image; ?>" />
 </div>
 <?php } ?>	
 </div>
+
 
 <?php if(count($sliders) > 1 ) { ?>
 <!-- Left and right controls -->
@@ -32,6 +34,6 @@
 </a>
 <?php } ?>	
 
-<h1><?php echo $value->banner_group_name; ?></h1>
+<?php echo $this->load->view('website/breadcrumbs_view'); ?>
 </div>
 <?php } ?>	

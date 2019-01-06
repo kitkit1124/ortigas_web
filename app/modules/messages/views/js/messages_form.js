@@ -12,10 +12,11 @@ $(function() {
 				message_section_id	: section_id,
 				message_name		: $('#inquiry_name').val(),
 				message_email		: $('#inquiry_email').val(),
-				message_mobile		: 'N/A',
-				message_location	: 'N/A',
+				message_mobile		: '0',
+				message_location	: '0',
 				message_content		: $('#inquiry_message').val(),
 				message_status  	: 0,
+				message_agreement	: true,
 
 				[csrf_name]: $('#csrf').val()
 			} 
@@ -26,17 +27,21 @@ $(function() {
 			if (o.success === false) {
 				// shows the error message
 		        alertify.error(o.message);
+		        $('#message_denied').trigger('click')
 
 		        // displays individual error messages
 		        if (o.errors) {
 		          for (var form_name in o.errors) {
-		          	 $('#error-' + form_name).html(o.errors[form_name]);
+		          	alertify.set('notifier','position', 'center');
+		          	$('#error-' + form_name).html(o.errors[form_name]);
 
 		            $('#error-' + form_name + ' .text-danger').append('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>');
 		          }
 		        }
 			} else {
-           		 $('#form_landing_button').trigger('click');
+           		 $('#message_success').trigger('click');
+           		 setTimeout(function(){ location.reload(); }, 3000);
+           		 
 
 			}
 		});

@@ -30,10 +30,11 @@ $(function() {
       var o = jQuery.parseJSON(data);
 
       if (o.success === false) {
-   
+    
         // shows the error message
         alertify.error(o.message);
-
+        // $('#message_denied').trigger('click')
+        
         // displays individual error messages
         if (o.errors) {
           for (var form_name in o.errors) {
@@ -42,7 +43,8 @@ $(function() {
         }
       } else{  
             $('#form_application').modal().hide();
-            $('#form_landing_button').trigger('click');
+            $('#message_success').trigger('click');
+            setTimeout(function(){ location.reload(); }, 3000);
       }
          
     });

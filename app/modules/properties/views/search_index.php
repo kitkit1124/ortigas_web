@@ -30,7 +30,7 @@
 								<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 								<div class="image_wrapper">
 									<div class="image_container">
-										<img src="<?php echo config_item('website_url').$val->property_image; ?>" width="100%" alt="" draggable="false"/>
+										<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false"/>
 									</div>
 								</div>
 								</a>
@@ -38,8 +38,8 @@
 							<div class="estates property_details col-sm-8">
 								<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 								
-									<h1 class="green"><?php echo $val->property_name; ?></h1>
-									<p class="green"><i><?php echo site_url().'estates/properties/'.$val->property_slug; ?></i></p>
+									<h2 class="green"><?php echo $val->property_name; ?></h2>
+									<!-- <p class="green"><i><?php //echo site_url().'estates/properties/'.$val->property_slug; ?></i></p> -->
 									<i><?php echo $val->property_type_name; ?></i>
 									<p>from <?php echo $val->price_range_label; ?></p>
 									<div class="property_overview"><?php echo $val->property_overview; ?></div>

@@ -146,10 +146,11 @@ class Search extends MX_Controller {
 	public function sglobal()
 	{
 
-				// page title
+		// page title
 		$data['page_heading'] = 'Search';
 		$data['page_subhead'] = lang('index_subhead');
 		$data['page_layout'] = 'full_width';
+		$data['is_sGlobal'] = TRUE;
 		
 		// breadcrumbs
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
@@ -167,6 +168,8 @@ class Search extends MX_Controller {
 		$data['select_price_range'] = $this->price_range_model->get_active_price_range();
 
 		$data['page_content'] = $this->pages_model->find(13); 
+
+		
 		
 		if($_POST){
 			$data = array(

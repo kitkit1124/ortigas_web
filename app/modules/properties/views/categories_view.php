@@ -2,8 +2,9 @@
 	<?php if($category){ ?>
 	<div id="banner_image">
 		<div id="banner_logo_image"></div>
-		<img src="<?php echo  getenv('UPLOAD_ROOT').$category->category_image; ?>" draggable="false" alt="<?php echo $category->category_alt_image; ?>" title="<?php echo $category->category_alt_image; ?>" />	
-		<h1><?php echo $category->category_name; ?></h1>			
+		<div class="banner_margin container"><h1><?php echo $category->category_name; ?></h1></div>
+		<img src="<?php echo  getenv('UPLOAD_ROOT').$category->category_image; ?>" draggable="false" alt="<?php echo $category->category_alt_image; ?>" title="<?php echo $category->category_alt_image; ?>" />
+		<?php echo $this->load->view('website/breadcrumbs_view'); ?>			
 	</div>
 	<?php } ?>
 	<main role="main" class="container">
@@ -50,13 +51,13 @@
 						<?php if($estates){ ?>
 							<div class="estates_content_wrapper">
 								<div class="estate_title"><?php echo $val->estate_name; ?></div>
-								<div class="estate_content"><?php echo $val->estate_text; ?></div>
+								<div class="estate_content"><?php echo $val->estate_snippet_quote; ?></div>
 							</div>
 						<?php } else { ?>
 							<div class="property_content_wrapper">
 								<div class="property_title"><?php  echo $val->property_name; ?></div>
 								<div class="estate_title_dup"><?php echo $val->estate_name; ?></div>
-								<div class="estate_content"><?php echo $val->property_overview; ?></div>
+								<div class="estate_content"><?php echo $val->property_snippet_quote; ?></div>
 							</div>
 						<?php } ?>
 						

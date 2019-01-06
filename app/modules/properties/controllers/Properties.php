@@ -66,6 +66,7 @@ class Properties extends MX_Controller {
 		// breadcrumbs
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
 		$this->breadcrumbs->push(lang('crumb_module'), site_url('estates'));
+
 		
 		// session breadcrumb
 		$this->session->set_userdata('redirect', current_url());
@@ -73,6 +74,11 @@ class Properties extends MX_Controller {
 		$projects = $this->pages_model->find_by('page_uri','projects'); 
 		$data['sliders'] = $this->banners_model->get_banners(3);
 		$data['projects'] = $projects;
+
+
+		$data['breadcrumbs']['heading'] = 'home';
+		$data['breadcrumbs']['subhead'] = $projects->page_title;
+
 
 		$page_description = $this->metatags_model->clean_page_description($projects->page_content);
 
@@ -177,6 +183,13 @@ class Properties extends MX_Controller {
 				$data['page_subhead'] = lang('index_subhead');
 				$data['page_layout'] = 'full_width';
 
+
+				$estates_page = $this->pages_model->find_by('page_uri','estates');  
+				if($properties[0]->category_id == 1){ $subhead = $estates_page->page_title; }
+				else{ $subhead = $properties[0]->category_name;	}		
+				$data['breadcrumbs']['heading'] = 'home';
+				$data['breadcrumbs']['page_subhead'] = $subhead;
+				$data['breadcrumbs']['subhead'] = $properties[0]->property_name;
 
 				$id = $properties[0]->property_id;
 				

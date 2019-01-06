@@ -1,7 +1,7 @@
 <?php $this->template->add_css(module_css('inquiry_form'), 'embed'); ?>
 <?php $this->template->add_js(module_js('inquiry_form'), 'embed'); ?>
 <div class="inquiry_form">
-	<h1>Quick Inquiry</h1>
+	<h2>Quick Inquiry</h2>
 	<div class="row">		
 		<input type="hidden" id="csrf" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 		<div class="form_container col-sm-4">

@@ -39,7 +39,7 @@
 	color: #07793f;
 }
 
-.property_details h1{
+.property_details h2{
 	text-transform: uppercase;
 }
 
@@ -64,6 +64,10 @@
 	text-align: left;
 }
 
+.close_global_search{
+	display: none;
+}
+
 @media(max-width: 768px) {
 	.property_details{
 		-ms-flex: 0 0 100%;
@@ -71,7 +75,7 @@
 		max-width: 100%;
 	}
 
-	.property_details h1{
+	.property_details h2{
 		font-size: 2rem;
 	}
 

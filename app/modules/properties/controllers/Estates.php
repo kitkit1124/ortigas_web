@@ -56,8 +56,15 @@ class Estates extends MX_Controller {
 		$data['page_heading'] = lang('index_heading');
 		$data['page_subhead'] = lang('index_subhead');
 		$data['page_layout'] = 'full_width';
+
+
 		
 		// breadcrumbs
+
+		$data['breadcrumbs']['heading'] = 'home';
+		$data['breadcrumbs']['subhead'] = lang('crumb_module');
+
+
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
 		$this->breadcrumbs->push(lang('crumb_module'), site_url('estates'));
 
@@ -151,10 +158,6 @@ class Estates extends MX_Controller {
 	public function view($params)
 	{
 
-		
-	
-
-
 		$fields = [ 'estate_slug' => $params ];
 		$estates = $this->estates_model->get_estates($fields);
 
@@ -163,8 +166,7 @@ class Estates extends MX_Controller {
 		$data['page_subhead'] = lang('index_subhead');
 		$data['page_layout'] = 'full_width';
 
-
-
+		
 		if($estates){
 			$data['estates'] = $estates[0];
 		}
@@ -172,6 +174,11 @@ class Estates extends MX_Controller {
 			redirect(base_url().'search');
 			exit();
 		}
+
+		$estates_page = $this->pages_model->find_by('page_uri','estates');
+		$data['breadcrumbs']['heading'] = 'home';
+		$data['breadcrumbs']['page_subhead'] = $estates_page->page_title;
+		$data['breadcrumbs']['subhead'] = $estates[0]->estate_name;
 
 		$data['sliders'] = $this->image_sliders_model->find_all_by(
 			array(

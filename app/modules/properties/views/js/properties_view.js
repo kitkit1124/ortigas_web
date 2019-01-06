@@ -7,11 +7,11 @@ $(function() {
             var footer_section = $('#footer').height() + $(".stick_side").height();
             var footer_position =  $('#footer').offset().top - footer_section;
 
-            if($(window).scrollTop() > 440) {
+            if($(window).scrollTop() > 430) {
                
                 $(".stick_side").css({
                     "position":"sticky",
-                    "top":"100px",
+                    "top":"120px",
                     "-ms-flex":"0 0 15%",
                     "flex":"0 0 15%",
                     "max-width":"315px"

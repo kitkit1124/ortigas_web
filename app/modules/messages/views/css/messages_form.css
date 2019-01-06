@@ -1,11 +1,18 @@
+ .stick_side{
+  background-color: #f2f8f5;
+ }
+ .stick_side .related_properties_result{
+  padding: 0 20px;
+ }
  .inquiry_form{
   background-color: #f2f8f5;
     padding: 20px;
 }
 
-.inquiry_form h1{
-	color: #07793f;
-	margin: 25px 0 25px 0;
+.inquiry_form h2{
+  font-size: 28px !important;
+  font-weight: bold;
+  margin: 0 0 5px 0 !important;
 }
 
 .inquiry_form .form_container{
@@ -20,7 +27,7 @@
 .inquiry_form .form_container label{
 	color: #666;
 	text-transform: uppercase;
-	font-size: .9rem;
+	font-size: .7rem;
 }
 
 .inquiry_form a{
@@ -35,7 +42,7 @@
 }
 
 .inquiry_border_bottom { 
-	margin: 30px 0;
+	  margin-top: 10px;
     height: 3px;
     background-color: #aed0bf;
     display: none;
@@ -43,7 +50,7 @@
 
 
 
-#form_landing h1 {color: #07793f;}
+#form_landing h2 {color: #07793f;}
 #form_landing .modal-body { padding: 3rem 1rem; }
 
 .modal-dialog {

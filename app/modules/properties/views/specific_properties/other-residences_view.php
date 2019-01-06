@@ -1,6 +1,6 @@
 <?php if($other_residences) { ?>
 <div id="other-residences">
-	<h1>Other Residences in <?php echo $other_residences[0]->estate_name; ?></h1>
+	<h2>Other Residences in <?php echo $other_residences[0]->estate_name; ?></h2>
 		<?php if(isset($other_residences) && $other_residences){ ?>
 		<div class="row">
 			<div class="col-sm-1"></div>

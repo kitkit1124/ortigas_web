@@ -42,6 +42,7 @@ class Page extends CI_Controller
 			show_error('This page requires the Properties module');
 		}
 
+		$this->load->model('partials_model');
 		$this->load->model('posts_model');
 		$this->load->model('news_tags_model');
 		$this->load->model('post_tags_model');
@@ -238,6 +239,10 @@ class Page extends CI_Controller
 			}
 		}
 
+
+		$data['breadcrumbs']['heading'] = 'home';
+		$data['breadcrumbs']['subhead'] = $page->page_title;
+
 		// page layout
 		$data['page_layout'] = $page->page_layout;
 
@@ -311,6 +316,23 @@ class Page extends CI_Controller
 		$this->template->add_css(module_css('website', 'page_view'), 'embed');
 		$this->template->add_js(module_js('website', 'page_view'), 'embed');
 		$this->template->write_view('content', 'page_view', $data);
+		$this->template->render();
+	}
+
+
+	public function show_modal(){
+
+		// page title
+		$data['page_heading'] = '';
+		$data['page_subhead'] = '';
+		$data['action'] = '';
+
+
+		$content = $this->partials_model->find($this->input->get('id')); 
+		$data['content'] = parse_content($content->partial_content);
+
+		$this->template->set_template('modal');
+		$this->template->write_view('content', 'website/modal', $data);
 		$this->template->render();
 	}
 

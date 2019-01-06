@@ -5,6 +5,7 @@ h1, p, span, a {
 	text-align: center;
     left: 0;
     width: 100%;
+    max-width: unset;
 }
 .estate_button{
 	text-align: center;
@@ -37,16 +38,22 @@ h1, p, span, a {
 }
 
 .carousel-indicator_button{
-	border: 1px solid #FFF;
+	border-bottom: 3px solid transparent;
 	margin: auto 10px;
 	object-fit: cover;
+	padding-bottom: 3px;
 }
 
+
+
 .carousel-indicator_button.active{
-	/*object-fit: cover; opacity: 0.6;*/
+	padding-bottom: 3px;
+	border-bottom: 3px solid #07793f;
 }
 
 .carousel-indicators {
+	margin-right: 0;
+	margin-left: 0;
 /*	justify-content: flex-end;
 	margin-right: 7px !important;
 	margin-bottom: 14px !important;
@@ -59,7 +66,7 @@ h1, p, span, a {
 	margin-bottom: 60px;
 }
 
-#unit-floorplan h1{
+#unit-floorplan h2{
 	color: #07793f;
 }
 
@@ -117,7 +124,7 @@ h1, p, span, a {
 }
 
 #building-floorplan{ margin: 60px 0; }
-.floorplan_heading h1{
+.floorplan_heading h2{
 	text-align: center;
 	color: #07793f;
 }
@@ -238,7 +245,7 @@ h1, p, span, a {
 #other-residences {
 	margin-top: 60px;
 }
-#other-residences h1{
+#other-residences h2{
 	text-align: center;
     font-size: 1.5rem;
     text-transform: uppercase;
@@ -268,11 +275,11 @@ h1, p, span, a {
 
 .stick_side .related_properties_result{
 	margin-top: 0 !important;
-	margin: 0 20px;	
+	margin: auto;	
 }
 
 .stick_side .inquiry_border_bottom{
-	margin-top: 20px !important;
+	margin-top: 10px !important;
 	margin-bottom: 0 !important;
 }
 
@@ -286,7 +293,7 @@ h1, p, span, a {
 	border-bottom: 0;
 	padding: 10px 0;
 }
-.related_properties_result .category_title h1{
+.related_properties_result .category_title h2{
 	font-size: 14px;
 	color: #666;
 	letter-spacing: 1px;
@@ -304,13 +311,24 @@ h1, p, span, a {
 	max-width: 100%;*/
 }
 
-
+.inquiry_submit {
+}
+	
 .inquiry_border_bottom{ display: block !important; }
 
-.inquiry_form h1{
+.inquiry_form h2{
 	font-size: 28px !important;
 	font-weight: bold;
-	margin: 15px 0 25px 0 !important;
+	margin: 0 0 5px 0 !important;
+}
+
+.form-control{
+	font-size: .8rem !important;
+}
+
+
+.carousels{
+	margin-bottom: 20px;
 }
 
 #location_view{
@@ -319,7 +337,7 @@ h1, p, span, a {
    	text-align: left;
 }
 
-#location_view h1{
+#location_view h2{
    border-right: 1px solid #9a9a9a;
    color: #07793f;
 }
@@ -358,7 +376,7 @@ h1, p, span, a {
 }
 
 .nearby_title{
-	padding: 15px 15px 5px 15px;
+	padding: 15px 0 5px 5px;
     display: block;
     float: left;
     width: 100%;
@@ -371,7 +389,6 @@ h1, p, span, a {
     text-transform: uppercase;
     font-size: .9rem;
     font-weight: bold;
-    text-indent: 10px;
     margin-bottom: 0px;
 }
 
@@ -397,7 +414,7 @@ h1, p, span, a {
 	padding: 20px 0 30px 0;
 }
 
-.construction_update h1{
+.construction_update h2{
 	color: #07793F;
 	text-align: center;
 	padding-top: 10px;
@@ -461,7 +478,7 @@ h1, p, span, a {
 	color: #666;
 	text-transform: capitalize;
 }
-.amenities h1{
+.amenities h2{
 	text-align: left;
 	color: #07793f;
 }
@@ -526,10 +543,6 @@ h1, p, span, a {
 		width: 300px;
 		margin: auto;
 	}
-
-	.news_sidebar{
-		padding-left: 15px;
-	}
 }
 
 @media (max-width: 768px){
@@ -539,7 +552,7 @@ h1, p, span, a {
 		max-width: 100%;
 	}
 
-	#location_view h1{
+	#location_view h2{
 		border-right: none;
 	}
 
@@ -549,7 +562,7 @@ h1, p, span, a {
 	}
    	.related_properties_result .estates { width: 50%;}
 
-   	.construction_update h1{
+   	.construction_update h2{
    		font-size: 1.5rem;
    	}
    	.construction_update .button_progress a{
@@ -582,10 +595,11 @@ h1, p, span, a {
    		flex: 33%;
    		-ms-flex: 33%;
    	}
+
 }
 
 @media (max-width: 425px){
-	.floorplan_heading h1{
+	.floorplan_heading h2{
 		font-size: 2rem;
 	}
 

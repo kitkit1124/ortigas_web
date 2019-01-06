@@ -1,6 +1,6 @@
 <?php if(isset($room_types) && $room_types)  { ?>
 <div id="unit-floorplan">
-	<h1>Unit Floor Plan</h1>
+	<h2>Unit Floor Plan</h2>
     <ul class="nav" role="tablist">
 		<?php foreach ($room_types as $key => $value) { ?>
 			<li class="nav-item">
@@ -12,7 +12,9 @@
 	<div class="tab-content">
 		<?php foreach ($room_types as $key => $value) { ?>
 		<div id="room-menu<?php echo $key; ?>" class="tab-pane fade">
-			<img src="<?php echo getenv('UPLOAD_ROOT').$value->room_type_image; ?>" alt="<?php echo $value->room_type_alt_image; ?>" title="<?php echo $value->room_type_alt_image; ?>" />
+			<a href="<?php echo site_url().'properties/properties/floorplan_image?img='.getenv("UPLOAD_ROOT").$value->room_type_image ?>" data-target="#modal-lg" data-toggle="modal">
+				<img src="<?php echo getenv('UPLOAD_ROOT').$value->room_type_image; ?>" alt="<?php echo $value->room_type_alt_image; ?>" title="<?php echo $value->room_type_alt_image; ?>" />
+			</a>
     	</div>
     	
     	<?php } ?>
