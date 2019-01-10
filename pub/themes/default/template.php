@@ -54,7 +54,7 @@ $this->load->model('properties/properties_model');
 		</div>
 
 
-		<?php $request = str_replace(base_url(),'',current_url()); preg_match("/".substr(preg_quote($request,'/'),0,4)."/", $request, $url_current);  ?>
+		<?php $request = str_replace(base_url(),'',current_url()); preg_match("/".substr(preg_quote($request,'/'),0,3)."/", $request, $url_current);  ?>
 
 		<!-- 	<a class="nav-link base_nav <?php //echo ($url_current[0]=='search') ? 'base_nav_active' : ''; ?>" href="<?php //echo site_url('search'); ?>">Inquire</a>  -->
 				
@@ -69,7 +69,7 @@ $this->load->model('properties/properties_model');
 					foreach ($navigations as $key => $value) {?>
 
 						<li class="nav-item base_nav_li">		<!-- 	/** base_nav_actives remove 's' to show highlights **/ -->
-							<a class="nav-link base_nav nav_estates <?php echo (substr($request,0,4) == substr($value->navigation_link,0,4)) ? 'base_nav_actives' : ''; ?>" href="<?php echo site_url($value->navigation_link); ?>"><?php echo $value->navigation_name; ?></a>
+							<a class="nav-link base_nav nav_estates <?php echo (substr($request,0,3) == substr($value->navigation_link,0,4)) ? 'base_nav_actives' : ''; ?>" href="<?php echo site_url($value->navigation_link); ?>"><?php echo $value->navigation_name; ?></a>
 							<?php if($value->navigation_link == "estates"){?>
 								<div class = "sub_menu_estates">
 									<ul class = "ul_sub_menu_estates">
@@ -155,7 +155,7 @@ $this->load->model('properties/properties_model');
 		</div>
 
 		<div id="global_search_container">
-				<?php if( substr($request,0,4) != "sear"){ echo $this->load->view('website/global_search_index'); } ?>
+				<?php if( substr($request,0,3) != "sea"){ echo $this->load->view('website/global_search_index'); } ?>
 		</div>
 
 	</nav>
@@ -199,9 +199,9 @@ $this->load->model('properties/properties_model');
 			</div>
 		</div>
 		<?php $seo = $this->seo_model->find(4); echo parse_content(html_entity_decode(strip_tags($seo->seo_content)));  ?>
-	</footer>
+	</footer>	
 
-	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
 		<div class="modal-dialog modal" role="document">
 			<div class="modal-content">
 				<div class="modal-header">

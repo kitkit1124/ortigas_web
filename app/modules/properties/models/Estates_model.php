@@ -65,6 +65,10 @@ class Estates_model extends BF_Model {
 			$this->limit($fields['limit']);
 		}
 
+		if(isset($fields['sort'])){
+			$this->order_by('estate_modified_on', 'DESC');
+		}	
+
 		if(isset($fields['rand'])){ 
 			$this->order_by('RAND()');
 		}
@@ -76,7 +80,11 @@ class Estates_model extends BF_Model {
 
 		if(isset($fields['estate_slug'])){
 			$this->where('estate_slug', $fields['estate_slug']);
-		}		
+		}	
+
+		if(isset($fields['estate_is_featured'])){
+			$this->where('estate_is_featured', $fields['estate_is_featured']);
+		}	
 
 		$query = $this->where('estate_status', 'Active')
 					->where('estate_deleted', 0)

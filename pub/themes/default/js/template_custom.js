@@ -101,7 +101,7 @@ $(function(){
             var o = jQuery.parseJSON(data);
             if (o.success === false) {
                 // shows the error message
-                alertify.error(o.message);
+                // alertify.error(o.message);
                  $('#subscribe_denied').trigger('click');
                 // displays individual error messages
                 if (o.errors) {
@@ -162,27 +162,31 @@ function searchGlobal(){
 
 
 function resize(){
-    $('#banner_logo_image').css('height',$('#banner_image img').height());
+    // $('#banner_logo_image').css('height',$('#banner_image img').height());
 }
 
 function set_banner_position(){
-    var banner_canvas = $('#banner_image img').height();
+    var banner_canvas = $('.estate_banner_img').height();
     var banner_text_canvas = $('#banner_image h1').height();
+    var banner_image_canvas = $('.estate_logo_img').height();
     var navbar_canvas = $('.navbar').height();
     var banner_estate_canvas = $('#banner_image h5').height();
     var social_canvas = $('.social_media_properties').height();
     
     
-    
+    var banner_image_position = (banner_canvas - banner_image_canvas) / 2 + navbar_canvas + 1;
     var banner_text_position = (banner_canvas - banner_text_canvas) / 2;
     var banner_estate_position = (banner_canvas - banner_estate_canvas) / 2 + navbar_canvas - 12 + banner_text_canvas;
-    var social_canvas_position = (banner_canvas - banner_estate_canvas) / 2 + navbar_canvas - 18 + banner_text_canvas + social_canvas;
+    var social_canvas_position = (banner_canvas + banner_image_canvas) / 2 + navbar_canvas;
 
 
+    
+
+    $('.estate_logo_img').css({'top':banner_image_position + 'px'}).fadeIn(500);
     $('#banner_image .banner_margin').css({'top':banner_text_position + 'px'}).fadeIn(500);
     $('#banner_image h5').css({'top':banner_estate_position + 'px'}).fadeIn();
 
-    if($(window).width() < 1024){
+    if($(window).width() <= 1024){
         $('.social_media_properties').css({'top':social_canvas_position + 'px', 'right': 'unset'});
     }
     else{

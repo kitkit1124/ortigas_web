@@ -1,8 +1,16 @@
 <section id="roles">
 	<?php if($estates){ ?>
 	<div id="banner_image">
-		<div class="banner_margin container"><h1><?php echo $estates->estate_name; ?></h1></div>
-		<img src="<?php echo config_item('website_url').$estates->estate_image; ?>" draggable="false" alt="<?php echo $estates->estate_alt_image; ?>" title="<?php echo $estates->estate_alt_image; ?>" />
+
+		<?php if(isset($estates->estate_thumb)){ ?>
+		<div class="estate_logo_div">
+			<img class="estate_logo_img" src="<?php echo getenv('UPLOAD_ROOT').$estates->estate_thumb; ?>" draggable="false" alt="<?php echo $estates->estate_alt_thumb; ?>" title="<?php echo $estates->estate_alt_thumb; ?>" />
+		</div> 
+		<?php } else { ?>
+		<div class="banner_margin container"><h1><?php echo $estates->estate_name; ?></h1></div> 
+		<?php } ?>
+		
+		<img class="estate_banner_img" src="<?php echo getenv('UPLOAD_ROOT').$estates->estate_image; ?>" draggable="false" alt="<?php echo $estates->estate_alt_image; ?>" title="<?php echo $estates->estate_alt_image; ?>" />
 		<?php echo $this->load->view('website/breadcrumbs_view'); ?>					
 	</div>
 	<?php } ?>

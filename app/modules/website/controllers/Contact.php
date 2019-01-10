@@ -62,7 +62,7 @@ class Contact extends MX_Controller
 		}
 
 		$data['sliders'] = $this->banners_model->get_banners(6);
-		$page = $this->pages_model->find_by(array('page_uri' => 'inquire', 'page_status' => 'Posted', 'page_deleted' => 0));
+		$page = $this->pages_model->find_by(array('page_uri' => 'contact-us', 'page_status' => 'Posted', 'page_deleted' => 0));
 		$data['page_content'] = $page;
 		$data['contact_address'] = $this->partials_model->find(1);
 		$data['properties'] = $this->properties_model->get_select_properties();

@@ -26,7 +26,7 @@ $(function() {
 			var o = jQuery.parseJSON(data);
 			if (o.success === false) {
 				// shows the error message
-		        alertify.error(o.message);
+		        // alertify.error(o.message);
 		        $('#message_denied').trigger('click')
 
 		        // displays individual error messages

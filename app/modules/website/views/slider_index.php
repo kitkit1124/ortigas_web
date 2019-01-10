@@ -1,7 +1,7 @@
 <?php if($sliders) { ?>
 
 
-<div id="slider" class="carousel slide" data-ride="carousel">
+<div id="slider" class="carousel" data-ride="carousel">
 
  <?php if(count($sliders) > 1 ) { ?>
 <!-- Indicators -->

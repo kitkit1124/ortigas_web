@@ -4,7 +4,7 @@
 		<div class="col-sm-4 location_title">
 			<h2>Location</h2>
 		</div>
-		<div class="col-sm-8">
+		<div class="col-sm-8 nearby_link">
 			<h3>What's Nearby</h3>
 	
 		    <ul class="nav" role="tablist">

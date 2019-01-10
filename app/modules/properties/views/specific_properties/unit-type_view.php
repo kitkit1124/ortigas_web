@@ -4,10 +4,14 @@
     <ul class="nav" role="tablist">
 		<?php foreach ($room_types as $key => $value) { ?>
 			<li class="nav-item">
-				<a class="" data-toggle="tab" data-id="<?php echo $value->room_type_id; ?>" href="#room-menu<?php echo $key; ?>"><?php echo $value->room_type_name; ?></a>
+				<a class="" data-toggle="tab" data-id="<?php echo $value->room_type_id; ?>" href="#room-menu<?php echo $key; ?>">
+					<img class="unit_floorplan_thumb" src="<?php echo getenv('UPLOAD_ROOT').$value->room_type_image; ?>" alt="<?php echo $value->room_type_alt_image; ?>" title="<?php echo $value->room_type_alt_image; ?>" data-title="<?php echo $value->room_type_name; ?>"/>	
+				</a>
 			</li>
     	<?php } ?>
     </ul>
+
+    <center class="unit-floorplan_title"></center>
 
 	<div class="tab-content">
 		<?php foreach ($room_types as $key => $value) { ?>

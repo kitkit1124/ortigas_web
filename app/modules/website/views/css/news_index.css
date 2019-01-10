@@ -34,6 +34,10 @@
 	margin: 15px 0 25px 0 !important;
 }
 
+.breadcrumbs{
+    top: 25px;
+}
+
 
 .news_tags, .news_details i.fa{ display: inline-block !important; }
 
@@ -56,6 +60,5 @@
 	}
 }
 @media (max-width: 768px){
-
 .related_properties_result .estates { width: 50%;}
 }

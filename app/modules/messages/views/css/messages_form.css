@@ -1,12 +1,13 @@
  .stick_side{
-  background-color: #f2f8f5;
+  background-color: #f6f6f6;
  }
  .stick_side .related_properties_result{
   padding: 0 20px;
  }
+ 
  .inquiry_form{
-  background-color: #f2f8f5;
-    padding: 20px;
+  background-color: #f6f6f6;
+  padding: 20px;
 }
 
 .inquiry_form h2{

@@ -141,13 +141,13 @@ a.default-button{
 #banner_logo_image{
     background-image: url(http://ortigas.web.local/data/images/ortigas_logo_image.png);
     height: 410px;
-    width: 410px;
+    width: 500px;
     right: 0;
     z-index: 0;
     position: absolute;
     background-repeat: no-repeat;
     background-position: right;
-    background-size: contain;
+    background-size: cover;
 }
 
 .estates {
@@ -266,15 +266,16 @@ a.default-button{
 
 
 .news_related{
-    margin-top: 20px;
     text-align: left;
     background-color: #f2f8f6;
-   /* padding: 20px;*/
+    padding: 20px;
 }
 
 .related_news_title{
     color:  #07793f;
-    text-align: center;
+    text-align: left;
+    max-width: 1100px;
+    margin: auto;
 }
 
 .news_related_content{
@@ -482,8 +483,7 @@ a.inquiry_button {
 }
 
 #slider .carousel-indicators img{
-    width: 40px;
-    height: 40px;
+
 }
 
 
@@ -542,8 +542,7 @@ a.inquiry_button {
 
 
     #slider .carousel-indicators img{
-        width: 75px;
-        height: 75px;
+        height: 100px;
     }
 
     .social_media_properties{
@@ -571,6 +570,9 @@ a.inquiry_button {
     .stick_side .inquiry_border_bottom{
         background-color: transparent;
     }
+
+    .news_related .row, .news_related_content .row { margin-left: 0 !important; margin-right: 0 !important; }
+
 
 }
 
@@ -603,14 +605,10 @@ a.inquiry_button {
         height: auto;
     }
 
-    #slider .carousel-indicators img{
-        width: 50px;
-    }
 
     .carousels .carousel-indicators img {
-        max-height: 50px !important;
-        width: : 30px !important;
-        margin: 20px 5px 10px 5px;
+        max-height: 80px !important;
+        margin: 20px 3px 10px 3px;
     }
 
     .social_media_properties a{
@@ -627,7 +625,6 @@ a.inquiry_button {
     .social_media_properties a{
         font-size: 1.2rem;
     }
-
 }
 
 @media(max-width: 500px) {
@@ -639,6 +636,19 @@ a.inquiry_button {
         font-size: 1.1rem;
     }
 
+    .carousels .carousel-indicators img {
+        max-height: 60px !important;
+    }
+
+    .carousel-item img{
+        min-height: 200px;
+    }
+
+    #banner_logo_image {  
+        height: 300px;
+        width: 300px;
+        margin-top: 0px;
+    }
 }
 
 
@@ -649,4 +659,11 @@ a.inquiry_button {
         font-size: 3rem;
     }
 
+    .carousels .carousel-indicators img {
+        max-height: 50px !important;
+    }
+
+        #banner_logo_image {  
+        margin-top: -40px;
+    }
 }

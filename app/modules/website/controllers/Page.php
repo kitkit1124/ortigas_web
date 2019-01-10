@@ -144,7 +144,7 @@ class Page extends CI_Controller
         	$metatags = $this->metatags_model->get_metatags($page->page_metatag_id);
         }
 
-		$fields = ['rand'=>true,'limit'=>3];
+		$fields = ['rand'=>true,'limit'=>3, 'estate_is_featured'=>1, 'sort'=>'true'];
 		$data['estates'] = $this->estates->get_estates($fields);
 
 		$fields = ['featured'=>1, 'rand'=>true,'limit'=>1,'category_id'=>1];

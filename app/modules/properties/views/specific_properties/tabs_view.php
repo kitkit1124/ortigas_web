@@ -15,7 +15,6 @@
 	<div class="<?php echo "col-sm-".$col_cnt; ?> btn_est">
 		<div class="estate_button" data-anchor="location">
 			<p>INFORMATION</p>
-			<span>Overview</span>
 		</div>
 	</div>
 	<?php endif; ?>
@@ -24,7 +23,6 @@
 	<div class="<?php echo "col-sm-".$col_cnt; ?> btn_est">
 		<div class="estate_button" data-anchor="building-floorplan">
 			<p>BUILDING FLOOR PLAN</p> 
-			<span>Floor Plan Overview</span>
 		</div>
 	</div>
 	<?php endif; ?>
@@ -33,7 +31,6 @@
 	<div class="<?php echo "col-sm-".$col_cnt; ?> btn_est">
 		<div class="estate_button" data-anchor="unit-floorplan">
 			<p>UNIT FLOOR PLAN</p>
-			<span>Unit Type and Size</span>
 		</div>
 	</div>
 	<?php endif; ?>

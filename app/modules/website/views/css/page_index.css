@@ -31,6 +31,7 @@ video{
 
 #video_label h2{
 font-size: 3.5rem;
+color: #FFF !important;
 }
 
 
@@ -40,6 +41,9 @@ font-size: 3.5rem;
 
 #video_label a {
   display: inline-block;
+  background-color: #FFF;
+  border: 1px solid #CCC;
+  color: #666 !important;
 }
 
 .carousel-control-prev, .carousel-control-next{
@@ -171,7 +175,7 @@ font-size: 3.5rem;
     line-height: 1.5em;
     height: 3em;
     overflow: hidden;
-    padding: 0 100px;
+    padding: 0 50px;
     text-align: left;
 }
 
@@ -209,12 +213,22 @@ font-size: 3.5rem;
 .mo_link a{
   color: #666;
   text-decoration: none;
+  text-transform: uppercase;
+  font-size: .8rem;
 }
 
 .est_link2{display: none;}
 
 #slider h1{ display: none; }
 
+.news_related{
+  padding: 20px;
+}
+
+.news_related .row{
+  max-width: 1100px;
+  margin: auto;
+}
 
 
 
@@ -231,11 +245,11 @@ font-size: 3.5rem;
 
 @media(max-width: 1024px) {
   .image_wrapper .image_container img {
-      height: 300px;
+      height: auto;
   }
   
   .properties .image_wrapper .image_container img {
-      height: 425px;
+      height: auto;
   }
   .main_page {
       margin: 0;
@@ -245,13 +259,17 @@ font-size: 3.5rem;
     width: 50%;
   }
 
+  .mo_title, .mo_link{
+    width: 50%;
+  }
+
 }
 
 @media(max-width: 991px) {
   
-  .properties .image_wrapper .image_container img {
+/*  .properties .image_wrapper .image_container img {
       height: 490px;
-  }
+  }*/
 
   .properties:nth-child(2) {
     display: none;
@@ -308,9 +326,9 @@ font-size: 3.5rem;
       height: 300px;
   }
 
-  .properties .image_wrapper .image_container img {
+/*  .properties .image_wrapper .image_container img {
       height: 375px;
-  }
+  }*/
 
   .properties{   
     -ms-flex: 0 0 100%;
@@ -340,6 +358,10 @@ font-size: 3.5rem;
 
   .est_link2 a{
     color: #666 !important;
+    background-color: #FFF !important;
+    border: 2px solid #666;
+    margin-top: 20px;
+    display: inline-block;
   }
 
   .est_title{
@@ -358,12 +380,6 @@ font-size: 3.5rem;
   .main_page .cat_heading {
       margin-bottom: 10px;
   }
-
-  #video_label h2 {
-      font-size: 2.3rem;
-  }
-
-
 }
 
 
@@ -378,20 +394,13 @@ font-size: 3.5rem;
   }
 
 
-  #video_label h2 {
-     font-size: 1.6rem;
-  }
-
 }
 
 
 @media(max-width: 425px) {
-  #video_label h2 {
-     font-size: 1.1rem;
-  }
 
   #video_label p {
-     font-size: .7rem;
+     font-size: 1rem;
   }
 
   .page_content h1 {

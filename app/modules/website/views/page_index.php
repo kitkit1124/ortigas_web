@@ -48,9 +48,9 @@
 		<?php if($estates) { ?>
 		<div class="main_page">
 			<div class="row cat_heading">
-				<div class="col-sm-2 est_title"><h2><?php echo $page_estates->page_title; ?></h2></div>
-				<div class="col-sm-8 est_desc"><?php echo $page_estates->page_content; ?></div>
-				<div class="col-sm-2 est_link"><a href="<?php echo site_url('').strtolower($page_estates->page_slug); ?>" class="default-button">View All</a></div>
+				<div class="col-sm-3 est_title"><h2><?php echo $page_estates->page_title; ?></h2></div>
+				<div class="col-sm-7 est_desc"><?php echo $page_estates->page_content; ?></div>
+				<div class="col-sm-2 est_link"><a href="<?php echo site_url('').strtolower($page_estates->page_slug); ?>" class="default-button">VIEW ALL</a></div>
 			</div>
 			<div class="row">
 			<?php
@@ -67,7 +67,7 @@
 					</div>
 				<?php	} //end foreach ?>
 			</div>
-			<div class="est_link2"><a href="<?php echo site_url('').strtolower($page_estates->page_slug); ?>" class="default-button">View All</a></div>
+			<div class="est_link2"><a href="<?php echo site_url('').strtolower($page_estates->page_slug); ?>" class="default-button">VIEW ALL</a></div>
 		</div>
 		
 
@@ -78,7 +78,7 @@
 				<div class="estates residences col-sm-4">
 					<div class="res_title"><h2><?php echo $category_residence->category_name; ?></h2></div>
 					<div class="res_desc"><?php echo $category_residence->category_snippet_quote; ?></div>
-					<div class="res_link"><a href="<?php echo site_url('').'estates/category/'.strtolower($category_residence->category_name); ?>" class="default-button">View All</a></div>
+					<div class="res_link"><a href="<?php echo site_url('').'estates/category/'.strtolower($category_residence->category_name); ?>" class="default-button">VIEW ALL</a></div>
 				</div>			
 				<div class="estates residences col-sm-8">
 					<?php if($carousel) { ?>
@@ -157,6 +157,8 @@
 		</div>
 		<?php }?>
 
+	</div>
+</main>
 		<div class="news_related">
 			<div class="row">
 				<div class="col-sm-6 mo_title"><h2><?php echo 'News'; ?></h2></div>
@@ -174,9 +176,6 @@
 
 		<div class="footer_border"></div>
 
-		<div class="seo_content">
-			<?php if($page_content) { echo parse_content($page_content->page_bottom_content); } ?>
-		</div>
-
-	</div>
-</main>
+		<!-- <div class="seo_content">
+			<?php //if($page_content) { echo parse_content($page_content->page_bottom_content); } ?>
+		</div> -->

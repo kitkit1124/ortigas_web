@@ -151,3 +151,12 @@
 	color: #ccc !important;
 }
 
+.breadcrumbs{
+    top: 25px;
+}
+
+@media(max-width: 991px) {
+	a.default-button{
+		min-width: auto !important;
+	}
+}

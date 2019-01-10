@@ -24,7 +24,7 @@
 }
 .oclogo_mobile img{
 	width: 300px;
-    margin-top: 6px;
+    margin-top: 10px;
 }
 
 
@@ -62,8 +62,10 @@
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
-    margin-right: .6rem;
-    margin-left: .6rem;
+    margin-right: 0rem;
+    margin-left: 0rem;
+    padding-right: 1.3rem;
+    padding-left: 1.3rem;
 }
 
 .navbar-expand-lg .navbar-nav .sub_menu_estates .nav-link {
@@ -78,7 +80,7 @@
 
 .main_menu {
 	max-width: 1140px;
-  padding: 0 20px;
+  padding: 0 10px;
 	margin: auto;
 }
 .main_menu li:hover .sub_menu_estates{
@@ -112,7 +114,7 @@ a.nav-link.base_nav.nav_estates{
 }
 .navbar-nav li.base_nav_li{
   cursor: pointer;
-  padding: 30px 7px;
+  padding: 30px 3px;
 }
 .navbar-nav li.base_nav_li:hover, .navbar-nav li.base_nav_li:hover .base_nav{
   background-color: #07793f; 
@@ -120,16 +122,17 @@ a.nav-link.base_nav.nav_estates{
 }
 
 .navbar-nav li.base_nav_li:last-child a{
-  border-bottom: 2px solid transparent;
+  border: 2px solid #A9A9A9;
+  width: 160px;
 }
 
 .navbar-nav li.base_nav_li:last-child, .navbar-nav li.base_nav_li:last-child a{
-  background-color: #07793f; 
-  color: #fff !important;
+/*  background-color: #07793f; 
+  color: #fff !important;*/
 }
 
 .navbar-nav li.base_nav_li:last-child:hover a{
-  border-bottom: 2px solid #FFF;
+  border: 2px solid transparent;
 }
 
 .sub_menu_estates ul{
@@ -203,6 +206,7 @@ a.nav-link.base_nav.nav_estates{
 
 .sub_menu_categ .li_sub_menu_categ{
 	padding: 0px;
+  padding-left: 10px;
 	margin-left: 30px;
     border-left: 1px solid #b1dccb;
 }
@@ -227,7 +231,7 @@ a.nav-link.base_nav.nav_estates{
 	padding: 0px
 }
 
-@media(max-width: 1024px) {
+@media(max-width: 1170px) {
   .sub_menu_estates, .main_menu  {
     display: none;
   }
@@ -241,7 +245,7 @@ a.nav-link.base_nav.nav_estates{
 
   .nav_search_button,.oclogo{display: none;}
 
-  .nav_search_button_mobile,.oclogo_mobile{ display: block;}	
+
 
   .gsearch_labels, .gsearch_inputs, .global_search{
     -ms-flex: 0 0 100% !important;
@@ -270,6 +274,8 @@ a.nav-link.base_nav.nav_estates{
   	text-align: left;
   }
 
+  .nav_search_button_mobile{ display: block;}  
+
   .navbar-toggler{
     display: block !important;
   	margin: 20px 0;
@@ -277,11 +283,15 @@ a.nav-link.base_nav.nav_estates{
   	z-index: 2001;
   }
 }
-
+@media(max-width: 991px) {
+  .oclogo_mobile{ display: block;}  
+  .navbar-nav li.base_nav_li{ padding: 5px 3px; }
+  .navbar-nav li.base_nav_li:last-child a{ border: 0; }
+}
 @media(max-width: 600px) {
 	.oclogo_mobile img{
 		width: 200px;
-	    margin-top: 17px;
+	   margin-top: 17px;
 	}
 }
 

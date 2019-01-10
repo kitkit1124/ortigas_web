@@ -80,10 +80,11 @@ class Units_model extends BF_Model {
 	}
 
 	public function get_unit_room_size_range($room_id = null){
-		$query = $this->select("min(`unit_size`) as 'min_size', max(`unit_size`) as 'max_size'")
+		$query = $this->select("min(`unit_size`) as 'min_size', max(`unit_size`) as 'max_size', room_type_name")
 				->where('unit_status', 'Active')
 				->where('unit_deleted', 0)
 				->where('unit_room_type_id', $room_id)
+				->join('room_types','room_types.room_type_id = unit_room_type_id', 'left')
 				->find_all();
 
 		return $query;		

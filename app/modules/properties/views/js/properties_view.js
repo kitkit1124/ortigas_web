@@ -1,6 +1,5 @@
 $(function() {
     
-
     $(window).scroll(function() {
 
         if($(window).width() > 1024 && $(window).height() > $(".stick_side").height() + 90) {
@@ -54,7 +53,17 @@ $(function() {
             $(".inquiry_border_bottom").css({"height":"3px"});
             $(".inquiry_form").css({"padding-bottom":"20px"});
         }
-    })
+    });
+
+
+
+    $(".regular").slick({
+        dots: false,
+        infinite: false,
+        slidesToShow: 5,
+        slidesToScroll: 1
+    });
+
 
     $('.estate_button').click(function(){
         var anchor = $(this).attr('data-anchor');
@@ -127,6 +136,10 @@ $(function() {
     	
     });
 
+    $('.unit_floorplan_thumb').mouseenter(function(){
+        $('.unit-floorplan_title').html($(this).attr('data-title'));
+    });
+
     $('#dataprivacy').click(function(){
 		if($(this).prop("checked") == true){
 			$('#reservation_form button').css('opacity',1).removeAttr('disabled');
@@ -184,6 +197,7 @@ function get_range_size($id){
 					var min_sqf = value.min_size * 10.7639;
 					var max_sqf = value.max_size * 10.7639;
 					$('#range_size').html(value.min_size + ' - ' + value.max_size + '&nbsp;&nbsp;SQM. | ' + Math.round(min_sqf) + '  - ' + Math.round(max_sqf) + '&nbsp;&nbsp;SQFT.');
+                    $('.unit-floorplan_title').hide().html(value.room_type_name).fadeIn();
 				}
 			});
 		});

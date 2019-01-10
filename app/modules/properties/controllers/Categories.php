@@ -160,6 +160,9 @@ class Categories extends MX_Controller {
 
 
 				}
+				else{
+					redirect(base_url().'search');
+				}
 					
 			// render the page
 			$this->template->write('head', $metatags);

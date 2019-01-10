@@ -56,3 +56,7 @@ table{
     padding-top: 20px;
     border-top: 3px solid #b4d7c5;
 }
+
+.breadcrumbs{
+    top: 25px;
+}

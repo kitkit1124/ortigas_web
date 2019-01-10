@@ -27,6 +27,7 @@ module.exports = function(grunt) {
 					{expand: true, cwd: 'node_modules/jquery-number/', src: ['**'], dest: 'pub/npm/jquery-number/'},
 					{expand: true, cwd: 'node_modules/fontawesome-iconpicker/dist/', src: ['**'], dest: 'pub/npm/fontawesome-iconpicker/'},
 					{expand: true, cwd: 'node_modules/nestable2/dist/', src: ['**'], dest: 'pub/npm/nestable2/'},
+					{expand: true, cwd: 'node_modules/slick-carousel/', src: ['**'], dest: 'pub/npm/slick-carousel/'}
 				],
 			},
 		},
@@ -34,7 +35,9 @@ module.exports = function(grunt) {
 			css: {
 				src: [
 					'node_modules/bootstrap/dist/css/bootstrap.css',
-					'pub/themes/default/css/src/custom.css'
+					'pub/themes/default/css/src/custom.css',
+					'pub/npm/slick-carousel/slick/slick.css',
+					'pub/npm/slick-carousel/slick/slick-theme.css'
 				],
 				dest: 'pub/themes/default/css/build/styles.css'
 			},
@@ -43,7 +46,8 @@ module.exports = function(grunt) {
 					'node_modules/jquery/dist/jquery.js',
 					'node_modules/popper.js/dist/umd/popper.js',
 					'node_modules/bootstrap/dist/js/bootstrap.js',
-					'pub/themes/default/js/src/custom.js'
+					'pub/themes/default/js/src/custom.js',
+					'pub/npm/slick-carousel/slick/slick.min.js'
 				],
 				dest: 'pub/themes/default/js/build/scripts.js'
 			}
