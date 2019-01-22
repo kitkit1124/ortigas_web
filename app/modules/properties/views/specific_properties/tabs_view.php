@@ -13,7 +13,7 @@
 
 	<?php if(isset($floors) && $floors && count($floors) > 1 || isset($room_types) && $room_types) : ?>
 	<div class="<?php echo "col-sm-".$col_cnt; ?> btn_est">
-		<div class="estate_button" data-anchor="location">
+		<div class="estate_button" data-anchor="properties_overview">
 			<p>INFORMATION</p>
 		</div>
 	</div>

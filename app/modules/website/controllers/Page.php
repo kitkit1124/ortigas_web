@@ -91,13 +91,15 @@ class Page extends CI_Controller
 
 		if ($page = $this->pages_model->find_by(array('page_uri' => 'home', 'page_status' => 'Posted', 'page_deleted' => 0)))
 		{
-			// page title
-			$data['page_heading'] = $page->page_title;
+			//page_title
+			$meta_title = $this->metatags_model->find($page->page_metatag_id); 
+			$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $page->page_title ;
+
 			$data['record'] = $page;
 		}
 		else
 		{
-			redirect(base_url().'search');
+			redirect(base_url().'page-not-found');
 			// redirect('notfound', 'refresh');
 		}
 		
@@ -135,10 +137,8 @@ class Page extends CI_Controller
 		$range = $this->price_range_model->get_active_price_range();
 		$range[''] = "ALL";
 		$data['select_price_range'] = $range;
-
-		// meta tags
-		$page_description = $this->metatags_model->clean_page_description($page->page_content);
-       
+		
+       // meta tags
         $metatags = "";
         if(isset($page->page_metatag_id) && $page->page_metatag_id){
         	$metatags = $this->metatags_model->get_metatags($page->page_metatag_id);
@@ -217,14 +217,15 @@ class Page extends CI_Controller
 		if ($page = $this->pages_model->find_by(array('page_uri' => $uri, 'page_status' => 'Posted', 'page_deleted' => 0)))
 		{
 			// page title
-			$data['page_heading'] = $page->page_title;
+			$meta_title = $this->metatags_model->find($page->page_metatag_id); 
+			$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $page->page_title ;
 			$data['record'] = $page;
 
 			$data['sliders'] = $this->banners_model->get_banners($page->page_id);
 		}
 		else
 		{
-			redirect(base_url().'search');
+			redirect(base_url().'page-not-found');
 			// redirect('notfound', 'refresh');
 		}
 
@@ -246,37 +247,14 @@ class Page extends CI_Controller
 		// page layout
 		$data['page_layout'] = $page->page_layout;
 
-		// page sidebar
-		// $data['page_sidebar'] = $page->page_sidebar_id;
 
 		// template
 		$this->template->set_template(config_item('website_theme'));
-
-		$page_description = $this->metatags_model->clean_page_description($page->page_content);
-
-        // $metafields = [
-        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $page->page_title,
-        // 	'metatag_description'			=> $page_description,
-        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-        // 	'metatag_author'				=> config_item('website_name'),
-        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $page->page_title,
-        // 	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-        // 	'metatag_og_url'				=> current_url(),
-        // 	'metatag_og_description'		=> $page_description,
-        // 	'metatag_twitter_card'			=> 'photo',
-        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $page->page_title,
-        // 	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-        // 	'metatag_twitter_url'			=> current_url(),
-        // 	'metatag_twitter_description'	=> $page_description,
-        // ];
-
-        // $metatags = $this->metatags_model->get_metatags($metafields);
 
         $metatags = "";
         if(isset($page->page_metatag_id) && $page->page_metatag_id){
         	$metatags = $this->metatags_model->get_metatags($page->page_metatag_id);
         }
-
 
 		$fields = ['limit' => 4, 'page_related_news' => $page->page_id ];
 		$news = $this->posts_model->get_active_news($fields);
@@ -333,6 +311,21 @@ class Page extends CI_Controller
 
 		$this->template->set_template('modal');
 		$this->template->write_view('content', 'website/modal', $data);
+		$this->template->render();
+	}
+
+
+	public function page_not_found(){
+
+		// page title
+		$data['page_heading'] = 'Page Not Found';
+		$data['page_subhead'] = '';
+		$data['action'] = '';
+
+		$this->template->add_css(module_css('website', 'page_view'), 'embed');
+		$this->template->add_css(module_css('website', 'page_404'), 'embed');
+		$this->template->add_js(module_js('website', 'page_view'), 'embed');
+		$this->template->write_view('content', 'page_404', $data);
 		$this->template->render();
 	}
 

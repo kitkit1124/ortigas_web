@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'website/page';
-$route['404_override'] = '';
+$route['404_override'] = 'website/page/page_not_found';
 $route['translate_uri_dashes'] = FALSE;
 
 // fix for HMVC route

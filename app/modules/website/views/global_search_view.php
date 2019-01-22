@@ -7,8 +7,8 @@
 			</div>
 			<?php $true_result = 0; ?>
 			<div class="search_result">
-
-					<h1 class="search_result_search_label">Search Results</h1>
+					<h1 class="hide">Search</h1>
+					<h2 class="search_result_search_label">Search results</h2>
 						
 					<div class="properties_content">
 
@@ -21,24 +21,27 @@
 							if($val->property_modified_on){ $dtraw = $val->property_modified_on; } else { $dtraw = $val->property_created_on; }		
 							$dtpost = date_create($dtraw);
 							?>
-								<div class="career_box col-sm-6">
-									<div class="image_wrapper">
-										<div class="details">
+								<div class="search_box col-sm-6">
+									<div class="row search_properties_row">
+										<div class="estates col-sm-5">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
-											<p class="title"><?php echo $val->property_name; ?></p>
-											<!-- <p class="link green"><?php //echo site_url().'estates/property'.$val->property_slug; ?></p> -->
-											<!-- <p class="dtpost"><?php //echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p> -->
-											<div class="property_overview"><?php echo $val->property_overview; ?></div>
-											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a>
-										</div>
-										</a>
-										<div class="image_container">
-											<div class="image_container">
-												<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false"/>
+											<div class="image_wrapper">
+												<div class="image_container">
+													<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false"/>
+												</div>
 											</div>
+											</a>
 										</div>
-									</div>
+										<div class="estates property_details col-sm-7">
+											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
+												<h2><?php echo $val->property_name; ?></h2>
+												<div class="property_overview"><?php echo $val->property_overview; ?></div>
+												<a class="green search_link" href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a>
+											</a>
+										</div>
+									</div>	
 								</div>
+
 							<?php	} //end foreach ?>
 						</div>
 						<?php } ?>
@@ -52,19 +55,25 @@
 							if($val->property_modified_on){ $dtraw = $val->property_modified_on; } else { $dtraw = $val->property_created_on; }		
 							$dtpost = date_create($dtraw);
 							?>
-								<div class="career_box col-sm-6">
-									<div class="image_wrapper">
-										<div class="details">
+								<div class="search_box col-sm-6">
+									<div class="row search_properties_row">
+										<div class="estates col-sm-5">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
-											<p class="title"><?php echo $val->property_name; ?></p>
-											<!-- <p class="link green"><?php //echo site_url().'estates/property'.$val->property_slug; ?></p>
-											<p class="dtpost"><?php //echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p> -->
-											<div class="property_overview"><?php echo $val->property_overview; ?></div>
-											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a>
+											<div class="image_wrapper">
+												<div class="image_container">
+													<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false"/>
+												</div>
+											</div>
+											</a>
 										</div>
-										</a>
-										<div class="image_container"></div>
-									</div>
+										<div class="estates property_details col-sm-7">
+											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
+												<h2><?php echo $val->property_name; ?></h2>
+												<div class="property_overview"><?php echo $val->property_overview; ?></div>
+												<a class="green search_link" href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a>
+											</a>
+										</div>
+									</div>	
 								</div>
 							<?php	} //end foreach ?>
 						</div>
@@ -79,19 +88,25 @@
 							if($val->property_modified_on){ $dtraw = $val->property_modified_on; } else { $dtraw = $val->property_created_on; }		
 							$dtpost = date_create($dtraw);
 							?>
-								<div class="career_box col-sm-6">
-									<div class="image_wrapper">
-										<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
-										<div class="details">
-											<p class="title"><?php echo $val->property_name; ?></p>
-											<!-- <p class="link green"><?php //echo site_url().'estates/property'.$val->property_slug; ?></p>
-											<p class="dtpost"><?php //echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p> -->
-											<div class="property_overview"><?php echo $val->property_overview; ?></div>
-											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a>
+								<div class="search_box col-sm-6">
+									<div class="row search_properties_row">
+										<div class="estates col-sm-5">
+											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
+											<div class="image_wrapper">
+												<div class="image_container">
+													<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false"/>
+												</div>
+											</div>
+											</a>
 										</div>
-										</a>
-										<div class="image_container"></div>
-									</div>
+										<div class="estates property_details col-sm-7">
+											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
+												<h2><?php echo $val->property_name; ?></h2>
+												<div class="property_overview"><?php echo $val->property_overview; ?></div>
+												<a class="green search_link" href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a>
+											</a>
+										</div>
+									</div>	
 								</div>
 							<?php	} //end foreach ?>
 						</div>
@@ -108,21 +123,28 @@
 						if($val->post_modified_on){ $dtraw = $val->post_modified_on; } else { $dtraw = $val->post_created_on; }		
 						$dtpost = date_create($dtraw);
 						?>
-							<div class="career_box col-sm-6">
-								<div class="image_wrapper">
-									<a href="<?php echo site_url('').'news/'.$val->post_slug; ?>">
-									<div class="details">
-										<p class="title"><?php echo $val->post_title; ?></p>
-										<!-- <p class="link green"><?php //echo site_url().'news/'.$val->post_slug; ?></p> -->
-										<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
-										<div class="property_overview"><?php echo $val->post_content; ?></div>
-										<a href="<?php echo site_url('').'news/'.$val->post_slug; ?>">Read Article ></a>
-									</div>
-									</a>
-									<div class="image_container">	
-									</div>
+							<div class="search_box col-sm-6">
+									<div class="row search_properties_row">
+										<div class="estates col-sm-5">
+											<a href="<?php echo site_url('').'news/'.$val->post_slug; ?>">
+											<div class="image_wrapper">
+												<div class="image_container">
+													<img src="<?php echo getenv('UPLOAD_ROOT').$val->post_image; ?>" width="100%" alt="" draggable="false"/>
+												</div>
+											</div>
+											</a>
+										</div>
+										<div class="estates property_details col-sm-7">
+											<a href="<?php echo site_url('').'estates/property/'.$val->post_slug; ?>">
+												<h2><?php echo $val->post_title; ?></h2>
+												<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
+												<div class="property_overview"><?php echo $val->post_content; ?></div>
+												<a class="green search_link" href="<?php echo site_url('').'news/'.$val->post_slug; ?>">Read Article ></a>
+											</a>
+										</div>
+									</div>	
 								</div>
-							</div>
+
 						<?php	} //end foreach ?>
 					</div>
 					<?php } ?>
@@ -137,22 +159,28 @@
 						if($val->career_modified_on){ $dtraw = $val->career_modified_on; } else { $dtraw = $val->career_created_on; }		
 						$dtpost = date_create($dtraw);
 						?>
-							<div class="career_box col-sm-6">
-								<div class="image_wrapper">
-									<a href="<?php echo site_url('').'careers/post/'.$val->career_slug; ?>">
-									<div class="details">
-										<p class="title"><?php echo $val->career_position_title; ?></p>
+							<div class="search_box col-sm-6">
+								<div class="row search_properties_row">
+									<div class="estates col-sm-5">
+										<a href="<?php echo site_url('').'careers/'.$val->career_slug; ?>">
+										<div class="image_wrapper">
+											<div class="image_container">
+												<img src="<?php echo getenv('UPLOAD_ROOT').$val->career_image; ?>" width="100%" alt="" draggable="false"/>
+											</div>
+										</div>
+										</a>
+									</div>
+									<div class="estates property_details col-sm-7">
+										<a href="<?php echo site_url('').'careers/'.$val->career_slug; ?>">
+											<h2><?php echo $val->career_position_title; ?></h2>
 										<!-- <p class="link green"><?php //echo site_url().'careers/'.$val->career_slug; ?></p> -->
 										<!-- <p class="dept"><?php //echo $val->department_name; ?></p> -->
 										<!-- <p class="dtpost"><?php //echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p> -->
-										<p><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $val->career_location; ?></p>
-										<a href="<?php echo site_url('').'careers/post/'.$val->career_slug; ?>">View Details ></a>
+											<p><i class="fa fa-map-marker green" aria-hidden="true"></i>&nbsp;<?php echo $val->career_location; ?></p>
+											<a class="green search_link" href="<?php echo site_url('').'careers/'.$val->career_slug; ?>">View Details ></a>
+										</a>
 									</div>
-									</a>
-									<div class="image_container">
-											<!-- <img src="<?php //echo  site_url().$val->career_image; ?>" width="100%" alt="" draggable="false"/> -->
-									</div>
-								</div>
+								</div>	
 							</div>
 						<?php	} //end foreach ?>
 					</div>

@@ -35,12 +35,14 @@ class Sitemap extends MX_Controller
 			
 			$pages 		= $this->_get_data_from('pages_model','page',NULL); 
 			$posts 		= $this->_get_data_from('posts_model','post','news/');
-			$categories = $this->_get_data_from('categories_model','category','estates/category/');
+			$categories = $this->_get_data_from('categories_model','category',NULL);
 			$estates 	= $this->_get_data_from('estates_model','estate','estates/');
-			$properties	= $this->_get_data_from('properties_model','property','estates/property/');
-			$careers	= $this->_get_data_from('careers_model','career','careers/post/');
+			$residence	= $this->_get_data_from('properties_model','property','residences/');
+			$malls		= $this->_get_data_from('properties_model','property','malls/');
+			$offices	= $this->_get_data_from('properties_model','property','offices/');
+			$careers	= $this->_get_data_from('careers_model','career','careers/');
 			
-			$data['site'] 		= array_merge($pages,$posts,$categories,$estates,$properties,$careers);	
+			$data['site'] 		= array_merge($pages,$posts,$categories,$estates,$residence,$malls,$offices,$careers);	
 
 			header("Content-type: text/xml");
 			$this->load->view('sitemap/sitemap_view', $data);
@@ -49,16 +51,41 @@ class Sitemap extends MX_Controller
 	function _get_data_from($model,$singular,$segment){
 
 
-		if($singular=='page' || $singular=='post'){ $status = 'Posted';} else{ $status = 'Active'; }
-		if($singular=='category'){ $field = $singular.'_name'; }else{ $field = $singular.'_slug'; }
+		if($singular=='page' || $singular=='post'){ 
+			$status = 'Posted';
+		} 
+		else{ 
+			$status = 'Active';
+		}
+
+
+		if($singular=='category'){ 
+			$field = $singular.'_name'; 
+		}
+		else{ 
+			$field = $singular.'_slug'; 
+		}
 
 		$lastmod = $singular.'_modified_on';
 
-		$data =	$this->$model
-					->where($singular.'_status', $status)
-					->where($singular.'_deleted', 0)
-					->find_all();
+		
 
+		if($singular=='property'){
+			$data =	$this->$model
+			->where('property_categories.category_name',substr($segment,0,-1))
+			->join('property_categories', 'property_categories.category_id = property_category_id', 'LEFT')
+			->where($singular.'_status', $status)
+			->where($singular.'_deleted', 0)
+			->find_all();
+		}
+		else{
+
+			$data =	$this->$model
+			->where($singular.'_status', $status)
+			->where($singular.'_deleted', 0)
+			->find_all();
+		}
+				
 		$array = [];
 
 		foreach ($data as $key => $value) {

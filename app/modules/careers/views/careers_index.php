@@ -59,9 +59,9 @@
 									<div class="details">
 										<p class="title"><?php echo $val->career_position_title; ?></p>
 										<p class="dept"><?php echo $val->department_name; ?></p>
-										<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
+										<!-- <p class="dtpost"><?php //echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p> -->
 										<p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $val->career_location; ?></p>
-										<a href="<?php echo site_url('').'careers/post/'.$val->career_slug; ?>" class="default-button">View Details</a>
+										<a href="<?php echo site_url('').'careers/'.$val->career_slug; ?>" class="default-button">View Details</a>
 									</div>
 									<div class="image_container">
 											<!-- <img src="<?php //echo  site_url().$val->career_image; ?>" width="100%" alt="" draggable="false"/> -->

@@ -1,13 +1,18 @@
 <?php echo $this->load->view('website/slider_index'); ?>
 <?php $this->template->add_js(module_js('website', 'slider_index'), 'embed'); ?>
+
 <main role="main" class="container">
 	<div class="content">
 
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-4 contact_break">
 
 				<div class="google-maps">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.206901707607!2d121.07216671505488!3d14.587283081313162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c808abaef137%3A0xdd2ab4e5438fc1a8!2sValle+Verde+5!5e0!3m2!1sen!2sph!4v1505972548418" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+					<textarea id="pac-input" placeholder="Ortigas & Company 9th Floor, Ortigas Building Ortigas Avenue, Pasig City 1600 Philippines"> <?php echo $page_content->page_map_name; ?></textarea>
+					<div id="map"></div>
+
+					<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.206901707607!2d121.07216671505488!3d14.587283081313162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c808abaef137%3A0xdd2ab4e5438fc1a8!2sValle+Verde+5!5e0!3m2!1sen!2sph!4v1505972548418" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
 				</div>
 
 				<div class="contact_address">
@@ -15,7 +20,7 @@
 				</div>
 
 			</div>
-			<div class="col-sm-8">
+			<div class="col-sm-8 contact_break">
 				<div class="page_content">
 					<?php echo parse_content($page_content->page_content); ?>
 				</div>
@@ -30,8 +35,7 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="message_section">Inquiry Type *</label>
-
-								<?php $options = create_dropdown('array', 'Project'); ?>
+								<?php $options = create_dropdown('array', ',Sales Inquiry,Leasing Inquiry,Career Inquiry'); ?>
 								<?php echo form_dropdown('message_section', $options, '', 'id="message_section" class="form-control"'); ?>
 								<?php echo form_error('error-message_section'); ?>
 								<div id="error-message_section" class="error_field"></div>
@@ -39,7 +43,7 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="message_section_id">Select Project *</label>
+								<label class="message_section_id_label" for="message_section_id">Select Project *</label>
 								<?php echo form_dropdown('message_section_id', $properties, '', 'id="message_section_id" class="form-control"'); ?>
 								<?php echo form_error('error-message_section_id'); ?>
 								<div id="error-message_section_id" class="error_field"></div>
@@ -103,10 +107,10 @@
 					
 					<div class="form-group agreement">
 	          		<input type="checkbox" id="message_agreement" name="message_agreement" class="pointer message_agreement">
-	          		<label for="message_agreement" class="pointer message_agreement_label"><span class="color_default">* I agree to the</span><span class="green">OCLP</span> <span class="color_default">and</span><span class="green">CCC<span> Data privacy.</label>
+	          		<label for="message_agreement" class="pointer message_agreement_label"><span class="color_default">* I agree to the</span><a href="<?php echo base_url();?>privacy-policy" target="_blank"><span class="green">OCLP</span></a> <span class="color_default">and</span><a href="<?php echo base_url();?>privacy-policy" target="_blank"><span class="green">CCC<span></a><span class="color_default">Data privacy.</span></label>
 	          			<div id="error-message_agreement" class="error_field"></div>
 	    		    </div>
-			
+
 					<div class="form-group">
 						 <a class="btn contact_submit default-button">SUBMIT</a>
 					</div>
@@ -151,3 +155,8 @@
 
 
 <script src='https://www.google.com/recaptcha/api.js'></script>
+<script type="text/javascript">
+	var latitude = '<?php echo $page_content->page_latitude; ?>';
+	var longitude = '<?php echo $page_content->page_longitude; ?>';
+	var location_name = '<?php echo $page_content->page_map_name; ?>';
+</script>

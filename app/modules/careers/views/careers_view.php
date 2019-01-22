@@ -2,7 +2,8 @@
 	<?php if($career){ ?>
 	<div id="banner_image">
 		<div class="banner_margin container"><h1><?php echo $career->career_position_title; ?></h1></div>
-		<img class="estate_banner_img" src="<?php echo config_item('website_url').$career->career_image; ?>" draggable="false" alt="<?php echo $career->career_alt_image; ?>" title="<?php echo $career->career_alt_image; ?>" />
+		<div class="banner_gradient"></div>
+		<img class="estate_banner_img" src="<?php echo getenv('UPLOAD_ROOT').$career->career_image; ?>" draggable="false" alt="<?php echo $career->career_alt_image; ?>" title="<?php echo $career->career_alt_image; ?>" />
 		<?php echo $this->load->view('website/breadcrumbs_view'); ?>			
 	</div>
 	<?php } ?>

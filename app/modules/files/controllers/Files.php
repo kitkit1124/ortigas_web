@@ -41,7 +41,7 @@ class Files extends MX_Controller
 	 */
 	public function index()
 	{
-		redirect(base_url().'search');
+		redirect(base_url().'page-not-found');
 	}
 
 	// --------------------------------------------------------------------

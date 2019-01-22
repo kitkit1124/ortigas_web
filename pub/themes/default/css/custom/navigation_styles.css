@@ -64,8 +64,8 @@
 .navbar-expand-lg .navbar-nav .nav-link {
     margin-right: 0rem;
     margin-left: 0rem;
-    padding-right: 1.3rem;
-    padding-left: 1.3rem;
+    padding-right: 1.2rem;
+    padding-left: 1.2rem;
 }
 
 .navbar-expand-lg .navbar-nav .sub_menu_estates .nav-link {
@@ -148,7 +148,9 @@ a.nav-link.base_nav.nav_estates{
 	list-style: none;
     padding: 10px 10px;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 15px;
+    letter-spacing: 0px;
+    font-weight: bold;
     text-decoration: none;
     min-width: 150px;
 }
@@ -163,11 +165,11 @@ a.nav-link.base_nav.nav_estates{
 	visibility: hidden; 
 }
 
-.sub_menu_estates li.nav-item:hover, .li_nav_estates_active{
+.sub_menu_estates li.nav-item:hover{ /*, .li_nav_estates_active{*/
 	background-color: #e6f1eb;
 }
 
-.sub_menu_estates li.nav-item:hover .a_sub_menu_estates{
+.sub_menu_estates li.nav-item:hover .a_sub_menu_estates, .sub_menu_estates_categs .a_sub_menu_categ{
 	color: #07793f !important;
 }
 
@@ -188,6 +190,14 @@ a.nav-link.base_nav.nav_estates{
 	opacity: 0;
 }
 
+.sub_menu_estates{
+  background-color: #FFFFFF;
+}
+
+.sub_menu_estates_categs, .sub_menu_estates_categs ul{
+  background-color: #e6f1eb;
+}
+
 .sub_menu_categ ul.ul_sub_menu_categ{
 	background-color: #e6f1eb;
 	padding: 20px 30px;
@@ -197,6 +207,7 @@ a.nav-link.base_nav.nav_estates{
 	width: 200px;
 	height: 160px;
 	object-fit: cover;
+  padding: 10px;
 }
 
 .ul_sub_menu_categ .img_holder{
@@ -211,24 +222,35 @@ a.nav-link.base_nav.nav_estates{
     border-left: 1px solid #b1dccb;
 }
 
+.sub_menu_categ{
+  background-color: #e6f1eb;
+}
+
 .sub_menu_categ .a_sub_menu_categ{
 	color: #07793f !important;
 	font-size: 14px;
 }
 
 .sub_menu_properties ul{
-	width: 200px;
+	width: 220px;
 	display: block;
+
 }
 
 .sub_menu_properties li{
 	background-color: #e6f1eb;
-	font-size: 14px;
+	font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 0;
 	padding: 2px 0;
 }
 
 .sub_menu_properties a{
 	padding: 0px
+}
+
+.sub_menu_properties a:hover{
+  color: #07793f !important;
 }
 
 @media(max-width: 1170px) {

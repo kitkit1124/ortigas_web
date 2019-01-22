@@ -1,3 +1,9 @@
+	$(document).ready(function(){
+
+		setTimeout(function(){ $('#pac-input').fadeIn(); }, 3000);
+		
+	});
+
 $(function() {
 
 	$('#form_landing').on('hidden.bs.modal', function () {
@@ -19,6 +25,49 @@ $(function() {
 	// 		});
 	// 	});
 	// });
+
+	$('#message_section').change(function(){
+		var section = $(this).val();
+		if(section=='Sales Inquiry'){
+			$.ajax({method: "GET",url: "properties/get_select_properties"})
+			.done(function( data ) {
+				d = jQuery.parseJSON(data);
+				$('#message_section_id').html('');
+				$('.message_section_id_label').text('SELECT PROJECT');
+				$.each(d, function( index, value ) {
+					$('#message_section_id').append('<option value="' + value.property_id + '">' + value.property_name + '</option>');
+				});
+			});
+		}
+		if(section=='Leasing Inquiry'){
+			$.ajax({method: "GET",url: "properties/get_prop_lease"})
+			.done(function( data ) {
+				d = jQuery.parseJSON(data);
+				$('#message_section_id').html('');
+				$('.message_section_id_label').text('SELECT SPACES');
+				$.each(d, function( index, value ) {
+					$('#message_section_id').append('<option value="' + value.lease_id + '">' + value.lease_name + '</option>');
+				});
+			});
+		}
+		if(section=='Career Inquiry'){
+			$.ajax({method: "GET",url: "careers/careers/get_careers"})
+			.done(function( data ) {
+				d = jQuery.parseJSON(data);
+				$('#message_section_id').html('');
+				if(d){
+					$('.message_section_id_label').text('SELECT POSITION');
+					$.each(d, function( index, value ) {
+						$('#message_section_id').append('<option value="' + value.career_id + '">' + value.career_position_title + '</option>');
+					});
+				}
+				else{
+					$('#message_section_id').append('<option value="0">No Jobs Available</option>');
+					alertify.error('Careers: No Jobs Available');
+				}
+			});
+		}
+	})
 
 	$('#message_agreement').change(function(){
 		// if($(this).prop("checked") == true){
@@ -54,7 +103,7 @@ $(function() {
 			var o = jQuery.parseJSON(data);
 			if (o.success === false) {
 				// shows the error message
-		        alertify.error(o.message);
+		        // alertify.error(o.message);
 		         $('#message_denied').trigger('click')
 		         
 		        // displays individual error messages
@@ -62,7 +111,7 @@ $(function() {
 		          for (var form_name in o.errors) {
 		          	 $('#error-' + form_name).html(o.errors[form_name]);
 
-		            $('#error-' + form_name + ' .text-danger').append('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>');
+		            $('#error-' + form_name + ' .text-danger'); //.append('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>');
 		          }
 		        }
 			} else {
@@ -73,5 +122,89 @@ $(function() {
 		});
 
 	});
-
 });
+
+
+function initMap() {
+	    var myLatlng = new google.maps.LatLng(latitude, longitude);
+	    
+
+		var mapOptions = {
+	      zoom: parseInt('16'),
+	      center: myLatlng,
+	    }
+	    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+	    // map marker
+	    var marker = new google.maps.Marker({
+	        map: map,
+	    });
+	    marker.bindTo('position', map, 'center');
+
+	    // Create the search box and link it to the UI element.
+	    var input = document.getElementById('pac-input');
+	    var searchBox = new google.maps.places.SearchBox(input);
+	    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+	    google.maps.event.addListener(searchBox, 'places_changed', function() {
+	        var places = searchBox.getPlaces();
+
+	        if (places.length == 0) {
+	            return;
+	        }
+
+	        var bounds = new google.maps.LatLngBounds();
+	        for (var i = 0, place; place = places[i]; i++) {
+	            bounds.extend(place.geometry.location);
+	        }
+
+	        map.fitBounds(bounds);
+	        map.setZoom(16);     
+	        google.maps.event.addListener(map, 'bounds_changed', function() {
+	            var bounds = map.getBounds();
+	            searchBox.setBounds(bounds);    
+	            $('#latitude').val(map.getCenter().lat());
+	            $('#longitude').val(map.getCenter().lng());
+	            $('#zoom').val(map.getZoom());
+	        });
+	    });
+
+
+	     /*   var geocoder = new google.maps.Geocoder;
+		    var infowindow = new google.maps.InfoWindow;
+		    geocodeLatLng(geocoder, map, infowindow);*/
+
+	    // drag event
+	    google.maps.event.addListener(map,'dragend',function(event) {
+	        $('#estate_latitude').val(map.getCenter().lat());
+	        $('#estate_longtitude').val(map.getCenter().lng());
+	    });
+
+	    // zoom event
+	    google.maps.event.addListener(map,'zoom_changed',function(event) {
+	        $('#zoom').val(map.getZoom());
+	    });
+	}
+
+	function geocodeLatLng(geocoder, map, infowindow) {
+		var latlng = new google.maps.LatLng(latitude, longtitude);
+
+		geocoder.geocode({'location': latlng}, function(results, status) {
+		  if (status === 'OK') {
+		    if (results[0]) {
+		      map.setZoom(13);
+		      var marker = new google.maps.Marker({
+		        position: latlng,
+		        map: map
+		      });
+		      console.log(results[0]);
+		      infowindow.setContent(results[0].formatted_address);
+		      infowindow.open(map, marker);
+		    } else {
+		      window.alert('No results found');
+		    }
+		  } else {
+		    window.alert('Geocoder failed due to: ' + status);
+		  }
+		});
+	}

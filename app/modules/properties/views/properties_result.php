@@ -45,8 +45,9 @@
 			<div class="image_wrapper">
 				<div class="property <?php echo $display; ?>"><?php echo $val->property_name; ?></div>
 				<div class="image_container">
-					<img src="<?php echo getenv('UPLOAD_ROOT').$val->$image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>"/>
-				</div>
+					<img src="<?php echo getenv('UPLOAD_ROOT').$val->$image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+
+				</div><label class="sidebar_property_result"><?php echo $val->property_name; ?></label>
 				<div class="estate <?php echo $display; ?>"><?php echo $val->estate_name; ?></div>
 			</div>
 			</a>
@@ -72,8 +73,9 @@
 			<div class="image_wrapper">
 				<div class="property <?php echo $display; ?>"><?php echo $val->property_name; ?></div>
 				<div class="image_container">
-					<img src="<?php echo getenv('UPLOAD_ROOT').$val->$image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>"/>
-				</div>
+					<img src="<?php echo getenv('UPLOAD_ROOT').$val->$image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+
+				</div><label class="sidebar_property_result"><?php echo $val->property_name; ?></label>
 				<div class="estate <?php echo $display; ?>"><?php echo $val->estate_name; ?></div>
 			</div>
 			</a>

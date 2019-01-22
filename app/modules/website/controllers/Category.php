@@ -65,7 +65,7 @@ class Category extends CI_Controller
 	private function posts($params)
 	{
 		// should have at least one param
-		if (count($params) === 0) redirect(base_url().'search');
+		if (count($params) === 0) redirect(base_url().'page-not-found');
 
 		// combine the slugs
 		array_unshift($params, 'category');
@@ -74,7 +74,7 @@ class Category extends CI_Controller
 		// get the category info
 		$category = $this->categories_model->find_by('category_uri', $uri);
 
-		if (! $category) redirect(base_url().'search');
+		if (! $category) redirect(base_url().'page-not-found');
 
 		// breadcrumbs
 		$breadcrumbs = array();

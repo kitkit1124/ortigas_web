@@ -39,7 +39,7 @@ function searchEstate(id){
 				'<div class="property_content_wrapper">'+
 				'<div class="property_title">'+ value.property_name +'</div>'+
 				'<div class="estate_title_dup">'+ value.estate_name +'</div>'+
-				'<div class="estate_content">'+ value.estate_text +'</div>'+
+				'<div class="estate_content">'+ value.estate_snippet_quote +'</div>'+
 				'</div>'+
 				'</a></div>';
 

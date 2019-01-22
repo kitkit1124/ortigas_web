@@ -2,12 +2,15 @@
 	<?php if($estates){ ?>
 	<div id="banner_image">
 
-		<?php if(isset($estates->estate_thumb)){ ?>
+		<?php if(isset($estates->estate_logo) && $estates->estate_logo || $estates->estate_logo=='NULL'){ ?>
 		<div class="estate_logo_div">
-			<img class="estate_logo_img" src="<?php echo getenv('UPLOAD_ROOT').$estates->estate_thumb; ?>" draggable="false" alt="<?php echo $estates->estate_alt_thumb; ?>" title="<?php echo $estates->estate_alt_thumb; ?>" />
+			<div class="banner_gradient"></div>
+			<img class="estate_logo_img" src="<?php echo getenv('UPLOAD_ROOT').$estates->estate_logo; ?>" draggable="false" alt="<?php echo $estates->estate_alt_logo; ?>" title="<?php echo $estates->estate_alt_logo; ?>" />
+			<h1 class="hide"><?php echo $estates->estate_name; ?></h1>
 		</div> 
 		<?php } else { ?>
 		<div class="banner_margin container"><h1><?php echo $estates->estate_name; ?></h1></div> 
+		<div class="banner_gradient"></div>
 		<?php } ?>
 		
 		<img class="estate_banner_img" src="<?php echo getenv('UPLOAD_ROOT').$estates->estate_image; ?>" draggable="false" alt="<?php echo $estates->estate_alt_image; ?>" title="<?php echo $estates->estate_alt_image; ?>" />
@@ -25,8 +28,6 @@
 		$col_cnt = $col_cnt / $btn_cnt;
 	}
 	?>
-	
-
 		<div class="content">	
 			<div class="row specific_estate">
 
@@ -143,8 +144,17 @@
 			</div>
 			<?php }?>
 
+			<div style="display: none">				
+				<?php echo form_input(array('id'=>'estate_latitude', 'name'=>'estate_latitude', 'value'=>set_value('estate_latitude', isset($estates->estate_latitude) ? $estates->estate_latitude : ''), 'class'=>'form-control'));?>
+	
+				<?php echo form_input(array('id'=>'estate_longtitude', 'name'=>'estate_longtitude', 'value'=>set_value('estate_longtitude', isset($estates->estate_longtitude) ? $estates->estate_longtitude : ''), 'class'=>'form-control'));?>
+
+				<textarea id="pac-input" style="display: none;"></textarea>
+			</div>
 
 			<div id="location">
+				<div id="map"></div>
+			<!-- 	
 			<iframe 
 			  width="100%" 
 			  height="400" 
@@ -154,7 +164,7 @@
 			  marginwidth="0" 
 			  src="<?php echo 'https://maps.google.com/maps?q='.$estates->estate_latitude.','.$estates->estate_longtitude.'&hl=es;z=14&amp;output=embed'; ?>"
 			 >
-			 </iframe>
+			 </iframe> -->
 			</div><!--map-location-->
 
 			<div class="seo_content">

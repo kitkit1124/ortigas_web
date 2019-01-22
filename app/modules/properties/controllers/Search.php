@@ -39,6 +39,7 @@ class Search extends MX_Controller {
 		$this->load->model('website/posts_model');
 		$this->load->model('website/news_tags_model');
 		$this->load->model('website/post_tags_model');
+		$this->load->model('website/metatags_model');
 	}
 	
 	// --------------------------------------------------------------------
@@ -82,6 +83,21 @@ class Search extends MX_Controller {
 		$range[''] = "ALL";
 		$data['select_price_range'] = $range;
 
+		$page = $this->pages_model->find(12); 
+
+		$data['page_content'] = $page;
+
+		$metatags = "";
+        if(isset($page->page_metatag_id) && $page->page_metatag_id){
+        	$metatags = $this->metatags_model->get_metatags($page->page_metatag_id);
+        }
+
+        $meta_title = $this->metatags_model->find($page->page_metatag_id); 
+		$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $page->page_title;
+
+
+		
+
 		if($_POST){
 			$data = array(
 				'search_loc_id' 	 => $_POST['location_id'],
@@ -113,9 +129,7 @@ class Search extends MX_Controller {
 				}
 				
 				$data['residences'] = $result;
-			}
-			$data['page_content'] = $this->pages_model->find(12); 
-			 
+			} 
 				
 					
 			// $fields = [
@@ -136,6 +150,7 @@ class Search extends MX_Controller {
 		}
 
 		// render the page
+		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('properties', 'estates_index'), 'embed');
 		$this->template->add_css(module_css('properties', 'search_index'), 'embed');	
 		$this->template->write_view('content', 'search_index', $data);
@@ -167,8 +182,17 @@ class Search extends MX_Controller {
 		
 		$data['select_price_range'] = $this->price_range_model->get_active_price_range();
 
-		$data['page_content'] = $this->pages_model->find(13); 
+		$page = $this->pages_model->find(13); 
 
+		$data['page_content'] = $page;
+
+		$metatags = "";
+        if(isset($page->page_metatag_id) && $page->page_metatag_id){
+        	$metatags = $this->metatags_model->get_metatags($page->page_metatag_id);
+        }
+
+        $meta_title = $this->metatags_model->find($page->page_metatag_id); 
+		$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $page->page_title;
 		
 		
 		if($_POST){
@@ -237,6 +261,7 @@ class Search extends MX_Controller {
 		}
 
 		// render the page
+		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('properties', 'estates_index'), 'embed');
 		$this->template->add_css(module_css('properties', 'search_index'), 'embed');
 		$this->template->add_css(module_css('website', 'global_search_result'), 'embed');

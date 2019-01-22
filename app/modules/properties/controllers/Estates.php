@@ -79,34 +79,19 @@ class Estates extends MX_Controller {
 		$data['section_id'] = $category->page_id;
 		$data['section'] = $category->page_title;
 		
+
+		$meta_title = $this->metatags_model->find($category->page_metatag_id); 
+		$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $category->page_title;
+
+
 		if($estates && $category){
 			$data['estates'] = $estates;
 			$data['category'] = $category;
 
 		}
-		else{
-			redirect(base_url().'search');
-		}
-
-		$page_description = $this->metatags_model->clean_page_description($category->page_content);
-
-        // $metafields = [
-        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $category->page_title,
-        // 	'metatag_description'			=> $page_description,
-        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-        // 	'metatag_author'				=> config_item('website_name'),
-        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $category->page_title,
-        // 	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-        // 	'metatag_og_url'				=> current_url(),
-        // 	'metatag_og_description'		=> $page_description,
-        // 	'metatag_twitter_card'			=> 'photo',
-        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $category->page_title,
-        // 	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-        // 	'metatag_twitter_url'			=> current_url(),
-        // 	'metatag_twitter_description'	=> $page_description,
-        // ];
-
-        // $metatags = $this->metatags_model->get_metatags($metafields);
+		// else{
+		// 	redirect(base_url().'page-not-found');
+		// }
 
         $metatags = "";
         if(isset($category->page_metatag_id) && $category->page_metatag_id){
@@ -158,11 +143,20 @@ class Estates extends MX_Controller {
 	public function view($params)
 	{
 
+
+		$data['enable_map'] = true;
+		
 		$fields = [ 'estate_slug' => $params ];
 		$estates = $this->estates_model->get_estates($fields);
 
 		// page title
+
+
 		$data['page_heading'] = $estates[0]->estate_name;
+
+		$meta_title = $this->metatags_model->find($estates[0]->estate_metatag_id); 
+		$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title :  $estates[0]->estate_name;
+
 		$data['page_subhead'] = lang('index_subhead');
 		$data['page_layout'] = 'full_width';
 
@@ -171,13 +165,14 @@ class Estates extends MX_Controller {
 			$data['estates'] = $estates[0];
 		}
 		else{
-			redirect(base_url().'search');
-			exit();
+			redirect(base_url().'page-not-found');
+			// exit();
 		}
 
 		$estates_page = $this->pages_model->find_by('page_uri','estates');
 		$data['breadcrumbs']['heading'] = 'home';
 		$data['breadcrumbs']['page_subhead'] = $estates_page->page_title;
+		$data['breadcrumbs']['page_subhead_link'] = strtolower($estates_page->page_title);
 		$data['breadcrumbs']['subhead'] = $estates[0]->estate_name;
 
 		$data['sliders'] = $this->image_sliders_model->find_all_by(
@@ -244,30 +239,8 @@ class Estates extends MX_Controller {
 		$this->breadcrumbs->push(lang('crumb_module'), site_url('estates'));
 		//$this->breadcrumbs->push($data['article']->article_title, site_url('estates'));
 
-		$page_description = $this->metatags_model->clean_page_description($estates[0]->estate_text);
-
-        // $metafields = [
-        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $estates[0]->estate_name,
-        // 	'metatag_description'			=> $page_description,
-        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-        // 	'metatag_author'				=> config_item('website_name'),
-        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $estates[0]->estate_name,
-        // 	'metatag_og_image'				=> isset($estates[0]->estate_image) ? $estates[0]->estate_image : '',
-        // 	'metatag_og_url'				=> current_url(),
-        // 	'metatag_og_description'		=> $page_description,
-        // 	'metatag_twitter_card'			=> 'photo',
-        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $estates[0]->estate_name,
-        // 	'metatag_twitter_image'			=> isset($estates[0]->estate_image) ? $estates[0]->estate_image : '',
-        // 	'metatag_twitter_url'			=> current_url(),
-        // 	'metatag_twitter_description'	=> $page_description,
-        // ];
-
-        // $metatags = $this->metatags_model->get_metatags($metafields);
-
-
         $metatags = $this->metatags_model->get_metatags($estates[0]->estate_metatag_id);
        
-		
 		// render the page
 		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('properties', 'estates_index'), 'embed');

@@ -1,3 +1,25 @@
+#pac-input {
+    margin-top: 10px;
+    padding: 10px;
+    left: 0px !important;
+    top: 50px !important;
+    width: 94%;
+    text-indent: -3px;
+    height: 50px;
+    margin-left: 10px;
+    font-size: .7rem;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    height: 50px;
+    display: none;
+
+}
+#map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
 .google-maps {
     position: relative;
     padding-bottom: 75%;
@@ -108,7 +130,22 @@
   flex-direction: column;
   justify-content: center;
   overflow: auto;
-  @media(max-width: 768px) {
-    min-height: calc(100vh - 40px);
-  }
+}
+
+
+.breadcrumbs{
+    top: 25px;
+}
+
+  
+
+    @media(max-width: 990px) {
+    .contact_break{
+        flex: 100%;
+        max-width: 100%;
+    }
+
+    .google-maps{
+        padding-bottom: 10px;
+    }
 }

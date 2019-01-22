@@ -213,7 +213,7 @@ class Properties_model extends BF_Model {
 		$query = $this
 				->where('property_status', 'Active')
 				->where('property_deleted', 0)
-				->order_by('property_name', 'ASC')
+/*				->order_by('property_name', 'ASC')*/
 				->format_dropdown('property_id', 'property_name', TRUE);
 
 		return $query;

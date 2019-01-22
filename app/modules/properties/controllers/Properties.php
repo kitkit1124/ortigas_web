@@ -35,6 +35,7 @@ class Properties extends MX_Controller {
 		$this->load->model('property_types_model');
 		$this->load->model('settings_model');
 		$this->load->model('related_links_model');
+		$this->load->model('property_lease_spaces_model');
 		$this->load->model('website/banners_model');
 		$this->load->model('website/posts_model');
 		$this->load->model('website/news_tags_model');
@@ -80,25 +81,8 @@ class Properties extends MX_Controller {
 		$data['breadcrumbs']['subhead'] = $projects->page_title;
 
 
-		$page_description = $this->metatags_model->clean_page_description($projects->page_content);
-
-        // $metafields = [
-        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $projects->page_title,
-        // 	'metatag_description'			=> $page_description,
-        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-        // 	'metatag_author'				=> config_item('website_name'),
-        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $projects->page_title,
-        // 	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-        // 	'metatag_og_url'				=> current_url(),
-        // 	'metatag_og_description'		=> $page_description,
-        // 	'metatag_twitter_card'			=> 'photo',
-        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $projects->page_title,
-        // 	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-        // 	'metatag_twitter_url'			=> current_url(),
-        // 	'metatag_twitter_description'	=> $page_description,
-        // ];
-
-        // $metatags = $this->metatags_model->get_metatags($metafields);
+		$meta_title = $this->metatags_model->find($projects->page_metatag_id); 
+		$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $projects->page_title;
 
         $metatags = "";
         if(isset($projects->page_metatag_id) && $projects->page_metatag_id){
@@ -163,7 +147,34 @@ class Properties extends MX_Controller {
 
 	public function view($params)
 	{
-						
+		if($params){
+			$fields = [ 'property_slug' => $params ];
+			$properties = $this->properties_model->get_properties($fields);
+			if($properties){
+				if($properties[0]->property_category_id==1){
+					redirect(base_url().'residences/'.$params);
+				}
+				if($properties[0]->property_category_id==2){
+					redirect(base_url().'malls/'.$params);
+				}
+				if($properties[0]->property_category_id==3){
+					redirect(base_url().'offices/'.$params);
+				}
+			}
+			else{
+				redirect(base_url().'page-not-found');
+			}
+		}
+		else{
+			redirect(base_url().'page-not-found');
+		}
+	}
+
+	public function view_specific_property($params)
+	{
+				
+		$data['enable_map'] = true;
+				
 		// breadcrumbs
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
 		$this->breadcrumbs->push(lang('crumb_module'), site_url('estates'));
@@ -179,16 +190,22 @@ class Properties extends MX_Controller {
 			if($properties){
 
 				// page title
-				$data['page_heading'] =  $properties[0]->property_name;
+				$meta_title = $this->metatags_model->find($properties[0]->property_metatag_id); 
+				$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title :  $properties[0]->property_name;
+
 				$data['page_subhead'] = lang('index_subhead');
 				$data['page_layout'] = 'full_width';
 
 
 				$estates_page = $this->pages_model->find_by('page_uri','estates');  
-				if($properties[0]->category_id == 1){ $subhead = $estates_page->page_title; }
-				else{ $subhead = $properties[0]->category_name;	}		
+				
+				$subhead = $properties[0]->category_name;	
+				$subhead_link = $estates_page->page_title.'/category/'.$properties[0]->category_name;
+				$subhead_link = $properties[0]->category_name;
+					
 				$data['breadcrumbs']['heading'] = 'home';
 				$data['breadcrumbs']['page_subhead'] = $subhead;
+				$data['breadcrumbs']['page_subhead_link'] = strtolower($subhead_link);
 				$data['breadcrumbs']['subhead'] = $properties[0]->property_name;
 
 				$id = $properties[0]->property_id;
@@ -238,27 +255,6 @@ class Properties extends MX_Controller {
 				$fields = ['rand'=>true,'limit'=>4,'category_id'=>3];
 				$data['offices'] 	= $this->properties_model->get_properties($fields);*/
 
-
-				$page_description = $this->metatags_model->clean_page_description($properties[0]->property_overview);
-
-		        // $metafields = [
-		        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $properties[0]->property_name,
-		        // 	'metatag_description'			=> $page_description,
-		        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-		        // 	'metatag_author'				=> config_item('website_name'),
-		        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $properties[0]->property_name,
-		        // 	'metatag_og_image'				=> isset($properties[0]->property_image) ? $properties[0]->property_image : '',
-		        // 	'metatag_og_url'				=> current_url(),
-		        // 	'metatag_og_description'		=> $page_description,
-		        // 	'metatag_twitter_card'			=> 'photo',
-		        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $properties[0]->property_name,
-		        // 	'metatag_twitter_image'			=> isset($properties[0]->property_image) ? $properties[0]->property_image : '',
-		        // 	'metatag_twitter_url'			=> current_url(),
-		        // 	'metatag_twitter_description'	=> $page_description,
-		        // ];
-
-		        // $metatags = $this->metatags_model->get_metatags($metafields);
-
 	        	$metatags = $this->metatags_model->get_metatags($properties[0]->property_metatag_id);
 	      
 
@@ -270,7 +266,7 @@ class Properties extends MX_Controller {
 
 			}
 			else{
-				redirect(base_url().'search');
+				redirect(base_url().'page-not-found');
 			}
 
 		}
@@ -320,6 +316,18 @@ class Properties extends MX_Controller {
 		$floor_id = $_GET['floor_id'];
 		$units = $this->units_model->find_all_by('unit_floor_id',$floor_id);	
 		echo json_encode($units); exit;
+	}
+
+	public function get_select_properties(){
+		$fields = [];
+		$properties = $this->properties_model->get_properties($fields);	
+		echo json_encode($properties);
+	}
+
+	public function get_prop_lease(){
+		$fields = [];
+		$query = $this->property_lease_spaces_model->find_all();	
+		echo json_encode($query);
 	}
 
 	public function floorplan_image(){

@@ -41,9 +41,9 @@ color: #FFF !important;
 
 #video_label a {
   display: inline-block;
-  background-color: #FFF;
+/*  background-color: #FFF;
   border: 1px solid #CCC;
-  color: #666 !important;
+  color: #666 !important;*/
 }
 
 .carousel-control-prev, .carousel-control-next{

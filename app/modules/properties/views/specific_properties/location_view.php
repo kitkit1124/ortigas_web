@@ -28,18 +28,27 @@
 	</div>  
 	<?php endif; ?>
 
+			
+				<div style="display: none">				
+					<?php echo form_input(array('id'=>'property_longitude', 'name'=>'property_longitude', 'value'=>set_value('property_longitude', isset($properties->property_longitude) ? $properties->property_longitude : ''), 'class'=>'form-control'));?>
+					<?php echo form_input(array('id'=>'property_latitude', 'name'=>'property_latitude', 'value'=>set_value('property_latitude', isset($properties->property_latitude) ? $properties->property_latitude : ''), 'class'=>'form-control'));?>
+				</div>
+
 <?php if(isset($properties->property_latitude) && isset($properties->property_longitude) && $properties->property_latitude && $properties->property_longitude) {?>
 	<div id="map-location">
-	<iframe 
+			<textarea id="pac-input" style="display: none;"></textarea>
+			<div id="map"></div>
+
+	<!-- <iframe 
 	  width="100%" 
 	  height="400" 
 	  frameborder="0" 
 	  scrolling="no" 
 	  marginheight="0" 
 	  marginwidth="0" 
-	  src="<?php echo 'https://maps.google.com/maps?q='.$properties->property_latitude.','.$properties->property_longitude.'&hl=es;z=14&amp;output=embed'; ?>"
+	  src="<?php //echo 'https://maps.google.com/maps?q='.$properties->property_latitude.','.$properties->property_longitude.'&hl=es;z=14&amp;output=embed'; ?>"
 	 >
-	 </iframe>
+	 </iframe> -->
 	</div><!--map-location-->
 <?php } ?>
 

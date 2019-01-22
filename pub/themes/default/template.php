@@ -78,8 +78,7 @@ $this->load->model('properties/properties_model');
 											if($estates){
 												foreach ($estates as $key => $estate) { 
 											?>		
-
-													<li class="nav-item li_nav_estates_active<?php echo ($key==0) ? '' : '_list'; ?> img_link" data-img='<?php echo $estate->estate_thumb; ?>'>
+												<li class="nav-item li_nav_estates_active<?php echo ($key==0) ? '' : '_list'; ?> img_link" data-img='														<?php echo isset($estate->estate_thumb) ? $estate->estate_thumb : "ui/images/placeholder.png" ?>'>
 														<a class="nav-link a_sub_menu_estates" href="<?php echo site_url('').'estates/'.$estate->estate_slug; ?>"><?php echo $estate->estate_name; ?></a>
 															<div class = "sub_menu_categ sub_nav_estates_active<?php echo $key; ?>">
 																
@@ -114,7 +113,7 @@ $this->load->model('properties/properties_model');
 																							// }
 																						
 																				?>
-																							<li class="nav-item img_link" data-img='<?php echo $property->property_image; ?>'>
+																							<li class="nav-item img_link" data-img='<?php echo isset($property->property_thumb) ? $property->property_thumb : "ui/images/placeholder.png" ?>'>
 																								<a class="nav-link" target="<?php echo $target; ?>" href="<?php echo $link; ?>"><?php echo $property->property_name; ?></a>
 																							</li>
 																				<?php	
@@ -131,11 +130,75 @@ $this->load->model('properties/properties_model');
 															</ul> 
 															</div>
 													</li>
+													
 											<?php	
 												} //endforeach
 											}//ifestates
 										?>
 									</ul>
+								</div>
+							<?php }?>
+
+							<?php if($value->navigation_link == "residences" || $value->navigation_link == "malls" || $value->navigation_link == "offices"){?>
+								<div class = "sub_menu_estates sub_menu_estates_categs">
+
+									<ul class="ul_sub_menu_categ">
+									<?php
+										if($value->navigation_link == "residences"){ $category_id = 1; }
+										if($value->navigation_link == "malls"){ $category_id = 2; }
+										if($value->navigation_link == "offices"){ $category_id = 3; }
+
+										$estates = $this->estates_model
+										->where('estate_deleted',0)
+										->where('estate_status','Active')
+										->where('property_deleted',0)
+										->where('property_status','Active')
+										->where('property_category_id',$category_id)
+										->join('properties', 'properties.property_estate_id = estates.estate_id')
+										->group_by('estate_id')
+										->find_all(); 
+
+
+										if($estates){
+											foreach ($estates as $key => $estates) {
+									?>
+											<li class="li_sub_menu_categ" >
+												
+												<a class="nav-link a_sub_menu_categ" href="<?php echo site_url('').'estates/'.strtolower($estates->estate_slug); ?>"><?php echo $estates->estate_name; ?></a>
+												<div class="sub_menu_properties">
+
+													<ul>
+														<?php
+															$fields = [ 'estate_id' => $estates->estate_id, 'category_id' => $category_id ];
+															$properties = $this->properties_model->get_properties($fields);
+															if($properties){
+																foreach ($properties as $key => $property) {
+																	// if ($property->property_category_id == 3){
+																	// 	$link = $property->property_website;
+																	// 	$target = '_blank';
+																	// }
+																	// else{
+																		$link = site_url('').'estates/property/'.$property->property_slug;
+																		$target = null;
+																	// }
+																
+														?>
+																	<li class="nav-item img_link" data-img='<?php echo isset($property->property_thumb) ? $property->property_thumb : "ui/images/placeholder.png" ?>'>
+																		<a class="nav-link" target="<?php echo $target; ?>" href="<?php echo $link; ?>"><?php echo $property->property_name; ?></a>
+																	</li>
+														<?php	
+																}//endforeach
+															}//ifproperties
+														?>
+													</ul>
+												</div>
+											</li>
+									<?php	
+											}//endforeach
+										}//ifcategories
+									?>
+									</ul> 
+															
 								</div>
 							<?php }?>
 						</li>
@@ -264,5 +327,9 @@ $this->load->model('properties/properties_model');
 	<script src="<?php echo site_url('themes/default/js/template_custom.js'); ?>"></script>
 
 	<?php echo $_scripts; // loads additional js files from the module ?>
+
+	<?php if(isset($enable_map) && $enable_map) : ?>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN6cUNcHO88eddYIc5mo4nW4t-sOPILCE&libraries=places&callback=initMap" type="text/javascript"></script>
+	<?php endif;?>
 </body>
 </html>

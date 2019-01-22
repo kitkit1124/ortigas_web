@@ -53,7 +53,7 @@ class Post extends CI_Controller
 		// 	$this->output->cache(5);
 		// }
 
-		if (! $slug) redirect(base_url().'search');
+		if (! $slug) redirect(base_url().'page-not-found');
 
 		// get the post info
 		$post = $this->posts_model
@@ -62,7 +62,7 @@ class Post extends CI_Controller
 
 		$data['post'] = $post;
 
-		if (! $post) redirect(base_url().'search');
+		if (! $post) redirect(base_url().'page-not-found');
 
 		// page title
 		$data['page_heading'] = $post->post_title;

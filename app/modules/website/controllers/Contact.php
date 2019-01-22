@@ -41,7 +41,6 @@ class Contact extends MX_Controller
 	 */
 	public function index()
 	{
-		$data['page_heading'] = lang('index_heading');
 		$data['page_layout'] = 'full_width';
 
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
@@ -64,37 +63,22 @@ class Contact extends MX_Controller
 		$data['sliders'] = $this->banners_model->get_banners(6);
 		$page = $this->pages_model->find_by(array('page_uri' => 'contact-us', 'page_status' => 'Posted', 'page_deleted' => 0));
 		$data['page_content'] = $page;
+
+		$data['breadcrumbs']['heading'] = 'home';
+		$data['breadcrumbs']['subhead'] = $page->page_title;
+
+
+
 		$data['contact_address'] = $this->partials_model->find(1);
 		$data['properties'] = $this->properties_model->get_select_properties();
 
-		
-		$page_description = $this->metatags_model->clean_page_description($page->page_content);
-
-        // $metafields = [
-        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $page->page_title,
-        // 	'metatag_description'			=> $page_description,
-        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-        // 	'metatag_author'				=> config_item('website_name'),
-        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $page->page_title,
-        // 	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-        // 	'metatag_og_url'				=> current_url(),
-        // 	'metatag_og_description'		=> $page_description,
-        // 	'metatag_twitter_card'			=> 'photo',
-        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $page->page_title,
-        // 	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-        // 	'metatag_twitter_url'			=> current_url(),
-        // 	'metatag_twitter_description'	=> $page_description,
-        // ];
-
-        // $metatags = $this->metatags_model->get_metatags($metafields);
-
-        
         $metatags = "";
         if(isset($page->page_metatag_id) && $page->page_metatag_id){
         	$metatags = $this->metatags_model->get_metatags($page->page_metatag_id);
         }
 
-
+        $meta_title = $this->metatags_model->find($page->page_metatag_id); 
+		$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $page->page_title;
 
 		$fields = ['limit' => 4, 'page_related_news' => 6 ];
 		$news = $this->posts_model->get_active_news($fields);
@@ -106,6 +90,8 @@ class Contact extends MX_Controller
 
 			$data['news_result'] = $news;
 		}
+
+		$data['enable_map'] = true;
 
 		// $this->template->add_css('npm/bootstrap-float-label/bootstrap-float-label.min.css');
 		$this->template->write('head', $metatags);
@@ -132,7 +118,7 @@ class Contact extends MX_Controller
 		$this->form_validation->set_rules('phone', lang('phone'), 'required|max_length[150]');
 		$this->form_validation->set_rules('subject', lang('subject'), 'required|max_length[150]');
 		$this->form_validation->set_rules('content', lang('content'), 'required');
-		$this->form_validation->set_rules('g-recaptcha-response', 'reCAPTCHA', 'required');
+		// $this->form_validation->set_rules('g-recaptcha-response', 'reCAPTCHA', 'required');
 
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
 
@@ -169,7 +155,7 @@ class Contact extends MX_Controller
 
 
 	public function get_projects(){
-		if (!$this->input->is_ajax_request()) {	redirect(base_url().'search');	}
+		if (!$this->input->is_ajax_request()) {	redirect(base_url().'page-not-found');	}
 		
 		$message_section = $_POST['message_section'];
 		if($message_section == 'Estates'){

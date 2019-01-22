@@ -48,7 +48,6 @@ class News extends MX_Controller
 	 */
 	public function index()
 	{
-		$data['page_heading'] = 'News';
 		$data['page_layout'] = 'full_width';
 
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
@@ -60,6 +59,10 @@ class News extends MX_Controller
 		$data['breadcrumbs']['heading'] = 'home';
 		$data['breadcrumbs']['subhead'] = $news_page->page_title;
 
+		//page_title
+		$meta_title = $this->metatags_model->find($news_page->page_metatag_id); 
+		$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $news_page->page_title;
+
 		$data['sliders'] = $this->banners_model->get_banners(4);
 		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
 		$news = $this->posts_model->get_active_news();
@@ -69,26 +72,6 @@ class News extends MX_Controller
 		}
 
 		$data['news_result'] = $news;
-
-		$page_description = $this->metatags_model->clean_page_description($news_page->page_content);
-
-        // $metafields = [
-        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $news_page->page_title,
-        // 	'metatag_description'			=> $page_description,
-        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-        // 	'metatag_author'				=> config_item('website_name'),
-        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $news_page->page_title,
-        // 	'metatag_og_image'				=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-        // 	'metatag_og_url'				=> current_url(),
-        // 	'metatag_og_description'		=> $page_description,
-        // 	'metatag_twitter_card'			=> 'photo',
-        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $news_page->page_title,
-        // 	'metatag_twitter_image'			=> isset($data['sliders'][0]->banner_thumb) ? $data['sliders'][0]->banner_thumb : '',
-        // 	'metatag_twitter_url'			=> current_url(),
-        // 	'metatag_twitter_description'	=> $page_description,
-        // ];
-
-        // $metatags = $this->metatags_model->get_metatags($metafields);
 
         $metatags = "";
         if(isset($news_page->page_metatag_id) && $news_page->page_metatag_id){
@@ -132,8 +115,8 @@ class News extends MX_Controller
 			$news_page = $this->pages_model->find_by('page_uri','news');  
 			$data['breadcrumbs']['heading'] = 'home';
 			$data['breadcrumbs']['page_subhead'] = $news_page->page_title;
+			$data['breadcrumbs']['page_subhead_link'] = strtolower($news_page->page_title);
 			$data['breadcrumbs']['subhead'] = $news[0]->post_title;
-
 
 			$data['news_tags'] = $this->news_tags_model->find_all();
 
@@ -150,27 +133,12 @@ class News extends MX_Controller
 
 			$data['archive'] = $archive;
 
-			$page_description = $this->metatags_model->clean_page_description($news[0]->post_content);
-
-	        // $metafields = [
-	        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $news[0]->post_title,
-	        // 	'metatag_description'			=> $page_description,
-	        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-	        // 	'metatag_author'				=> config_item('website_name'),
-	        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $news[0]->post_title,
-	        // 	'metatag_og_image'				=> isset($news[0]->post_image) ? $news[0]->post_image : '',
-	        // 	'metatag_og_url'				=> current_url(),
-	        // 	'metatag_og_description'		=> $page_description,
-	        // 	'metatag_twitter_card'			=> 'photo',
-	        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $news[0]->post_title,
-	        // 	'metatag_twitter_image'			=> isset($news[0]->post_image) ? $news[0]->post_image : '',
-	        // 	'metatag_twitter_url'			=> current_url(),
-	        // 	'metatag_twitter_description'	=> $page_description,
-	        // ];
-
-	        // $metatags = $this->metatags_model->get_metatags($metafields);
-
 	        $metatags = $this->metatags_model->get_metatags($news[0]->post_metatag_id);
+
+			//page_title
+			$meta_title = $this->metatags_model->find($news[0]->post_metatag_id); 
+			$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $news[0]->post_title;
+
 
 
 			$this->template->write('head', $metatags);
@@ -180,7 +148,7 @@ class News extends MX_Controller
 			$this->template->render();
 		}
 		else{
-			redirect(base_url().'search');
+			redirect(base_url().'page-not-found');
 		}
 	}
 

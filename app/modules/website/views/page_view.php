@@ -17,7 +17,7 @@
 						$data = [];
 						$data['display'] = 'hide';
 						$data['cols'] = 'col-sm-3';
-						$data['image'] = 'property_logo';
+						$data['image'] = 'property_thumb';
 
 					 	echo $this->load->view('properties/properties_result', $data); 
 					 ?>

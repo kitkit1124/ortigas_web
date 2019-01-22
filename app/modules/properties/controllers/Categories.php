@@ -93,8 +93,9 @@ class Categories extends MX_Controller {
 
 				$estates_page = $this->pages_model->find_by('page_uri','estates');
 				$data['breadcrumbs']['heading'] = 'home';
-				$data['breadcrumbs']['page_subhead'] = $estates_page->page_title;
-				$data['breadcrumbs']['subhead'] = 'ALL '.$category->category_name;
+				// $data['breadcrumbs']['page_subhead'] = $estates_page->page_title;
+				// $data['breadcrumbs']['page_subhead_link'] = strtolower($estates_page->page_title);
+				$data['breadcrumbs']['subhead'] = $category->category_name;
 
 
 				$data['button_text'] = $this->partials_model->find(3); 
@@ -111,31 +112,11 @@ class Categories extends MX_Controller {
 
 					$data['news_result'] = $news;
 				}
-
-
-				$page_description = $this->metatags_model->clean_page_description($category->category_description);
-
-		        // $metafields = [
-		        // 	'metatag_title'					=> config_item('website_name') . ' | ' . $category->category_name,
-		        // 	'metatag_description'			=> $page_description,
-		        // 	'metatag_keywords'				=> 'greenhills, shopping, center, tiendesitas, circulo, verde, frontera, verde, luntala, valle, verde, viridian, capitol, commons, royalton, imperium,maven',
-		        // 	'metatag_author'				=> config_item('website_name'),
-		        // 	'metatag_og_title'				=> config_item('website_name') . ' | ' . $category->category_name,
-		        // 	'metatag_og_image'				=> isset($category->category_image) ? $category->category_image : '',
-		        // 	'metatag_og_url'				=> current_url(),
-		        // 	'metatag_og_description'		=> $page_description,
-		        // 	'metatag_twitter_card'			=> 'photo',
-		        // 	'metatag_twitter_title'			=> config_item('website_name') . ' | ' . $category->category_name,
-		        // 	'metatag_twitter_image'			=> isset($category->category_image) ? $category->category_image : '',
-		        // 	'metatag_twitter_url'			=> current_url(),
-		        // 	'metatag_twitter_description'	=> $page_description,
-		        // ];
-
-		        // $metatags = $this->metatags_model->get_metatags($metafields);
-
 		       
         		$metatags = $this->metatags_model->get_metatags($category->category_metatag_id);
         		
+        		$meta_title = $this->metatags_model->find($category->category_metatag_id); 
+				$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $category->category_name;
 
 				$locations = $this->locations_model->get_active_locations();
 				$locations[''] = "VIEW ALL ".strtoupper($params);
@@ -150,7 +131,7 @@ class Categories extends MX_Controller {
 						$data['category'] = $properties[0];
 					}
 					else{
-						redirect(base_url().'search');
+						redirect(base_url().'page-not-found');
 					}
 
 				$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $properties[0]->category_id, 'related_link_section_type' => 'categories'));
@@ -161,7 +142,7 @@ class Categories extends MX_Controller {
 
 				}
 				else{
-					redirect(base_url().'search');
+					redirect(base_url().'page-not-found');
 				}
 					
 			// render the page
@@ -174,7 +155,7 @@ class Categories extends MX_Controller {
 
 		}
 		else{
-			redirect(base_url().'search');
+			redirect(base_url().'page-not-found');
 		}
 	}
 
