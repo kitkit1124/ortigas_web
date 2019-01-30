@@ -1,0 +1,56 @@
+table td{
+	text-align: left;
+	color: #666;
+}
+
+table h2{
+	text-transform: uppercase;
+}
+
+
+
+.file1, .file2{
+	box-shadow: 0 0 15px -0 #eaeaea;
+	max-width: 400px;
+	margin: 10px;
+	padding: 20px;
+
+}
+
+.file1 .fa, .file2 .fa{
+	font-size: 3rem;
+	margin: 0 15px;
+}
+
+.file1 span:last-child, .file2 span:last-child{
+
+	vertical-align: 10px;
+}
+
+.content table td{
+	width: 50%;
+	display: inline-block;
+}
+
+
+@media (max-width: 1024px){
+
+	.content table td{
+		max-width: 600px;
+		width: 100%;
+		display: inline-block;
+	}
+
+	.content table img{
+		width: 100%;
+	}
+
+	#table1 td p,#table2 td p{
+		width: 100%;
+		text-align: left;
+		float: unset;
+	}
+	#table3 td{
+		padding: 20px;
+	}
+}

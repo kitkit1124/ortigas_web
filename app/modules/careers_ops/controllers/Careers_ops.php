@@ -78,7 +78,7 @@ class Careers_ops extends MX_Controller {
 					'job_mobile'			=> form_error('job_mobile'),
 					'job_document'			=> form_error('job_document'),
 					'job_agreement'			=> form_error('job_agreement'),
-					'job_captcha'			=> form_error('g-recaptcha-response'),
+					'job_captcha'			=> form_error('job_captcha'),
 				);
 				echo json_encode($response);
 				exit;
@@ -102,7 +102,7 @@ class Careers_ops extends MX_Controller {
 		$this->form_validation->set_rules('job_mobile', 'Mobile', 'required');
 		$this->form_validation->set_rules('job_document', 'File / Document', 'required');
 		$this->form_validation->set_rules('job_agreement', 'terms of agreement', 'required');
-		$this->form_validation->set_rules('g-recaptcha-response', 'reCAPTCHA', 'required');
+		$this->form_validation->set_rules('job_captcha', 'reCAPTCHA', 'required');
 
 		if ($this->form_validation->run($this) == FALSE)
 		{

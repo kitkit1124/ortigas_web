@@ -63,7 +63,7 @@ $(function() {
 				if(d){
 					$('.message_section_id_label').text('SELECT POSITION');
 					$.each(d, function( index, value ) {
-						$('#message_section_id').append('<option value="' + value.career_id + '">' + value.career_position_title + '</option>');
+						$('#message_section_id').append('<option value="' + value.career_id + '">' + value.career_position_title + ' - ' + value.division_name + '</option>');
 					});
 				}
 				else{

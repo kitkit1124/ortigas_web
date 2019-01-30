@@ -60,3 +60,60 @@ table{
 .breadcrumbs{
     top: 25px;
 }
+
+.oclp, .ccc{
+    color: #747474;
+}
+
+.oclp span, .ccc span{
+    vertical-align: -15px;
+}
+
+.dp_active{
+    border: 2px solid #07793F;
+    font-weight: bold;
+    color: #34644e; 
+}
+
+.data_privacy .col-sm-4 {
+    -ms-flex: 0 0 29%;
+    flex: 0 0 29%;
+    max-width: 29%;
+    }
+
+.data_privacy .dp_head{
+    -ms-flex: 0 0 42%;
+    flex: 0 0 42%;
+    max-width: 42%; 
+}
+
+@media (max-width: 1024px){
+    .data_privacy .col-sm-4 , .data_privacy .dp_head{
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%; 
+    }
+    .data_privacy .dp_head{
+        text-align: left;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%; 
+    }
+
+    .oclp span, .ccc span{
+        vertical-align: 0;
+      
+    }
+
+    .oclp, .ccc{
+         padding: 20px 0;
+    }
+}
+
+@media (max-width: 768px){
+    .data_privacy .col-sm-4 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%; 
+    }
+}

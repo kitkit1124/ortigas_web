@@ -292,7 +292,9 @@ class Page extends CI_Controller
 
 		//if($page->page_uri == 'supplier-and-contractor-accreditation'){
 		if($page->page_id == 10){
-			$this->template->add_css(module_css('website', 'page_view/established_communites'), 'embed');
+			$this->template->add_css(module_css('website', 'page_view/supplier'), 'embed');
+			$this->template->add_js(module_js('website', 'page_view/about_us'), 'embed');
+			//$this->template->add_css(module_css('website', 'page_view/established_communites'), 'embed');
 		}
 
 		$this->template->write('head', $metatags);
@@ -328,7 +330,7 @@ class Page extends CI_Controller
 		$data['action'] = '';
 
 		$data['partials'] = $this->partials_model->find(13);
-		
+
 		$this->template->add_css(module_css('website', 'page_view'), 'embed');
 		$this->template->add_css(module_css('website', 'page_404'), 'embed');
 		$this->template->add_js(module_js('website', 'page_view'), 'embed');

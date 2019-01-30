@@ -2,6 +2,25 @@
 <?php $this->template->add_js(module_js('website', 'slider_index'), 'embed'); ?>
 <main role="main" class="container">
 	<div class="content">
+
+		<?php  if($record->page_id == 11){ ?> 
+			<div class="data_privacy">
+				<div class="row">
+					<div class="col-sm-4 dp_head"><h2>DATA PRIVACY</h2></div>
+					<div class="col-sm-4">
+						<div class="oclp dp_active">
+							<span>OCLP DATA PRIVACY POLICY</span>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="ccc">
+							<span>CCC DATA DATA PRIVACY POLICY</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		<?php } ?>
+
 		<p class="lead">
 			<?php echo parse_content($record->page_content); ?>
 		</p>

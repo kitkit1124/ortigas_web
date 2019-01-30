@@ -662,6 +662,14 @@ a.inquiry_button {
     .social_media_properties a{
         font-size: 1.4rem;
     }
+
+    .news_result_container, .news_image, .news_result div {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 !important;
+    }
 }
 
 
@@ -701,6 +709,10 @@ a.inquiry_button {
         height: 300px;
         width: 300px;
         margin-top: 0px;
+    }
+
+    h2 {
+        font-size: 2.2rem;
     }
 }
 
