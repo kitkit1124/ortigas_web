@@ -9,15 +9,15 @@
 		<?php  if($record->page_uri == 'about-us'){ ?> 
 			<div class="projects_about">
 				<div class="row cat_heading">
-					<div class="col-sm-3 est_title"><h2><?php echo $projects->page_title; ?></h2></div>
-					<div class="col-sm-9 est_desc"><?php echo  $this->metatags_model->clean_page_description($projects->page_content); ?></div>
+					<div class="col-sm-4 est_title"><h2><?php echo $projects->page_title; ?></h2></div>
+					<div class="col-sm-8 est_desc"><?php echo  $this->metatags_model->clean_page_description($projects->page_content); ?></div>
 				</div>
 				<div class="related_properties_result">
 					<?php
 						$data = [];
 						$data['display'] = 'hide';
 						$data['cols'] = 'col-sm-3';
-						$data['image'] = 'property_thumb';
+						$data['image'] = 'property_logo';
 
 					 	echo $this->load->view('properties/properties_result', $data); 
 					 ?>

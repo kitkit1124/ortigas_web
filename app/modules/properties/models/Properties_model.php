@@ -119,9 +119,10 @@ class Properties_model extends BF_Model {
 
 				if(isset($fields['rand'])){ 
 					$this->order_by('RAND()');
+					$this->order_by('property_order','ASC');
 				}
 				else{
-					$this->order_by('property_id','ASC');
+					$this->order_by('property_order','ASC');
 				}
 
 				if(isset($fields['group_by'])){ 
@@ -140,8 +141,13 @@ class Properties_model extends BF_Model {
 		 			$this->where_not_in('property_id', $fields['wo_property_id']);
 				}
 
+				if(isset($fields['property_availability']) && $fields['property_availability']){
+					$this->where_not_in('property_availability','Sold-out');
+				}
+
 				$query  =  $this->where('property_status', 'Active')
 								->where('property_deleted', 0)
+								->order_by('property_order', 'ASC')
 								->join('estates', 'estates.estate_id = property_estate_id', 'LEFT')
 								->join('property_locations', 'property_locations.location_id = property_location_id', 'LEFT')
 								->join('property_categories', 'property_categories.category_id = property_category_id', 'LEFT')
@@ -194,10 +200,15 @@ class Properties_model extends BF_Model {
 		if(isset($fields['category_id']) && $fields['category_id']){
 			$this->where('category_id', $fields['category_id']);
 		}
+
+		if(isset($fields['property_availability']) && $fields['property_availability']){
+			$this->where_not_in('property_availability','Sold-out');
+		}
 	
 		$query  =  $this
 						->where('property_status', 'Active')
 						->where('property_deleted', 0)
+						->order_by('property_order', 'ASC')
 						->join('estates', 'estates.estate_id = property_estate_id', 'LEFT')
 						->join('property_locations', 'property_locations.location_id = property_location_id', 'LEFT')
 						->join('property_categories', 'property_categories.category_id = property_category_id', 'LEFT')
@@ -213,6 +224,8 @@ class Properties_model extends BF_Model {
 		$query = $this
 				->where('property_status', 'Active')
 				->where('property_deleted', 0)
+				->where_not_in('property_availability','Sold-out')
+				->order_by('property_order', 'ASC')
 /*				->order_by('property_name', 'ASC')*/
 				->format_dropdown('property_id', 'property_name', TRUE);
 

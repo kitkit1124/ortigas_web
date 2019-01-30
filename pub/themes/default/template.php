@@ -19,7 +19,15 @@ $this->load->model('properties/properties_model');
 	<?php $seo = $this->seo_model->find(1); echo parse_content(html_entity_decode(strip_tags($seo->seo_content)));  ?>
 
 	<!-- Start of oclp Zendesk Widget script -->
-	<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=fd0f7982-b94d-4c07-8176-69dbf81d7a0b"> </script>
+	<!-- <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=fd0f7982-b94d-4c07-8176-69dbf81d7a0b"> </script> -->
+
+	<!-- BEGIN JIVOSITE CODE {literal} -->
+	<script type='text/javascript'>
+	(function(){ var widget_id = 'C9krjKl6x0';
+	var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
+	<!-- {/literal} END JIVOSITE CODE -->
+
+
 	<!-- End of oclp Zendesk Widget script -->
 
 	<!-- bootstrap & fontawesome -->
@@ -50,7 +58,7 @@ $this->load->model('properties/properties_model');
 		</button>
 
 		<div class="oclogo_mobile">
-			<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png"></a>
+			<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png ?>"></a>
 		</div>
 
 
@@ -60,7 +68,7 @@ $this->load->model('properties/properties_model');
 				
 		<div class="main_menu collapse navbar-collapse" id="main_navbar">
 			<div class="oclogo">
-				<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png"></a>
+				<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png?>"></a>
 			</div>
 			<ul class="navbar-nav mr-auto">
 
@@ -74,17 +82,22 @@ $this->load->model('properties/properties_model');
 								<div class = "sub_menu_estates">
 									<ul class = "ul_sub_menu_estates">
 											<?php
-											$estates = $this->estates_model->where('estate_deleted',0)->where('estate_status','Active')->find_all();
+											$estates = $this->estates_model
+													->where('estate_deleted',0)
+													->where('estate_status','Active')
+													->order_by('estate_order', 'ASC')
+													->find_all();
+
 											if($estates){
 												foreach ($estates as $key => $estate) { 
 											?>		
-												<li class="nav-item li_nav_estates_active<?php echo ($key==0) ? '' : '_list'; ?> img_link" data-img='														<?php echo isset($estate->estate_thumb) ? $estate->estate_thumb : "ui/images/placeholder.png" ?>'>
+												<li class="nav-item li_nav_estates_active<?php echo ($key==0) ? '' : '_list'; ?> img_link" data-img='<?php echo isset($estate->estate_thumb) ? $estate->estate_thumb : "ui/images/placeholder.png" ?>'>
 														<a class="nav-link a_sub_menu_estates" href="<?php echo site_url('').'estates/'.$estate->estate_slug; ?>"><?php echo $estate->estate_name; ?></a>
 															<div class = "sub_menu_categ sub_nav_estates_active<?php echo $key; ?>">
 																
 															<ul class="ul_sub_menu_categ">
 																<div class="img_holder">
-																	<img src="<?php echo getenv('UPLOAD_ROOT').$estate->estate_thumb; ?>">
+																	<img src="<?php echo getenv('UPLOAD_ROOT').$estate->estate_thumb; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';">
 																</div>
 															<?php
 																$fields = [ 'estate_id' => $estate->estate_id, 'group_by' => 'category_name' ];
@@ -155,6 +168,7 @@ $this->load->model('properties/properties_model');
 										->where('property_status','Active')
 										->where('property_category_id',$category_id)
 										->join('properties', 'properties.property_estate_id = estates.estate_id')
+										->order_by('estate_order','asc')
 										->group_by('estate_id')
 										->find_all(); 
 
@@ -235,7 +249,7 @@ $this->load->model('properties/properties_model');
 			<div class="footer_content container">
 				<div class="row">
 					<div class="col-sm-4 address">
-						<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png"></a>
+						<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"></a>
 
 						<?php $footer = $this->partials_model->find(1); if($footer) { echo parse_content($footer->partial_content); } ?>
 					</div>
@@ -275,7 +289,7 @@ $this->load->model('properties/properties_model');
 				</div>
 				<div class="modal-body">
 					<div class="text-center">
-						<img src="<?php echo site_url('ui/images/loading3.gif')?>" alt="<?php echo lang('loading')?>" />
+						<img src="<?php echo site_url('ui/images/loading3.gif')?>" alt="<?php echo lang('loading')?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
 						<p><?php echo lang('loading')?></p>
 					</div>
 				</div>
@@ -297,7 +311,7 @@ $this->load->model('properties/properties_model');
 				</div>
 				<div class="modal-body">
 					<div class="text-center">
-						<img src="<?php echo site_url('ui/images/loading3.gif')?>" alt="<?php echo lang('loading')?>" />
+						<img src="<?php echo site_url('ui/images/loading3.gif')?>" alt="<?php echo lang('loading')?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
 						<p><?php echo lang('loading')?></p>
 					</div>
 				</div>

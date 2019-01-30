@@ -80,6 +80,10 @@ class Careers_model extends BF_Model {
 			$this->where('department_id', $fields['department_id']);
 		}
 
+		if(isset($fields['division_slug']) && $fields['division_slug']){
+			$this->where('division_slug', $fields['division_slug']);
+		}
+
 		if(isset($fields['career_slug']) && $fields['career_slug']){ 
 			$this->where('career_slug', $fields['career_slug']);
 		}

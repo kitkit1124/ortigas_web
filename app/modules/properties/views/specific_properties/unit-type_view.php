@@ -5,7 +5,7 @@
 		<?php foreach ($room_types as $key => $value) { ?>
 			<li class="nav-item">
 				<a class="" data-toggle="tab" data-id="<?php echo $value->room_type_id; ?>" href="#room-menu<?php echo $key; ?>">
-					<img class="unit_floorplan_thumb" src="<?php echo getenv('UPLOAD_ROOT').$value->room_type_image; ?>" alt="<?php echo $value->room_type_alt_image; ?>" title="<?php echo $value->room_type_alt_image; ?>" data-title="<?php echo $value->room_type_name; ?>"/>	
+					<img class="unit_floorplan_thumb" src="<?php echo getenv('UPLOAD_ROOT').$value->room_type_image; ?>" alt="<?php echo $value->room_type_alt_image; ?>" title="<?php echo $value->room_type_alt_image; ?>" data-title="<?php echo $value->room_type_name; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>	
 				</a>
 			</li>
     	<?php } ?>
@@ -17,7 +17,7 @@
 		<?php foreach ($room_types as $key => $value) { ?>
 		<div id="room-menu<?php echo $key; ?>" class="tab-pane fade">
 			<a href="<?php echo site_url().'properties/properties/floorplan_image?img='.getenv("UPLOAD_ROOT").$value->room_type_image ?>" data-target="#modal-lg" data-toggle="modal">
-				<img src="<?php echo getenv('UPLOAD_ROOT').$value->room_type_image; ?>" alt="<?php echo $value->room_type_alt_image; ?>" title="<?php echo $value->room_type_alt_image; ?>" />
+				<img src="<?php echo getenv('UPLOAD_ROOT').$value->room_type_image; ?>" alt="<?php echo $value->room_type_alt_image; ?>" title="<?php echo $value->room_type_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
 			</a>
     	</div>
     	

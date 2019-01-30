@@ -1,13 +1,18 @@
 <section id="roles">
-		<?php echo $this->load->view('website/slider_index'); ?>
-		<?php $this->template->add_js(module_js('website', 'slider_index'), 'embed'); ?>
-
+	<?php if($division){ ?>
+	<div id="banner_image">
+		<div class="banner_margin container"><h1><?php echo $division->division_name; ?></h1></div>
+		<div class="banner_gradient"></div>
+		<img class="estate_banner_img" src="<?php echo getenv('UPLOAD_ROOT').$division->division_image; ?>" draggable="false" alt="<?php echo $division->division_alt_image; ?>" title="<?php echo $division->division_alt_image; ?>" />
+		<?php echo $this->load->view('website/breadcrumbs_view'); ?>			
+	</div>
+	<?php } ?>
 	<main role="main" class="container">
 		<div class="content">	
-			 <?php echo $this->load->view('careers/careers_form'); ?>
+			<?php echo $this->load->view('careers/careers_form'); ?>
 			 	<a id="message_success" class="hide" href="<?php echo site_url().'website/page/show_modal?id=4' ?>" data-target="#modal-lg" data-toggle="modal"></a>
 			<div class="page_overview">
-				<?php if($careers_page) {	echo parse_content($careers_page->page_content); } ?>
+				<?php if($division) {	echo parse_content($division->division_content); } ?>
 				<label><a class="page_overview_button default-button" data-toggle="modal" data-target="#form_application">Submit Resume</a></label>			
 			</div>
 			 <div class="search_tab">
@@ -59,7 +64,6 @@
 									<div class="details">
 										<p class="title"><?php echo $val->career_position_title; ?></p>
 										<p class="dept"><?php echo $val->department_name; ?></p>
-										<p class="divi"><?php echo $val->division_name; ?></p>
 										<!-- <p class="dtpost"><?php //echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p> -->
 										<p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $val->career_location; ?></p>
 										<a href="<?php echo site_url('').'careers/'.$val->division_slug.'/'.$val->career_slug; ?>" class="default-button">View Details</a>
@@ -72,18 +76,17 @@
 						<?php	} //end foreach ?>
 					</div>
 					<?php } ?>
-					<div class="found_no_career">
-						<?php if($found_no_career) { echo parse_content($found_no_career->partial_content); } ?>
-					</div>
-			 </div>
-
-			 <div class="seo_content">
-				<?php if($careers_page) { echo parse_content($careers_page->page_bottom_content); } ?>
 			</div>
-			
+
+			<div class="seo_content">
+				<?php if($division) { echo parse_content($division->division_seo_content); } ?>
+			</div>
+
 		</div><!--content-->
 	</main>
+
 	<?php echo $this->load->view('properties/recommended_links')?>
+
 </section>
 <script type="text/javascript">
 	var post_url = '<?php echo current_url() ?>';

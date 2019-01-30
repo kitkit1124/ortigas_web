@@ -33,12 +33,12 @@
 	height: 40px;
 }
 
-.modal-body .agreement label{
+.modal-body .job_agreement label{
 	width: auto !important;
 	font-size: 14px;
 	padding-top: 4px;
 }
-.modal-body #agreement{
+.modal-body #job_agreement{
 	height: 15px;
     width: 15px;
     position: absolute;
@@ -79,6 +79,25 @@
 #form_landing h2 {color: #07793f;}
 #form_landing .modal-body { padding: 3rem 1rem; }
 
+.error_field{
+	width: 280px;
+	margin: auto;
+}
+
+.g-recaptcha{
+	width: 300px;
+	margin: auto;z
+}
+
+.found_no_career{
+	display: none;
+}
+
+.modal-header button.close{
+	position: absolute;
+	right: 30px;
+
+}
 .modal-dialog {
   min-height: calc(100vh - 100px);
   display: flex;

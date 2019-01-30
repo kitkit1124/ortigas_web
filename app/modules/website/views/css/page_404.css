@@ -1,7 +1,15 @@
-img.not_found_img{ width: 100%; max-width: 400px; }
+img.not_found_img{ width: 100%; max-width: 400px; margin: 20px auto 40px auto;}
+
+.content p{
+	color: #07793f;
+	font-size: 1.1rem;
+	margin-bottom: 0;
+	padding-bottom: 0
+}
 .default-button{
 	margin-top: 30px;
 	display: inline-block;
 	width: auto;
 	max-width: 300px !important;
+	margin-bottom: 120px;
 }

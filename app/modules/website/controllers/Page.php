@@ -48,6 +48,7 @@ class Page extends CI_Controller
 		$this->load->model('post_tags_model');
 		$this->load->model('banners_model');
 		$this->load->model('metatags_model');
+		$this->load->model('navigation_settings_model');
 		$this->load->model('properties/categories_model');
 		$this->load->model('properties/price_range_model');
 		$this->load->model('properties/locations_model');
@@ -108,6 +109,10 @@ class Page extends CI_Controller
 
 		// homepage
 		$data['page_content'] = $this->pages_model->find_by('page_uri','home'); 
+
+		$nav = $this->navigation_settings_model->find(1);
+		$data['nav_color_theme'] = $nav->nav_setting_color_theme;
+
 
 		$data['is_home'] = TRUE;
 
@@ -322,6 +327,8 @@ class Page extends CI_Controller
 		$data['page_subhead'] = '';
 		$data['action'] = '';
 
+		$data['partials'] = $this->partials_model->find(13);
+		
 		$this->template->add_css(module_css('website', 'page_view'), 'embed');
 		$this->template->add_css(module_css('website', 'page_404'), 'embed');
 		$this->template->add_js(module_js('website', 'page_view'), 'embed');

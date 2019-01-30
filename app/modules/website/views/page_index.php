@@ -26,7 +26,12 @@
 
 <?php } ?>
 
-
+<?php if($nav_color_theme == 'White'){ ?>
+	<style type="text/css">
+	.oclogo img { filter: brightness(0) invert(1); }
+	a.nav-link.base_nav.nav_estates, .nav_search_button i{color: #FFF; }
+	</style>
+<?php } ?>
 <?php if($is_home){ ?>
 	<style type="text/css">
 	body {  padding-top: 0px; } 
@@ -59,7 +64,7 @@
 						<a href="<?php echo site_url('').'estates/'.$val->estate_slug; ?>">
 						<div class="image_wrapper">
 							<div class="image_container">
-								<img src="<?php echo getenv('UPLOAD_ROOT').$val->estate_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" />
+								<img src="<?php echo getenv('UPLOAD_ROOT').$val->estate_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
 							</div>
 							<div class="estate bgestate"><center><?php echo $val->estate_name; ?></center></div>
 						</div>
@@ -93,7 +98,7 @@
 					<div class="carousel-inner">
 					<?php foreach ($carousel as $key => $value) { ?>
 					<div class="carousel-item">
-					  <img class="carousel-indicator_button" data-target="#carousel" data-slide-to="<?php echo $key; ?>" src="<?php echo getenv('UPLOAD_ROOT').$value->image_slider_image; ?>"  width="100" height="100" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>" />
+					  <img class="carousel-indicator_button" data-target="#carousel" data-slide-to="<?php echo $key; ?>" src="<?php echo getenv('UPLOAD_ROOT').$value->image_slider_image; ?>"  width="100" height="100" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
 					</div>
 					<?php } ?>	
 					</div>
@@ -129,7 +134,7 @@
 					<div class="image_wrapper">
 						<div class="property"><?php echo $val->property_name; ?></div>
 						<div class="image_container">
-							<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
+							<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
 						</div>
 						<div class="estate"><?php echo $val->estate_name; ?></div>
 					</div>
@@ -147,7 +152,7 @@
 					<div class="image_wrapper">
 						<div class="property"><?php echo $val->property_name; ?></div>
 						<div class="image_container">
-							<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
+							<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
 						</div>
 						<div class="estate"><?php echo $val->estate_name; ?></div>
 					</div>
@@ -179,3 +184,7 @@
 		<!-- <div class="seo_content">
 			<?php //if($page_content) { echo parse_content($page_content->page_bottom_content); } ?>
 		</div> -->
+
+		<script type="text/javascript">
+			var nav_color_theme = "<?php echo $nav_color_theme ?>";
+		</script>>

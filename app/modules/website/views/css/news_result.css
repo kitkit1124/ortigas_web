@@ -105,13 +105,13 @@
 	}
 
 	.news_details a {
-	    display: block;
+	  /*  display: block;
 	    max-width: 130px;
 	    text-align: center;
 	    color: #07793f;
 	    background: #FFF;
 	    border: 2px solid #07793f;
-	    color: #07793f !important;
+	    color: #07793f !important;*/
 	}
 }
 

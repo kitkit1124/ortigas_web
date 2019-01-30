@@ -337,7 +337,7 @@ function geocodeLatLng(geocoder, map, infowindow) {
     geocoder.geocode({'location': latlng}, function(results, status) {
       if (status === 'OK') {
         if (results[0]) {
-          map.setZoom(11);
+          map.setZoom(15);
           var marker = new google.maps.Marker({
             position: latlng,
             map: map

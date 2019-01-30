@@ -35,7 +35,7 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="message_section">Inquiry Type *</label>
-								<?php $options = create_dropdown('array', ',Sales Inquiry,Leasing Inquiry,Career Inquiry'); ?>
+								<?php $options = create_dropdown('array', 'Please select Inquiry Type,Sales Inquiry,Leasing Inquiry,Career Inquiry'); ?>
 								<?php echo form_dropdown('message_section', $options, '', 'id="message_section" class="form-control"'); ?>
 								<?php echo form_error('error-message_section'); ?>
 								<div id="error-message_section" class="error_field"></div>
@@ -44,7 +44,8 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label class="message_section_id_label" for="message_section_id">Select Project *</label>
-								<?php echo form_dropdown('message_section_id', $properties, '', 'id="message_section_id" class="form-control"'); ?>
+								<?php $options = create_dropdown('array','Please select Inquiry Type first'); ?>
+								<?php echo form_dropdown('message_section_id', $options, '', 'id="message_section_id" class="form-control"'); ?>
 								<?php echo form_error('error-message_section_id'); ?>
 								<div id="error-message_section_id" class="error_field"></div>
 							</div>
@@ -107,7 +108,7 @@
 					
 					<div class="form-group agreement">
 	          		<input type="checkbox" id="message_agreement" name="message_agreement" class="pointer message_agreement">
-	          		<label for="message_agreement" class="pointer message_agreement_label"><span class="color_default">* I agree to the</span><a href="<?php echo base_url();?>privacy-policy" target="_blank"><span class="green">OCLP</span></a> <span class="color_default">and</span><a href="<?php echo base_url();?>privacy-policy" target="_blank"><span class="green">CCC<span></a><span class="color_default">Data privacy.</span></label>
+	          		<label for="message_agreement" class="pointer message_agreement_label"><span class="color_default">* I agree to the</span><a href="<?php echo base_url();?>oclp-data-privacy-policy" target="_blank"><span class="green">OCLP</span></a> <span class="color_default">and</span><a href="<?php echo base_url();?>oclp-data-privacy-policy" target="_blank"><span class="green">CCC<span></a><span class="color_default">Data privacy.</span></label>
 	          			<div id="error-message_agreement" class="error_field"></div>
 	    		    </div>
 

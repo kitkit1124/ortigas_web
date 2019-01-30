@@ -10,7 +10,7 @@
 					<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 					<div class="image_wrapper">
 						<div class="image_container">
-								<img src="<?php echo  getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false"/>
+								<img src="<?php echo  getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
 						</div>
 						<div class="property"><p><?php echo $val->property_name; ?></p><p><?php echo $val->estate_name; ?></p></div>
 					</div>

@@ -319,7 +319,11 @@ class Properties extends MX_Controller {
 	}
 
 	public function get_select_properties(){
-		$fields = [];
+
+		$fields =[];
+		if($_GET['property_availability']){
+			$fields = ['property_availability' => true];
+		}
 		$properties = $this->properties_model->get_properties($fields);	
 		echo json_encode($properties);
 	}

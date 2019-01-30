@@ -17,7 +17,7 @@ $(function() {
 });
 
 function searchCareer(){
-	$.ajax({method: "POST",url: 'careers/careers/search', data: $('.search_tab form').serialize() })
+	$.ajax({method: "POST",url: site_url+ 'careers_ops/careers_ops/search', data: $('.search_tab form').serialize() })
 	.done(function(data) {
 
 		var data = jQuery.parseJSON(data);
@@ -28,28 +28,33 @@ function searchCareer(){
 			$('#careers_content .row').html('');
 			var html = '';
 
+			if(data.result){
+				$.each(data.result, function( index, value ) {	
+					if(value.career_modified_on){ dtpost = value.career_modified_on } else { dtpost = value.career_created_on}		
 
-			$.each(data.result, function( index, value ) {	
-				if(value.career_modified_on){ dtpost = value.career_modified_on } else { dtpost = value.career_created_on}		
 
+					var formattedDate = new Date(dtpost);
+					var d = formattedDate.getDate();
+					var m =  formattedDate.getMonth();
+					m += 1;  // JavaScript months are 0-11
+					var y = formattedDate.getFullYear();
 
-				var formattedDate = new Date(dtpost);
-				var d = formattedDate.getDate();
-				var m =  formattedDate.getMonth();
-				m += 1;  // JavaScript months are 0-11
-				var y = formattedDate.getFullYear();
+					html = '<div class="career_box residences col-sm-4"><div class="image_wrapper"><div class="details">'+
+					'<p class="title">' + value.career_position_title + '</p>' + 
+					'<p class="dept">' + value.department_name +'</p>'+
+					'<p class="divi">' + value.division_name +'</p>'+
+					'<p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i>' + value.career_location + '</p>' + 
+					'<a href="' + '" class="default-button">View Details</a>'+
+					'</div><div class="image_container">'+
+					//'<img src="' + site_url +  value.career_image + '" width="100%" alt="" draggable="false"/>'+
+					'</div></div></div>';
 
-				html = '<div class="career_box residences col-sm-4"><div class="image_wrapper"><div class="details">'+
-				'<p class="title">' + value.career_position_title + '</p>' + 
-				'<p class="dept">' + value.department_name +'</p>'+
-				'<p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i>' + value.career_location + '</p>' + 
-				'<a href="' + '" class="default-button">View Details</a>'+
-				'</div><div class="image_container">'+
-				//'<img src="' + site_url +  value.career_image + '" width="100%" alt="" draggable="false"/>'+
-				'</div></div></div>';
-
-				$('#careers_content .row').append(html);
-			});
+					$('#careers_content .row').append(html);
+				});
+			}
+			else{
+				$('.found_no_career').fadeIn(500);
+			}
 		}
 	});
 }

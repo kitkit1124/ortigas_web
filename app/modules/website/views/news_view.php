@@ -2,7 +2,7 @@
 	<?php if($news){ ?>
 	<div id="banner_image">
 		<div class="banner_gradient"></div>
-		<img class="estate_banner_img" src="<?php echo getenv('UPLOAD_ROOT').$news->post_image; ?>" draggable="false" alt="<?php echo $news->post_alt_image; ?>" title="<?php echo $news->post_alt_image; ?>" />
+		<img class="estate_banner_img" src="<?php echo getenv('UPLOAD_ROOT').$news->post_image; ?>" draggable="false" alt="<?php echo $news->post_alt_image; ?>" title="<?php echo $news->post_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
 		<?php echo $this->load->view('website/breadcrumbs_view'); ?>	
 	</div>
 	<?php } ?>

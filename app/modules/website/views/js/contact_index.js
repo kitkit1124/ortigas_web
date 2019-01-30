@@ -28,8 +28,13 @@ $(function() {
 
 	$('#message_section').change(function(){
 		var section = $(this).val();
+
+		
+	    $("option[value='Please select Inquiry Type']",this).remove();
+
+
 		if(section=='Sales Inquiry'){
-			$.ajax({method: "GET",url: "properties/get_select_properties"})
+			$.ajax({method: "GET",url: "properties/get_select_properties", data: 'property_availability=true'})
 			.done(function( data ) {
 				d = jQuery.parseJSON(data);
 				$('#message_section_id').html('');
@@ -51,7 +56,7 @@ $(function() {
 			});
 		}
 		if(section=='Career Inquiry'){
-			$.ajax({method: "GET",url: "careers/careers/get_careers"})
+			$.ajax({method: "GET",url: site_url + "careers_ops/careers_ops/get_careers"})
 			.done(function( data ) {
 				d = jQuery.parseJSON(data);
 				$('#message_section_id').html('');
@@ -192,7 +197,7 @@ function initMap() {
 		geocoder.geocode({'location': latlng}, function(results, status) {
 		  if (status === 'OK') {
 		    if (results[0]) {
-		      map.setZoom(13);
+		      map.setZoom(15);
 		      var marker = new google.maps.Marker({
 		        position: latlng,
 		        map: map

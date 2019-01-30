@@ -70,7 +70,9 @@ class Contact extends MX_Controller
 
 
 		$data['contact_address'] = $this->partials_model->find(1);
-		$data['properties'] = $this->properties_model->get_select_properties();
+		//$fields = ['property_availability' => true ];
+		//$data['properties'] = $this->properties_model->get_select_properties($fields);
+		//$data['properties'][''] ="Please select a Project";
 
         $metatags = "";
         if(isset($page->page_metatag_id) && $page->page_metatag_id){
@@ -118,7 +120,7 @@ class Contact extends MX_Controller
 		$this->form_validation->set_rules('phone', lang('phone'), 'required|max_length[150]');
 		$this->form_validation->set_rules('subject', lang('subject'), 'required|max_length[150]');
 		$this->form_validation->set_rules('content', lang('content'), 'required');
-		// $this->form_validation->set_rules('g-recaptcha-response', 'reCAPTCHA', 'required');
+		$this->form_validation->set_rules('g-recaptcha-response', 'reCAPTCHA', 'required');
 
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
 

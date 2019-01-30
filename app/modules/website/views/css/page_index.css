@@ -7,6 +7,11 @@ video{
   margin: auto;
 
 }
+.banner_gradient{
+  display: none;
+  visibility: none;
+  background: none;
+}
 
 #video_label{
   top: 40%;

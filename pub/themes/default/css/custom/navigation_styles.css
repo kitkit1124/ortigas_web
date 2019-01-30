@@ -105,7 +105,7 @@
 }
 
 a.nav-link.base_nav.nav_estates{
-	 font-size: .9rem;
+	 font-size: 1rem;
 }
 
 .base_nav_active, .base_nav:focus, .base_nav:hover {
@@ -123,12 +123,13 @@ a.nav-link.base_nav.nav_estates{
 
 .navbar-nav li.base_nav_li:last-child a{
   border: 2px solid #A9A9A9;
-  width: 160px;
+  width: 167px;
 }
 
 .navbar-nav li.base_nav_li:last-child, .navbar-nav li.base_nav_li:last-child a{
 /*  background-color: #07793f; 
   color: #fff !important;*/
+  text-align: center;
 }
 
 .navbar-nav li.base_nav_li:last-child:hover a{

@@ -104,6 +104,20 @@ if (!function_exists('pr'))
 	}
 }
 
+if (!function_exists('image_file_exist')) 
+{
+	function image_file_exist($data) 
+	{
+		if (!file_exists($data)) {
+			return site_url('ui/images/placeholder.png');
+		}
+		else{
+			return $data;
+		}                    
+
+	}
+}
+
 
 if (!function_exists('module_list')) 
 {

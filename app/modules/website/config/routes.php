@@ -14,7 +14,8 @@ $route['news'] = 'website/news/index';
 $route['news/(:any)'] = 'website/news/view/$1';
 
 $route['careers'] = 'careers/careers/index';
-$route['careers/(:any)'] = 'careers/careers/view/$1';
+$route['careers/(:any)'] = 'careers/careers/view_division/$1';
+$route['careers/(:any)/(:any)'] = 'careers/careers/view/$1/$2';
 
 $route['page-not-found'] = 'website/page/page_not_found';
 

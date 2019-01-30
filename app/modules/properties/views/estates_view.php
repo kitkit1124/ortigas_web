@@ -5,7 +5,7 @@
 		<?php if(isset($estates->estate_logo) && $estates->estate_logo || $estates->estate_logo=='NULL'){ ?>
 		<div class="estate_logo_div">
 			<div class="banner_gradient"></div>
-			<img class="estate_logo_img" src="<?php echo getenv('UPLOAD_ROOT').$estates->estate_logo; ?>" draggable="false" alt="<?php echo $estates->estate_alt_logo; ?>" title="<?php echo $estates->estate_alt_logo; ?>" />
+			<img class="estate_logo_img" src="<?php echo getenv('UPLOAD_ROOT').$estates->estate_logo; ?>" draggable="false" alt="<?php echo $estates->estate_alt_logo; ?>" title="<?php echo $estates->estate_alt_logo; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
 			<h1 class="hide"><?php echo $estates->estate_name; ?></h1>
 		</div> 
 		<?php } else { ?>
@@ -13,7 +13,7 @@
 		<div class="banner_gradient"></div>
 		<?php } ?>
 		
-		<img class="estate_banner_img" src="<?php echo getenv('UPLOAD_ROOT').$estates->estate_image; ?>" draggable="false" alt="<?php echo $estates->estate_alt_image; ?>" title="<?php echo $estates->estate_alt_image; ?>" />
+		<img class="estate_banner_img" src="<?php echo getenv('UPLOAD_ROOT').$estates->estate_image; ?>" draggable="false" alt="<?php echo $estates->estate_alt_image; ?>" title="<?php echo $estates->estate_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
 		<?php echo $this->load->view('website/breadcrumbs_view'); ?>					
 	</div>
 	<?php } ?>

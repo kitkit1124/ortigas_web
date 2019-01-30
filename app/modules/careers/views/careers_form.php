@@ -22,7 +22,7 @@ $this->template->add_js(module_js('careers', 'careers_form'), 'embed');
       				  <?php if(isset($career->career_position_title) && $career->career_position_title){ $select_careers = [$career->career_id =>  $career->career_position_title ]; } ?>
                 <?php echo form_dropdown('job_career_title', $select_careers, set_value('job_career_title', (isset($career->career_position_title)) ? $career->career_position_title : ''), 'id="job_career_title" class="form-control"'); ?>
           			<?php //echo form_input('job_career_id',$career->career_id, 'id="job_career_id" class="form-control" disabled="disabled" style="display:none"'); ?>
-                <div id="error-job_career_title" class="error_field"></div>
+                <div id="error-job_career_id" class="error_field"></div>
           		</div>
           		<div class="col-sm-6">
           			<label for="job_referred">Referred by</label>
@@ -66,14 +66,16 @@ $this->template->add_js(module_js('careers', 'careers_form'), 'embed');
         				<?php echo form_input('job_document','', 'id="job_document" style="display:none"'); ?>
           		</div>
           	</div>
-          	<div class="form-group agreement">
-          		<input type="checkbox" id="agreement" name="agreement" class="pointer">
-          		<label for="agreement" class="pointer"><span class="color_default">* I accept the Website</span><span class="terms">Terms and Conditions</span> and <span class="privacy">Privacy Statement.<span></label>
+          	<div class="form-group job_agreement">
+          		<input type="checkbox" id="job_agreement" name="job_agreement" class="pointer">
+          		<label for="job_agreement" class="pointer"><span class="color_default">* I accept the Website</span><a href="<?php echo base_url();?>oclp-data-privacy-policy" target="_blank"><span class="terms">Terms and Conditions</span></a> and <a href="<?php echo base_url();?>oclp-data-privacy-policy" target="_blank"><span class="privacy">Privacy Statement.</span></a></label>
+                <div id="error-job_agreement" class="error_field"></div>
     		    </div>
-        		<div class="form-group">
-        			<div class="g-recaptcha" data-sitekey="6LesgDEUAAAAACnHdg78NXeQ--Iy1Fp7C4b32RF9"></div>
-        			<?php echo form_error('g-recaptcha-response'); ?>
-        		</div>
+          	<div class="form-group">
+              <div class="g-recaptcha" data-sitekey="6Ledg30UAAAAAHixIxThPUv1CLlvuPV1S-NvgWtX"></div>
+              <?php echo form_error('g-recaptcha-response'); ?>
+              <div id="error-job_captcha" class="error_field"></div>
+            </div>
      
       </div>
       <div class="modal-footer">
@@ -82,3 +84,4 @@ $this->template->add_js(module_js('careers', 'careers_form'), 'embed');
     </div>
   </div>
 </div>
+<script src='https://www.google.com/recaptcha/api.js'></script>
