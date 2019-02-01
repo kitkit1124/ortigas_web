@@ -26,6 +26,7 @@ function searchCareer(){
 		} else {
 
 			$('#careers_content .row').html('');
+			$('.found_no_career').hide();
 			var html = '';
 
 			if(data.result){

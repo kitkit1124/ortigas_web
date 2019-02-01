@@ -13,11 +13,7 @@ $(function() {
 		   set_video_height();
 		   transparent_nav();
 		});
-
-		// $(".base_nav_li, .sub_menu_estates")
-		// .mouseenter(function(){	default_theme(); })
-		// .mouseout(function(){ white_theme(); });
-
+		
 });
 
 function transparent_nav(){
@@ -36,7 +32,8 @@ function transparent_nav(){
 
 function set_video_height(){
 	var height = $(window).height();
-	$('.video_division').css('height', height);
+	var width = $(window).width();
+	$('#video_player').css({'height': height,'width':width});
 	$('#slider img').css({'height' : height, 'max-height' : height});
 }
 
@@ -61,3 +58,8 @@ function white_theme(){
 	//$(".navbar-nav li.base_nav_li:last-child a").css({"border": "2px solid #FFF"});
 	}
 }
+
+function playVid() { 
+  $('#video_player').trigger('play');
+  $('#video_player').load();
+} 

@@ -3,15 +3,14 @@ body {
     font-family: Helvetica;
 }
 
-.content , #footer , #slider{
+#slider, #banner_image, .content, #footer, #video_label, .container, #footer, .news_related, #news, .recommended_links_container, #roles {
     display: none;
 }
-
 
 .content{
     min-height: 420px;
 }
-}
+
 
 .content a{
       text-decoration: none;

@@ -61,6 +61,7 @@ class Careers_model extends BF_Model {
 			$f = $fields['keyword'];
 			$this->where('('.
 				'career_position_title like "%'.$f.'%"'.' or '.
+				'career_location like "%'.$f.'%"'.' or '.
 				'career_req like "%'.$f.'%"'.' or '.
 				'career_res like "%'.$f.'%"'.' or '.
 				'department_name like "%'.$f.'%"'.' or '.

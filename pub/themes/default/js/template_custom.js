@@ -1,5 +1,12 @@
 $(document).ready(function(){
-$('.content, #footer, #slider').fadeIn(500);
+
+   Pace.on('hide', function(){
+     $('#slider, #banner_image, .content, #footer, #video_label, .container, #footer, .news_related, #news, .recommended_links_container, #roles').fadeIn(300);
+     $('.slick-arrow').trigger('click');
+     set_banner_position(); 
+    });
+
+  
 });
 
 $(document).mouseup(function(e) 

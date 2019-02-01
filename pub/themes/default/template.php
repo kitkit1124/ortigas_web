@@ -16,6 +16,10 @@ $this->load->model('properties/properties_model');
 
 	<title><?php echo $page_heading; ?> | <?php echo config_item('website_name'); ?></title>
 
+	<script src="<?php echo site_url('npm/pace/pace.min.js'); ?>"></script>
+	<link href="<?php echo site_url('npm/pace/pace.css'); ?>" rel="stylesheet" />
+
+
 	<?php $seo = $this->seo_model->find(1); echo parse_content(html_entity_decode(strip_tags($seo->seo_content)));  ?>
 
 	<!-- Start of oclp Zendesk Widget script -->

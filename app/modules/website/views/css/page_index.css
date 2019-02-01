@@ -13,6 +13,10 @@ video{
   background: none;
 }
 
+#video_player{
+  object-fit: cover;
+}
+
 #video_label{
   top: 40%;
   position: absolute;

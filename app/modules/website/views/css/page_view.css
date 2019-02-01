@@ -63,10 +63,12 @@ table{
 
 .oclp, .ccc{
     color: #747474;
+    height: 40px;
+    cursor: pointer;
 }
 
 .oclp span, .ccc span{
-    vertical-align: -15px;
+    vertical-align: -8px;
 }
 
 .dp_active{
@@ -85,6 +87,10 @@ table{
     -ms-flex: 0 0 42%;
     flex: 0 0 42%;
     max-width: 42%; 
+}
+
+.ccc_data_privacy{
+    display: none;
 }
 
 @media (max-width: 1024px){
@@ -107,6 +113,7 @@ table{
 
     .oclp, .ccc{
          padding: 20px 0;
+         height: auto;
     }
 }
 

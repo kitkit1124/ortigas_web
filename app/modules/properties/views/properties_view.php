@@ -113,7 +113,6 @@
 	var upload_url = "<?php echo getenv('UPLOAD_ROOT'); ?>"
 </script>
 
-<?php if($properties->category_id!=1) : ?>
+
 <?php echo $this->load->view('properties/specific_properties/news_related'); ?>
 <?php echo $this->load->view('properties/recommended_links')?>
-<?php endif; ?>

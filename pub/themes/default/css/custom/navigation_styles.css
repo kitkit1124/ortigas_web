@@ -116,9 +116,13 @@ a.nav-link.base_nav.nav_estates{
   cursor: pointer;
   padding: 30px 3px;
 }
-.navbar-nav li.base_nav_li:hover, .navbar-nav li.base_nav_li:hover .base_nav{
-  background-color: #07793f; 
+.navbar-nav li.base_nav_li:hover a.nav_estates , .navbar-nav li.base_nav_li:hover .base_nav a.nav_estates {
+  background-color: #07793f;
   color: #fff !important;
+}
+
+.nav_search_button:hover{
+  color: #07793F;
 }
 
 .navbar-nav li.base_nav_li:last-child a{

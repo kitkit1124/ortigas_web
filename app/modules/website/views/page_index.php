@@ -1,6 +1,6 @@
 <?php if(isset($video) && $video){ ?>
 	<div class="video_division">
-		<video height="100%"  controls autoplay loop>
+		<video id="video_player" height="100%" controls autoplay loop onclick="playVid()">
 		  <source src="<?php echo getenv('UPLOAD_ROOT').$video->video_location ?>" type="video/mp4">
 		</video>
 	</div>
@@ -187,4 +187,4 @@
 
 		<script type="text/javascript">
 			var nav_color_theme = "<?php echo $nav_color_theme ?>";
-		</script>>
+		</script>

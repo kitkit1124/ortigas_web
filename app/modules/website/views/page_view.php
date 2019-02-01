@@ -14,17 +14,25 @@
 					</div>
 					<div class="col-sm-4">
 						<div class="ccc">
-							<span>CCC DATA DATA PRIVACY POLICY</span>
+							<span>CCC DATA PRIVACY POLICY</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		<?php } ?>
 
+		<?php  if($record->page_id == 11){ ?> 
+			<div class="oclp_content">
+				<?php echo parse_content($record->page_content); ?>
+			</div>
+			<div class="ccc_content">
+				<?php echo parse_content($record->page_bottom_content); ?>
+			</div>
+			<?php } else { ?>
 		<p class="lead">
 			<?php echo parse_content($record->page_content); ?>
 		</p>
-
+			<?php } ?>
 		<?php  if($record->page_uri == 'about-us'){ ?> 
 			<div class="projects_about">
 				<div class="row cat_heading">
@@ -45,7 +53,7 @@
 		<?php } ?>
 
 		
-		<?php if($record->page_bottom_content) { ?>
+		<?php if($record->page_bottom_content && $record->page_id != 11) { ?>
 			<div class="seo_content">
 			<?php echo parse_content($record->page_bottom_content); ?>
 			</div>
@@ -71,4 +79,6 @@
 		</div>
 	<?php } ?>
 <?php //} ?>
+
+<?php echo $this->load->view('properties/recommended_links')?>
 
