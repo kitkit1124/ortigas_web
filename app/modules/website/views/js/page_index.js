@@ -13,7 +13,6 @@ $(function() {
 		   set_video_height();
 		   transparent_nav();
 		});
-		
 });
 
 function transparent_nav(){
@@ -58,8 +57,3 @@ function white_theme(){
 	//$(".navbar-nav li.base_nav_li:last-child a").css({"border": "2px solid #FFF"});
 	}
 }
-
-function playVid() { 
-  $('#video_player').trigger('play');
-  $('#video_player').load();
-} 

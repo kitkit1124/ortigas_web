@@ -102,7 +102,7 @@ class Messages extends MX_Controller {
 		$this->form_validation->set_rules('message_agreement', lang('message_agreement'), 'required');
 		
 		if ($this->input->post('message_type') == "Contact") {
-			$this->form_validation->set_rules('message_captcha', 'reCAPTCHA', 'required');
+			// $this->form_validation->set_rules('message_captcha', 'reCAPTCHA', 'required');
 		}
 		
 
@@ -130,6 +130,19 @@ class Messages extends MX_Controller {
 		{
 			$insert_id = $this->messages_model->insert($data);
 			$return = (is_numeric($insert_id)) ? $insert_id : FALSE;
+
+
+			$this->email->from('gutzby.marzan@digify.com.ph', 'Gutz');
+			$this->email->to('gutzby.marzan@digify.com.ph');
+			// $this->email->cc('another@another-example.com');
+			// $this->email->bcc('them@their-example.com');
+
+			$this->email->subject('Email Test');
+			$this->email->message('gutzby.marzan@digify.com.ph');
+
+			$this->email->send();
+
+
 		}
 		else if ($action == 'edit')
 		{

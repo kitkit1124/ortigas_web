@@ -1,6 +1,6 @@
 <?php if(isset($video) && $video){ ?>
 	<div class="video_division">
-		<video id="video_player" height="100%" controls autoplay loop onclick="playVid()">
+		<video id="video_player" height="100%" controls autoplay loop muted>
 		  <source src="<?php echo getenv('UPLOAD_ROOT').$video->video_location ?>" type="video/mp4">
 		</video>
 	</div>

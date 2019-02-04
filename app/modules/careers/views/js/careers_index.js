@@ -14,6 +14,8 @@ $(function() {
 	$('.button_search').click(function(){
 		searchCareer();
 	});
+
+	$('.no_career_div h2, .no_career_div p').removeAttr('style');
 });
 
 function searchCareer(){

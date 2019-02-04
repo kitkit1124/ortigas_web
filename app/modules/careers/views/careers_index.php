@@ -4,12 +4,18 @@
 
 	<main role="main" class="container">
 		<div class="content">	
+
+		
 			 <?php echo $this->load->view('careers/careers_form'); ?>
 			 	<a id="message_success" class="hide" href="<?php echo site_url().'website/page/show_modal?id=4' ?>" data-target="#modal-lg" data-toggle="modal"></a>
 			<div class="page_overview">
 				<?php if($careers_page) {	echo parse_content($careers_page->page_content); } ?>
-				<label><a class="page_overview_button default-button" data-toggle="modal" data-target="#form_application">Submit Resume</a></label>			
+				<?php if(isset($careers) && $careers){ ?>
+				<label><a class="page_overview_button default-button" data-toggle="modal" data-target="#form_application">Submit Resume</a></label>		
+				<?php } ?>	
 			</div>
+
+			<?php if(isset($careers) && $careers){ ?>
 			 <div class="search_tab">
 				<div class="search_tab_content">
 					<form>
@@ -77,6 +83,11 @@
 					</div>
 			 </div>
 
+		<?php } else{ ?>
+			<div class="no_career_div">
+				<?php if($found_no_career) { echo parse_content($found_no_career->partial_content); } ?>
+			</div>
+		<?php } ?>
 			 <div class="seo_content">
 				<?php if($careers_page) { echo parse_content($careers_page->page_bottom_content); } ?>
 			</div>

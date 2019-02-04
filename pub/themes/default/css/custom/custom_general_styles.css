@@ -3,8 +3,12 @@ body {
     font-family: Helvetica;
 }
 
-#slider, #banner_image, .content, #footer, #video_label, .container, #footer, .news_related, #news, .recommended_links_container, #roles {
+#slider, #banner_image, .content, #footer, #video_label, .container, #footer, .news_related, #news, .recommended_links_container, #roles, #video_player {
     display: none;
+}
+
+.navbar{
+    visibility: hidden;
 }
 
 .content{
