@@ -102,7 +102,7 @@ class Messages extends MX_Controller {
 		$this->form_validation->set_rules('message_agreement', lang('message_agreement'), 'required');
 		
 		if ($this->input->post('message_type') == "Contact") {
-			// $this->form_validation->set_rules('message_captcha', 'reCAPTCHA', 'required');
+			$this->form_validation->set_rules('message_captcha', 'reCAPTCHA', 'required');
 		}
 		
 
