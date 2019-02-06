@@ -151,8 +151,8 @@ class Messages extends MX_Controller {
             $this->email->clear();
             $this->email->set_newline("\r\n");
             $this->email->to('gutzby.nobleza.marzan@gmail.com');
-            $this->email->from('no-reply@test.com');
-            $this->email->subject('Subject');
+            $this->email->from($this->config->item('website_email'), $this->config->item('website_name'));
+            $this->email->subject('');
             $this->email->set_mailtype("html");
             $this->email->message('Test Content, Vape muna ako 3:28');
             $this->email->send();
