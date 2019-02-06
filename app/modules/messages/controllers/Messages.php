@@ -132,7 +132,7 @@ class Messages extends MX_Controller {
 			$return = (is_numeric($insert_id)) ? $insert_id : FALSE;
 
 			$post_subject = '';
-			if($this->input->post('message_type') != "Contact"){ $post_subject = ' Inquiry'}
+			if($this->input->post('message_type') != "Contact"){ $post_subject = ' Inquiry'; }
 
 
 			$config['smtp_host'] = '192.168.6.163';
@@ -151,7 +151,7 @@ class Messages extends MX_Controller {
 
             $this->email->initialize($config);
 
-            $message_content = $this->load->view('emails/message_content', $data, TRUE);
+            $message_content = $this->load->view('email_message', $data, TRUE);
 
             $this->email->clear();
             $this->email->set_newline("\r\n");
