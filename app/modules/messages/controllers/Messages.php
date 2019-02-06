@@ -150,8 +150,8 @@ class Messages extends MX_Controller {
 
             $this->email->clear();
             $this->email->set_newline("\r\n");
-            $this->email->to('gutzby.nobleza.marzan@gmail.com');
-            $this->email->from('noreply@ortigas.com.ph');
+            $this->email->to(config_item('app_email'));
+            $this->email->from(config_item('website_email'),config_item('website_name'));
             //$this->email->subject('Inquiry for '.$this->input->post('message_section').' - '.$this->input->post('message_section_id'));
             $this->email->subject('Inquiry');
             $this->email->set_mailtype("html");
