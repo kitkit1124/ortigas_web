@@ -130,25 +130,29 @@ class Messages extends MX_Controller {
 		{
 			$insert_id = $this->messages_model->insert($data);
 			$return = (is_numeric($insert_id)) ? $insert_id : FALSE;
-			
+
+
 			$config['smtp_host'] = '192.168.6.163';
             $config['smtp_port'] = 25;
             $config['smtp_user'] = '';
             $config['smtp_pass'] = '';
             $config['mailtype'] = 'html';
-            $config['charset'] ='utf-8';  
-
-            $this->load->library('email');       
+            $config['charset'] ='utf-8';
+            $config['newline'] ='\r\n';
+            $config['validation'] = true;
+            $config['email_debug'] ='y';
+        
+            $this->load->library('email');
 
             $this->email->initialize($config);
 
-            $this->email->to('gutzby.nobleza.marzan@@gmail.com');
-            $this->email->from('gutzby.nobleza.marzan@gmail.com');
-            // $this->email->from($this->config->item('website_email'), $this->config->item('website_name'));
-            // $this->email->reply_to($this->config->item('website_email'), $this->config->item('website_email'));
-            $this->email->subject('Message from ' . $this->input->post('message_email'));
+            $this->email->clear();
+            $this->email->set_newline("\r\n");
+            $this->email->to('gutzby.nobleza.marzan@gmail.com');
+            $this->email->from('no-reply@test.com');
+            $this->email->subject('Subject');
             $this->email->set_mailtype("html");
-            $this->email->message('test');
+            $this->email->message('Test Content');
             $this->email->send();
 
 		}
