@@ -133,6 +133,8 @@ class Messages extends MX_Controller {
 
 
 			$config['smtp_host'] = '192.168.6.163';
+			$config['protocol'] = 'smtp';
+			$config['smtp_timeout'] = 10;
             $config['smtp_port'] = 25;
             $config['smtp_user'] = '';
             $config['smtp_pass'] = '';
@@ -154,6 +156,8 @@ class Messages extends MX_Controller {
             $this->email->set_mailtype("html");
             $this->email->message('Test Content');
             $this->email->send();
+
+            pr($this->email->print_debugger(array('headers')));
 
 		}
 		else if ($action == 'edit')
