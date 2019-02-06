@@ -1,3 +1,3 @@
 <?php
-pr($data);
+pr($message_type);
 ?>

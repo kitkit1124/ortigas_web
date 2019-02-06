@@ -151,7 +151,19 @@ class Messages extends MX_Controller {
 
             $this->email->initialize($config);
 
-            $message_content = $this->load->view('email_message', $data, TRUE);
+
+            
+			$edata['message_type']			=> $this->input->post('message_type');
+			$edata['message_section']		=> $this->input->post('message_section');
+			$edata['message_section_id']	=> $this->input->post('message_section_id');
+			$edata['message_name']			=> $this->input->post('message_name');
+			$edata['message_email']			=> $this->input->post('message_email');
+			$edata['message_mobile']		=> $this->input->post('message_mobile');
+			$edata['message_location']		=> $this->input->post('message_location');
+			$edata['message_content']		=> $this->input->post('message_content');
+			$edata['message_status']		=> $this->input->post('message_status');
+		
+            $message_content = $this->load->view('email_message', $edata, TRUE);
 
             $this->email->clear();
             $this->email->set_newline("\r\n");
