@@ -154,8 +154,11 @@ class Messages extends MX_Controller {
             $this->email->from('no-reply@test.com');
             $this->email->subject('Subject');
             $this->email->set_mailtype("html");
-            $this->email->message('Test Content Please');
+            $this->email->message('Test Content');
             $this->email->send();
+
+            echo $this->email->print_debugger(array('headers'));
+
 		}
 		else if ($action == 'edit')
 		{
