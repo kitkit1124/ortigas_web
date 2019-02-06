@@ -156,9 +156,7 @@ class Messages extends MX_Controller {
             $this->email->subject('Inquiry');
             $this->email->set_mailtype("html");
             $this->email->message('test content');
-            $send = $this->email->send();
-
-            pr($send);
+            $this->email->send();
 		}
 		else if ($action == 'edit')
 		{
