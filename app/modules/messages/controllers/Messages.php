@@ -131,6 +131,9 @@ class Messages extends MX_Controller {
 			$insert_id = $this->messages_model->insert($data);
 			$return = (is_numeric($insert_id)) ? $insert_id : FALSE;
 
+			$post_subject = '';
+			if($this->input->post('message_type') != "Contact"){ $post_subject = ' Inquiry'}
+
 
 			$config['smtp_host'] = '192.168.6.163';
 			$config['protocol'] = 'smtp';
@@ -148,13 +151,15 @@ class Messages extends MX_Controller {
 
             $this->email->initialize($config);
 
+            $message_content = $this->load->view('emails/message_content', $data, TRUE);
+
             $this->email->clear();
             $this->email->set_newline("\r\n");
             $this->email->to(config_item('app_email'));
             $this->email->from(config_item('website_email'),config_item('website_name'));
-            $this->email->subject('Inquiry for '.$this->input->post('message_section').' - '.$this->input->post('message_section_id'));
+            $this->email->subject($this->input->post('message_section').$post_subject);
             $this->email->set_mailtype("html");
-            $this->email->message('test content');
+            $this->email->message($message_content);
             $this->email->send();
 		}
 		else if ($action == 'edit')

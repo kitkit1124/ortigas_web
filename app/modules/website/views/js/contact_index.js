@@ -121,7 +121,8 @@ $(function() {
 		        }
 			} else {
            		  $('#message_success').trigger('click');
-           		 // setTimeout(function(){ location.reload(); }, 3000);
+           		  $('.contact_form form').find("input[type=text], textarea").val("");
+           		  // setTimeout(function(){ location.reload(); }, 3000);
 
 			}
 		});
