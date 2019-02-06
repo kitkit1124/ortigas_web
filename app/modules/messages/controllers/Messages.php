@@ -142,7 +142,7 @@ class Messages extends MX_Controller {
 
             $this->email->initialize($config);
 
-            $this->email->to('gutzbymarzan@yahoo.com');
+            $this->email->to('gutzby.nobleza.marzan@@gmail.com');
             $this->email->from('gutzby.nobleza.marzan@gmail.com');
             // $this->email->from($this->config->item('website_email'), $this->config->item('website_name'));
             // $this->email->reply_to($this->config->item('website_email'), $this->config->item('website_email'));
