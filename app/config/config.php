@@ -468,8 +468,7 @@ $config['csrf_expire'] = 3600; // 7200;
 $config['csrf_regenerate'] = FALSE;
 $config['csrf_exclude_uris'] = array(
 	'files/images/upload',
-	'users/roles/update_access',
-	'messages/messages/form'
+	'users/roles/update_access'
 	// TODO: implement csrf here
 	// 'website/navigations/save',
 );

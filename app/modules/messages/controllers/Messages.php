@@ -102,7 +102,7 @@ class Messages extends MX_Controller {
 		$this->form_validation->set_rules('message_agreement', lang('message_agreement'), 'required');
 		
 		if ($this->input->post('message_type') == "Contact") {
-			$this->form_validation->set_rules('message_captcha', 'reCAPTCHA', 'required');
+			// $this->form_validation->set_rules('message_captcha', 'reCAPTCHA', 'required');
 		}
 		
 
@@ -130,18 +130,26 @@ class Messages extends MX_Controller {
 		{
 			$insert_id = $this->messages_model->insert($data);
 			$return = (is_numeric($insert_id)) ? $insert_id : FALSE;
+			
+			$config['smtp_host'] = '192.168.6.163';
+            $config['smtp_port'] = 25;
+            $config['smtp_user'] = '';
+            $config['smtp_pass'] = '';
+            $config['mailtype'] = 'html';
+            $config['charset'] ='utf-8';  
 
+            $this->load->library('email');       
 
-			$this->email->from('gutzby.marzan@digify.com.ph', 'Gutz');
-			$this->email->to('gutzby.marzan@digify.com.ph');
-			// $this->email->cc('another@another-example.com');
-			// $this->email->bcc('them@their-example.com');
+            $this->email->initialize($config);
 
-			$this->email->subject('Email Test');
-			$this->email->message('gutzby.marzan@digify.com.ph');
-
-			$this->email->send();
-
+            $this->email->to('gutzbymarzan@yahoo.com');
+            $this->email->from('gutzby.nobleza.marzan@gmail.com');
+            // $this->email->from($this->config->item('website_email'), $this->config->item('website_name'));
+            // $this->email->reply_to($this->config->item('website_email'), $this->config->item('website_email'));
+            $this->email->subject('Message from ' . $this->input->post('message_email'));
+            $this->email->set_mailtype("html");
+            $this->email->message('test');
+            $this->email->send();
 
 		}
 		else if ($action == 'edit')

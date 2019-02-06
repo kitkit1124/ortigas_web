@@ -160,4 +160,5 @@
 	var latitude = '<?php echo $page_content->page_latitude; ?>';
 	var longitude = '<?php echo $page_content->page_longitude; ?>';
 	var location_name = '<?php echo $page_content->page_map_name; ?>';
+	var app_url = "<?php echo site_url() ?>";
 </script>
