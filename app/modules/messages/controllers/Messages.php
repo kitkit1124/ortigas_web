@@ -152,8 +152,7 @@ class Messages extends MX_Controller {
             $this->email->set_newline("\r\n");
             $this->email->to(config_item('app_email'));
             $this->email->from(config_item('website_email'),config_item('website_name'));
-            //$this->email->subject('Inquiry for '.$this->input->post('message_section').' - '.$this->input->post('message_section_id'));
-            $this->email->subject('Inquiry');
+            $this->email->subject('Inquiry for '.$this->input->post('message_section').' - '.$this->input->post('message_section_id'));
             $this->email->set_mailtype("html");
             $this->email->message('test content');
             $this->email->send();
