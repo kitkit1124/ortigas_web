@@ -154,7 +154,7 @@ class Messages extends MX_Controller {
             $this->email->from('no-reply@test.com');
             $this->email->subject('Subject');
             $this->email->set_mailtype("html");
-            $this->email->message('Test Content, Vape muna ako '.date("h:s A"));
+            $this->email->message('Test Content, Vape muna ako 3:28');
             $this->email->send();
 
             pr($this->email->print_debugger(array('headers')));
