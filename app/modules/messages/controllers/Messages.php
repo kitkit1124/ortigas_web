@@ -134,6 +134,7 @@ class Messages extends MX_Controller {
 
 			$config['smtp_host'] = '192.168.6.163';
 			$config['protocol'] = 'smtp';
+			$config['smtp_crypto'] = 'tls';
 			$config['smtp_timeout'] = 10;
             $config['smtp_port'] = 25;
             $config['smtp_user'] = '';
@@ -154,10 +155,10 @@ class Messages extends MX_Controller {
             $this->email->from('no-reply@test.com');
             $this->email->subject('Subject');
             $this->email->set_mailtype("html");
-            $this->email->message('Test Content');
+            $this->email->message('Test Content, Vape muna ako, 2:39');
             $this->email->send();
 
-            echo $this->email->print_debugger(array('headers'));
+            pr($this->email->print_debugger(array('headers')));
 
 		}
 		else if ($action == 'edit')
