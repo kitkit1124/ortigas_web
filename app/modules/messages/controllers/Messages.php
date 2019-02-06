@@ -157,7 +157,7 @@ class Messages extends MX_Controller {
             $this->email->message('Test Content');
             $this->email->send();
 
-            pr($this->email->print_debugger(array('headers')));
+            // pr($this->email->print_debugger(array('headers')));
 
 		}
 		else if ($action == 'edit')
