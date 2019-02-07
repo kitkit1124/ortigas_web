@@ -160,34 +160,26 @@ class Messages extends MX_Controller {
             $section = $this->input->post('message_section');
             $section_id = $this->input->post('message_section_id');
 
-			if($section == 'Estates'){
-				if(isset($section_id) && $section_id > 0){
+            if(isset($section_id) && $section_id > 0){
+				if($section == 'Estates'){
 					$sec_data = $this->estates_model->find($section_id);
 					$message_section_id = $sec_data->estate_name;
 				}
-				else{
-					$message_section_id = 'General';
+				else if($section == 'Leasing Inquiry'){
+					$sec_data = $this->property_lease_spaces_model->find($section_id);
+					$message_section_id = $sec_data->lease_name;
 				}
-			}
-			else if($section == 'Leasing Inquiry'){
-				$sec_data = $this->property_lease_spaces_model->find($section_id);
-				$message_section_id = $sec_data->lease_name;
-			}
-			else if($section == 'Career Inquiry'){
-				$sec_data = $this->careers_model->find($section_id);
-				$message_section_id = $sec_data->career_position_title;
-			}
-			else if($section == 'News'){
-				$message_section_id = 'General';
-			}
-			else if($section == 'Residences' || $section == 'Malls' || $section == 'Offices'){
-				if(isset($section_id) && $section_id > 0){
+				else if($section == 'Career Inquiry'){
+					$sec_data = $this->careers_model->find($section_id);
+					$message_section_id = $sec_data->career_position_title;
+				}
+				else if($section == 'Residences' || $section == 'Malls' || $section == 'Offices'){
 					$sec_data = $this->properties_model->find($section_id);
 					$message_section_id = $sec_data->property_name;
 				}
-				else{
-					$message_section_id = 'General';
-				}
+			}
+			else{
+				$message_section_id = 'General';
 			}
 
 
