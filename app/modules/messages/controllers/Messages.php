@@ -21,6 +21,11 @@ class Messages extends MX_Controller {
 		parent::__construct();
 
 		$this->load->model('messages_model');
+		$this->load->model('properties/estates_model');
+		$this->load->model('properties/property_lease_spaces_model');
+		$this->load->model('careers/careers_model');
+		$this->load->model('properties/properties_model');
+		
 		$this->load->language('messages');
 	}
 	
@@ -152,10 +157,44 @@ class Messages extends MX_Controller {
             $this->email->initialize($config);
 
 
+            $section = $this->input->post('message_section');
+            $section_id = $this->input->post('message_section_id');
+
+			if($section == 'Estates'){
+				if(isset($section_id) && $section_id > 0){
+					$sec_data = $this->estates_model->find($section_id);
+					$message_section_id = $sec_data->estate_name;
+				}
+				else{
+					$message_section_id = 'General';
+				}
+			}
+			else if($section == 'Leasing Inquiry'){
+				$sec_data = $this->property_lease_spaces_model->find($section_id);
+				$message_section_id = $sec_data->lease_name;
+			}
+			else if($section == 'Career Inquiry'){
+				$sec_data = $this->careers_model->find($section_id);
+				$message_section_id = $sec_data->career_position_title;
+			}
+			else if($section == 'News'){
+				$message_section_id = 'General';
+			}
+			else if($section == 'Residences' || $section == 'Malls' || $section == 'Offices'){
+				if(isset($section_id) && $section_id > 0){
+					$sec_data = $this->properties_model->find($section_id);
+					$message_section_id = $sec_data->property_name;
+				}
+				else{
+					$message_section_id = 'General';
+				}
+			}
+
+
             
 			$edata['message_type']			= $this->input->post('message_type');
 			$edata['message_section']		= $this->input->post('message_section');
-			$edata['message_section_id']	= $this->input->post('message_section_id');
+			$edata['message_section_id']	= $message_section_id;
 			$edata['message_name']			= $this->input->post('message_name');
 			$edata['message_email']			= $this->input->post('message_email');
 			$edata['message_mobile']		= $this->input->post('message_mobile');
@@ -164,7 +203,7 @@ class Messages extends MX_Controller {
 			$edata['message_status']		= $this->input->post('message_status');
 		
             $message_content = $this->load->view('messages_email', $edata, TRUE);
-                        
+
             $this->email->clear();
             $this->email->set_newline("\r\n");
             $this->email->to(config_item('app_email'));

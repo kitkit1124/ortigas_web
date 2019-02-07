@@ -100,9 +100,9 @@ class Careers_ops extends MX_Controller {
 		$this->form_validation->set_rules('job_applicant_name', 'Applicant Name', 'required');
 		$this->form_validation->set_rules('job_email', 'E-mail', 'required');
 		$this->form_validation->set_rules('job_mobile', 'Mobile', 'required');
-		$this->form_validation->set_rules('job_document', 'File / Document', 'required');
+		// $this->form_validation->set_rules('job_document', 'File / Document', 'required');
 		$this->form_validation->set_rules('job_agreement', 'terms of agreement', 'required');
-		$this->form_validation->set_rules('job_captcha', 'reCAPTCHA', 'required');
+		// $this->form_validation->set_rules('job_captcha', 'reCAPTCHA', 'required');
 
 		if ($this->form_validation->run($this) == FALSE)
 		{
@@ -121,6 +121,46 @@ class Careers_ops extends MX_Controller {
 
 		$insert_id = $this->jobs_model->insert($data);
 		$return = (is_numeric($insert_id)) ? $insert_id : FALSE;
+
+
+			$config['smtp_host'] = '192.168.6.163';
+			$config['protocol'] = 'smtp';
+			$config['smtp_timeout'] = 10;
+            $config['smtp_port'] = 25;
+            $config['smtp_user'] = '';
+            $config['smtp_pass'] = '';
+            $config['mailtype'] = 'html';
+            $config['charset'] ='utf-8';
+            $config['newline'] ='\r\n';
+            $config['validation'] = true;
+            $config['email_debug'] ='y';
+        
+            $this->load->library('email');
+
+            $this->email->initialize($config);
+
+
+            $job_id = $this->input->post('job_career_id');          
+          	$job_data = $this->careers_model->get_careers($job_id);
+            
+            $edata['job_career_id']			= $job_data[0]->career_position_title;
+            $edata['job_division']			= $job_data[0]->division_name;
+            $edata['job_department']		= $job_data[0]->department_name;
+			$edata['job_applicant_name']	= $this->input->post('job_applicant_name');
+			$edata['job_email']				= $this->input->post('job_email');
+			$edata['job_mobile']			= $this->input->post('job_mobile');
+			$edata['job_referred']			= $this->input->post('job_referred');
+		
+            $message_content = $this->load->view('messages/messages_career_email', $edata, TRUE);
+           
+            $this->email->clear();
+            $this->email->set_newline("\r\n");
+            $this->email->to(config_item('app_email'));
+            $this->email->from(config_item('website_email'),config_item('website_name'));
+            $this->email->subject($this->input->post('message_section').$post_subject);
+            $this->email->set_mailtype("html");
+            $this->email->message($message_content);
+            $this->email->send();
 	
 		return $return;
 	}

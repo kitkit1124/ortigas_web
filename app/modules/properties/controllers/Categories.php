@@ -109,7 +109,7 @@ class Categories extends MX_Controller {
 					foreach ($news as $key => $result) {
 						$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
 					}
-
+					
 					$data['news_result'] = $news;
 				}
 		       
@@ -121,7 +121,6 @@ class Categories extends MX_Controller {
 				$locations = $this->locations_model->get_active_locations();
 				$locations[''] = "VIEW ALL ".strtoupper($params);
 				$data['select_locations'] = $locations;
-
 
 				$fields = [ 'category_name' => $params ];
 				$properties = $this->properties_model->get_properties($fields);
@@ -136,10 +135,8 @@ class Categories extends MX_Controller {
 
 				$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $properties[0]->category_id, 'related_link_section_type' => 'categories'));
 
-				$data['section_id'] = $category->category_id;
+				$data['section_id'] = 0;
 				$data['section'] = $category->category_name;
-
-
 				}
 				else{
 					redirect(base_url().'page-not-found');

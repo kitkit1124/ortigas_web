@@ -76,7 +76,7 @@ class Estates extends MX_Controller {
 		$data['sliders'] = $this->banners_model->get_banners(2);
 		$estates = $this->estates_model->get_estates();
 
-		$data['section_id'] = $category->page_id;
+		$data['section_id'] = 0;
 		$data['section'] = $category->page_title;
 		
 

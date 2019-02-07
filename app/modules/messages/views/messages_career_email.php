@@ -35,45 +35,44 @@
 </style>
 </head>
 <body>
-	<h1>Inquiry Notification</h1>
+	<h1>Career Inquiry Notification</h1>
 	<table border="0">
 		<tr>
-			<td class="label">Inquiry Type<span>:</span></td>
-			<td class="eval"><?php echo $message_section; ?></td>
+			<td class="label">Position<span>:</span></td>
+			<td class="eval"><?php echo $job_career_id; ?></td>
 		</tr>
 		<tr>
-			<td class="label">Subject<span>:</span></td>
-			<td class="eval"><?php echo $message_section_id; ?></td>
+			<td class="label">Division<span>:</span></td>
+			<td class="eval"><?php echo $job_division; ?></td>
+		</tr>
+		<tr>
+			<td class="label">Department<span>:</span></td>
+			<td class="eval"><?php echo $job_department; ?></td>
 		</tr>
 		<tr>
 			<td class="label">Name<span>:</span></td>
-			<td class="eval"><?php echo $message_name; ?></td>
+			<td class="eval"><?php echo $job_applicant_name; ?></td>
 		</tr>
 		<tr>
 			<td class="label">Email<span>:</span></td>
-			<td class="eval"><?php echo $message_email; ?></td>
+			<td class="eval"><?php echo $job_email; ?></td>
 		</tr>
 
-		<?php if(isset($message_mobile) && $message_mobile): ?>
+		<?php if(isset($job_mobile) && $job_mobile): ?>
 		<tr>
 			<td class="label">Mobile Number<span>:</span></td>
-			<td class="eval"><?php echo $message_mobile; ?></td>
+			<td class="eval"><?php echo $job_mobile; ?></td>
 		</tr>
 		<?php endif; ?>
 
-		<?php if(isset($message_location) && $message_location): ?>
+		<?php if(isset($job_referred) && $job_referred): ?>
 			<tr>
-				<td class="label">Location<span>:</span></td>
-				<td class="eval"><?php echo $message_location; ?></td>
+				<td class="label">Referred by<span>:</span></td>
+				<td class="eval"><?php echo $job_referred; ?></td>
 			</tr>
 		<?php endif; ?>
 
-		<?php if(isset($message_content) && $message_content): ?>
-			<tr>
-				<td class="label">Message<span>:</span></td>
-				<td class="eval"><?php echo $message_content; ?></td>
-			</tr>
-		<?php endif; ?>
+
 	</table>
 </body>
 </html>

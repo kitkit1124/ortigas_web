@@ -260,7 +260,7 @@ class Properties extends MX_Controller {
 
 
 				$data['section_id'] = $id;
-				$data['section'] = 'Properties';
+				$data['section'] = $properties[0]->category_name;
 
 				$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $id, 'related_link_section_type' => 'properties'));
 
