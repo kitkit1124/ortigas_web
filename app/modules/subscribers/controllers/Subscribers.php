@@ -179,12 +179,12 @@ class Subscribers extends MX_Controller {
             $edata['cms_site'] = getenv('UPLOAD_ROOT');
 
             $message_content = $this->load->view('messages/messages_subscribe_email', $edata, TRUE);
-           	
+
             $this->email->clear();
             $this->email->set_newline("\r\n");
             $this->email->to(config_item('app_email'));
             $this->email->from(config_item('website_email'),config_item('website_name'));
-            $this->email->subject('Client Subscribes');
+            $this->email->subject('Client Subscription');
             $this->email->set_mailtype("html");
             $this->email->message($message_content);
             $this->email->send();
