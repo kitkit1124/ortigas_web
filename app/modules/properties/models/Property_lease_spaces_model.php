@@ -36,5 +36,4 @@ class Property_lease_spaces_model extends BF_Model {
 	 * @param	none
 	 * @author 	Gutzby Marzan <gutzby.marzan@digify.com.ph>
 	 */
-
 }

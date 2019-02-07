@@ -100,9 +100,9 @@ class Careers_ops extends MX_Controller {
 		$this->form_validation->set_rules('job_applicant_name', 'Applicant Name', 'required');
 		$this->form_validation->set_rules('job_email', 'E-mail', 'required');
 		$this->form_validation->set_rules('job_mobile', 'Mobile', 'required');
-		// $this->form_validation->set_rules('job_document', 'File / Document', 'required');
+		$this->form_validation->set_rules('job_document', 'File / Document', 'required');
 		$this->form_validation->set_rules('job_agreement', 'terms of agreement', 'required');
-		// $this->form_validation->set_rules('job_captcha', 'reCAPTCHA', 'required');
+		$this->form_validation->set_rules('job_captcha', 'reCAPTCHA', 'required');
 
 		if ($this->form_validation->run($this) == FALSE)
 		{
