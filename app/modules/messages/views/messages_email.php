@@ -11,7 +11,7 @@
 		text-transform: uppercase;
 		font-weight: bold;
 		letter-spacing: -1px;
-		width: 200px;
+		width: 150px;
 		vertical-align: top;
 	}
 	.label span{
@@ -22,17 +22,14 @@
 		max-width: 600px;
 	}
 	td{
-		margin: 10px;
-		padding: 10px;
+		margin: 5px;
+		padding: 5px;
 		display: inline-block;
 		font-family: Helvetica;
 	}
 	h1{
 		color: #07793F;
-		margin-left: 10px;
-	}
-	table{
-		margin-left: 10px;
+		margin-left: 15px;
 	}
 </style>
 </head>
