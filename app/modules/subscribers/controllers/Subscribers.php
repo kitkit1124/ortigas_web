@@ -180,16 +180,14 @@ class Subscribers extends MX_Controller {
 
             $message_content = $this->load->view('messages/messages_subscribe_email', $edata, TRUE);
            	
-           	pr($message_content);
-
-            // $this->email->clear();
-            // $this->email->set_newline("\r\n");
-            // $this->email->to(config_item('app_email'));
-            // $this->email->from(config_item('website_email'),config_item('website_name'));
-            // $this->email->subject('Client Subscribes');
-            // $this->email->set_mailtype("html");
-            // $this->email->message($message_content);
-            // $this->email->send();
+            $this->email->clear();
+            $this->email->set_newline("\r\n");
+            $this->email->to(config_item('app_email'));
+            $this->email->from(config_item('website_email'),config_item('website_name'));
+            $this->email->subject('Client Subscribes');
+            $this->email->set_mailtype("html");
+            $this->email->message($message_content);
+            $this->email->send();
 
 		}
 		else if ($action == 'edit')

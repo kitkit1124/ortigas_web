@@ -11,6 +11,6 @@
 <body>
 	<h1>Subscription Notification</h1>
 	<p>An email address of <?php echo $subscriber_email; ?> has subscribed to our website. To manage your subscription preferences, please click the url below.</p>
-	<p><?php echo $cms_site; ?>subscribers/subscribers.</p>
+	<p><a>http://oclpcms.gobeyondtheclouds.com/subscribers/subscribers.</a></p>
 </body>
 </html>
