@@ -153,26 +153,28 @@ class Messages extends MX_Controller {
 
 
             
-			$edata['message_type']			=> $this->input->post('message_type');
-			$edata['message_section']		=> $this->input->post('message_section');
-			$edata['message_section_id']	=> $this->input->post('message_section_id');
-			$edata['message_name']			=> $this->input->post('message_name');
-			$edata['message_email']			=> $this->input->post('message_email');
-			$edata['message_mobile']		=> $this->input->post('message_mobile');
-			$edata['message_location']		=> $this->input->post('message_location');
-			$edata['message_content']		=> $this->input->post('message_content');
-			$edata['message_status']		=> $this->input->post('message_status');
+			$edata['message_type']			= $this->input->post('message_type');
+			$edata['message_section']		= $this->input->post('message_section');
+			$edata['message_section_id']	= $this->input->post('message_section_id');
+			$edata['message_name']			= $this->input->post('message_name');
+			$edata['message_email']			= $this->input->post('message_email');
+			$edata['message_mobile']		= $this->input->post('message_mobile');
+			$edata['message_location']		= $this->input->post('message_location');
+			$edata['message_content']		= $this->input->post('message_content');
+			$edata['message_status']		= $this->input->post('message_status');
 		
-            $message_content = $this->load->view('email_message', $edata, TRUE);
+            $message_content = $this->load->view('messages_email', $edata, TRUE);
 
-            $this->email->clear();
-            $this->email->set_newline("\r\n");
-            $this->email->to(config_item('app_email'));
-            $this->email->from(config_item('website_email'),config_item('website_name'));
-            $this->email->subject($this->input->post('message_section').$post_subject);
-            $this->email->set_mailtype("html");
-            $this->email->message($message_content);
-            $this->email->send();
+            pr($message_content);
+            
+            // $this->email->clear();
+            // $this->email->set_newline("\r\n");
+            // $this->email->to(config_item('app_email'));
+            // $this->email->from(config_item('website_email'),config_item('website_name'));
+            // $this->email->subject($this->input->post('message_section').$post_subject);
+            // $this->email->set_mailtype("html");
+            // $this->email->message($message_content);
+            // $this->email->send();
 		}
 		else if ($action == 'edit')
 		{
