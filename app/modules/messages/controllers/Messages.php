@@ -164,17 +164,15 @@ class Messages extends MX_Controller {
 			$edata['message_status']		= $this->input->post('message_status');
 		
             $message_content = $this->load->view('messages_email', $edata, TRUE);
-
-            pr($message_content);
-            
-            // $this->email->clear();
-            // $this->email->set_newline("\r\n");
-            // $this->email->to(config_item('app_email'));
-            // $this->email->from(config_item('website_email'),config_item('website_name'));
-            // $this->email->subject($this->input->post('message_section').$post_subject);
-            // $this->email->set_mailtype("html");
-            // $this->email->message($message_content);
-            // $this->email->send();
+                        
+            $this->email->clear();
+            $this->email->set_newline("\r\n");
+            $this->email->to(config_item('app_email'));
+            $this->email->from(config_item('website_email'),config_item('website_name'));
+            $this->email->subject($this->input->post('message_section').$post_subject);
+            $this->email->set_mailtype("html");
+            $this->email->message($message_content);
+            $this->email->send();
 		}
 		else if ($action == 'edit')
 		{
