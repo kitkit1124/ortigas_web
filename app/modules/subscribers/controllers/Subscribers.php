@@ -156,6 +156,41 @@ class Subscribers extends MX_Controller {
 		{
 			$insert_id = $this->subscribers_model->insert($data);
 			$return = (is_numeric($insert_id)) ? $insert_id : FALSE;
+
+
+
+			$config['smtp_host'] = '192.168.6.163';
+			$config['protocol'] = 'smtp';
+			$config['smtp_timeout'] = 10;
+            $config['smtp_port'] = 25;
+            $config['smtp_user'] = '';
+            $config['smtp_pass'] = '';
+            $config['mailtype'] = 'html';
+            $config['charset'] ='utf-8';
+            $config['newline'] ='\r\n';
+            $config['validation'] = true;
+            $config['email_debug'] ='y';
+        
+            $this->load->library('email');
+
+            $this->email->initialize($config);
+
+            $edata['subscriber_email']	=  $this->input->post('subscriber_email');
+            $edata['cms_site'] = getenv('UPLOAD_ROOT');
+
+            $message_content = $this->load->view('messages/messages_subscribe_email', $edata, TRUE);
+           	
+           	pr($message_content);
+
+            // $this->email->clear();
+            // $this->email->set_newline("\r\n");
+            // $this->email->to(config_item('app_email'));
+            // $this->email->from(config_item('website_email'),config_item('website_name'));
+            // $this->email->subject('Client Subscribes');
+            // $this->email->set_mailtype("html");
+            // $this->email->message($message_content);
+            // $this->email->send();
+
 		}
 		else if ($action == 'edit')
 		{

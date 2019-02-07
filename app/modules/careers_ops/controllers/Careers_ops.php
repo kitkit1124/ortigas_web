@@ -102,7 +102,7 @@ class Careers_ops extends MX_Controller {
 		$this->form_validation->set_rules('job_mobile', 'Mobile', 'required');
 		$this->form_validation->set_rules('job_document', 'File / Document', 'required');
 		$this->form_validation->set_rules('job_agreement', 'terms of agreement', 'required');
-		$this->form_validation->set_rules('job_captcha', 'reCAPTCHA', 'required');
+		// $this->form_validation->set_rules('job_captcha', 'reCAPTCHA', 'required');
 
 		if ($this->form_validation->run($this) == FALSE)
 		{
@@ -152,12 +152,12 @@ class Careers_ops extends MX_Controller {
 			$edata['job_referred']			= $this->input->post('job_referred');
 		
             $message_content = $this->load->view('messages/messages_career_email', $edata, TRUE);
-           
+           	
             $this->email->clear();
             $this->email->set_newline("\r\n");
             $this->email->to(config_item('app_email'));
             $this->email->from(config_item('website_email'),config_item('website_name'));
-            $this->email->subject($this->input->post('message_section').$post_subject);
+            $this->email->subject('Job Application');
             $this->email->set_mailtype("html");
             $this->email->message($message_content);
             $this->email->send();

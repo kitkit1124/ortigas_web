@@ -107,7 +107,7 @@ class Messages extends MX_Controller {
 		$this->form_validation->set_rules('message_agreement', lang('message_agreement'), 'required');
 		
 		if ($this->input->post('message_type') == "Contact") {
-			$this->form_validation->set_rules('message_captcha', 'reCAPTCHA', 'required');
+			// $this->form_validation->set_rules('message_captcha', 'reCAPTCHA', 'required');
 		}
 		
 
@@ -173,7 +173,7 @@ class Messages extends MX_Controller {
 					$sec_data = $this->careers_model->find($section_id);
 					$message_section_id = $sec_data->career_position_title;
 				}
-				else if($section == 'Residences' || $section == 'Malls' || $section == 'Offices'){
+				else if($section == 'Residences' || $section == 'Malls' || $section == 'Offices' || $section == 'Sales Inquiry'){
 					$sec_data = $this->properties_model->find($section_id);
 					$message_section_id = $sec_data->property_name;
 				}
