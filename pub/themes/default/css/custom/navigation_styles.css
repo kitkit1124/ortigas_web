@@ -126,7 +126,7 @@ a.nav-link.base_nav.nav_estates{
 }
 
 .navbar-nav li.base_nav_li:last-child a{
-  /*border: 2px solid #A9A9A9;*/
+  border: 2px solid #A9A9A9;
   width: 167px;
 }
 
@@ -314,6 +314,9 @@ a.nav-link.base_nav.nav_estates{
   .oclogo_mobile{ display: block;}  
   .navbar-nav li.base_nav_li{ padding: 5px 3px; }
   .navbar-nav li.base_nav_li:last-child a{ border: 0; }
+  .navbar-nav li.base_nav_li:last-child, .navbar-nav li.base_nav_li:last-child a{
+    text-align: left;
+  }
 }
 @media(max-width: 600px) {
 	.oclogo_mobile img{

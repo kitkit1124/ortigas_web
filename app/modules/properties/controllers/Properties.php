@@ -229,7 +229,7 @@ class Properties extends MX_Controller {
 
 				$data['other_residences'] = $this->properties_model->get_properties($fields);
 
-				$data['amenities'] = $this->amenities_model->find_all_by(array('amenity_property_id'=> $id, 'amenity_status'=>'Active'));
+				$data['amenities'] = $this->amenities_model->find_all_by(array('amenity_property_id'=> $id, 'amenity_status'=>'Active', 'amenity_deleted'=>0));
 
 				$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
 
@@ -262,7 +262,7 @@ class Properties extends MX_Controller {
 				$data['section_id'] = $id;
 				$data['section'] = $properties[0]->category_name;
 
-				$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $id, 'related_link_section_type' => 'properties'));
+				$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $id, 'related_link_section_type' => 'properties', 'related_link_status' => 'Active', 'related_link_deleted' => 0));
 
 			}
 			else{

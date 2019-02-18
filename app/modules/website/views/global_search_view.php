@@ -27,7 +27,7 @@
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 											<div class="image_wrapper">
 												<div class="image_container">
-													<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+													<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($val->property_image,'medium'); ?>" width="100%" alt="" draggable="false" />
 												</div>
 											</div>
 											</a>
@@ -61,7 +61,7 @@
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 											<div class="image_wrapper">
 												<div class="image_container">
-													<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+													<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($val->property_image,'medium'); ?>" width="100%" alt="" draggable="false"/>
 												</div>
 											</div>
 											</a>
@@ -94,7 +94,7 @@
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 											<div class="image_wrapper">
 												<div class="image_container">
-													<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+													<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($val->property_image,'medium'); ?>" width="100%" alt="" draggable="false"/>
 												</div>
 											</div>
 											</a>
@@ -129,7 +129,7 @@
 											<a href="<?php echo site_url('').'news/'.$val->post_slug; ?>">
 											<div class="image_wrapper">
 												<div class="image_container">
-													<img src="<?php echo getenv('UPLOAD_ROOT').$val->post_image; ?>" width="100%" alt="" draggable="false" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+													<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($val->post_image,'medium'); ?>" width="100%" alt="" draggable="false"/>
 												</div>
 											</div>
 											</a>
@@ -165,7 +165,7 @@
 										<a href="<?php echo site_url('').'careers/'.$val->career_slug; ?>">
 										<div class="image_wrapper">
 											<div class="image_container">
-												<img src="<?php echo getenv('UPLOAD_ROOT').$val->career_image; ?>" width="100%" alt="" draggable="false" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+												<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($val->career_image,'medium'); ?>" width="100%" alt="" draggable="false"/>
 											</div>
 										</div>
 										</a>

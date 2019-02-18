@@ -51,9 +51,9 @@
 							echo $this->load->view('properties/specific_properties/seo_content');
 						}
 						if($value->setting_division == 'Related News'){
-							if($properties->category_id==1) :
+							// if($properties->category_id==1) :
 								echo $this->load->view('properties/specific_properties/news_related');
-							endif;
+							// endif;
 						}
 						if($value->setting_division == 'Related Residences'){
 							if($properties->category_id==1) :
@@ -110,9 +110,8 @@
 	var site_url = "<?php echo site_url(); ?>"
 	var app_url = "<?php echo base_url(); ?>"
 	var property_id = "<?php echo $properties->property_id; ?>"
+	var map_name = "<?php echo $properties->property_map_name; ?>"
 	var upload_url = "<?php echo getenv('UPLOAD_ROOT'); ?>"
 </script>
 
-
-<?php echo $this->load->view('properties/specific_properties/news_related'); ?>
 <?php echo $this->load->view('properties/recommended_links')?>

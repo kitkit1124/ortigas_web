@@ -2,7 +2,7 @@
 	<?php if($news){ ?>
 	<div id="banner_image">
 		<div class="banner_gradient"></div>
-		<img class="estate_banner_img" src="<?php echo getenv('UPLOAD_ROOT').$news->post_image; ?>" draggable="false" alt="<?php echo $news->post_alt_image; ?>" title="<?php echo $news->post_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+		<img class="estate_banner_img lazy" data-src="<?php echo getenv('UPLOAD_ROOT').$news->post_image; ?>" draggable="false" alt="<?php echo $news->post_alt_image; ?>" title="<?php echo $news->post_alt_image; ?>" />
 		<?php echo $this->load->view('website/breadcrumbs_view'); ?>	
 	</div>
 	<?php } ?>
@@ -13,6 +13,8 @@
 				<div class="news_content col-sm-8">
 					<h1><?php echo $news->post_title; ?></h1>
 					<?php if($news->post_modified_on){ $dtraw = $news->post_modified_on; } else { $dtraw = $news->post_created_on; } $dtpost = date_create($dtraw); ?>
+					
+					<p><?php echo 'Posted by '. config_item('website_name');  ?></p>
 					<p><?php echo 'Date posted '. date_format($dtpost,"F j, Y");  ?></p>
 					<p class="news_filter"><?php echo $news->news_tag_name; ?></p>
 					<?php echo parse_content($news->post_content); ?>			

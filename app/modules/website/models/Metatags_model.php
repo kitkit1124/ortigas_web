@@ -45,8 +45,12 @@ class Metatags_model extends BF_Model
 		$output = '';
 		if ($metatags)
 		{
-		$output .= '<meta name="robots" content="index,follow"/>' . "\r\n\t"
-                . '<meta name="title" content="' . $metatags->metatag_title . '" />' . "\r\n\t"
+		
+			$robots = '<meta name="robots" content="INDEX, FOLLOW"/>'. "\r\n\t";
+			if($metatags->metatag_robots=="No Index"){ $robots = '<meta name="robots" content="NO INDEX, NO FOLLOW"/>'. "\r\n\t"; }
+
+		$output .= $robots
+				.'<meta name="title" content="' . $metatags->metatag_title . '" />' . "\r\n\t"
 				. '<meta name="keywords" content="' . (($metatags->metatag_keywords) ? $metatags->metatag_keywords : '') . '" />' . "\r\n\t"
 				. '<meta name="description" content="' . (($metatags->metatag_description) ? $metatags->metatag_description : '') . '" />' . "\r\n\t"
 				. '<meta name="author" content="' .config_item('website_name'). '" />' . "\r\n\t"
@@ -58,7 +62,8 @@ class Metatags_model extends BF_Model
 				. '<meta name="twitter:title" content="' . (($metatags->metatag_twitter_title) ? $metatags->metatag_twitter_title : '') . '"/>' . "\r\n\t"
 				. '<meta name="twitter:url" content="' . current_url() . '"/>' . "\r\n\t"
 				. '<meta name="twitter:description" content="' . (($metatags->metatag_twitter_description) ? $metatags->metatag_twitter_description : '') . '"/>' . "\r\n\t"
-				. '<meta name="twitter:image" content="' . (($metatags->metatag_twitter_image) ? getenv('UPLOAD_ROOT').$metatags->metatag_twitter_image : '') . '"/>';
+				. '<meta name="twitter:image" content="' . (($metatags->metatag_twitter_image) ? getenv('UPLOAD_ROOT').$metatags->metatag_twitter_image : '') . '"/>'. "\r\n\t"
+				.  $metatags->metatag_code;
                
 		}
 

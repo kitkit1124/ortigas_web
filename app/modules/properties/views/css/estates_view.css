@@ -63,7 +63,7 @@
 .content_residence .residences{
 	width: 50%;
 	flex: 50%;
-	float: right;
+	float: left;
 }
 
 .content_residence .estates{
@@ -141,13 +141,14 @@
 .image_wrapper .image_container img{
       object-fit: cover;
       width: 100%;
-      max-height: 300px !important;
+      max-height: 300px !important; 
 }
 
 .residences img{
 	object-fit: cover;
     width: 100%;
     max-height: 300px !important;
+	 min-height: 250px;
 }
 
 #slider{

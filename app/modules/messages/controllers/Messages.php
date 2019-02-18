@@ -107,7 +107,7 @@ class Messages extends MX_Controller {
 		$this->form_validation->set_rules('message_agreement', lang('message_agreement'), 'required');
 		
 		if ($this->input->post('message_type') == "Contact") {
-			// $this->form_validation->set_rules('message_captcha', 'reCAPTCHA', 'required');
+			$this->form_validation->set_rules('message_captcha', 'reCAPTCHA', 'required');
 		}
 		
 
@@ -140,12 +140,12 @@ class Messages extends MX_Controller {
 			if($this->input->post('message_type') != "Contact"){ $post_subject = ' Inquiry'; }
 
 
-			$config['smtp_host'] = '192.168.6.163';
+			/*$config['smtp_host'] = '192.168.6.163';
 			$config['protocol'] = 'smtp';
 			$config['smtp_timeout'] = 10;
             $config['smtp_port'] = 25;
             $config['smtp_user'] = '';
-            $config['smtp_pass'] = '';
+            $config['smtp_pass'] = '';*/
             $config['mailtype'] = 'html';
             $config['charset'] ='utf-8';
             $config['newline'] ='\r\n';

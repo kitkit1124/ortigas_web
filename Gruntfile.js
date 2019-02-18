@@ -27,7 +27,9 @@ module.exports = function(grunt) {
 					{expand: true, cwd: 'node_modules/jquery-number/', src: ['**'], dest: 'pub/npm/jquery-number/'},
 					{expand: true, cwd: 'node_modules/fontawesome-iconpicker/dist/', src: ['**'], dest: 'pub/npm/fontawesome-iconpicker/'},
 					{expand: true, cwd: 'node_modules/nestable2/dist/', src: ['**'], dest: 'pub/npm/nestable2/'},
-					{expand: true, cwd: 'node_modules/slick-carousel/', src: ['**'], dest: 'pub/npm/slick-carousel/'}
+					{expand: true, cwd: 'node_modules/slick-carousel/', src: ['**'], dest: 'pub/npm/slick-carousel/'},
+					{expand: true, cwd: 'node_modules/jquery-lazy/', src: ['**'], dest: 'pub/npm/jquery-lazy/'},
+					{expand: true, cwd: 'node_modules/pace-js/', src: ['**'], dest: 'pub/npm/pace-js/'}
 				],
 			},
 		},
@@ -37,7 +39,8 @@ module.exports = function(grunt) {
 					'node_modules/bootstrap/dist/css/bootstrap.css',
 					'pub/themes/default/css/src/custom.css',
 					'pub/npm/slick-carousel/slick/slick.css',
-					'pub/npm/slick-carousel/slick/slick-theme.css'
+					'pub/npm/slick-carousel/slick/slick-theme.css',
+					'pub/npm/pace-js/themes/green/pace-theme-flash.css'
 				],
 				dest: 'pub/themes/default/css/build/styles.css'
 			},
@@ -47,7 +50,10 @@ module.exports = function(grunt) {
 					'node_modules/popper.js/dist/umd/popper.js',
 					'node_modules/bootstrap/dist/js/bootstrap.js',
 					'pub/themes/default/js/src/custom.js',
-					'pub/npm/slick-carousel/slick/slick.min.js'
+					'pub/npm/slick-carousel/slick/slick.min.js',
+					'pub/npm/pace-js/pace.min.js',
+					'pub/npm/jquery-lazy/jquery.lazy.min.js'
+					
 				],
 				dest: 'pub/themes/default/js/build/scripts.js'
 			}

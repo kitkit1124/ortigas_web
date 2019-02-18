@@ -215,7 +215,7 @@ h1, p, span, a {
 
 .image_wrapper .property {
 	top: auto;
-    bottom: 35px;
+    bottom: 55px;
 }
 
 .image_wrapper .property p {
@@ -410,7 +410,7 @@ h1, p, span, a {
 }
 
 #location_view h2{
-   border-right: 1px solid #9a9a9a;
+   border-right: 1px solid transparent;
    color: #07793f;
 }
 
@@ -609,6 +609,11 @@ h1, p, span, a {
     width: 100%!important;
     max-height: 220px !important;
     filter: brightness(0) invert(1);
+}
+
+.col-sm-6.news_result_container {
+    flex: 0 0 100%;
+    max-width: 100%;
 }
 
 @media (max-width: 1024px){

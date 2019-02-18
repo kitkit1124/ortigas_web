@@ -31,3 +31,24 @@ if ( ! function_exists('pr'))
 	}
 }
 
+if ( ! function_exists('img_selector'))
+{
+	/**
+	 * Display array in rows
+	 *
+	 * @param	array
+	 * @return	array
+	 */
+	function img_selector($img,$size)
+	{
+		if(substr($img,-3) == 'png') {
+		$src = str_replace(".png", "_".$size.".png", $img, $count); 
+		}
+		else{
+		$src = str_replace(".jpg", "_".$size.".jpg", $img, $count); 
+		}
+
+		return $src;
+	}
+}
+

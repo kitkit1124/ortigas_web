@@ -4,7 +4,7 @@
 		<div class="col-sm-4 location_title">
 			<h2>Location</h2>
 		</div>
-		<div class="col-sm-8 nearby_link">
+		<div class="col-sm-8 nearby_link hide">
 			<h3>What's Nearby</h3>
 	
 		    <ul class="nav" role="tablist">
@@ -70,7 +70,7 @@
 <?php } ?>
 
 		<?php if($properties->category_id==1) : ?>
-		<div id="nearby">
+		<div id="nearby" class="hide">
 			<div class="tab-content">
 				<div id="all" class="tab-pane active">
 					<?php if(isset($properties->property_nearby_malls) &&  $properties->property_nearby_malls) : ?>

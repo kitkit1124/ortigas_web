@@ -3,7 +3,7 @@
 	<div id="banner_image">
 		<div class="banner_margin container"><h1><?php echo $division->division_name; ?></h1></div>
 		<div class="banner_gradient"></div>
-		<img class="estate_banner_img" src="<?php echo getenv('UPLOAD_ROOT').$division->division_image; ?>" draggable="false" alt="<?php echo $division->division_alt_image; ?>" title="<?php echo $division->division_alt_image; ?>" />
+		<img class="estate_banner_img lazy" data-src="<?php echo getenv('UPLOAD_ROOT').$division->division_image; ?>" draggable="false" alt="<?php echo $division->division_alt_image; ?>" title="<?php echo $division->division_alt_image; ?>" />
 		<?php echo $this->load->view('website/breadcrumbs_view'); ?>			
 	</div>
 	<?php } ?>

@@ -10,9 +10,10 @@
 					<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 					<div class="image_wrapper">
 						<div class="image_container">
-								<img src="<?php echo  getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+								<img class="lazy" data-src="<?php echo  getenv('UPLOAD_ROOT').img_selector($val->property_image,'medium'); ?>" width="100%" alt="" draggable="false" />
 						</div>
-						<div class="property"><p><?php echo $val->property_name; ?></p><p><?php echo $val->estate_name; ?></p></div>
+						<div class="property"><?php echo $val->property_name; ?></div>
+						<div class="estate"><?php echo $val->estate_name; ?></div>
 					</div>
 					</a>
 				</div>

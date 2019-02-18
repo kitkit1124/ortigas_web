@@ -6,7 +6,7 @@
     <div class="carousel-inner">
       <?php foreach ($sliders as $key => $value) { ?>
       <div class="carousel-item">
-        <img src="<?php echo getenv('UPLOAD_ROOT').$value->image_slider_image; ?>" width="100%" height="400" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';">
+        <img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($value->image_slider_image,'large'); ?>" width="100%" height="400" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>">
       </div>
       <?php } ?>	
 
@@ -23,8 +23,8 @@
     <?php if(count($sliders) > 1 ) { ?>
       <ul class="carousel-indicators">
           <div class="regular slider item">
-        <?php foreach ($sliders as $key => $value) { ?>
-          <img class="carousel-indicator_button" data-target="#slider" data-slide-to="<?php echo $key; ?>" src="<?php echo getenv('UPLOAD_ROOT').$value->image_slider_image; ?>"  width="100" height="100" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';">
+        <?php foreach ($sliders as $key => $value) {  ?>
+          <img class="carousel-indicator_button lazy" data-target="#slider" data-slide-to="<?php echo $key; ?>" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($value->image_slider_image,'thumb'); ?>"  width="100" height="100" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>" >
         <?php } ?>  
           </div>
       </ul>

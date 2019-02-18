@@ -55,8 +55,6 @@ $(function() {
         }
     });
 
-
-
     $(".regular").slick({
         dots: false,
         infinite: false,
@@ -342,7 +340,11 @@ function geocodeLatLng(geocoder, map, infowindow) {
             position: latlng,
             map: map
           });
-          infowindow.setContent(results[0].formatted_address);
+          var formatted_address = results[0].formatted_address
+          if(map_name){
+            formatted_address = map_name;
+          }
+          infowindow.setContent(formatted_address);
           infowindow.open(map, marker);
         } else {
           window.alert('No results found');

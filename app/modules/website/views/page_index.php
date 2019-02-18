@@ -64,7 +64,7 @@
 						<a href="<?php echo site_url('').'estates/'.$val->estate_slug; ?>">
 						<div class="image_wrapper">
 							<div class="image_container">
-								<img src="<?php echo getenv('UPLOAD_ROOT').$val->estate_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+								<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($val->estate_image,'large'); ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" />
 							</div>
 							<div class="estate bgestate"><center><?php echo $val->estate_name; ?></center></div>
 						</div>
@@ -98,7 +98,7 @@
 					<div class="carousel-inner">
 					<?php foreach ($carousel as $key => $value) { ?>
 					<div class="carousel-item">
-					  <img class="carousel-indicator_button" data-target="#carousel" data-slide-to="<?php echo $key; ?>" src="<?php echo getenv('UPLOAD_ROOT').$value->image_slider_image; ?>"  width="100" height="100" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+					  <img class="carousel-indicator_button lazy" data-target="#carousel" data-slide-to="<?php echo $key; ?>" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($value->image_slider_image,'medium'); ?>"  width="100" height="100" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>"/>
 					</div>
 					<?php } ?>	
 					</div>
@@ -134,7 +134,7 @@
 					<div class="image_wrapper">
 						<div class="property"><?php echo $val->property_name; ?></div>
 						<div class="image_container">
-							<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+							<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($val->property_image,'medium'); ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>"/>
 						</div>
 						<div class="estate"><?php echo $val->estate_name; ?></div>
 					</div>
@@ -152,7 +152,7 @@
 					<div class="image_wrapper">
 						<div class="property"><?php echo $val->property_name; ?></div>
 						<div class="image_container">
-							<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+							<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($val->property_image,'medium'); ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>"/>
 						</div>
 						<div class="estate"><?php echo $val->estate_name; ?></div>
 					</div>

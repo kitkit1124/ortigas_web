@@ -204,7 +204,7 @@ class Careers extends MX_Controller {
 			$departments[''] = "ALL";
 			$data['select_departments'] = $departments;
 
-			$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $data['division']->division_id, 'related_link_section_type' => 'divisions'));
+			$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $data['division']->division_id, 'related_link_section_type' => 'divisions', 'related_link_status' => 'Active','related_link_deleted' => 0));
 
 			// render the page
 			// $this->template->write('head', $metatags);

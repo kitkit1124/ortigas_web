@@ -80,6 +80,7 @@
 
 .related_properties_result .image_wrapper .image_container img{
 	max-width: 200px;
+	opacity: 1;
 }
 
 img{
@@ -136,5 +137,6 @@ img{
 	}
 	.related_properties_result .image_wrapper .image_container img{
 		max-width: 150px;
+		opacity: 1;
 	}
 }

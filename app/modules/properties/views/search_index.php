@@ -30,7 +30,9 @@
 								<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 								<div class="image_wrapper">
 									<div class="image_container">
-										<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" alt="" draggable="false"/>
+										<div class="property"><?php echo $val->property_name; ?></div>
+										<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($val->property_image,'medium'); ?>" width="100%" alt="" draggable="false"/>
+										<div class="estate"><?php echo $val->estate_name; ?></div>
 									</div>
 								</div>
 								</a>
@@ -40,8 +42,8 @@
 								
 									<h2 class="green"><?php echo $val->property_name; ?></h2>
 									<!-- <p class="green"><i><?php //echo site_url().'estates/properties/'.$val->property_slug; ?></i></p> -->
-									<i><?php echo $val->property_type_name; ?></i>
-									<p>from <?php echo $val->price_range_label; ?></p>
+									<p><?php echo $val->property_type_name; ?></p>
+									<!-- <p>from <?php //echo $val->price_range_label; ?></p> -->
 									<div class="property_overview"><?php echo $val->property_overview; ?></div>
 									<?php if(isset($val->unit_types) && $val->unit_types): ?>
 									<p class="unit_types"><?php echo substr($units,0,-2)?></p> 

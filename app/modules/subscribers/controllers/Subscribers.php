@@ -159,12 +159,12 @@ class Subscribers extends MX_Controller {
 
 
 
-			$config['smtp_host'] = '192.168.6.163';
+			/*$config['smtp_host'] = '192.168.6.163';
 			$config['protocol'] = 'smtp';
 			$config['smtp_timeout'] = 10;
             $config['smtp_port'] = 25;
             $config['smtp_user'] = '';
-            $config['smtp_pass'] = '';
+            $config['smtp_pass'] = '';*/
             $config['mailtype'] = 'html';
             $config['charset'] ='utf-8';
             $config['newline'] ='\r\n';

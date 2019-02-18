@@ -5,7 +5,7 @@
 	<?php if(isset($properties->property_logo) && $properties->property_logo){ ?>
 		<div class="estate_logo_div">
 			<div class="banner_gradient"></div>
-			<img class="estate_logo_img" src="<?php echo getenv('UPLOAD_ROOT').$properties->property_logo; ?>" draggable="false" alt="<?php echo $properties->property_alt_logo; ?>" title="<?php echo $properties->property_alt_logo; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+			<img class="estate_logo_img lazy" data-src="<?php echo getenv('UPLOAD_ROOT').$properties->property_logo; ?>" draggable="false" alt="<?php echo $properties->property_alt_logo; ?>" title="<?php echo $properties->property_alt_logo; ?>" />
 			<h1 class="hide"><?php echo $properties->property_name; ?></h1>
 	</div> 
 	<?php } else { ?>
@@ -13,7 +13,7 @@
 	<div class="banner_gradient"></div>
 	<?php } ?>
 
-	<img class="estate_banner_img" src="<?php echo getenv('UPLOAD_ROOT').$properties->property_image; ?>" draggable="false" alt="<?php echo $properties->property_alt_image; ?>" title="<?php echo $properties->property_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>		
+	<img class="estate_banner_img lazy" data-src="<?php echo getenv('UPLOAD_ROOT').$properties->property_image; ?>" draggable="false" alt="<?php echo $properties->property_alt_image; ?>" title="<?php echo $properties->property_alt_image; ?>"/>		
 	
 	<?php echo $this->load->view('website/breadcrumbs_view'); ?>
 

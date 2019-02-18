@@ -19,7 +19,7 @@
 .image_container, .image_wrapper .image_container img {
     object-fit: cover;
     width: 100%;
-    height: 200px !important;
+    height: 183px !important;
 }
 
 .search_link{

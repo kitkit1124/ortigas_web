@@ -33,7 +33,7 @@ function searchEstate(id){
 				'<a href="' + site_url + '"estates/property/"' + value.property_slug + '">'+
 				'<div class="image_wrapper">'+
 				'<div class="image_container">'+
-				'<img src="' + upload_url +  value.property_image + '" width="100%" alt="" draggable="false"/>'+
+				'<img class="lazy" data-src="' + upload_url +  value.property_image + '" width="100%" alt="" draggable="false"/>'+
 				'</div>'+
 				'</div>'+
 				'<div class="property_content_wrapper">'+

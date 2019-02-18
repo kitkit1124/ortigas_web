@@ -24,6 +24,7 @@ video{
   color: #FFF;
   cursor: default;
   padding: 0 40px;
+  opacity: 0;
 }
 
 #video_label .Left{
@@ -255,6 +256,7 @@ color: #FFF !important;
 @media(max-width: 1024px) {
   .image_wrapper .image_container img {
       height: auto;
+	  min-height: 250px;
   }
   
   .properties .image_wrapper .image_container img {

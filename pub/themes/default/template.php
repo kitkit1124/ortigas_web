@@ -16,10 +16,6 @@ $this->load->model('properties/properties_model');
 
 	<title><?php echo $page_heading; ?> | <?php echo config_item('website_name'); ?></title>
 
-	<script src="<?php echo site_url('npm/pace/pace.min.js'); ?>"></script>
-	<link href="<?php echo site_url('npm/pace/pace.css'); ?>" rel="stylesheet" />
-
-
 	<?php $seo = $this->seo_model->find(1); echo parse_content(html_entity_decode(strip_tags($seo->seo_content)));  ?>
 
 	<!-- Start of oclp Zendesk Widget script -->
@@ -54,6 +50,7 @@ $this->load->model('properties/properties_model');
 </head>
 
 <body> 
+
 	<?php $seo = $this->seo_model->find(2); echo parse_content(html_entity_decode(strip_tags($seo->seo_content)));  ?>
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top">
 		
@@ -62,7 +59,7 @@ $this->load->model('properties/properties_model');
 		</button>
 
 		<div class="oclogo_mobile">
-			<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png ?>"></a>
+			<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png"></a>
 		</div>
 
 
@@ -72,7 +69,7 @@ $this->load->model('properties/properties_model');
 				
 		<div class="main_menu collapse navbar-collapse" id="main_navbar">
 			<div class="oclogo">
-				<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png?>"></a>
+				<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png"></a>
 			</div>
 			<ul class="navbar-nav mr-auto">
 
@@ -101,7 +98,7 @@ $this->load->model('properties/properties_model');
 																
 															<ul class="ul_sub_menu_categ">
 																<div class="img_holder">
-																	<img src="<?php echo getenv('UPLOAD_ROOT').$estate->estate_thumb; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';">
+																	<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').$estate->estate_thumb; ?>">
 																</div>
 															<?php
 																$fields = [ 'estate_id' => $estate->estate_id, 'group_by' => 'category_name' ];
@@ -111,7 +108,7 @@ $this->load->model('properties/properties_model');
 															?>
 																	<li class="li_sub_menu_categ" >
 																		
-																		<a class="nav-link a_sub_menu_categ" href="<?php echo site_url('').'estates/category/'.strtolower($category->category_name); ?>"><?php echo $category->category_name; ?></a>
+																		<a class="nav-link a_sub_menu_categ" href="<?php echo site_url('').strtolower($category->category_name); ?>"><?php echo $category->category_name; ?></a>
 																		<div class="sub_menu_properties">
 
 																			<ul>
@@ -253,7 +250,7 @@ $this->load->model('properties/properties_model');
 			<div class="footer_content container">
 				<div class="row">
 					<div class="col-sm-4 address">
-						<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"></a>
+						<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png"></a>
 
 						<?php $footer = $this->partials_model->find(1); if($footer) { echo parse_content($footer->partial_content); } ?>
 					</div>
@@ -293,7 +290,7 @@ $this->load->model('properties/properties_model');
 				</div>
 				<div class="modal-body">
 					<div class="text-center">
-						<img src="<?php echo site_url('ui/images/loading3.gif')?>" alt="<?php echo lang('loading')?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+						<img src="<?php echo site_url('ui/images/loading3.gif')?>" alt="<?php echo lang('loading')?>"/>
 						<p><?php echo lang('loading')?></p>
 					</div>
 				</div>
@@ -315,7 +312,7 @@ $this->load->model('properties/properties_model');
 				</div>
 				<div class="modal-body">
 					<div class="text-center">
-						<img src="<?php echo site_url('ui/images/loading3.gif')?>" alt="<?php echo lang('loading')?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+						<img src="<?php echo site_url('ui/images/loading3.gif')?>" alt="<?php echo lang('loading')?>" />
 						<p><?php echo lang('loading')?></p>
 					</div>
 				</div>
@@ -342,6 +339,7 @@ $this->load->model('properties/properties_model');
 	
 	<script src="<?php echo site_url('themes/default/js/scripts.js'); ?>"></script>
 	<script src="<?php echo site_url('themes/default/js/scripts.min.js'); ?>"></script>
+
 	<script src="<?php echo site_url('themes/default/js/template_custom.js'); ?>"></script>
 
 	<?php echo $_scripts; // loads additional js files from the module ?>

@@ -54,10 +54,14 @@
 }
 
 .search_result_search_label{
+	font-weight: bold;
+	letter-spacing: -2px;
 	text-align: left;
 	color: #07793f;
 	border-bottom: 2px solid #b4d7c5;
 	margin-bottom: 50px;
+	font-size: 2rem;
+
 }
 
 .search_result h1{
@@ -67,6 +71,8 @@
 .close_global_search{
 	display: none;
 }
+
+.image_wrapper .property, .image_wrapper .estate{text-align: center; width: 100%; margin-bottom: -20px;}
 
 @media(max-width: 768px) {
 	.property_details{

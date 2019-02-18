@@ -102,7 +102,7 @@ class Careers_ops extends MX_Controller {
 		$this->form_validation->set_rules('job_mobile', 'Mobile', 'required');
 		$this->form_validation->set_rules('job_document', 'File / Document', 'required');
 		$this->form_validation->set_rules('job_agreement', 'terms of agreement', 'required');
-		// $this->form_validation->set_rules('job_captcha', 'reCAPTCHA', 'required');
+		$this->form_validation->set_rules('job_captcha', 'reCAPTCHA', 'required');
 
 		if ($this->form_validation->run($this) == FALSE)
 		{
@@ -123,12 +123,12 @@ class Careers_ops extends MX_Controller {
 		$return = (is_numeric($insert_id)) ? $insert_id : FALSE;
 
 
-			$config['smtp_host'] = '192.168.6.163';
+			/*$config['smtp_host'] = '192.168.6.163';
 			$config['protocol'] = 'smtp';
 			$config['smtp_timeout'] = 10;
             $config['smtp_port'] = 25;
             $config['smtp_user'] = '';
-            $config['smtp_pass'] = '';
+            $config['smtp_pass'] = '';*/
             $config['mailtype'] = 'html';
             $config['charset'] ='utf-8';
             $config['newline'] ='\r\n';

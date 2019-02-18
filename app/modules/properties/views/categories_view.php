@@ -4,7 +4,7 @@
 		<div id="banner_logo_image"></div>
 		<div class="banner_margin container"><h1><?php echo $category->category_name; ?></h1></div>
 		<div class="banner_gradient"></div>
-		<img class="estate_banner_img" src="<?php echo  getenv('UPLOAD_ROOT').$category->category_image; ?>" draggable="false" alt="<?php echo $category->category_alt_image; ?>" title="<?php echo $category->category_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+		<img class="estate_banner_img lazy" data-src="<?php echo  getenv('UPLOAD_ROOT').$category->category_image; ?>" draggable="false" alt="<?php echo $category->category_alt_image; ?>" title="<?php echo $category->category_alt_image; ?>"/>
 		<?php echo $this->load->view('website/breadcrumbs_view'); ?>			
 	</div>
 	<?php } ?>
@@ -41,9 +41,9 @@
 							<div class="image_container">
 
 									<?php if($estates){ ?>
-										<img src="<?php echo getenv('UPLOAD_ROOT').$val->estate_image; ?>" width="100%" draggable="false" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+										<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($val->estate_image,'large'); ?>" width="100%" draggable="false" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>"/>
 									<?php } else { ?>
-										<img src="<?php echo getenv('UPLOAD_ROOT').$val->property_image; ?>" width="100%" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>	 
+										<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($val->property_image,'large'); ?>" width="100%" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>"/>	 
 									<?php } ?>
 							</div>
 							<!-- <div class="estate"><?php //echo $val->estate_name; ?></div> -->

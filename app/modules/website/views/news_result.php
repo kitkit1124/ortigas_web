@@ -22,7 +22,7 @@ foreach ($news_result as $key => $value) {
 	<div class="news_result">
 		<div class="row">
 			<div class="news_image <?php echo (isset($cols_img) && $cols_img) ? $cols_img : ''; ?>">
-				<img src="<?php echo getenv('UPLOAD_ROOT').$value->post_image; ?>" alt="<?php echo $value->post_alt_image; ?>" title="<?php echo $value->post_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';">
+				<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($value->post_image,'medium'); ?>" alt="<?php echo $value->post_alt_image; ?>" title="<?php echo $value->post_alt_image; ?>">
 			</div>
 			<div class="news_details <?php echo (isset($cols_data) && $cols_data) ? $cols_data : ''; ?>">
 				<h2><?php echo $value->post_title; ?></h2>

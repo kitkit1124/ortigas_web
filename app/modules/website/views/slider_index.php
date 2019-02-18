@@ -21,7 +21,8 @@
 	<div class="banner_margin container"><h3><?php  if($value->banner_group_id == 1) { } else { echo $value->banner_group_name; }  ?></h3></div>
 	<div class="banner_gradient"></div>
 	<div class="banner_gradient"></div>
-	<img src="<?php echo getenv('UPLOAD_ROOT').$value->banner_image; ?>" alt="<?php echo $value->banner_alt_image; ?>" title="<?php echo $value->banner_alt_image; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';"/>
+	<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').$value->banner_image; ?>" alt="<?php echo $value->banner_alt_image; ?>" title="<?php echo $value->banner_alt_image; ?>" />
+	<!-- onerror="this.onerror=null;this.src='<?php //echo site_url('ui/images/placeholder.png')?>';" -->
 	
 </div>
 <?php } ?>	
