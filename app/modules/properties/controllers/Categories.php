@@ -133,7 +133,7 @@ class Categories extends MX_Controller {
 						redirect(base_url().'page-not-found');
 					}
 
-				$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $properties[0]->category_id, 'related_link_section_type' => 'categories'));
+				$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $properties[0]->category_id, 'related_link_section_type' => 'categories', 'related_link_status' => 'Active', 'related_link_deleted' => 0));
 
 				$data['section_id'] = 0;
 				$data['section'] = $category->category_name;

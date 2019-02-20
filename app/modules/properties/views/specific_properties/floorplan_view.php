@@ -8,7 +8,7 @@
 		
 		<div id="unit-img" >
 			<center>
-				<a class="floorplan_image_link" href="<?php echo site_url().'properties/properties/floorplan_image?img='.getenv("UPLOAD_ROOT").'data/photos/building-floorplan.png' ?>" data-target="#modal-lg" data-toggle="modal">
+				<a class="floorplan_image_link" href="<?php echo site_url().'properties/properties/floorplan_image?img='.getenv("UPLOAD_ROOT").'data/images/building-floorplan.png' ?>" data-target="#modal-lg" data-toggle="modal">
 					<img id="floorplan_image" class="lazy" data-src="<?php echo site_url(); ?>data/images/building-floorplan.png">
 				</a>
 			</center>

@@ -123,7 +123,7 @@ class Estates extends MX_Controller {
 		}
 		$data['news_result'] = $news;
 
-		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => 2, 'related_link_section_type' => 'pages'));
+		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => 2, 'related_link_section_type' => 'pages', 'related_link_status' => 'Active', 'related_link_deleted' => 0));
 
 		// render the page
 		$this->template->write('head', $metatags);
@@ -231,7 +231,7 @@ class Estates extends MX_Controller {
 		$data['section_id'] = $estates[0]->estate_id;
 		$data['section'] = 'Estates';
 
-		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $estates[0]->estate_id, 'related_link_section_type' => 'estates'));
+		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $estates[0]->estate_id, 'related_link_section_type' => 'estates', 'related_link_status' => 'Active', 'related_link_deleted' => 0));
 		
 
 		// breadcrumbs

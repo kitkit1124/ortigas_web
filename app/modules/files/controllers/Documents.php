@@ -260,6 +260,8 @@ class Documents extends MX_Controller
 			$document_file_name = $document_data['file_name'];
 			$document_name = $document_data['orig_name'];
 
+			$folder = str_replace(getenv('UPLOAD_FOLDER'),"",$folder);
+			
 			// add to db
 			$data = array(
 				'document_name'		=> $document_name,

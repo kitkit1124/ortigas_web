@@ -5,7 +5,7 @@
 		<?php if(isset($estates->estate_logo) && $estates->estate_logo || $estates->estate_logo=='NULL'){ ?>
 		<div class="estate_logo_div">
 			<div class="banner_gradient"></div>
-			<img class="estate_logo_img lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($estates->estate_logo,'small'); ?>" draggable="false" alt="<?php echo $estates->estate_alt_logo; ?>" title="<?php echo $estates->estate_alt_logo; ?>" />
+			<img class="estate_logo_img" src="<?php echo getenv('UPLOAD_ROOT').img_selector($estates->estate_logo,'small'); ?>" draggable="false" alt="<?php echo $estates->estate_alt_logo; ?>" title="<?php echo $estates->estate_alt_logo; ?>" />
 			<h1 class="hide"><?php echo $estates->estate_name; ?></h1>
 		</div> 
 		<?php } else { ?>
@@ -82,7 +82,7 @@
 					<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 	
 						<div class="image_container">
-								<img data-src="<?php echo  getenv('UPLOAD_ROOT').img_selector($val->property_image,'large'); ?>" width="100%" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
+								<img class="lazy" data-src="<?php echo  getenv('UPLOAD_ROOT').img_selector($val->property_image,'large'); ?>" width="100%" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
 						</div>
 						<div class="property"><label><?php echo $val->property_name; ?></label></div>
 					</div>
@@ -110,7 +110,7 @@
 						<div class="image_wrapper">
 							<div class="property"><p><?php echo $val->property_name; ?></p></div>
 							<div class="image_container">
-									<img class="lazy" data-src="<?php echo  getenv('UPLOAD_ROOT').img_selector($val->property_image,'small'); ?>" width="100%" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>"/>
+									<img class="lazy" data-src="<?php echo  getenv('UPLOAD_ROOT').img_selector($val->property_image,'large'); ?>" width="100%" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>"/>
 							</div>
 						</div>
 						</a>
@@ -134,7 +134,7 @@
 							<div class="image_wrapper">
 								<div class="property"><p><?php echo $val->property_name; ?></p></div>
 								<div class="image_container">
-										<img class="lazy" data-src="<?php echo  getenv('UPLOAD_ROOT').img_selector($val->property_image,'small'); ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
+										<img class="lazy" data-src="<?php echo  getenv('UPLOAD_ROOT').img_selector($val->property_image,'large'); ?>" width="100%" alt="" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
 								</div>
 							</div>
 							</a>

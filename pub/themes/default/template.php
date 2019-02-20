@@ -69,7 +69,7 @@ $this->load->model('properties/properties_model');
 				
 		<div class="main_menu collapse navbar-collapse" id="main_navbar">
 			<div class="oclogo">
-				<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png"></a>
+				<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/ortigaslogo.png"></a>
 			</div>
 			<ul class="navbar-nav mr-auto">
 
@@ -250,7 +250,7 @@ $this->load->model('properties/properties_model');
 			<div class="footer_content container">
 				<div class="row">
 					<div class="col-sm-4 address">
-						<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png"></a>
+						<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/ortigaslogo.png"></a>
 
 						<?php $footer = $this->partials_model->find(1); if($footer) { echo parse_content($footer->partial_content); } ?>
 					</div>

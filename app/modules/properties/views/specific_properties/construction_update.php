@@ -18,21 +18,21 @@
 	<div class="row year">
 	  	<div class="col-sm-4 ground">
 	  		<div class="construction_stages">
-	  		 <img class="" src="<?php echo getenv('UPLOAD_ROOT').'data/photos/ground.png'; ?>"  >
+	  		 <img class="" src="<?php echo getenv('UPLOAD_ROOT').'data/images/ground.png'; ?>"  >
 	  		 <p><?php echo $properties->property_ground; ?></p>
 	  		 <label>Ground Breaking</label>
 	  		</div>
 	  	</div>
 	  	<div class="col-sm-4 presell">
 	  		<div class="construction_stages">
-	  		<center><img class="" src="<?php echo getenv('UPLOAD_ROOT').'data/photos/presell.png'; ?>"  ></center>
+	  		<center><img class="" src="<?php echo getenv('UPLOAD_ROOT').'data/images/presell.png'; ?>"  ></center>
 	  		<center><p><?php echo $properties->property_presell; ?></p></center>
 	  		<center><label>Preselling</label></center>
 	  		</div>
 	  	</div>
 	  	<div class="col-sm-4 turnover">
 	  		<div class="construction_stages">
-	  		<img class="" src="<?php echo getenv('UPLOAD_ROOT').'data/photos/turnover.png'; ?>"  >
+	  		<img class="" src="<?php echo getenv('UPLOAD_ROOT').'data/images/turnover.png'; ?>"  >
 	  		<p><?php echo $properties->property_turnover; ?></p>
 	  		<label>Turnover</label>
 	  		</div>

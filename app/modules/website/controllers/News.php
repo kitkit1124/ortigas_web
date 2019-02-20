@@ -90,7 +90,7 @@ class News extends MX_Controller
 		$data['section_id'] = 0;
 		$data['section'] = 'News';
 
-		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $data['news_page']->page_id, 'related_link_section_type' => 'pages'));
+		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $data['news_page']->page_id, 'related_link_section_type' => 'pages', 'related_link_status' => 'Active', 'related_link_deleted' => 0));
 		
 		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('website', 'news_index'), 'embed');

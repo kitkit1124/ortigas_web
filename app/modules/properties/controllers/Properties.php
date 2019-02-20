@@ -131,7 +131,7 @@ class Properties extends MX_Controller {
 
 		$data['button_text'] = $this->partials_model->find(3);
 
-		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => 3, 'related_link_section_type' => 'pages'));
+		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => 3, 'related_link_section_type' => 'pages', 'related_link_status' => 'Active', 'related_link_deleted' => 0));
 
 		$data['section_id'] = 0;
 		$data['section'] = 'Projects';

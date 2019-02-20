@@ -5,7 +5,7 @@
 	<?php if(isset($properties->property_logo) && $properties->property_logo){ ?>
 		<div class="estate_logo_div">
 			<div class="banner_gradient"></div>
-			<img class="estate_logo_img lazy" data-src="<?php echo getenv('UPLOAD_ROOT').$properties->property_logo; ?>" draggable="false" alt="<?php echo $properties->property_alt_logo; ?>" title="<?php echo $properties->property_alt_logo; ?>" />
+			<img class="estate_logo_img" src="<?php echo getenv('UPLOAD_ROOT').$properties->property_logo; ?>" draggable="false" alt="<?php echo $properties->property_alt_logo; ?>" title="<?php echo $properties->property_alt_logo; ?>" />
 			<h1 class="hide"><?php echo $properties->property_name; ?></h1>
 	</div> 
 	<?php } else { ?>

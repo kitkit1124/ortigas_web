@@ -92,7 +92,7 @@ class Careers extends MX_Controller {
 
 			$data['found_no_career'] = $this->partials_model->find(12); 
 
-			$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $data['careers_page']->page_id, 'related_link_section_type' => 'pages'));
+			$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $data['careers_page']->page_id, 'related_link_section_type' => 'pages', 'related_link_status' => 'Active', 'related_link_deleted' => 0));
 
 			// render the page
 			$this->template->write('head', $metatags);

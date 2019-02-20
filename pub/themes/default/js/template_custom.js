@@ -27,7 +27,10 @@ $(function(){
     $("img.lazy").lazy({
       effect: "fadeIn",
       effectTime: 500,
-      threshold: 0
+      threshold: 100,            
+	  afterLoad: function(element) {
+	  $(element).css('background-image','unset');	
+      }
     });
 
     $('.slick-next').html('next');
