@@ -1,0 +1,36 @@
+.career_content_details{
+	text-align: left;
+	color: #666;
+}
+
+.career_content_details .title{
+	color: #07793f;
+	font-size: 1.8rem;
+	font-weight: bold;
+}
+
+.career_content_details .dept{
+	margin-bottom: 5px;
+}
+
+.career_content_details .loc{
+	text-transform: capitalize;
+	color: #07793F;
+}
+
+.career_content_details .loc i.fa{
+		font-size: 1.8rem;
+		margin-right: 10px;
+}
+
+.res_head,.req_head{
+	color: #07793F;
+	font-size: 1.5rem;
+}
+
+.filesize_note{
+	font-size: .8rem;
+
+}
+
+.page_overview_button{ margin-left: 20px;}

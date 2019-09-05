@@ -1,0 +1,45 @@
+.search_properties_row{
+    margin: 0 0 20px 0;
+}
+
+.search_result h2{
+	text-align: left;
+}
+
+.search_box h2{
+	line-height: 1.5em;
+    height: 1.1em;
+    font-size: 1.2rem;
+    overflow: hidden;
+    font-weight: bold;
+    letter-spacing: -1px;
+  
+}
+
+.image_container, .image_wrapper .image_container img {
+    object-fit: cover;
+    width: 100%;
+    height: 183px !important;
+}
+
+.search_link{
+	font-size: .8rem !important;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+.estates{
+	padding:0;
+}
+
+.property_details {
+	padding: 20px 10px;
+}
+
+.property_details .green{
+    font-weight: unset;
+}
+
+.dtpost{
+    font-size: .7rem;
+}
