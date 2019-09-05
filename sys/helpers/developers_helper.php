@@ -42,10 +42,10 @@ if ( ! function_exists('img_selector'))
 	function img_selector($img,$size)
 	{
 		if(substr($img,-3) == 'png') {
-		$src = str_replace(".png", "_".$size.".png", $img, $count); 
+		$src = str_replace(".png", "_".$size.".png", $img); 
 		}
 		else{
-		$src = str_replace(".jpg", "_".$size.".jpg", $img, $count); 
+		$src = str_replace(".jpg", "_".$size.".jpg", $img); 
 		}
 
 		return $src;

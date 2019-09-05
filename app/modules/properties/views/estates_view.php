@@ -70,26 +70,33 @@
 
 	<?php if(isset($residences) && $residences){ ?>
 	<div class="content_residence">
-		<div class="row cat_heading_res">
-			<div class="col-sm-4 res_title"><h2><?php echo $category_residence->category_name; ?></h2></div>
-			<div class="col-sm-8 res_desc"><?php echo $category_residence->category_snippet_quote; ?></div>
-			<!-- <div class="col-sm-2 est_link"><a href="<?php echo site_url('').strtolower($category_residence->category_name); ?>">View All</a></div> -->
+		<div class="row cat_heading_res hide">
+			<!-- <div class="col-sm-4 res_title"><h2><?php echo $category_residence->category_name; ?></h2></div>
+			<div class="col-sm-8 res_desc"><?php echo $category_residence->category_snippet_quote; ?></div> -->
+			<!-- <div class="col-sm-2 est_link"><a href="<?php //echo site_url('').strtolower($category_residence->category_name); ?>">View All</a></div> -->
 		</div>
-		<?php
-			foreach ($residences as $key => $val) { ?>
-
-				<div class="residences">
-					<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
-	
-						<div class="image_container">
-								<img class="lazy" data-src="<?php echo  getenv('UPLOAD_ROOT').img_selector($val->property_image,'large'); ?>" width="100%" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
+		<div class="cat_heading">
+			<div class="cat_title"><h2><?php echo $category_residence->category_name; ?></h2></div>
+			<div class="cat_desc"><?php echo $category_residence->category_snippet_quote; ?></div>
+		</div>
+		<div class="row">
+			<?php foreach ($residences as $key => $val) { ?>
+				<div class="estates residences col-sm-6">
+					<div class="residences">
+						<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
+						<div class="image_wrapper">
+							<div class="image_container">
+									<img class="lazy" data-src="<?php echo  getenv('UPLOAD_ROOT').img_selector($val->property_image,'large'); ?>" width="100%" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
+							</div>
+							<div class="property"><label><?php echo $val->property_name; ?></label></div>
 						</div>
-						<div class="property"><label><?php echo $val->property_name; ?></label></div>
+						</a>
 					</div>
-					</a>
+				</div>
+			<?php	} //end foreach ?>	
+		</div>
 				
-			<?php	} //end foreach ?>
-	<div style="clear: both;"></div>
+		<div style="clear: both;"></div>
 	</div>
 	<?php } ?>
 
@@ -105,7 +112,7 @@
 			<div class="row">
 				<?php
 				foreach ($malls as $key => $val) { ?>
-					<div class="estates malls col-sm-4">
+					<div class="estates malls col-sm-6">
 						<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 						<div class="image_wrapper">
 							<div class="property"><p><?php echo $val->property_name; ?></p></div>

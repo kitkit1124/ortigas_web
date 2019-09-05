@@ -160,6 +160,9 @@ class Properties extends MX_Controller {
 				if($properties[0]->property_category_id==3){
 					redirect(base_url().'offices/'.$params);
 				}
+				if($properties[0]->property_category_id==4){
+					redirect(base_url().'amenity/'.$params);
+				}
 			}
 			else{
 				redirect(base_url().'page-not-found');

@@ -33,14 +33,49 @@ class Posts_model extends BF_Model
 
 	// --------------------------------------------------------------------
 
-	/**
-	 * get_active_news
-	 *
-	 * @access	public
-	 * @param	
-	 * @return 	array
-	 * @author 	Gutz Marzan <gutzby.marzan@digify.com.ph>
-	 */
+	public function get_datatables($fields_data = null)
+	{
+		$fields = array(
+			'post_id', 
+			'post_title',
+			'post_slug',
+			'post_posted_on',
+			'post_status',
+			'post_image',
+			'post_alt_image',
+			'post_content',
+			'DATE_FORMAT(post_posted_on, "%M %d, %Y")',
+			'post_tag_post_id',
+			'news_tag_name',
+
+
+			'post_created_on', 
+			'concat(creator.first_name, " ", creator.last_name)', 
+			'post_modified_on', 
+			'concat(modifier.first_name, " ", modifier.last_name)'
+		);
+
+		if(isset($fields_data['tags']) && $fields_data['tags']){
+			$this->where('news_tag_slug', $fields_data['tags']);
+		}
+		elseif(isset($fields_data['year']) && $fields_data['year'] && isset($fields_data['month']) && $fields_data['month']){
+			$this->where('year(post_posted_on)', $fields_data['year']);
+			$this->where('DATE_FORMAT(post_posted_on, "%M")'." = '".$fields_data["month"]."'");
+		}
+		else{
+			$this->group_by('post_id');
+		}
+
+		return $this->join('users as creator', 'creator.id = post_created_by', 'LEFT')
+					->join('users as modifier', 'modifier.id = post_modified_by', 'LEFT')
+					->join('post_tags', 'post_tags.post_tag_post_id = post_id')
+					->join('news_tags', 'news_tags.news_tag_id = post_tags.post_tag_tag_id')
+					->order_by('post_posted_on','desc')
+					->where('post_deleted','0')
+					->where('post_status','Posted')
+					->datatables($fields);
+	}
+
 	public function get_active_news($fields = null)
 	{
 		if(isset($fields['keyword']) && $fields['keyword']){
@@ -78,8 +113,7 @@ class Posts_model extends BF_Model
 	}
 
 	public function get_specific_news($fields = null)
-	{
-		
+	{	
 		if(isset($fields['news_tag_id']) && $fields['news_tag_id']){
 			$this->where('news_tag_id', $fields['news_tag_id']);
 		}
@@ -104,7 +138,6 @@ class Posts_model extends BF_Model
 
 	public function get_archive_year()
 	{
-
 		$result = $this->select('distinct(year(post_posted_on)) as "archive_year"')
 					->where('post_deleted',0)
 					->where('post_status', 'Posted')
@@ -116,8 +149,6 @@ class Posts_model extends BF_Model
 
 	public function get_archive_month($year = null)
 	{
-
-
 		$result = $this->select('distinct(monthname(post_posted_on)) as "archive_month"')
 					->where('post_deleted',0)
 					->where('post_status', 'Posted')

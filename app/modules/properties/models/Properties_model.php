@@ -36,7 +36,7 @@ class Properties_model extends BF_Model {
 	 * @param	none
 	 * @author 	Gutzby Marzan <gutzby.marzan@digify.com.ph>
 	 */
-	public function get_datatables()
+	public function get_datatables($fields_data = null)
 	{
 		$fields = array(
 			'property_id',
@@ -61,6 +61,8 @@ class Properties_model extends BF_Model {
 			'property_nearby_schools',
 			'property_tags',
 			'property_status',
+			'property_alt_image',
+			'property_snippet_quote',
 
 
 			'property_created_on', 
@@ -73,6 +75,13 @@ class Properties_model extends BF_Model {
 			'property_category_id',
 			'property_location_id'
 		);
+
+		if(isset($fields_data['category']) && $fields_data['category']){
+			$this->where('category_name', $fields_data['category']);
+		}
+		if(isset($fields_data['location']) && $fields_data['location']){
+			$this->where('location_id', $fields_data['location']);
+		}
 
 		return $this->join('users as creator', 'creator.id = property_created_by', 'LEFT')
 					->join('users as modifier', 'modifier.id = property_modified_by', 'LEFT')
@@ -122,8 +131,15 @@ class Properties_model extends BF_Model {
 					$this->order_by('property_order','ASC');
 				}
 				else{
-					$this->order_by('property_order','ASC');
+					if(isset($fields['order_by'])){ 
+						$this->order_by($fields['order_by'],'ASC');
+					}
+					else{
+						$this->order_by('property_order','ASC');
+					}
 				}
+
+				
 
 				if(isset($fields['group_by'])){ 
 					$this->group_by($fields['group_by']);

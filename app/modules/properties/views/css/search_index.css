@@ -11,10 +11,12 @@
     color: #07793f;
     text-transform: uppercase;
     text-align: center;
+    font-weight: bold;
 }
 .property_overview{
 	line-height: 1.5em;
-    height: 3em;
+    height: 2.9em;
+    font-size: .9rem;
     overflow: hidden;
 }
 
@@ -37,6 +39,7 @@
 
 .property_details .green{
 	color: #07793f;
+	display: block;
 }
 
 .property_details h2{

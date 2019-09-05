@@ -14,6 +14,7 @@ $route['estates/property/(:any)'] = 'properties/properties/view/$1';
 $route['residences/(:any)'] = 'properties/view_specific_property/$1';
 $route['malls/(:any)'] = 'properties/view_specific_property/$1';
 $route['offices/(:any)'] = 'properties/view_specific_property/$1';
+$route['amenity/(:any)'] = 'properties/view_specific_property/$1';
 
 $route['search'] = 'properties/search/sglobal'; 
 

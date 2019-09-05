@@ -42,7 +42,7 @@ $this->load->model('properties/properties_model');
 	<link rel="shortcut icon" type="text/css" href="<?php echo site_url('themes/default/img/favicon.ico'); ?>">
 
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url('themes/default/css/custom/navigation_styles.css'); ?>">
-	<link rel="stylesheet" type="text/css" href="<?php echo site_url('data/fonts/fontface.css'); ?>">
+		<!-- <link rel="stylesheet" type="text/css" href="<?php //echo site_url('data/fonts/fontface.css'); ?>"> -->
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url('themes/default/css/custom/custom_general_styles.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url('themes/default/css/custom/footer_styles.css'); ?>">
 
@@ -59,7 +59,7 @@ $this->load->model('properties/properties_model');
 		</button>
 
 		<div class="oclogo_mobile">
-			<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/photos/ortigaslogo.png"></a>
+			<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/ortigaslogo.png"></a>
 		</div>
 
 
@@ -97,13 +97,16 @@ $this->load->model('properties/properties_model');
 															<div class = "sub_menu_categ sub_nav_estates_active<?php echo $key; ?>">
 																
 															<ul class="ul_sub_menu_categ">
-																<div class="img_holder">
-																	<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').$estate->estate_thumb; ?>">
-																</div>
+																<li>
+																	<div class="img_holder">
+																		<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').$estate->estate_thumb; ?>">
+																	</div>
+																</li>
 															<?php
-																$fields = [ 'estate_id' => $estate->estate_id, 'group_by' => 'category_name' ];
+																$fields = [ 'estate_id' => $estate->estate_id, 'group_by' => 'category_name', 'order_by' => 'category_order' ];
 																$categories = $this->properties_model->get_properties($fields);
 																if($categories){
+
 																	foreach ($categories as $key => $category) {
 															?>
 																	<li class="li_sub_menu_categ" >
@@ -250,7 +253,7 @@ $this->load->model('properties/properties_model');
 			<div class="footer_content container">
 				<div class="row">
 					<div class="col-sm-4 address">
-						<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/ortigaslogo.png"></a>
+						<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/ortigaslogo.svg"></a>
 
 						<?php $footer = $this->partials_model->find(1); if($footer) { echo parse_content($footer->partial_content); } ?>
 					</div>

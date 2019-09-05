@@ -61,6 +61,8 @@ table{
     top: 25px;
 }
 
+.ccc_content{display: none;}
+
 .oclp, .ccc{
     color: #747474;
     height: 40px;

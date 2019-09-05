@@ -50,17 +50,28 @@
 			<?php echo $this->load->view('properties/search_form'); ?>
 		</div>
 		
-		<?php if($estates) { ?>
+		<?php if($estates) { 
+
+			if(count($estates) == 1){
+				$cols_estate = "12";
+			}
+			elseif (count($estates) == 2) {
+				$cols_estate = "6";
+			}
+			else{
+				$cols_estate = "4";
+			}
+		?>
 		<div class="main_page">
 			<div class="row cat_heading">
 				<div class="col-sm-3 est_title"><h2><?php echo $page_estates->page_title; ?></h2></div>
-				<div class="col-sm-7 est_desc"><?php echo $page_estates->page_content; ?></div>
+				<div class="col-sm-7 est_desc"><?php echo strip_tags($page_estates->page_content); ?></div>
 				<div class="col-sm-2 est_link"><a href="<?php echo site_url('').strtolower($page_estates->page_slug); ?>" class="default-button">VIEW ALL</a></div>
 			</div>
 			<div class="row">
 			<?php
 				foreach ($estates as $key => $val) { ?>
-					<div class="estates properties col-sm-4">
+					<div class="estates properties col-sm-<?php echo $cols_estate; ?>">
 						<a href="<?php echo site_url('').'estates/'.$val->estate_slug; ?>">
 						<div class="image_wrapper">
 							<div class="image_container">
@@ -77,39 +88,47 @@
 		
 
 		<?php }?>
-		<?php if(isset($carousel) && $carousel) {?>
+		<?php if(isset($carousel) && $carousel) { ?>
 		<div class="main_page">
 			<div class="row">
 				<div class="estates residences col-sm-4">
 					<div class="res_title"><h2><?php echo $category_residence->category_name; ?></h2></div>
 					<div class="res_desc"><?php echo $category_residence->category_snippet_quote; ?></div>
-					<div class="res_link"><a href="<?php echo site_url('').'estates/category/'.strtolower($category_residence->category_name); ?>" class="default-button">VIEW ALL</a></div>
+					<div class="res_link"><a href="<?php echo site_url('').strtolower($category_residence->category_name); ?>" class="default-button">VIEW ALL</a></div>
 				</div>			
 				<div class="estates residences col-sm-8">
 					<?php if($carousel) { ?>
 					<div id="carousel" class="carousel slide" data-ride="carousel">
-					<!-- Indicators -->
-					<ul class="carousel-indicators">
-					<?php foreach ($carousel as $key => $value) { ?>
-					 	<li class="carousel-indicator_button" data-target="#carousel" data-slide-to="<?php echo $key; ?>"> </li>
-					<?php } ?>	
-					</ul>
-					<!-- The slideshow -->
-					<div class="carousel-inner">
-					<?php foreach ($carousel as $key => $value) { ?>
-					<div class="carousel-item">
-					  <img class="carousel-indicator_button lazy" data-target="#carousel" data-slide-to="<?php echo $key; ?>" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($value->image_slider_image,'medium'); ?>"  width="100" height="100" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>"/>
-					</div>
-					<?php } ?>	
-					</div>
+						<?php if(count($carousel) != 1) { ?>
+						<!-- Indicators -->
+						<ul class="carousel-indicators">
+						<?php foreach ($carousel as $key => $value) { ?>
+						 	<li class="carousel-indicator_button" data-target="#carousel" data-slide-to="<?php echo $key; ?>"> </li>
+						<?php } ?>	
+						</ul>
+						<?php } ?>
+						
+						<!-- The slideshow -->
+						<div class="carousel-inner" data-link="<?php echo site_url('').'residences/'.$residence->property_slug; ?>">
+							<?php foreach ($carousel as $key => $value) { ?>
+							<div class="carousel-item">
+							 	 <img class="carousel-indicator_button lazy" data-target="#carousel" data-slide-to="<?php echo $key; ?>" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($value->image_slider_image,'medium'); ?>"  width="100" height="100" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>"/>
+							</div>
+							<?php } ?>	
 
-					<!-- Left and right controls -->
-					<a class="carousel-control-prev" href="#carousel" data-slide="prev">
-					<span class="carousel-control-prev-icon"></span>
-					</a>
-					<a class="carousel-control-next" href="#carousel" data-slide="next">
-					<span class="carousel-control-next-icon"></span>
-					</a>
+							<img class="residence_logo" src="<?php echo getenv('UPLOAD_ROOT').$residence->property_logo; ?>" draggable="false" alt="<?php echo $residence->property_alt_logo; ?>" title="<?php echo $residence->property_alt_logo; ?>" />
+
+						</div>
+						<?php if(count($carousel) != 1) { ?>
+						
+						<!-- Left and right controls -->
+						<a class="carousel-control-prev" href="#carousel" data-slide="prev">
+						<span class="carousel-control-prev-icon"></span>
+						</a>
+						<a class="carousel-control-next" href="#carousel" data-slide="next">
+						<span class="carousel-control-next-icon"></span>
+						</a>
+						<?php } ?>
 					</div>
 					<?php } ?>			
 				</div>
@@ -127,9 +146,9 @@
 				<div class="estates malls col-sm-6">
 					<div class="row">
 						<div class="col-sm-6 mo_title"><h2><?php echo $category_mall->category_name; ?></h2></div>
-						<div class="col-sm-6 mo_link"><a href="<?php echo site_url('').'estates/category/'.strtolower($category_mall->category_name); ?>">View All</a></div>
+						<div class="col-sm-6 mo_link"><a href="<?php echo site_url('').strtolower($category_mall->category_name); ?>">View All</a></div>
 					</div>
-					<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
+					<a href="<?php echo site_url('').'malls/'.$val->property_slug; ?>">
 					<!-- <a href="<?php //echo $val->property_website; ?>" target="_blank"> -->
 					<div class="image_wrapper">
 						<div class="property"><?php echo $val->property_name; ?></div>
@@ -146,9 +165,9 @@
 				<div class="estates offices col-sm-6">
 					<div class="row">
 						<div class="col-sm-6 mo_title"><h2><?php echo $category_office->category_name; ?></h2></div>
-						<div class="col-sm-6 mo_link"><a href="<?php echo site_url('').'estates/category/'.strtolower($category_office->category_name); ?>">View All</a></div>
+						<div class="col-sm-6 mo_link"><a href="<?php echo site_url('').strtolower($category_office->category_name); ?>">View All</a></div>
 					</div>
-					<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
+					<a href="<?php echo site_url('').'offices/'.$val->property_slug; ?>">
 					<div class="image_wrapper">
 						<div class="property"><?php echo $val->property_name; ?></div>
 						<div class="image_container">

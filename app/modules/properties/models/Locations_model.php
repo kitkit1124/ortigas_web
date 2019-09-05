@@ -59,7 +59,7 @@ class Locations_model extends BF_Model {
 				->where('location_status', 'Active')
 				->where('location_deleted', 0)
 				->order_by('location_name', 'ASC')
-				->format_dropdown('location_id', 'location_name', TRUE);
+				->format_dropdown('location_name', 'location_name', TRUE);
 
 		return $query;		
 	}

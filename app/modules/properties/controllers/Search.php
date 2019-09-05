@@ -197,14 +197,14 @@ class Search extends MX_Controller {
 		
 		if($_POST){
 			$data = array(
-				'search_keyword'	 => $_POST['keyword']
+				'search_keyword'	 => urldecode($_POST['keyword'])
 			);
 
 			$this->searches_model->insert($data);
 			echo json_encode(
 				array(
 					'success' 	 		 => true,
-					'keyword'			 => $_POST['keyword'],
+					'keyword'			 => urlencode($_POST['keyword']),
 					'search_filter' 	 => $_POST['search_filter']
 				)
 			); 
@@ -215,7 +215,7 @@ class Search extends MX_Controller {
 
 			if($_GET['search_filter'] == "search_properties" || $_GET['search_filter'] == "search_any"){
 			$fields = [
-				'filter'		 => $_GET['keyword'],
+				'filter'		 => urldecode($_GET['keyword']),
 				'category_id' 	 => 1, 
 				'location_id' 	 => isset($_GET['location']) ? $_GET['location'] : '', 
 				'price_range_id' => isset($_GET['range']) ? $_GET['range'] : ''
@@ -223,7 +223,7 @@ class Search extends MX_Controller {
 			$data['residences'] = $this->properties_model->get_search($fields);	
 	
 			$fields = [
-				'filter'		 => $_GET['keyword'],
+				'filter'		 => urldecode($_GET['keyword']),
 				'category_id' 	 => 2, 
 				'location_id' 	 => isset($_GET['location']) ? $_GET['location'] : '', 
 				'price_range_id' => isset($_GET['range']) ? $_GET['range'] : '',
@@ -233,7 +233,7 @@ class Search extends MX_Controller {
 
 	
 			$fields = [
-				'filter'		 => $_GET['keyword'],
+				'filter'		 => urldecode($_GET['keyword']),
 				'category_id' 	 => 3, 
 				'location_id' 	 => isset($_GET['lid']) ? $_GET['lid'] : '', 
 				'price_range_id' => isset($_GET['range']) ? $_GET['range'] : '',
@@ -243,7 +243,7 @@ class Search extends MX_Controller {
 			}
 
 			$fields = [
-				'keyword'		 => $_GET['keyword'],
+				'keyword'		 => urldecode($_GET['keyword']),
 			];
 
 			if($_GET['search_filter'] == "search_articles" || $_GET['search_filter'] == "search_any"){
@@ -251,7 +251,7 @@ class Search extends MX_Controller {
 			}
 
 			$fields = [
-				'keyword'		 => $_GET['keyword'],
+				'keyword'		 => urldecode($_GET['keyword']),
 			];
 
 			if($_GET['search_filter'] == "search_careers" || $_GET['search_filter'] == "search_any"){

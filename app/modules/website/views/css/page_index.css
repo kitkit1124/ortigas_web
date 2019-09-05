@@ -57,7 +57,7 @@ color: #FFF !important;
 }
 
 .carousel-control-prev, .carousel-control-next{
-  z-index: 2;
+  z-index: 1000;
 }
 
 
@@ -113,7 +113,7 @@ color: #FFF !important;
 
 
 .page_content{ margin: 30px 0; }
-.page_content h1{ color: #07793f; font-size: 3.5rem; } 
+.page_content h1{ color: #07793f; font-size: 3.5rem; font-weight: bold; } 
 
 .page_content h1:last-child{ text-transform: uppercase; } 
 
@@ -240,7 +240,15 @@ color: #FFF !important;
   margin: auto;
 }
 
-
+.residence_logo{
+  bottom: 0;
+  left: 0;
+  position: absolute !important;
+  width: 30%!important;
+  object-fit: contain !important;
+  height: 30% !important;
+  filter: brightness(0) invert(1);
+}
 
 @keyframes fadeIn {
   from {
@@ -282,7 +290,7 @@ color: #FFF !important;
       height: 490px;
   }*/
 
-  .properties:nth-child(2) {
+  .properties:nth-child(3) {
     display: none;
   }
 
@@ -320,6 +328,10 @@ color: #FFF !important;
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
+  }
+
+  .properties:nth-child(2), .properties:nth-child(3) {
+    display: none;
   }
 
   .page_content h1 {

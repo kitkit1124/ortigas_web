@@ -17,8 +17,8 @@
 							
 						<div class="row ">
 							<?php
-							foreach ($residences as $key => $val) { 
-							if($val->property_modified_on){ $dtraw = $val->property_modified_on; } else { $dtraw = $val->property_created_on; }		
+							foreach ($residences as $key => $val) {
+							if($val->property_modified_on){ $dtraw = $val->property_modified_on; } else { $dtraw = $val->property_created_on; }
 							$dtpost = date_create($dtraw);
 							?>
 								<div class="search_box col-sm-6">
@@ -39,7 +39,7 @@
 												<a class="green search_link" href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a>
 											</a>
 										</div>
-									</div>	
+									</div>
 								</div>
 
 							<?php	} //end foreach ?>
@@ -51,8 +51,8 @@
 							
 						<div class="row ">
 							<?php
-							foreach ($malls as $key => $val) { 
-							if($val->property_modified_on){ $dtraw = $val->property_modified_on; } else { $dtraw = $val->property_created_on; }		
+							foreach ($malls as $key => $val) {
+							if($val->property_modified_on){ $dtraw = $val->property_modified_on; } else { $dtraw = $val->property_created_on; }
 							$dtpost = date_create($dtraw);
 							?>
 								<div class="search_box col-sm-6">
@@ -84,8 +84,8 @@
 							
 						<div class="row ">
 							<?php
-							foreach ($offices as $key => $val) { 
-							if($val->property_modified_on){ $dtraw = $val->property_modified_on; } else { $dtraw = $val->property_created_on; }		
+							foreach ($offices as $key => $val) {
+							if($val->property_modified_on){ $dtraw = $val->property_modified_on; } else { $dtraw = $val->property_created_on; }
 							$dtpost = date_create($dtraw);
 							?>
 								<div class="search_box col-sm-6">
@@ -111,7 +111,7 @@
 							<?php	} //end foreach ?>
 						</div>
 						<?php } ?>
-						
+
 					</div>
 
 					<?php if(isset($news_result) && $news_result){ $true_result++; ?>
@@ -119,8 +119,8 @@
 			 		<h2>Articles</h2>
 					<div class="row ">
 						<?php
-						foreach ($news_result as $key => $val) { 
-						if($val->post_modified_on){ $dtraw = $val->post_modified_on; } else { $dtraw = $val->post_created_on; }		
+						foreach ($news_result as $key => $val) {
+						if($val->post_modified_on){ $dtraw = $val->post_modified_on; } else { $dtraw = $val->post_created_on; }
 						$dtpost = date_create($dtraw);
 						?>
 							<div class="search_box col-sm-6">
@@ -139,7 +139,7 @@
 												<h2><?php echo $val->post_title; ?></h2>
 												<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
 												<div class="property_overview"><?php echo $val->post_content; ?></div>
-												<a class="green search_link" href="<?php echo site_url('').'news/'.$val->post_slug; ?>">Read Article ></a>
+												<a class="green search_link" href="<?php echo site_url('').'news/'.$val->post_slug; ?>">Read full article ></a>
 											</a>
 										</div>
 									</div>	
@@ -177,7 +177,7 @@
 										<!-- <p class="dept"><?php //echo $val->department_name; ?></p> -->
 										<!-- <p class="dtpost"><?php //echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p> -->
 											<p><i class="fa fa-map-marker green" aria-hidden="true"></i>&nbsp;<?php echo $val->career_location; ?></p>
-											<a class="green search_link" href="<?php echo site_url('').'careers/'.$val->career_slug; ?>">View Details ></a>
+											<a class="green search_link" href="<?php echo site_url('').'careers/'.$val->career_slug; ?>">View details ></a>
 										</a>
 									</div>
 								</div>	

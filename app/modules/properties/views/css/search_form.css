@@ -49,3 +49,54 @@
 .search_tab:selection{
   color: #ccc !important;
 }
+
+.colsearch{
+    -ms-flex: 0 0 10%;
+    flex: 0 0 10%;
+    max-width: 10%;
+}
+
+.colselect{
+    -ms-flex: 0 0 90%;
+    flex: 0 0 90%;
+    max-width: 90%;
+}
+
+.colsearch a.default-button{
+  min-width: auto;
+}
+
+@media(max-width: 768px) {
+  .colsearch{
+      -ms-flex: 0 0 20%;
+      flex: 0 0 20%;
+      max-width: 20%;
+  }
+
+  .colselect{
+      -ms-flex: 0 0 80%;
+      flex: 0 0 80%;
+      max-width: 80%;
+  }
+
+}
+
+@media(max-width: 600px) {
+  .colsearch,.colselect{
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+  }
+  .colsearch a.default-button{
+    margin: auto;
+  }
+
+}
+
+@media(max-width: 425px) {
+
+  .colsearch a.default-button{
+    max-width: 100%;
+  }
+
+}

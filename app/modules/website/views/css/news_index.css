@@ -76,6 +76,13 @@
 	margin-bottom: 0 !important
 }
 
+.news_details {
+	text-align: left;
+}
+
+.news_details a.news_link_img{
+    padding: 0 !important;
+}
 
 @media (max-width: 1024px){
 	.news_content, .news_sidebar {

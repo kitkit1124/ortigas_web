@@ -158,22 +158,26 @@ function scrollToAnchor(aid, top){
 
    
 function searchGlobal(){
-    $.ajax({method: "POST",url: site_url + 'properties/search/sglobal',
-        data: { 
-            keyword : $('#keyword').val(),
-            search_filter : $('input[name="global_search_filter"]:checked').val(),
-            [csrf_name]: $('#csrf').val(),
-        } 
-    })
-    .done(function(data) {
+    if($('#keyword').val().length >= 255){
+        alertify.error('The search field cannot exceed 255 characters in length.');
+    }else{
+        $.ajax({method: "POST",url: site_url + 'properties/search/sglobal',
+            data: { 
+                keyword : $('#keyword').val(),
+                search_filter : $('input[name="global_search_filter"]:checked').val(),
+                [csrf_name]: $('#csrf').val(),
+            } 
+        })
+        .done(function(data) {
 
-        var data = jQuery.parseJSON(data);
-        if (data.success === false) {
-            // shows the error message
-        } else {
-            window.location.replace(site_url + 'search?keyword=' + data.keyword + '&search_filter=' + data.search_filter);
-        }
-    });
+            var data = jQuery.parseJSON(data);
+            if (data.success === false) {
+                // shows the error message
+            } else {
+                window.location.replace(site_url + 'search?keyword=' + data.keyword + '&search_filter=' + data.search_filter);
+            }
+        });
+    }
 }
 
 
@@ -213,3 +217,16 @@ function set_banner_position(){
 
 }
 
+function img_selector(img,size)
+{
+
+   
+    if(img.substr(-3) == 'png') {
+            src = img.replace(".png", "_"+size+".png"); 
+    }
+    else{
+            src = img.replace(".jpg", "_"+size+".jpg"); 
+    }
+
+    return src;
+}

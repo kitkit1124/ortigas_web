@@ -143,7 +143,6 @@ class Estates extends MX_Controller {
 	public function view($params)
 	{
 
-
 		$data['enable_map'] = true;
 		
 		$fields = [ 'estate_slug' => $params ];

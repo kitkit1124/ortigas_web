@@ -1,20 +1,85 @@
 $(function() {
     
     $('#location_id').change(function(){
-    	searchEstate($(this).val());
+    	var oTable = $('#dt-images').dataTable();
+    	oTable.fnFilter($(this).val());
+
     });
+
+ 	$('#dt-images').fadeIn(2000);
+
+   	var oTable = $('#dt-images').dataTable({
+		"bProcessing": false,
+		"lengthChange": false,
+        "bFilter": true,
+        "bInfo": false,
+		"bServerSide": true,
+		"sAjaxSource": site_url + "properties/categories/datatables?category="+category_name,
+		"lengthMenu": [[9, 18, -1], [9, 18, "All"]],
+		"pagingType": "simple_numbers",
+		"bAutoWidth": false,
+		"aaSorting": [[ 0, "ASC" ]],
+		"aoColumnDefs": 
+		[
+			{
+				"aTargets": [0],
+				"mRender": function (data, type, full) {
+					div =  '<div class="estates properties col-sm-4">';
+						div += '<a href="' + site_url + 'estates/property/' + full[5] +'">';
+							div += '<div class="image_wrapper">';
+								div += '<div class="image_container">';
+									div += '<img class="lazy" src="' + upload_url + img_selector(full[7],'large') +'" width="100%" draggable="false" alt="' + full[22] + '" title="' + full[22] +'" />';
+								div += '</div>'; //image_container
+							div += '</div>'; //image_wrapper
+
+							div += '<div class="property_content_wrapper">';
+								div += '<div class="property_title">'+ full[1] +'</div>';
+								div += '<div class="estate_title_dup">'+ full[2] +'</div>';
+								div += '<div class="estate_content">'+ full[23] +'</div>';
+							div += '</div>'; //property_content_wrapper
+					
+						div += '</a>';
+					div += '</div>' ; //estates
+
+					return div;
+				},
+			},
+			{
+				"aTargets": [1,2,3,4,5,6,7,8,9,10],
+				"mRender": function (data, type, full) {
+					return '<span style="display:none;">' + data + '</span>';
+				},
+			},
+		],
+		"fnDrawCallback": function( oTable ) {
+			// hide the table
+			$('#dt-images').hide();
+
+			// then recreate the table as divs
+			var html = '';
+			$('tr', this).each(function() {
+				$('td', this).each(function() {
+					html += $(this).html();
+					// console.log(html);
+				});
+			});
+
+			$('#thumbnails').html(html);
+		}
+	});
+
+
 });
 
-
 function searchEstate(id){
-	
-	$.ajax({method: "POST",url: site_url + 'properties/categories/search',
+
+/*	$.ajax({method: "POST",url: site_url + 'properties/categories/search',
 		data: { 
 			location_id	: $('#location_id').val(),
 			category_name : category_name,
 			[csrf_name]: $('#csrf').val()
-		} 
-	})
+		}	}) 
+
 	.done(function(data) {
 
 		var data = jQuery.parseJSON(data);
@@ -46,7 +111,5 @@ function searchEstate(id){
 				$('.properties_of_estate').append(html);
 			});
 		}
-	});
+	});*/
 }
-
-				

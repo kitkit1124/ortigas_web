@@ -19,6 +19,7 @@
     box-shadow: 2px 2px 5px -1px #9a9a9a;
     display: inline-block;
     margin-bottom: 30px;
+    text-decoration: none !important;
 }
 
 .news_sidebar{
@@ -100,6 +101,43 @@
  	max-height: 500px;
 }
 
+.social_media{ 
+	float: left;
+    margin-top: -5px;
+}
+
+.social_media .fa{
+    padding: 13px;
+    width: 40px;
+    text-align: center;
+    color: transparent;
+    margin-right: 10px;
+}
+
+.social_media .fa-facebook{	background-image: url('/data/images/social_facebook.png'); }
+.social_media .fa-twitter{	background-image: url('/data/images/social_twitter.png');; }
+.social_media .fa-instagram{ background-image: url('/data/images/social_instagram.png');; }
+.social_media .fa-linkedin{	background-image: url('/data/images/social_linkedin.png');; }
+.social_media .fa-youtube{	background-image: url('/data/images/social_youtube.png');; }
+
+.upload_document_holder{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    padding: 10px;
+    box-shadow: 3px 3px 10px -2px #9a9a9a;
+    border-radius: 12px;
+}
+
+.upload_document_holder .fa-download{
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+.upload_document_holder .fa-file-pdf-o{
+	height: 10px
+}
 
 @media (max-width: 1024px){
 	.news_content, .news_sidebar {

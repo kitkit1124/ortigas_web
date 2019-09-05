@@ -45,7 +45,7 @@ class Estates_model extends BF_Model {
 			'estate_text',
 			'estate_latitude',
 			'estate_longtitude',
-			'estate_logo',
+			'estate_image',
 			'estate_status',
 
 			'estate_created_on', 

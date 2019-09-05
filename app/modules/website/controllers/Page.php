@@ -155,7 +155,7 @@ class Page extends CI_Controller
 		$fields = ['featured'=>1, 'rand'=>true,'limit'=>1,'category_id'=>1];
 		$residence = $this->properties->get_properties($fields);
 
-		$this->properties->get_properties($fields);
+		$data['residence'] = $residence[0];
 
 		if($residence){
 			$data['carousel'] = $this->image_sliders_model->find_all_by(

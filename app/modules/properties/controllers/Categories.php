@@ -122,7 +122,7 @@ class Categories extends MX_Controller {
 				$locations[''] = "VIEW ALL ".strtoupper($params);
 				$data['select_locations'] = $locations;
 
-				$fields = [ 'category_name' => $params ];
+				$fields = [ 'category_name' => $params, 'order_by' => 'property_name'];
 				$properties = $this->properties_model->get_properties($fields);
 				
 					if($properties){
@@ -141,7 +141,15 @@ class Categories extends MX_Controller {
 				else{
 					redirect(base_url().'page-not-found');
 				}
-					
+			
+			// add plugins
+			$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
+			$this->template->add_css('npm/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css');
+			$this->template->add_js('npm/datatables.net/js/jquery.dataTables.js');
+			$this->template->add_js('npm/datatables.net-bs4/js/dataTables.bootstrap4.js');
+			$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
+			$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
+
 			// render the page
 			$this->template->write('head', $metatags);
 			$this->template->add_css(module_css('properties', 'property_style'), 'embed');
@@ -154,6 +162,18 @@ class Categories extends MX_Controller {
 		else{
 			redirect(base_url().'page-not-found');
 		}
+	}
+
+
+	public function datatables()
+	{
+
+		$fields_data = [ 
+			'category' 	=> $this->input->get('category'),
+			'location' 	=> $this->input->get('location'),
+		]; 
+
+		echo $this->properties_model->get_datatables($fields_data);
 	}
 
 	// --------------------------------------------------------------------

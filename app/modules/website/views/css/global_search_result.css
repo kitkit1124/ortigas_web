@@ -35,3 +35,11 @@
 .property_details {
 	padding: 20px 10px;
 }
+
+.property_details .green{
+    font-weight: unset;
+}
+
+.dtpost{
+    font-size: .7rem;
+}

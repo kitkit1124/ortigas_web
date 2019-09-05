@@ -6,8 +6,7 @@
 if(isset($news_result) && $news_result){
 foreach ($news_result as $key => $value) { 
 
-	if($value->post_modified_on){ $dtraw = $value->post_modified_on; } else { $dtraw = $value->post_created_on; }		
-		$dtpost = date_create($dtraw); 
+		$dtpost = date_create($value->post_posted_on); 
 
 		$news_tags = '';
 		if(isset($value->post_tags) && $value->post_tags){
@@ -22,10 +21,12 @@ foreach ($news_result as $key => $value) {
 	<div class="news_result">
 		<div class="row">
 			<div class="news_image <?php echo (isset($cols_img) && $cols_img) ? $cols_img : ''; ?>">
-				<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($value->post_image,'medium'); ?>" alt="<?php echo $value->post_alt_image; ?>" title="<?php echo $value->post_alt_image; ?>">
+				<a href="<?php echo site_url().'news/'.$value->post_slug;?>">
+					<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($value->post_image,'medium'); ?>" alt="<?php echo $value->post_alt_image; ?>" title="<?php echo $value->post_alt_image; ?>">
+				</a>
 			</div>
 			<div class="news_details <?php echo (isset($cols_data) && $cols_data) ? $cols_data : ''; ?>">
-				<h2><?php echo $value->post_title; ?></h2>
+				<a href="<?php echo site_url().'news/'.$value->post_slug;?>"><h2><?php echo $value->post_title; ?></h2></a>
 				<label>
 					<span class="dtpost">
 						<i><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></i>

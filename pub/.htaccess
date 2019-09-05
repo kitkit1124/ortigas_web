@@ -1,5 +1,10 @@
 RewriteEngine on
 
+RewriteRule	/estate/capitol-commons/entertainment-hub	http://ortigas.web.local/malls/connor-at-greenhills	[R=301,L]	
+
+#RewriteCond %{QUERY_STRING}    "?estate" [NC]
+#RewriteRule (.*)  /$1? [R=301,L]
+
 Order allow,deny
 Allow from all
 

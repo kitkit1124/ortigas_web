@@ -12,6 +12,8 @@ $route['contact-us'] = 'website/contact/index';
 
 $route['news'] = 'website/news/index';
 $route['news/(:any)'] = 'website/news/view/$1';
+$route['news/tags/(:any)'] = 'website/news/view_tags/$1';
+$route['news/date/(:any)'] = 'website/news/date/$1';
 
 $route['careers'] = 'careers/careers/index';
 $route['careers/(:any)'] = 'careers/careers/view_division/$1';

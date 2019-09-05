@@ -22,7 +22,12 @@
 				<?php echo form_dropdown('location_id', $select_locations, set_value('location_id', (isset($_GET['lid'])) ? $_GET['lid'] : ''), 'id="location_id" class="form-control"'); ?>
 			</div>
 			
-			<?php
+			<div id="thumbnails" class="row text-center"></div>
+			<table class="table table-striped table-bordered table-hover dt-responsive" id="dt-images">
+				<thead><tr><th class="all"></th></tr></thead>
+			</table>
+
+			<?php /*
 			if(isset($estates) && $estates){ $properties = $estates; $estates = 1;}  else{ $estates = 0; }
 		    if(isset($properties) && $properties){
 			?>
@@ -67,7 +72,7 @@
 					</div>
 				<?php	} //end foreach ?>
 			</div>
-			<?php }?>
+			<?php } */ ?>
 
 
 

@@ -20,7 +20,7 @@
 				<p class="dept"><?php echo $career->department_name; ?></p>
 				<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
 				<p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $career->career_location; ?></p>
-				<p class="res_head">Resposiblities</p>
+				<p class="res_head">Responsibilities</p>
 				<p class="res"><?php echo parse_content($career->career_res); ?></p>
 				<p class="req_head">Requirements</p>
 				<p class="req"><?php echo parse_content($career->career_req); ?></p>

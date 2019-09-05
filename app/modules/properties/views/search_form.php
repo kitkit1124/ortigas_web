@@ -5,7 +5,7 @@
 	<div class="search_tab_content">
 		<div class="advance_search">
 			<div class="row">
-				<div class="col-sm-10">
+				<div class="col-sm-10 colselect">
 					<div class="row">
 						<input type="hidden" id="csrfs" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 						<div class="col-sm-6">
@@ -22,7 +22,7 @@
 						</div> -->
 					</div>
 				</div>
-				<div class="col-sm-2">
+				<div class="col-sm-2 colsearch">
 					<label>&nbsp;</label>
 					<a class="button_search default-button"><i class="fa fa-search"></i></a>
 				</div>

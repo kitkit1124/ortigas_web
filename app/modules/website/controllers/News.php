@@ -56,6 +56,11 @@ class News extends MX_Controller
 		$news_page = $this->pages_model->find_by('page_uri','news'); 
 		$data['news_page'] = $news_page;
 
+
+		if($this->input->get('q')){
+			$data['param_date'] = $this->input->get('q'); 
+		}
+
 		$data['breadcrumbs']['heading'] = 'home';
 		$data['breadcrumbs']['subhead'] = $news_page->page_title;
 
@@ -65,13 +70,14 @@ class News extends MX_Controller
 
 		$data['sliders'] = $this->banners_model->get_banners(4);
 		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
-		$news = $this->posts_model->get_active_news();
+		
+		// $news = $this->posts_model->get_active_news();
 
-		foreach ($news as $key => $result) {
-			$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
-		}
+		// foreach ($news as $key => $result) {
+		// 	$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+		// }
 
-		$data['news_result'] = $news;
+		// $data['news_result'] = $news;
 
         $metatags = "";
         if(isset($news_page->page_metatag_id) && $news_page->page_metatag_id){
@@ -91,12 +97,46 @@ class News extends MX_Controller
 		$data['section'] = 'News';
 
 		$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $data['news_page']->page_id, 'related_link_section_type' => 'pages', 'related_link_status' => 'Active', 'related_link_deleted' => 0));
-		
+
+		// add plugins
+		$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
+		$this->template->add_css('npm/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css');
+		$this->template->add_js('npm/datatables.net/js/jquery.dataTables.js');
+		$this->template->add_js('npm/datatables.net-bs4/js/dataTables.bootstrap4.js');
+		$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
+		$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
+
 		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('website', 'news_index'), 'embed');
+		$this->template->add_css(module_css('website', 'news_result'), 'embed');
 		$this->template->add_js(module_js('website', 'news_index'), 'embed');
 		$this->template->write_view('content', 'news_index', $data);
 		$this->template->render();
+	}
+
+	public function datatables()
+	{
+
+		$year = '';
+		$month = '';
+		if($this->input->get('qdate')){
+			$date_str = explode("-",$this->input->get('qdate'));
+			$year = $date_str[1];
+			$month = $date_str[0];
+		}
+
+		$fields = [
+			'tags' => $this->input->get('tags'),
+			'year' => $year,
+			'month' => $month,
+		];
+		echo $this->posts_model->get_datatables($fields);
+	}
+
+	public function get_current_tags()
+	{	
+		$current_tags = $this->post_tags_model->get_current_tags($_GET['post_id']);
+		echo json_encode($current_tags); exit;
 	}
 
 	public function view($params)
@@ -150,6 +190,87 @@ class News extends MX_Controller
 		else{
 			redirect(base_url().'page-not-found');
 		}
+	}
+
+
+	public function view_tags($params = null)
+	{
+
+		if($params){
+
+			$tags = $this->news_tags_model->find_by(array('news_tag_slug' => $params));
+
+			if($tags){
+
+				$data['page_layout'] = 'full_width';
+
+				$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
+				$this->breadcrumbs->push(lang('index_heading'), current_url());
+
+
+				$find_params = substr($_SERVER['REQUEST_URI'],0,11);
+
+				if($find_params == '/news/tags/'){
+					$data['param_tags'] = $params; 
+				}
+
+				$news_page = $this->pages_model->find_by('page_uri','news'); 
+				$data['news_page'] = $news_page;
+
+				$data['breadcrumbs']['heading'] = 'home';
+				$data['breadcrumbs']['subhead'] = $news_page->page_title;
+
+				//page_title
+				$meta_title = $this->metatags_model->find($news_page->page_metatag_id); 
+				$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $news_page->page_title;
+
+				$data['sliders'] = $this->banners_model->get_banners(4);
+				$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
+				
+
+		        $metatags = "";
+		        if(isset($news_page->page_metatag_id) && $news_page->page_metatag_id){
+		        	$metatags = $this->metatags_model->get_metatags($news_page->page_metatag_id);
+		        }
+
+				$fields = ['rand'=>true,'limit'=>4,'category_id'=>1];
+				$data['residences'] = $this->properties_model->get_properties($fields);
+
+				$fields = ['rand'=>true,'limit'=>4,'category_id'=>2];
+				$data['malls'] 		= $this->properties_model->get_properties($fields);
+
+				$fields = ['rand'=>true,'limit'=>4,'category_id'=>3];
+				$data['offices'] 	= $this->properties_model->get_properties($fields);
+
+				$data['section_id'] = 0;
+				$data['section'] = 'News';
+
+				$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $data['news_page']->page_id, 'related_link_section_type' => 'pages', 'related_link_status' => 'Active', 'related_link_deleted' => 0));
+
+				// add plugins
+				$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
+				$this->template->add_css('npm/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css');
+				$this->template->add_js('npm/datatables.net/js/jquery.dataTables.js');
+				$this->template->add_js('npm/datatables.net-bs4/js/dataTables.bootstrap4.js');
+				$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
+				$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
+
+				$this->template->write('head', $metatags);
+				$this->template->add_css(module_css('website', 'news_index'), 'embed');
+				$this->template->add_css(module_css('website', 'news_result'), 'embed');
+				$this->template->add_js(module_js('website', 'news_index'), 'embed');
+				$this->template->write_view('content', 'news_index', $data);
+				$this->template->render();
+			
+			}
+			else{
+					redirect(base_url().'page-not-found');
+				}
+		}
+		else{
+			redirect(base_url().'page-not-found');
+		}
+		
 	}
 
 }

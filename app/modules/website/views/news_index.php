@@ -7,19 +7,26 @@
 				<div class="news_content col-sm-8">
 					<h2 class="news_title">What's New in Ortigas and Company</h2>
 					<p class="news_filter_label">Filter by Category:</p>
-					<a class="news_filter" data-id="0">ALL</a>
+					<a class="news_filter" data-id="0" href="/news">ALL</a>
 					<?php
 					if($news_tags){
 						foreach ($news_tags as $key => $value) { ?>
-							<a class="news_filter" data-id = "<?php echo $value->news_tag_id; ?>"><?php echo $value->news_tag_name; ?></a>
+							<a href="/news/tags/<?php echo $value->news_tag_slug; ?>" class="news_filter" data-id = "<?php echo $value->news_tag_id; ?>"><?php echo $value->news_tag_name; ?></a>
 					<?php 
 						} 
 					} ?>
 
+					<div id="thumbnails" class="text-center"></div><br>
+					<table class="table table-striped table-bordered table-hover dt-responsive" id="dt-images">
+						<div class="row">
+							<thead><tr><th class="all"></th></tr></thead>
+						</div>
+					</table>
+					
 					<?php
-						$news_data['cols_img'] = 'col-sm-4';
+				/*		$news_data['cols_img'] = 'col-sm-4';
 						$news_data['cols_data'] = 'col-sm-8';
-						echo $this->load->view('news_result', $news_data); 
+						echo $this->load->view('news_result', $news_data); */
 					?>
 	
 				</div>
@@ -69,3 +76,8 @@
 	</main>
 	<?php echo $this->load->view('properties/recommended_links')?>
 </section>
+<script type="text/javascript">
+var param_tags =  "<?php echo isset($param_tags) ? $param_tags : ''; ?>";
+var param_date =  "<?php echo isset($param_date) ? $param_date : ''; ?>";
+</script>
+
