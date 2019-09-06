@@ -160,8 +160,8 @@ class Careers_ops extends MX_Controller {
             $this->email->subject('Job Application');
             $this->email->set_mailtype("html");
             $this->email->message($message_content);
-            $this->email->send(false);
-			echo $this->email->print_debugger();
+            $this->email->send();
+			// echo $this->email->print_debugger();
 		return $return;
 	}
 

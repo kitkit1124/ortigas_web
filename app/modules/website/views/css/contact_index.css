@@ -93,6 +93,7 @@
 	color: #07793f;
 	font-weight: bold;
 	text-transform: uppercase;
+    display: inline;
 }
 
 .message_agreement_label{
@@ -137,7 +138,11 @@
     top: 25px;
 }
 
-  
+.contact_form span.nomargin{
+    margin-left: 0px;
+    padding-left: 10px;
+    display: block;
+}  
 
     @media(max-width: 990px) {
     .contact_break{

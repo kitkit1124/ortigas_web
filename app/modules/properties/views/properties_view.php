@@ -13,8 +13,16 @@
 							<?php echo $this->load->view('properties/specific_properties/tabs_view'); ?>
 						</div>
 					<?php //endif; ?>
+	
+					<?php if($properties->category_id!=1 && $properties->property_slug == "the-galleon") : ?>
+						<div class="inquiry_form_container">
+							<?php echo $this->load->view('messages/messages_form')?>
+						</div>
+					<?php endif; ?>
+
 					<?php
 					foreach($division_order as $key => $value){
+
 						if($value->setting_division == 'Overview Description'){
 							echo $this->load->view('properties/specific_properties/properties_overview');
 						}
@@ -63,11 +71,12 @@
 					}
 
 					?>
-					<?php if($properties->category_id!=1) : ?>
+
+
+					<?php if($properties->category_id!=1 && $properties->property_slug != "the-galleon") : ?>
 						<div class="inquiry_form_container">
 							<?php echo $this->load->view('messages/messages_form')?>
 						</div>
-				
 					<?php endif; ?>
 						
 				</div>

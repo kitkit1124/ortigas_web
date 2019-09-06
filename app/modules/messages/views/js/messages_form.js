@@ -40,7 +40,7 @@ $(function() {
 		        }
 			} else {
            		 $('#message_success').trigger('click');
-           		 setTimeout(function(){ location.reload(); }, 4000);
+           		 // setTimeout(function(){ location.reload(); }, 4000);
            		 
 
 			}

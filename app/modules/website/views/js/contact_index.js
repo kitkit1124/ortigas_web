@@ -122,7 +122,7 @@ $(function() {
 			} else {
            		  $('#message_success').trigger('click');
            		  // $('.contact_form form').find("input[type=text], textarea").val("");
-           		  setTimeout(function(){ location.reload(); }, 4000);
+           		  // setTimeout(function(){ location.reload(); }, 4000);
 
 			}
 		});

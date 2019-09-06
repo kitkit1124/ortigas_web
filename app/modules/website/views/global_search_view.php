@@ -139,7 +139,7 @@
 												<h2><?php echo $val->post_title; ?></h2>
 												<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
 												<div class="property_overview"><?php echo $val->post_content; ?></div>
-												<a class="green search_link" href="<?php echo site_url('').'news/'.$val->post_slug; ?>">Read full article ></a>
+												<a class="green search_link" href="<?php echo site_url('').'news/'.$val->post_slug; ?>">Read Article ></a>
 											</a>
 										</div>
 									</div>	
@@ -177,7 +177,7 @@
 										<!-- <p class="dept"><?php //echo $val->department_name; ?></p> -->
 										<!-- <p class="dtpost"><?php //echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p> -->
 											<p><i class="fa fa-map-marker green" aria-hidden="true"></i>&nbsp;<?php echo $val->career_location; ?></p>
-											<a class="green search_link" href="<?php echo site_url('').'careers/'.$val->career_slug; ?>">View details ></a>
+											<a class="green search_link" href="<?php echo site_url('').'careers/'.$val->career_slug; ?>">View Details ></a>
 										</a>
 									</div>
 								</div>	

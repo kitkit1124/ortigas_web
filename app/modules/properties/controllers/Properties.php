@@ -161,7 +161,7 @@ class Properties extends MX_Controller {
 					redirect(base_url().'offices/'.$params);
 				}
 				if($properties[0]->property_category_id==4){
-					redirect(base_url().'amenity/'.$params);
+					redirect(base_url().'amenities/'.$params);
 				}
 			}
 			else{

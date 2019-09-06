@@ -140,12 +140,14 @@ class Messages extends MX_Controller {
 			if($this->input->post('message_type') != "Contact"){ $post_subject = ' Inquiry'; }
 
 
-			$config['smtp_host'] = 'ortigas.com.ph';
+			// $config['smtp_host'] = 'ortigas.com.ph';
+			$config['smtp_host'] = 'box03.vbusiness.ph';
 			$config['protocol'] = 'smtp';
 			$config['smtp_timeout'] = 10;
             $config['smtp_port'] = 25;
             $config['smtp_user'] = 'information@tiendesitas.com.ph';
-            $config['smtp_pass'] = 'K5a1$li1';
+            // $config['smtp_pass'] = 'K5a1$li1';
+            $config['smtp_pass'] = 'l1nyF&10';
             $config['mailtype'] = 'html';
             $config['charset'] ='utf-8';
             $config['newline'] ='\r\n';
@@ -173,7 +175,7 @@ class Messages extends MX_Controller {
 					$sec_data = $this->careers_model->find($section_id);
 					$message_section_id = $sec_data->career_position_title;
 				}
-				else{ // if($section == 'Residences' || $section == 'Malls' || $section == 'Offices' || $section == 'Sales Inquiry'){
+				else{ //if($section == 'Residences' || $section == 'Malls' || $section == 'Offices' || $section == 'Sales Inquiry'){
 					$sec_data = $this->properties_model->find($section_id);
 					$message_section_id = $sec_data->property_name;
 				}
