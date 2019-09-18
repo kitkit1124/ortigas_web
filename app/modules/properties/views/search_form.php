@@ -4,17 +4,35 @@
 <div class="search_tab property_search">
 	<div class="search_tab_content">
 		<div class="advance_search">
+			<label>SEARCH PROPERTIES</label>
 			<div class="row">
 				<div class="col-sm-10 colselect">
 					<div class="row">
 						<input type="hidden" id="csrfs" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 						<div class="col-sm-6">
-							<label>Location</label>
-							<?php echo form_dropdown('locations_id', $select_locations, set_value('locations_id', (isset($_GET['loc'])) ? $_GET['loc'] : ''), 'id="locations_id" class="form-control"'); ?>
+							
+							<select id="locations_id" class="form-control">
+							<?php foreach ($select_locations as $key => $value) { ?>
+								<?php if($value == ''){ ?>
+									<option selected="selected" disabled=""><label>Location</label></option>
+								<?php } else { ?>
+								<option><?php echo $value; ?></option>
+								<?php }  ?>
+							<?php } ?>
+							</select>
+						
 						</div>
 						<div class="col-sm-6">
-							<label>Development Type</label>
-							<?php echo form_dropdown('dev_id', $select_dev_types, set_value('dev_id', (isset($_GET['dev'])) ? $_GET['dev'] : ''), 'id="dev_id" class="form-control"'); ?>
+
+							<select id="dev_id" class="form-control">
+							<?php foreach ($select_dev_types as $key => $value) { ?>
+								<?php if($value == ''){ ?>
+									<option selected="selected" disabled=""><label>Development Type</label></option>
+								<?php } else { ?>
+								<option><?php echo $value; ?></option>
+								<?php }  ?>
+							<?php } ?>
+							</select>
 						</div>
 					<!-- 	<div class="col-sm-4">
 							<label>Price Range</label>
@@ -23,7 +41,6 @@
 					</div>
 				</div>
 				<div class="col-sm-2 colsearch">
-					<label>&nbsp;</label>
 					<a class="button_search default-button"><i class="fa fa-search"></i></a>
 				</div>
 			</div>

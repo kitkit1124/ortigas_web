@@ -26,17 +26,18 @@ foreach ($news_result as $key => $value) {
 				</a>
 			</div>
 			<div class="news_details <?php echo (isset($cols_data) && $cols_data) ? $cols_data : ''; ?>">
+				<?php if(isset($value->post_tags) && $value->post_tags){ ?>
+					<i class="fa fa-tag"></i>
+					<span class="news_tags"><?php echo substr($news_tags,0,-2)?></span>
+				<?php } ?>
 				<a href="<?php echo site_url().'news/'.$value->post_slug;?>"><h2><?php echo $value->post_title; ?></h2></a>
 				<label>
 					<span class="dtpost">
 						<i><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></i>
 					</span>
-					<?php if(isset($value->post_tags) && $value->post_tags){ ?>
-						<i class="fa fa-tag"></i>
-						<span class="news_tags"><?php echo substr($news_tags,0,-2)?></span>
-					<?php } ?>
+					
 				</label>
-				<div class="news_text"><?php echo $value->post_content; ?></div>
+				<div class="news_text"><?php echo strip_tags($value->post_content); ?></div>
 				<a href="<?php echo site_url().'news/'.$value->post_slug;?>" class="default-button">Read More</a>
 			</div>
 		</div>

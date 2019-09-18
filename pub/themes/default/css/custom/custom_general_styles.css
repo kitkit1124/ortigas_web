@@ -1,13 +1,19 @@
 body {
     padding-top: 100px;
-    font-family: Helvetica;
+    font-family: Gotham-Book;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 #video_label{
     opacity: 0;
     transition: all .5s ease-in-out;
 }
-.navbar, #banner_image, #slider, .container, .content, #footer, #video_label, #footer, .news_related, #news, .recommended_links_container, #roles, #video_player, .image_container img{
+.navi-bar{
+    opacity: 0;
+    transition: all .5s ease-in-out;
+}
+.navi-bar, #banner_image, #slider, .container, .content, #footer, #video_label, #footer, .news_related, #news, .recommended_links_container, #roles, #video_player, .image_container img{
     opacity: 1;
     transition: all .5s ease-in-out;
 }
@@ -64,17 +70,17 @@ h2{
     font-family: Didot;
     src: url('../../../../data/fonts/Didot/DidotLTStd-Roman.otf');
 }
-
+*/
 @font-face {
     font-family: Gotham-Book;
-    src: url('../../../../data/fonts/Gotham/Gotham-Book.otf');
+    src: url('/data/fonts/Gotham/Gotham-Book.otf');
 }
 
 @font-face {
     font-family: Gotham-Medium;
-    src: url('../../../../data/fonts/Gotham/Gotham-Medium.otf');
-}*/
-
+    src: url('/data/fonts/Gotham/Gotham-Medium.otf');
+}
+http://ortigas.assets.local/data/fonts/Gotham/
 
 img{
 	user-drag: none; 
@@ -91,8 +97,7 @@ a.default-button{
     max-width: 350px;
     min-width: 140px;
     padding: 15px 30px;
-    border: 2px solid #07793f;
-    background-color: #07793F;
+    background-color: #0a4233;
     color: #FFF !important;
     text-transform: uppercase;
     font-size: .8rem;
@@ -107,13 +112,13 @@ a.default-button{
 }
 
 .default-button:hover{ 
-    background-color: #07793f;
+    background-color: #09533f;
     color: #FFF !important;
 }
 
 
 .banner_gradient{
-    background: linear-gradient(#000, transparent 100%);
+    background: linear-gradient(#000 5%, transparent 90%, transparent 100%);
     z-index: 10;
     width: 100%;
     height: 100%;
@@ -161,7 +166,7 @@ a.default-button{
 }
 
 #banner_logo_image{
-    background-image: url(http://ortigas.web.local/data/images/ortigas_logo_image.png);
+    background-image: url(/data/images/ortigas_logo_image.png);
     height: 410px;
     width: 500px;
     right: 0;
@@ -288,7 +293,7 @@ a.default-button{
 .news_related{
     text-align: left;
     /*background-color: #f2f8f6;*/
-    padding: 20px;
+   /* padding: 20px;*/
 }
 
 .related_news_title{
@@ -396,7 +401,7 @@ a.default-button{
 }
 
 .dtpost { border-right: 0; }
-.news_tags, .news_details i.fa{ display: none !important; }
+/*.news_tags, .news_details i.fa{ display: none !important; }*/
 
 a.inquiry_button {
     display: inline-block;
@@ -611,12 +616,12 @@ a.inquiry_button {
 
 .pagination_link .page-item.active .page-link{
     background-color: transparent;
-    border: 3px solid #07793F;
-    color: #07793F;
+    border: 3px solid #0a4233;
+    color: #0a4233;
 }
 
 .page-link:hover {
-  color: #07793F;
+  color: #0a4233;
 }
 
 #dt-images_filter{
@@ -650,7 +655,7 @@ img.lazy {
     text-transform: uppercase;
     font-size: 1rem;
     font-weight: bold;
-    color: #07793F;
+    color: #0a4233;
 }
 
 #privacy_policy_float p{
@@ -707,7 +712,7 @@ img.lazy {
         background-color: transparent;
     }
 
-    .news_related .row, .news_related_content .row { margin-left: 0 !important; margin-right: 0 !important; }
+    /*.news_related .row, .news_related_content .row { margin-left: 0 !important; margin-right: 0 !important; }*/
 
 
 }

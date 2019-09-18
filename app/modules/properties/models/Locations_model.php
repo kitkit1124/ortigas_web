@@ -55,11 +55,21 @@ class Locations_model extends BF_Model {
 	}
 
 	public function get_active_locations(){
-		$query = $this->locations_model
+		$query = $this
 				->where('location_status', 'Active')
 				->where('location_deleted', 0)
 				->order_by('location_name', 'ASC')
 				->format_dropdown('location_name', 'location_name', TRUE);
+
+		return $query;		
+	}
+
+	public function get_locations(){
+		$query = $this
+				->where('location_status', 'Active')
+				->where('location_deleted', 0)
+				->order_by('location_name', 'ASC')
+				->find_all();
 
 		return $query;		
 	}

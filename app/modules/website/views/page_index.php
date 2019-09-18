@@ -26,18 +26,6 @@
 
 <?php } ?>
 
-<?php if($nav_color_theme == 'White'){ ?>
-	<style type="text/css">
-	.oclogo img { filter: brightness(0) invert(1); }
-	a.nav-link.base_nav.nav_estates, .nav_search_button i{color: #FFF; }
-	</style>
-<?php } ?>
-<?php if($is_home){ ?>
-	<style type="text/css">
-	body {  padding-top: 0px; } 
-	.navbar { background-color: transparent; border-bottom: 1px solid transparent; }
-	</style>
-<?php } ?>
 <main role="main" class="container">
 	<div class="content">	
 		<div class="page_content">
@@ -63,10 +51,10 @@
 			}
 		?>
 		<div class="main_page">
-			<div class="row cat_heading">
-				<div class="col-sm-3 est_title"><h2><?php echo $page_estates->page_title; ?></h2></div>
-				<div class="col-sm-7 est_desc"><?php echo strip_tags($page_estates->page_content); ?></div>
-				<div class="col-sm-2 est_link"><a href="<?php echo site_url('').strtolower($page_estates->page_slug); ?>" class="default-button">VIEW ALL</a></div>
+			<div class="cat_heading">
+				<div class="est_title"><h2><?php echo $page_estates->page_title; ?></h2></div>
+				<div class="est_desc"><?php echo strip_tags($page_estates->page_content); ?></div>
+				<div class="est_link"><a href="<?php echo site_url('').strtolower($page_estates->page_slug); ?>" class="default-button">VIEW ALL</a></div>
 			</div>
 			<div class="row">
 			<?php
@@ -90,13 +78,13 @@
 		<?php }?>
 		<?php if(isset($carousel) && $carousel) { ?>
 		<div class="main_page">
-			<div class="row">
-				<div class="estates residences col-sm-4">
+			<div class="">
+				<div class="estates residences">
 					<div class="res_title"><h2><?php echo $category_residence->category_name; ?></h2></div>
 					<div class="res_desc"><?php echo $category_residence->category_snippet_quote; ?></div>
 					<div class="res_link"><a href="<?php echo site_url('').strtolower($category_residence->category_name); ?>" class="default-button">VIEW ALL</a></div>
 				</div>			
-				<div class="estates residences col-sm-8">
+				<div class="estates residences">
 					<?php if($carousel) { ?>
 					<div id="carousel" class="carousel slide" data-ride="carousel">
 						<?php if(count($carousel) != 1) { ?>
@@ -139,15 +127,15 @@
 
 		<?php if($malls && $offices) {?>
 
-		<div class="row">
-
-			<?php
-			foreach ($malls as $key => $val) { ?>
+		<?php
+		foreach ($malls as $key => $val) { ?>
+			<div class="row">
 				<div class="estates malls col-sm-6">
-					<div class="row">
-						<div class="col-sm-6 mo_title"><h2><?php echo $category_mall->category_name; ?></h2></div>
-						<div class="col-sm-6 mo_link"><a href="<?php echo site_url('').strtolower($category_mall->category_name); ?>">View All</a></div>
-					</div>
+					<div class="mo_title"><h2><?php echo $category_mall->category_name; ?></h2></div>
+					<div class="mo_desc"><?php echo $category_mall->category_snippet_quote; ?></div>
+					<a class ="mo_link default-button" href="<?php echo site_url('').strtolower($category_mall->category_name); ?>">View All</a>
+				</div>
+				<div class="estates offices col-sm-6">
 					<a href="<?php echo site_url('').'malls/'.$val->property_slug; ?>">
 					<!-- <a href="<?php //echo $val->property_website; ?>" target="_blank"> -->
 					<div class="image_wrapper">
@@ -159,14 +147,12 @@
 					</div>
 					</a>
 				</div>
-			<?php	} //end foreach 
+			</div>
+		<?php	} //end foreach 
 
-			foreach ($offices as $key => $val) { ?>
+		foreach ($offices as $key => $val) { ?>
+			<div class="row">
 				<div class="estates offices col-sm-6">
-					<div class="row">
-						<div class="col-sm-6 mo_title"><h2><?php echo $category_office->category_name; ?></h2></div>
-						<div class="col-sm-6 mo_link"><a href="<?php echo site_url('').strtolower($category_office->category_name); ?>">View All</a></div>
-					</div>
 					<a href="<?php echo site_url('').'offices/'.$val->property_slug; ?>">
 					<div class="image_wrapper">
 						<div class="property"><?php echo $val->property_name; ?></div>
@@ -177,33 +163,40 @@
 					</div>
 					</a>
 				</div>
-			<?php	} //end foreach ?>
-		</div>
-		<?php }?>
+				<div class="estates offices col-sm-6">
+					<div class="mo_title"><h2><?php echo $category_office->category_name; ?></h2></div>
+					<div class="mo_desc"><?php echo $category_mall->category_snippet_quote; ?></div>
+					<a class ="mo_link default-button" href="<?php echo site_url('').strtolower($category_mall->category_name); ?>">View All</a>
+				</div>
+			</div>
+		<?php	} //end foreach ?>
 
-	</div>
-</main>
+
 		<div class="news_related">
 			<div class="row">
-				<div class="col-sm-6 mo_title"><h2><?php echo 'News'; ?></h2></div>
-				<div class="col-sm-6 mo_link"><a href="<?php echo site_url('').'news/'; ?>">View All</a></div>
+				<div class="col-sm-6 n_title"><h2><?php echo 'News'; ?></h2></div>
+				<div class="col-sm-6 n_link"><a href="<?php echo site_url('').'news/'; ?>">View All</a></div>
 			</div>
 			<div class="news_related_content">
 				<?php
 					//$news_data['related_news'] = 0;
-					$news_data['cols_img'] = 'col-sm-4';
-					$news_data['cols_data'] = 'col-sm-8';
+					$news_data['cols_img'] = 'col-sm-6';
+					$news_data['cols_data'] = 'col-sm-6';
 					echo $this->load->view('news_result', $news_data); 
 				?>
 			</div>
 		</div>
+		
+	</div><!--content-->
+
+		<?php }?>
+
+	</div>
+</main>
+		
 
 		<div class="footer_border"></div>
 
 		<!-- <div class="seo_content">
 			<?php //if($page_content) { echo parse_content($page_content->page_bottom_content); } ?>
 		</div> -->
-
-		<script type="text/javascript">
-			var nav_color_theme = "<?php echo $nav_color_theme ?>";
-		</script>

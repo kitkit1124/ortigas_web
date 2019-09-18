@@ -19,6 +19,7 @@ $(function() {
         $(this).removeData('bs.modal');
         restore_modal();
     });
+
 });
 
 

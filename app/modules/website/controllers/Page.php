@@ -48,7 +48,6 @@ class Page extends CI_Controller
 		$this->load->model('post_tags_model');
 		$this->load->model('banners_model');
 		$this->load->model('metatags_model');
-		$this->load->model('navigation_settings_model');
 		$this->load->model('properties/categories_model');
 		$this->load->model('properties/price_range_model');
 		$this->load->model('properties/locations_model');
@@ -110,10 +109,6 @@ class Page extends CI_Controller
 		// homepage
 		$data['page_content'] = $this->pages_model->find_by('page_uri','home'); 
 
-		$nav = $this->navigation_settings_model->find(1);
-		$data['nav_color_theme'] = $nav->nav_setting_color_theme;
-
-
 		$data['is_home'] = TRUE;
 
 		$data['video'] = $this->video_uploads_model->where('video_status','Active')->find(1);
@@ -132,11 +127,9 @@ class Page extends CI_Controller
 		$data['select_categories'] = $category;
 
 		$dev_types = $this->property_types_model->get_active_property_types();
-		$dev_types[''] = "ALL";
 		$data['select_dev_types'] = $dev_types;		
 
 		$locations = $this->locations_model->get_active_locations();
-		$locations[''] = "ALL";
 		$data['select_locations'] = $locations;
 
 		$range = $this->price_range_model->get_active_price_range();
@@ -173,7 +166,7 @@ class Page extends CI_Controller
 		
 		$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
 
-		$fields = ['limit' => 2];
+		$fields = ['limit' => 1];
 		$news = $this->posts_model->get_active_news($fields);
 
 		foreach ($news as $key => $result) {

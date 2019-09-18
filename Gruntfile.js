@@ -29,7 +29,8 @@ module.exports = function(grunt) {
 					{expand: true, cwd: 'node_modules/nestable2/dist/', src: ['**'], dest: 'pub/npm/nestable2/'},
 					{expand: true, cwd: 'node_modules/slick-carousel/', src: ['**'], dest: 'pub/npm/slick-carousel/'},
 					{expand: true, cwd: 'node_modules/jquery-lazy/', src: ['**'], dest: 'pub/npm/jquery-lazy/'},
-					{expand: true, cwd: 'node_modules/pace-js/', src: ['**'], dest: 'pub/npm/pace-js/'}
+					{expand: true, cwd: 'node_modules/pace-js/', src: ['**'], dest: 'pub/npm/pace-js/'},
+					{expand: true, cwd: 'node_modules/owl.carousel/dist/', src: ['**'], dest: 'pub/npm/owl.carousel/'},
 				],
 			},
 		},
@@ -40,7 +41,8 @@ module.exports = function(grunt) {
 					'pub/themes/default/css/src/custom.css',
 					'pub/npm/slick-carousel/slick/slick.css',
 					'pub/npm/slick-carousel/slick/slick-theme.css',
-					'pub/npm/pace-js/themes/green/pace-theme-flash.css'
+					'pub/npm/pace-js/themes/green/pace-theme-flash.css',
+					'pub/npm/owl.carousel/assets/owl.carousel.min.css',
 				],
 				dest: 'pub/themes/default/css/build/styles.css'
 			},
@@ -52,7 +54,8 @@ module.exports = function(grunt) {
 					'pub/themes/default/js/src/custom.js',
 					'pub/npm/slick-carousel/slick/slick.min.js',
 					'pub/npm/pace-js/pace.min.js',
-					'pub/npm/jquery-lazy/jquery.lazy.min.js'
+					'pub/npm/jquery-lazy/jquery.lazy.min.js',
+					'pub/npm/owl.carousel/owl.carousel.min.js'
 					
 				],
 				dest: 'pub/themes/default/js/build/scripts.js'
