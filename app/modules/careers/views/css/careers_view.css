@@ -4,9 +4,10 @@
 }
 
 .career_content_details .title{
-	color: #07793f;
+	color: #666;
 	font-size: 1.8rem;
 	font-weight: bold;
+    text-transform: uppercase;
 }
 
 .career_content_details .dept{

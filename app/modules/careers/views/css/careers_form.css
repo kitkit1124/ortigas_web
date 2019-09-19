@@ -17,7 +17,17 @@
 .modal-body .row{
 	margin: 0 10px 10px 10px; 
 }
-.modal-body label, .dropzone .dz-message .upload{
+.modal-body label{
+	color: #666;
+	letter-spacing: 1px;
+	font-size: .7rem;
+	padding-top: 8px;
+	text-transform: uppercase;
+	text-align: left;
+	width: 99%;
+}
+
+.dropzone .dz-message .upload{
 	color: #07793f;
 	letter-spacing: 1px;
 	font-size: 11px;
@@ -27,10 +37,29 @@
 	width: 99%;
 }
 
-.modal-body input{
-	font-size: 12px;
+.modal-body .form-control{
+    border-radius: 0px;
+}
+
+.modal-body input, .modal-body select{
+	font-size: .8rem;
+	border: 0;
 	border-radius: 0px;
 	height: 40px;
+    border-bottom: 2px solid #b2b2b2;
+}
+
+.modal-body input:focus, .modal-body select:focus{
+    font-size: .8rem; 
+    outline: none;
+    box-shadow: none;
+    border-bottom: 2px solid #b2b2b2;
+}
+
+input.form-control::placeholder{
+    color: #666;
+    text-transform: uppercase;
+    font-size: .8rem;
 }
 
 .modal-body .job_agreement label{

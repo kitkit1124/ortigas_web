@@ -53,6 +53,10 @@ select option{
         word-wrap: break-word;
 }
 
+.career_content_details ul, .career_content_details ul li{
+	list-style-image: url("../../img/ortigas-bullet.png") !important;
+}
+
 h2{
     color: #0a4233;
     font-size: 2.5rem;

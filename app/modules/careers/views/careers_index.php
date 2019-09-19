@@ -6,13 +6,10 @@
 		<div class="content">	
 
 		
-			 <?php echo $this->load->view('careers/careers_form'); ?>
+			<?php echo $this->load->view('careers/careers_form'); ?>
 			 	<a id="message_success" class="hide" href="<?php echo site_url().'website/page/show_modal?id=4' ?>" data-target="#modal-lg" data-toggle="modal"></a>
 			<div class="page_overview">
 				<?php if($careers_page) {	echo parse_content($careers_page->page_content); } ?>
-				<?php if(isset($careers) && $careers){ ?>
-				<label><a class="page_overview_button default-button" data-toggle="modal" data-target="#form_application">Submit Resume</a></label>		
-				<?php } ?>	
 			</div>
 
 			<?php if(isset($careers) && $careers){ ?>
@@ -21,29 +18,29 @@
 					<form>
 						<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 						<div class="default_search">
-								<label>Keyword</label>
-								<input class="form-control" type="text" aria-label="Search" placeholder= "Type keyword here" value="" id="keyword" name="keyword">
+								<!-- <label>Keyword</label> -->
+								<input class="form-control" type="text" aria-label="Search" placeholder= " Keyword" value="" id="keyword" name="keyword">
 						</div>
 						<div class="advance_search">
 							<div class="row">
 								<div class="col-sm-10">
 									<div class="row">
 										<div class="col-sm-4">
-											<label>Select Job Title</label>
+											<!-- <label>Select Job Title</label> -->
 											<?php echo form_dropdown('career_id', $select_careers, '', 'id="career_id" class="form-control"'); ?>
 										</div>
 										<div class="col-sm-4">
-											<label>Location</label>
+											<!-- <label>Location</label> -->
 											<?php echo form_dropdown('career_location', $select_locations, '', 'id="career_location" class="form-control"'); ?>
 										</div>
 										<div class="col-sm-4">
-											<label>Departments</label>
+											<!-- <label>Departments</label> -->
 											<?php echo form_dropdown('department_id', $select_departments, '', 'id="department_id" class="form-control"'); ?>
 										</div>
 									</div>
 								</div>
 								<div class="col-sm-2">
-									<label>&nbsp;</label>
+									<!-- <label>&nbsp;</label> -->
 									<a class="button_search default-button" ><i class="fa fa-search"></i></a>
 								</div>
 							</div>
@@ -51,6 +48,12 @@
 					</form>
 				</div><!--search_tab_content-->
 			</div><!--search_tab-->
+
+			<div class="page_overview">
+				<?php if(isset($careers) && $careers){ ?>
+				<label><a class="page_overview_button default-button" data-toggle="modal" data-target="#form_application">Submit Resume</a></label>		
+				<?php } ?>	
+			</div>
 
 			 <div id="careers_content">
 			 		<?php if(isset($careers) && $careers){ ?>
