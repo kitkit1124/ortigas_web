@@ -71,7 +71,6 @@
 					</div>
 				<?php	} //end foreach ?>
 			</div>
-			<div class="est_link2"><a href="<?php echo site_url('').strtolower($page_estates->page_slug); ?>" class="default-button">VIEW ALL</a></div>
 		</div>
 		
 
@@ -135,7 +134,7 @@
 					<div class="mo_desc"><?php echo $category_mall->category_snippet_quote; ?></div>
 					<a class ="mo_link default-button" href="<?php echo site_url('').strtolower($category_mall->category_name); ?>">View All</a>
 				</div>
-				<div class="estates offices col-sm-6">
+				<div class="estates malls col-sm-6">
 					<a href="<?php echo site_url('').'malls/'.$val->property_slug; ?>">
 					<!-- <a href="<?php //echo $val->property_website; ?>" target="_blank"> -->
 					<div class="image_wrapper">
@@ -151,7 +150,7 @@
 		<?php	} //end foreach 
 
 		foreach ($offices as $key => $val) { ?>
-			<div class="row">
+			<div class="row officeswitch">
 				<div class="estates offices col-sm-6">
 					<a href="<?php echo site_url('').'offices/'.$val->property_slug; ?>">
 					<div class="image_wrapper">
@@ -171,6 +170,13 @@
 			</div>
 		<?php	} //end foreach ?>
 
+		<div class="rear_content">
+			<?php if($page_content) { echo parse_content($page_content->page_rear_content); } ?>
+		</div>
+
+		<div class="seo_content">
+			<?php if($page_content) { echo parse_content($page_content->page_bottom_content); } ?>
+		</div>
 
 		<div class="news_related">
 			<div class="row">
@@ -186,7 +192,11 @@
 				?>
 			</div>
 		</div>
-		
+
+		<div class="inquiry_form_container">
+			<?php echo $this->load->view('messages/messages_form')?>
+		</div>
+
 	</div><!--content-->
 
 		<?php }?>
@@ -196,7 +206,3 @@
 		
 
 		<div class="footer_border"></div>
-
-		<!-- <div class="seo_content">
-			<?php //if($page_content) { echo parse_content($page_content->page_bottom_content); } ?>
-		</div> -->

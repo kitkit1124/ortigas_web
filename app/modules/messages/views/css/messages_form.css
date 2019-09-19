@@ -6,14 +6,16 @@
  }
  
  .inquiry_form{
-  background-color: #f6f6f6;
+  margin-top: 10px;
   padding: 20px;
+  border-top: 4px solid #0a4233;
 }
 
 .inquiry_form h2{
-  font-size: 28px !important;
+  font-size: 2rem;
   font-weight: bold;
-  margin: 0 0 5px 0 !important;
+  text-transform: uppercase;
+  margin: 20px 0;
 }
 
 .inquiry_form .form_container{
@@ -21,18 +23,35 @@
 	margin-bottom: 10px;
 }
 
+input.form-control::placeholder,
+textarea.form-control::placeholder{
+  color: #666;
+  text-transform: uppercase;
+  font-size: .7rem;
+}
+
+
 .inquiry_form .form_container input, .inquiry_form .form_container textarea{
-	border-radius: 0px;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 2px solid #b2b2b2;
+}
+
+.inquiry_form .form_container input:focus, .inquiry_form .form_container textarea:focus{
+ outline: none;
+ box-shadow: none;
 }
 
 .inquiry_form .form_container label{
 	color: #666;
 	text-transform: uppercase;
 	font-size: .7rem;
+  margin-left: 12px;
 }
 
 .inquiry_form a{
   display: inline-block;
+  margin-top: 20px;
 	/*color: #FFF !important;
     padding: 15px 40px;
     margin: auto;

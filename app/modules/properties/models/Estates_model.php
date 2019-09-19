@@ -86,7 +86,9 @@ class Estates_model extends BF_Model {
 			$this->where('estate_is_featured', $fields['estate_is_featured']);
 		}	
 
-		$query = $this->where('estate_status', 'Active')
+		$query = $this
+					->join('property_locations', 'property_locations.location_id = estate_location_id', 'LEFT')
+					->where('estate_status', 'Active')
 					->where('estate_deleted', 0)
 					->find_all();	
 

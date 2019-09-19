@@ -4,4 +4,35 @@
 
 .breadcrumbs{
     top: 25px;
+    display: none;
+}
+
+.estate_content{
+	margin-top: 20px;
+}
+
+.inquiry_button {
+	margin: 20px 0;
+}
+
+.image_text{
+	top: 25px;
+	left: 35px;
+	opacity: 0;
+	position: absolute;
+	transition: all 1s; 
+}
+
+.image_wrapper:hover .image_text {
+	opacity: 1; 
+	top: 35px;
+}
+
+.image_container img {
+	filter: brightness(100%);
+	transition: filter 1s; 
+}
+
+.image_container img:hover{
+	filter: brightness(70%);
 }

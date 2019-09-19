@@ -41,7 +41,7 @@
 					</div>
 				</div>
 				<div class="col-sm-2 colsearch">
-					<a class="button_search default-button"><i class="fa fa-search"></i></a>
+					<a class="button_search default-button"><span>SEARCH</span> <i class="fa fa-search"></i></a>
 				</div>
 			</div>
 		</div><!--advance_search-->

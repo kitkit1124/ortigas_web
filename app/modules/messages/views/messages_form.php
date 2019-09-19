@@ -5,26 +5,26 @@
 	<div class="row">		
 		<input type="hidden" id="csrf" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 		<div class="form_container col-sm-4">
-			<label for="inquiry_category">Category*</label>
-			<?php echo form_input(array('id'=>'inquiry_category', 'name'=>'inquiry_category', 'value'=>set_value('inquiry_category', isset($section) ? $section : ''), 'class'=>'form-control', 'disabled'=>'disabled'));?>
+			<!-- <label for="inquiry_name">Category*</label> -->
+			<?php echo form_input(array('id'=>'inquiry_category', 'name'=>'inquiry_category', 'value'=>set_value('inquiry_category', isset($section) ? $section : ''), 'class'=>'form-control', 'placeholder'=>'Category*'));?>
 			<div id="error-message_section" class="error_field"></div>
 		</div>
 
 		<div class="form_container col-sm-4">
-			<label for="inquiry_name">Name*</label>
-			<?php echo form_input(array('id'=>'inquiry_name', 'name'=>'inquiry_name', 'value'=>set_value('inquiry_name', isset($record->inquiry_name) ? $record->inquiry_name : ''), 'class'=>'form-control'));?>
+			<!-- <label for="inquiry_name">Name*</label> -->
+			<?php echo form_input(array('id'=>'inquiry_name', 'name'=>'inquiry_name', 'value'=>set_value('inquiry_name', isset($record->inquiry_name) ? $record->inquiry_name : ''), 'class'=>'form-control', 'placeholder'=>'Name*'));?>
 			<div id="error-message_name" class="error_field"></div>
 		</div>
 		<div class="form_container col-sm-4">
-			<label for="inquiry_email">Email*</label>
-			<?php echo form_input(array('id'=>'inquiry_email', 'name'=>'inquiry_email', 'value'=>set_value('inquiry_email', isset($record->inquiry_email) ? $record->inquiry_email : ''), 'class'=>'form-control'));?>
+			<!-- <label for="inquiry_email">Email*</label> -->
+			<?php echo form_input(array('id'=>'inquiry_email', 'name'=>'inquiry_email', 'value'=>set_value('inquiry_email', isset($record->inquiry_email) ? $record->inquiry_email : ''), 'class'=>'form-control', 'placeholder'=>'Email*'));?>
 			<div id="error-message_email" class="error_field"></div>
 		</div>	
 	</div>
 
 	<div class="form_container">
-		<label for="inquiry_message">Your Message*</label>
-		<?php echo form_textarea(array('id'=>'inquiry_message', 'name'=>'inquiry_message', 'rows'=>'3', 'value'=>set_value('inquiry_message', isset($record->inquiry_message) ? $record->inquiry_message : '', false), 'class'=>'form-control')); ?>
+		<!-- <label for="inquiry_message">Your Message*</label> -->
+		<?php echo form_textarea(array('id'=>'inquiry_message', 'name'=>'inquiry_message', 'rows'=>'1', 'value'=>set_value('inquiry_message', isset($record->inquiry_message) ? $record->inquiry_message : '', false), 'class'=>'form-control','placeholder'=>'Your Message*')); ?>
 		<div id="error-message_content" class="error_field"></div>
 	</div>
 	

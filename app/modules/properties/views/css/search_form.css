@@ -52,6 +52,11 @@
     text-align: center;
 }
 
+.search_tab .button_search span{
+  display: none;
+  font-weight: bold;
+}
+
 .search_tab .button_search i{
  /* color: #fff;*/
 }
@@ -79,9 +84,15 @@
 
 .colsearch a.default-button{
   min-width: auto;
+  max-width: 150px;
+  padding: 10px 0;
 }
 
 @media(max-width: 768px) {
+  .search_tab .button_search span{
+    margin-right: 15px;
+    display: inline-block;
+  }
   .colsearch{
       -ms-flex: 0 0 20%;
       flex: 0 0 20%;
@@ -104,14 +115,6 @@
   }
   .colsearch a.default-button{
     margin: auto;
-  }
-
-}
-
-@media(max-width: 425px) {
-
-  .colsearch a.default-button{
-    max-width: 100%;
   }
 
 }

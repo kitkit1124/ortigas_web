@@ -22,7 +22,7 @@
 			<div class="row properties_of_estate">
 				<?php
 				foreach ($properties as $key => $val) { ?>
-					<div class="estates properties col-sm-6">
+					<div class="estates properties col-md-6">
 						<?php if($estates){  ?>
 							<a href="<?php echo site_url('').'estates/'.$val->estate_slug; ?>">
 						<?php } else { ?>
@@ -32,14 +32,18 @@
 						<div class="image_wrapper">
 							<!-- <div class="property"><p><?php //if($estates){ } else { echo $val->property_name; } ?></p></div> -->
 							<div class="image_container">
+									
 									<img class="lazy" data-src="<?php if($estates){ echo getenv('UPLOAD_ROOT').img_selector($val->estate_image,'large'); } else { echo  getenv('UPLOAD_ROOT').$val->property_image; }?>" width="100%" draggable="false" width="100%" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" />
 							</div>
 							<!-- <div class="estate"><?php //echo $val->estate_name; ?></div> -->
-
+							<div class="image_text">
+								<p><?php echo $val->estate_name; ?></p>
+								<p><?php echo $val->location_name; ?></p>
+							</div>
 						</div>
 						<?php if($estates){ ?>
 							<div class="estates_content_wrapper">
-								<div class="estate_title"><?php echo $val->estate_name; ?></div>
+								<!-- <div class="estate_title"><?php echo $val->estate_name; ?></div> -->
 								<div class="estate_content"><?php echo $val->estate_snippet_quote; ?></div>
 							</div>
 						<?php } else { ?>
@@ -58,6 +62,9 @@
 			<?php }?>
 
 
+			<div class="rear_content">
+				<?php if($category) { echo parse_content($category->page_rear_content); } ?>
+			</div>
 
 			<div class="seo_content">
 				<?php if($category) { echo parse_content($category->page_bottom_content); } ?>
@@ -67,6 +74,7 @@
 				<?php echo $this->load->view('messages/messages_form')?>
 			</div>
 		</div>
+
 	</main>
 		<?php if(isset($news_result) && $news_result){ ?>
 			<div class="news_related">
