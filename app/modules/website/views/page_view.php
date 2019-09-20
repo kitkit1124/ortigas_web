@@ -7,13 +7,13 @@
 			<div>
 				<div class="row">
 					<div class="col-sm-12"><h2>DATA PRIVACY</h2></div>
-					<div class="offset-lg-2 col-lg-4 offset-md-1 col-md-5 col-6">
+					<div class="offset-lg-2 col-lg-4 offset-md-1 col-md-5 col-12">
 						<div class="oclp dp_active">
 							<span>OCLP DATA PRIVACY POLICY</span>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-5 col-6">
-						<div class="ccc">
+					<div class="col-lg-4 col-md-5 col-12">
+						<div class="ccc dp_inactive">
 							<span>CCC DATA PRIVACY POLICY</span>
 						</div>
 					</div>

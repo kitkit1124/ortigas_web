@@ -119,10 +119,14 @@ table{
     }
 }
 
-@media (max-width: 768px){
+@media (max-width: 767px){
     .data_privacy .col-sm-4 {
         -ms-flex: 0 0 100%;
         flex: 0 0 100%;
         max-width: 100%; 
+    }
+
+    .dp_inactive{
+        border: 2px solid #eeeeee;
     }
 }
