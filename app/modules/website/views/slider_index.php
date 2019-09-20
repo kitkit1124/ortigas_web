@@ -37,8 +37,10 @@
 
 	<?php echo $this->load->view('website/breadcrumbs_view'); ?>
 </div>
-<?php } ?>	
-
+<?php } else { ?>
+	<div class="no-slider">
+	</div>
+<?php } ?>
 
 <?php 
 if(isset($value->banner_group_id) && $value->banner_group_id){

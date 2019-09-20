@@ -1,12 +1,14 @@
 <section id="roles">
+	<div class="no-slider">
+	</div>
 	<?php if($career){ ?>
-	<div id="banner_image">
+	<!-- <div id="banner_image">
 		<div class="banner_margin container"><h1><?php //echo $career->career_position_title; ?></h1></div>
 		<div class="banner_gradient"></div>
 		<img class="estate_banner_img lazy" data-src="<?php echo getenv('UPLOAD_ROOT').$career->career_image; ?>" draggable="false" alt="<?php echo $career->career_alt_image; ?>" title="<?php echo $career->career_alt_image; ?>" />
 		<?php echo $this->load->view('website/breadcrumbs_view'); ?>			
-	</div>
-	<?php } ?>
+	</div> -->
+	<?php }  ?>
 	<main role="main" class="container">
 		<div class="content">	
 			<?php echo $this->load->view('careers/careers_form'); ?>

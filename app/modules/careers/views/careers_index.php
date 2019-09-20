@@ -17,29 +17,29 @@
 				<div class="search_tab_content">
 					<form>
 						<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
-						<div class="default_search">
+						<div class="default_search mb-0">
 								<!-- <label>Keyword</label> -->
 								<input class="form-control" type="text" aria-label="Search" placeholder= " Keyword" value="" id="keyword" name="keyword">
 						</div>
 						<div class="advance_search">
 							<div class="row">
-								<div class="col-sm-10">
+								<div class="col-md-10">
 									<div class="row">
-										<div class="col-sm-4">
+										<div class="col-md-4 mt-3">
 											<!-- <label>Select Job Title</label> -->
 											<?php echo form_dropdown('career_id', $select_careers, '', 'id="career_id" class="form-control"'); ?>
 										</div>
-										<div class="col-sm-4">
+										<div class="col-md-4 mt-3">
 											<!-- <label>Location</label> -->
 											<?php echo form_dropdown('career_location', $select_locations, '', 'id="career_location" class="form-control"'); ?>
 										</div>
-										<div class="col-sm-4">
+										<div class="col-md-4 mt-3">
 											<!-- <label>Departments</label> -->
 											<?php echo form_dropdown('department_id', $select_departments, '', 'id="department_id" class="form-control"'); ?>
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-2">
+								<div class="col-md-2 mt-3">
 									<!-- <label>&nbsp;</label> -->
 									<a class="button_search default-button" ><i class="fa fa-search"></i></a>
 								</div>
@@ -56,30 +56,94 @@
 			</div>
 
 			 <div id="careers_content">
-			 		<?php if(isset($careers) && $careers){ ?>
-					<div class="row ">
+					<?php if(isset($careers) && $careers){ ?>
+					<div id="wide" class="row">
+						
+						<span class="col-md-12 jobs_found">All Available Jobs (<?php echo count($careers);?> Found)</span>
 						<?php
 						foreach ($careers as $key => $val) { 
 						if($val->career_modified_on){ $dtraw = $val->career_modified_on; } else { $dtraw = $val->career_created_on; }		
 						$dtpost = date_create($dtraw);
 						?>
-							<div class="career_box col-sm-4">
+							<!-- <div class="career_box col-sm-4">
 								<div class="image_wrapper">
 									<div class="details">
-										<p class="title"><?php echo $val->career_position_title; ?></p>
-										<p class="dept"><?php echo $val->department_name; ?></p>
-										<p class="divi"><?php echo $val->division_name; ?></p>
+										<p class="title"><?php //echo $val->career_position_title; ?></p>
+										<p class="dept"><?php //echo $val->department_name; ?></p>
+										<p class="divi"><?php //echo $val->division_name; ?></p> -->
 										<!-- <p class="dtpost"><?php //echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p> -->
-										<p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $val->career_location; ?></p>
-										<a href="<?php echo site_url('').'careers/'.$val->division_slug.'/'.$val->career_slug; ?>" class="default-button">View Details</a>
+										<!-- <p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i><?php //echo $val->career_location; ?></p>
+										<a href="<?php //echo site_url('').'careers/'.$val->division_slug.'/'.$val->career_slug; ?>" class="default-button">View Details</a>
 									</div>
-									<div class="image_container">
+									<div class="image_container"> -->
 											<!-- <img src="<?php //echo  site_url().$val->career_image; ?>" width="100%" alt="" draggable="false"/> -->
+									<!-- </div>
+								</div>
+							</div> -->
+							
+						<?php if($key%2){ ?>
+								<div class="career_box col-md-6">
+									<div class="image_wrapper">
+										<div class="details">
+											<p class="title"><?php echo $val->career_position_title; ?></p>
+											<p class="dept"><?php echo $val->department_name; ?></p>
+											<p class="divi"><?php echo $val->division_name; ?></p>
+											<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
+											<p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $val->career_location; ?></p>
+											<a href="<?php echo site_url('').'careers/'.$val->division_slug.'/'.$val->career_slug; ?>" class="default-button">View Details</a>
+										</div>
 									</div>
 								</div>
-							</div>
-						<?php	} //end foreach ?>
+								<div class="career_box col-md-6">
+									<div class="image_wrapper">
+										<img class="estate_banner_img lazy mh-100 mw-100" data-src="<?php echo getenv('UPLOAD_ROOT').$val->career_image; ?>" draggable="false" alt="<?php echo $val->career_alt_image; ?>" title="<?php echo $val->career_alt_image; ?>" />
+									</div>
+								</div>						
+						<?php } else {?>
+								<div class="career_box col-md-6">
+									<div class="image_wrapper">
+										<img class="estate_banner_img lazy mh-100 mw-100" data-src="<?php echo getenv('UPLOAD_ROOT').$val->career_image; ?>" draggable="false" alt="<?php echo $val->career_alt_image; ?>" title="<?php echo $val->career_alt_image; ?>" />
+									</div>
+								</div>
+								<div class="career_box col-md-6">
+									<div class="image_wrapper">
+										<div class="details">
+											<p class="title"><?php echo $val->career_position_title; ?></p>
+											<p class="dept"><?php echo $val->department_name; ?></p>
+											<p class="divi"><?php echo $val->division_name; ?></p>
+											<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
+											<p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $val->career_location; ?></p>
+											<a href="<?php echo site_url('').'careers/'.$val->division_slug.'/'.$val->career_slug; ?>" class="default-button">View Details</a>
+										</div>
+									</div>
+								</div>
+						<?php } //end of modulus div
+						} //end foreach ?>
 					</div>
+
+					<div id="narrow" class="row">
+						<span class="col-md-12 jobs_found">All Available Jobs (<?php echo count($careers);?> Found)</span>
+						<?php
+							foreach ($careers as $key => $val) { 
+							if($val->career_modified_on){ $dtraw = $val->career_modified_on; } else { $dtraw = $val->career_created_on; }		
+							$dtpost = date_create($dtraw);
+						?>
+						<div class="card col-sm-12 career_box border-0">
+							<img class="estate_banner_img lazy mh-100 mw-100" data-src="<?php echo getenv('UPLOAD_ROOT').$val->career_image; ?>" draggable="false" alt="<?php echo $val->career_alt_image; ?>" title="<?php echo $val->career_alt_image; ?>" />
+							<div class="card-body details px-0">
+								<p class="title"><?php echo $val->career_position_title; ?></p>
+								<p class="dept"><?php echo $val->department_name; ?></p>
+								<p class="divi"><?php echo $val->division_name; ?></p>
+								<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
+								<p class="loc">
+									<i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $val->career_location; ?>
+									<a href="<?php echo site_url('').'careers/'.$val->division_slug.'/'.$val->career_slug; ?>" class="button default-button-2 pull pull-right mt-0">View Details</a>
+								</p>
+							</div>
+						</div> 
+						<?php } //end foreach ?>
+					</div>
+
 					<?php } ?>
 					<div class="found_no_career">
 						<?php if($found_no_career) { echo parse_content($found_no_career->partial_content); } ?>

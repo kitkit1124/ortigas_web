@@ -94,7 +94,7 @@ class Contact extends MX_Controller
 		}
 
 		$data['enable_map'] = true;
-		$data['map_marker'] = getenv('UPLOAD_ROOT')."data/images/logo-mapmarker.jpg";
+		$data['map_marker'] = getenv('UPLOAD_ROOT')."data/images/logo-mapmarker.png";
 
 		// $this->template->add_css('npm/bootstrap-float-label/bootstrap-float-label.min.css');
 		$this->template->write('head', $metatags);

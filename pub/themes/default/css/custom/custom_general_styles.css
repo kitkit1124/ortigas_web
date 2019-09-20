@@ -53,10 +53,6 @@ select option{
         word-wrap: break-word;
 }
 
-.career_content_details ul, .career_content_details ul li{
-	list-style-image: url("../../img/ortigas-bullet.png") !important;
-}
-
 h2{
     color: #0a4233;
     font-size: 2.5rem;
@@ -101,6 +97,25 @@ a.default-button{
     max-width: 350px;
     min-width: 140px;
     padding: 15px 30px;
+    background-color: #0a4233;
+    color: #FFF !important;
+    text-transform: uppercase;
+    font-size: .8rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+
+    -webkit-transition: background-color .5s ease-out,  color 1s ease-out;
+    -moz-transition: background-color .5s ease-out,  color 1s ease-out;
+    -o-transition: background-color .5s ease-out,  color 1s ease-out;
+    transition: background-color .5s ease-out,  color 1s ease-out;
+}
+
+a.default-button-2{
+    width: auto;
+    max-width: 350px;
+    min-width: 140px;
+    padding: 10px 20px;
     background-color: #0a4233;
     color: #FFF !important;
     text-transform: uppercase;
@@ -674,9 +689,31 @@ img.lazy {
     color: #0f50b4;
 }
 
+.career_content_details ul{
+    list-style: none;
+    padding-left: 0px;
+}
+
+.career_content_details ul li{
+    background: url("../../img/ortigas-bullet.png") no-repeat left;
+    padding: 1px 0px 0px 35px;
+    /* list-style-image: url("../../img/ortigas-bullet.png") !important;
+    margin-left: 10em; */
+}
+
+.no-slider{
+    margin-bottom:11em;
+}
+
 @media(max-width: 1440px) {
     .social_media_properties a{
         font-size: 1.8rem;
+    }
+}
+
+@media(max-width: 1170px) {
+    .no-slider{
+        margin-bottom:7em;
     }
 }
 
