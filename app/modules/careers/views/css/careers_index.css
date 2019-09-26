@@ -1,7 +1,15 @@
 .career_box {
-	padding: 20px 15px;
+	padding: 15px 15px;
 
 }
+
+.jobs_found {
+	font-size: 1.50rem;
+	text-transform: capitalize;
+	font-weight: bold;
+	color: #07793f;
+	text-align: left !important;
+} 
 
 .page_overview_button{
 	display: inline-block;
@@ -38,14 +46,15 @@
   position: absolute;
   z-index: 1;
   width: 100%;
-  margin: 0px -15px;
+  margin-top: 15px;
+  /* margin: 0px -15px; */
   padding: 0 40px;
 
 }
 
 .image_wrapper .details{
   color: #FFF;
-  top: 35px;
+  /* top: 35px; */
   text-align: left
 }
 
@@ -62,7 +71,7 @@
 
 .image_wrapper .details p.dept{
 	font-size: .9rem;
-	margin-bottom: 5px;
+	margin-top: 5px;
 }
 
 .image_wrapper .details p.divi{
@@ -81,10 +90,60 @@
 }
 
 .image_wrapper .details p.loc{
-	font-size: 1.15rem
+	font-size: 1.15rem;
 	text-transform: capitalize;
+	font-weight: bold;
 	color: #07793f;
+	margin-top: 8px;
 }
+
+
+  
+  .card .details{
+	color: #FFF;
+	top: 35px;
+	text-align: left
+  }
+  
+  .card .details p{
+	  margin-bottom: 0px;
+	  padding: 0px;
+	   color: #666;
+  }
+  
+  .card .details p.title{
+	  text-transform: uppercase;
+	  font-size: 1.5rem;
+  }
+  
+  .card .details p.dept{
+	  font-size: .9rem;
+	  margin-top: 5px;
+  }
+  
+  .card .details p.divi{
+	  font-size: .8rem;
+	  margin-bottom: 5px;
+  }
+  
+  .card .details p.dtpost{
+	  font-size: .9rem;
+	  margin-bottom: 15px;
+  }
+  
+  .card .details i{
+	  font-size: 1.8rem;
+	  margin-right: 10px;
+  }
+  
+  .card .details p.loc{
+	  font-size: 1.15rem;
+	  text-transform: capitalize;
+	  font-weight: bold;
+	  color: #07793f;
+	  margin-top: 8px;
+  }
+  
 
 #careers_content a{
 /*	color: #07793F;
@@ -103,12 +162,28 @@
 }
 
 .search_tab{ 
-	margin: 40px 0;
+	margin: 20px 0;
 	text-align: left;
 }
 
+input.form-control::placeholder{
+    color: #666;
+    text-transform: uppercase;
+    font-size: .8rem;
+}
+
 .search_tab input, .search_tab select{ 
-	font-size: .85rem;
+	font-size: .8rem; 
+    border: 0;
+    border-radius: 0;
+    border-bottom: 2px solid #b2b2b2;
+}
+
+.search_tab input:focus, .search_tab select:focus{ 
+    font-size: .8rem; 
+    outline: none;
+    box-shadow: none;
+    border-bottom: 2px solid #b2b2b2;
 }
 
 .search_tab .default_search{
@@ -120,13 +195,14 @@
 }
 
 .search_tab label{
-	color: #07793f;
+	color: #666;
 	padding-top: 8px;
 	letter-spacing: 1px;
-	font-size: 11px;
+	font-size: .7rem;
 	text-transform: uppercase;
 	font-weight: 700;
 	text-align: left;
+
 }
 
 .search_tab .button_search{

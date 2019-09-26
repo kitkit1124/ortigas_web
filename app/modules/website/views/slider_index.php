@@ -37,8 +37,15 @@
 
 	<?php echo $this->load->view('website/breadcrumbs_view'); ?>
 </div>
+
 </div>
 <?php } ?>	
+
+
+<?php } else { ?>
+	<div class="no-slider">
+	</div>
+<?php } ?>
 
 
 <?php 

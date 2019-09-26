@@ -114,15 +114,19 @@ table{
     }
 
     .oclp, .ccc{
-         padding: 20px 0;
+         padding: 10px 0;
          height: auto;
     }
 }
 
-@media (max-width: 768px){
+@media (max-width: 767px){
     .data_privacy .col-sm-4 {
         -ms-flex: 0 0 100%;
         flex: 0 0 100%;
         max-width: 100%; 
+    }
+
+    .dp_inactive{
+        border: 2px solid #b2b2b2;
     }
 }

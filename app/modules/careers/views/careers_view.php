@@ -1,12 +1,14 @@
 <section id="roles">
+	<div class="no-slider">
+	</div>
 	<?php if($career){ ?>
-	<div id="banner_image">
-		<div class="banner_margin container"><h1><?php echo $career->career_position_title; ?></h1></div>
+	<!-- <div id="banner_image">
+		<div class="banner_margin container"><h1><?php //echo $career->career_position_title; ?></h1></div>
 		<div class="banner_gradient"></div>
 		<img class="estate_banner_img lazy" data-src="<?php echo getenv('UPLOAD_ROOT').$career->career_image; ?>" draggable="false" alt="<?php echo $career->career_alt_image; ?>" title="<?php echo $career->career_alt_image; ?>" />
 		<?php echo $this->load->view('website/breadcrumbs_view'); ?>			
-	</div>
-	<?php } ?>
+	</div> -->
+	<?php }  ?>
 	<main role="main" class="container">
 		<div class="content">	
 			<?php echo $this->load->view('careers/careers_form'); ?>
@@ -16,10 +18,10 @@
 			$dtpost = date_create($dtraw);
 			?>
 			<div class="career_content_details">
-				<p class="title"><?php echo $career->career_position_title; ?></p>
-				<p class="dept"><?php echo $career->department_name; ?></p>
+				<p class="title mb-1"><?php echo $career->career_position_title; ?></p>
+				<p class="dept mb-0"><?php echo $career->department_name; ?></p>
 				<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
-				<p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $career->career_location; ?></p>
+				<p class="loc font-weight-bold"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $career->career_location; ?></p>
 				<p class="res_head">Responsibilities</p>
 				<p class="res"><?php echo parse_content($career->career_res); ?></p>
 				<p class="req_head">Requirements</p>

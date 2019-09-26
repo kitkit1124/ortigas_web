@@ -78,16 +78,16 @@ class Careers extends MX_Controller {
 			$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $careers_page->page_title;
 
 			$careers = $this->careers_model->get_select_careers();
-			$careers[''] = "ALL";
+			$careers[''] = "SELECT JOB TITLE";
 			$data['select_careers'] = $careers;
 
 
 			$locations = $this->careers_model->get_select_careers_location();
-			$locations[''] = "ALL";
+			$locations[''] = "LOCATION";
 			$data['select_locations'] = $locations;
 
 			$departments = $this->departments_model->get_active_departments();
-			$departments[''] = "ALL";
+			$departments[''] = "DEPARTMENT";
 			$data['select_departments'] = $departments;
 
 			$data['found_no_career'] = $this->partials_model->find(12); 
