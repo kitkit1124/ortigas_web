@@ -73,13 +73,13 @@ $(function(){
         resize();
         set_banner_position();
         transparent_nav();
-         set_video_height();
+        set_video_height();
 
     $(window).resize(function(){
         resize();
         set_banner_position();
         transparent_nav();
-         set_video_height();
+        set_video_height();
     });
 
     $('.navbar-nav li.base_nav_li').mouseover(function(){
@@ -259,7 +259,7 @@ function default_theme(){
     $(".navi-bar").css({"background-color": "#f8f9fa", "border-bottom":"1px solid #C0C0C0"});
 
     if(nav_color_theme=="White"){
-        $(".oclogo img").css({"filter": "unset"});
+        // $(".oclogo img").css({"filter": "unset"});
         $("a.nav-link.base_nav.nav_estates").css({"color": "#646263"});
         $(".nav_search_button i").css({"color": "#d3d3d3"});
         //$(".navbar-nav li.base_nav_li:last-child a").css({"border": "2px solid #A9A9A9"});
@@ -270,7 +270,7 @@ function white_theme(){
     $(".navi-bar").css({"background-color": "transparent", "border-bottom":"1px solid transparent"});
 
     if(nav_color_theme=="White"){
-    $(".oclogo img").css({"filter": "brightness(0) invert(1)"});
+    // $(".oclogo img").css({"filter": "brightness(0) invert(1)"});
     $("a.nav-link.base_nav.nav_estates").css({"color": "#FFF"});
     $(".nav_search_button i").css({"color": "#FFF"});
     //$(".navbar-nav li.base_nav_li:last-child a").css({"border": "2px solid #FFF"});
@@ -304,5 +304,11 @@ function set_video_height(){
     var height = $(window).height();
     var width = $(window).width();
     $('#video_player').css({'height': height,'width':width});
-    $('#slider img').css({'height' : height, 'max-height' : height});
+    $(' #banner_image img, #header_ #slider img').css({'height' : height, 'max-height' : height});
+}
+
+function set_property_slider(){
+    var width = $('#slider .carousel-indicators img').width();
+    $('#slider .carousel-indicators img').css({'height': width});
+
 }

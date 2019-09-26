@@ -38,6 +38,11 @@ select option{
 
 }
 
+ .form-control {
+   border: 2px solid #e7e7e7; 
+ }
+
+
 .content{
 	margin: 40px 0;
 }
@@ -54,23 +59,11 @@ select option{
 }
 
 h2{
-    color: #0a4233;
-    font-size: 2.5rem;
-    letter-spacing: -1px;
+    color: #07793F;
+    font-size: 1.5rem;
     font-weight: 600;
 }
 
-/*@font-face {
-    font-family: Helvetica;
-    src: url('../../../../data/fonts/Helvetica/Helvetica.ttf');
-}
-
-
-@font-face {
-    font-family: Didot;
-    src: url('../../../../data/fonts/Didot/DidotLTStd-Roman.otf');
-}
-*/
 @font-face {
     font-family: Gotham-Book;
     src: url('/data/fonts/Gotham/Gotham-Book.otf');
@@ -80,7 +73,11 @@ h2{
     font-family: Gotham-Medium;
     src: url('/data/fonts/Gotham/Gotham-Medium.otf');
 }
-http://ortigas.assets.local/data/fonts/Gotham/
+
+@font-face {
+    font-family: Gotham-Light;
+    src: url('/data/fonts/Gotham/Gotham-Light.otf');
+}
 
 img{
 	user-drag: none; 
@@ -126,14 +123,15 @@ a.default-button{
     filter: opacity(.5);
 }
 
+#banner_image{
+    margin-bottom: 40px;
+}
 
 #banner_image img{
     min-height: 200px;
 }
 #banner_image img, #slider img{
     z-index: 10;
-    max-height: 410px;
-	height: 410px;
 	width: 100%;
 	object-fit: cover;
 	object-position: 50% 50%;
@@ -144,6 +142,7 @@ a.default-button{
     max-width: 500px;
     font-size: 70px;
     color: #FFF;
+    display: none;
 }
 
 #banner_image h5 {
@@ -353,24 +352,20 @@ a.default-button{
     text-transform: initial;
 }
 
-.seo_content{
+.rear_content{
+    color: #666;
+    text-align: left;
+}
+.seo_content {
     margin-top: 60px;
     color: #666;
     text-align: left;
 }
 
-.seo_content h1{
+.seo_content h1,  .rear_content h1{
     margin-bottom: 20px;
     color: #0a4233;
     text-align: center;
-}
-
-.carousels .carousel-indicators {
-    position: initial; 
-}
-.carousels .carousel-indicators img {
-    max-height: 100px !important;
-    margin: 20px 5px 10px 5px;
 }
 
 #location {
@@ -582,6 +577,7 @@ a.inquiry_button {
 .gm-style-iw{
     background-color: #FFF;
     padding: 5px;
+    display: none;
 }
 
 .gm-ui-hover-effect{
@@ -670,20 +666,65 @@ img.lazy {
     color: #0f50b4;
 }
 
+div.dataTables_wrapper .page-item .page-link{
+    border: 3px solid transparent !important;
+    text-transform: uppercase;
+    font-size: .8rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: #a5a5a5;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+div.dataTables_wrapper .page-item .page-link:hover{
+    background-color: none;
+}
+
+div.col-md-7{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination{
+    justify-content: center !important;
+}
+
+div.dataTables_wrapper .page-item.active .page-link{
+    background: none !important;
+    background-color: none !important;
+    border-color: #07793f !important;
+    border: 3px solid #07793f !important;
+}
+
+#slider .carousel-indicators img{
+    height: 68px;
+    width: 68px;
+}
+
+.slick-track{
+    display: flex;
+    justify-content: center;
+}
+
+.breadcrumbs_content {display: none;}
 @media(max-width: 1440px) {
     .social_media_properties a{
         font-size: 1.8rem;
     }
 }
 
+@media(max-width: 1200px) {
+    #slider .carousel-indicators img{
+        height: 58px;
+        width: 58px;
+    }
+
+}
+
 @media(max-width: 1024px) {
    body{
         padding-top: 80px;
-    }
-
-
-    #slider .carousel-indicators img{
-        height: 100px;
     }
 
     .social_media_properties{
@@ -718,10 +759,15 @@ img.lazy {
 }
 
 
-@media(max-width: 990px) {
+@media(max-width: 991px) {
     .breadcrumbs{
         top: 100px;
         font-size: .8rem;
+    }
+    
+    #slider .carousel-indicators img{
+        max-height: 70px;
+        max-width: 70px;
     }
 }
 
@@ -744,12 +790,6 @@ img.lazy {
 
     #banner_image img, #slider img{
         height: auto;
-    }
-
-
-    .carousels .carousel-indicators img {
-        max-height: 80px !important;
-        margin: 20px 3px 10px 3px;
     }
 
     .social_media_properties a{
@@ -790,10 +830,6 @@ img.lazy {
         font-size: 1.1rem;
     }
 
-    .carousels .carousel-indicators img {
-        max-height: 60px !important;
-    }
-
     .carousel-item img{
         min-height: 200px;
     }
@@ -817,11 +853,7 @@ img.lazy {
         font-size: 3rem;
     }
 
-    .carousels .carousel-indicators img {
-        max-height: 50px !important;
-    }
-
-        #banner_logo_image {  
+    #banner_logo_image {  
         margin-top: -40px;
     }
 }

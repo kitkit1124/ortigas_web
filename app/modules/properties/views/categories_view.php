@@ -12,8 +12,9 @@
 		<div class="content">	
 		
 			<div class="estate_heading">
+				<p class="estate_heading_text"><?php echo parse_content($category->category_name); ?></p>
 				<?php echo parse_content($category->category_description); ?>
-				<a class="inquiry_button default-button" data-anchor="inquiry_form_container"><?php if($button_text) { echo strip_tags(parse_content($button_text->partial_content)); } ?></a>
+				<!-- <a class="inquiry_button default-button" data-anchor="inquiry_form_container"><?php if($button_text) { echo strip_tags(parse_content($button_text->partial_content)); } ?></a> -->
 			</div>
 
 			<div class="estate_page_select_location">
@@ -85,7 +86,7 @@
 			</div>
 		</div>
 	</main>
-		<?php if(isset($news_result) && $news_result){ ?>
+		<?php /*if(isset($news_result) && $news_result){ ?>
 			<div class="news_related">
 		
 				<h2 class="related_news_title"><?php echo 'Related News'; ?></h2>
@@ -94,13 +95,13 @@
 				<div class="news_related_content">
 					<?php
 						$news_data['related_news'] = 1;
-						$news_data['cols_img'] = 'col-sm-5';
-						$news_data['cols_data'] = 'col-sm-7';
+						$news_data['cols_img'] = 'col-sm-6';
+						$news_data['cols_data'] = 'col-sm-6';
 						echo $this->load->view('website/news_result', $news_data); 
 					?>
 				</div>
 			</div>
-		<?php } ?>
+		<?php }*/ ?>
 		<?php echo $this->load->view('properties/recommended_links')?>
 </section>
 

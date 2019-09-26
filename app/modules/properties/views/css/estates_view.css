@@ -6,6 +6,7 @@
     margin: auto;
     max-width: 1100px;
     min-height: 50px;
+    display: none;
 }
 
 .specific_estate .btn_est{
@@ -24,7 +25,7 @@
 }
 
 .estates_description{
-	text-align: center;
+	text-align: left;
 }
 
 .specific_estate {
@@ -72,6 +73,7 @@
 }
 
 .content_residence .property{
+    display: none;
 	position: relative;
     z-index: 1;
     text-decoration: none;
@@ -97,6 +99,13 @@
 .cat_heading_res, .cat_heading{
     margin: 30px 0;
     text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+
+.residences_div{
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .res_title h2{
@@ -124,7 +133,7 @@
     letter-spacing: 1px;
 }
 .cat_title h2{
-	color:  #07793f;
+    text-transform: uppercase;
 }
 
 .cat_desc{
@@ -162,10 +171,20 @@
 }
 
 .estates {
-    max-width: 500px;
-    margin: auto;
+    padding: 0px 0;
+    margin: 0;
+    max-width: 535px;
 }
 
+.residences_div .estates:nth-child(odd){
+    display: flex;
+    justify-content: left;
+}
+
+.residences_div .estates:nth-child(even){
+    display: flex;
+    justify-content: right;
+}
 .office_custom_width{ max-width: auto; margin: auto;}
 
 #banner_image h1{
@@ -193,8 +212,12 @@
     filter: brightness(0) invert(1);
 }
 
+    .carousels #slider img{
+        max-height: 350px;
+    }
+
     .slider {
-        width: 90%;
+     width: 100%;
        
     }
 
@@ -224,13 +247,13 @@
     }
 
     .slick-next,.slick-next:focus, .slick-next:hover{
-        background: url("../data/images/slider_right.png");
+        background: url("/data/images/slider_right.png");
         right: -35px;
         background-size: contain;
 
     }
     .slick-prev, .slick-prev:focus, .slick-prev:hover{
-        background: url("../data/images/slider_left.png");
+        background: url("/data/images/slider_left.png");
         left: -35px;
         background-size: contain;
     }
@@ -238,6 +261,15 @@
     .slick-next:focus, .slick-next:hover, .slick-prev:focus, .slick-prev:hover{
         color: unset;
         outline: 0;
+    }
+
+    .carousels .carousel-indicators {
+        position: initial; 
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .carousels .carousel-indicators img {
+        margin: 10px 2px 10px 2px;
     }
 
 @media (max-width: 1024px){
@@ -295,8 +327,8 @@
     }
 
     .carousels .carousel-indicators img {
-        max-height: 80px !important;
-        margin: 20px 3px 10px 3px;
+        max-height: 70px !important;
+        margin: 10px 3px 10px 3px;
     }
 }
 @media (max-width: 650px){
@@ -326,9 +358,17 @@
 
 }
 
+@media(max-width: 450px) {
+    .carousels .carousel-indicators img {
+        max-height: 50px !important;
+        max-width: 50px !important;
+    }
+}
+
 @media(max-width: 375px) {
 
     .carousels .carousel-indicators img {
-        max-height: 50px !important;
+        max-height: 36px !important ;
+        max-width: 36px !important;
     }
 }

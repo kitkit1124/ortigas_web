@@ -143,7 +143,7 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 		</div>
 	</div>
 		
-	<?php if($nav_color_theme == 'White'){ ?>
+	<?php /*if($nav_color_theme == 'White'){ ?>
 		<style type="text/css">
 		.oclogo img { filter: brightness(0) invert(1); }
 		a.nav-link.base_nav.nav_estates, .nav_search_button i{color: #FFF; }
@@ -154,7 +154,7 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 		body {  padding-top: 0px; } 
 		.navi-bar { background-color: transparent; border-bottom: 1px solid transparent; }
 		</style>
-	<?php/* }*/ ?>
+	<?php/* }*/*/ ?>
 
 	<script>
 		var site_url = '<?php echo site_url(); ?>';

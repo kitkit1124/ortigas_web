@@ -5,6 +5,7 @@
 		<div class="content">	
 		
 			<div class="estate_heading">
+				<p class="estate_heading_text"><?php echo parse_content($category->page_title); ?></p>
 				<?php echo parse_content($category->page_content); ?>
 				<a class="inquiry_button default-button" data-anchor="inquiry_form_container"><?php if($button_text) { echo strip_tags(parse_content($button_text->partial_content)); } ?></a>
 			</div>
@@ -22,7 +23,7 @@
 			<div class="row properties_of_estate">
 				<?php
 				foreach ($properties as $key => $val) { ?>
-					<div class="estates properties col-md-6">
+					<div class="estates properties col-lg-6">
 						<?php if($estates){  ?>
 							<a href="<?php echo site_url('').'estates/'.$val->estate_slug; ?>">
 						<?php } else { ?>
@@ -35,10 +36,14 @@
 									
 									<img class="lazy" data-src="<?php if($estates){ echo getenv('UPLOAD_ROOT').img_selector($val->estate_image,'large'); } else { echo  getenv('UPLOAD_ROOT').$val->property_image; }?>" width="100%" draggable="false" width="100%" alt="<?php echo $val->estate_alt_image; ?>" title="<?php echo $val->estate_alt_image; ?>" />
 							</div>
-							<!-- <div class="estate"><?php //echo $val->estate_name; ?></div> -->
 							<div class="image_text">
-								<p><?php echo $val->estate_name; ?></p>
-								<p><?php echo $val->location_name; ?></p>
+								<p class="image_text_title"><?php echo $val->estate_name; ?></p>
+								<?php if($val->location_name){ ?>
+									<p class="image_text_location">
+										<i class="fa fa-map-marker" aria-hidden="true"></i>
+										<?php echo $val->location_name; ?>
+									</p>
+								<?php } ?>
 							</div>
 						</div>
 						<?php if($estates){ ?>

@@ -1,6 +1,6 @@
 <?php $carousel = $sliders; ?>
 <?php if($carousel) { ?>
-
+<div id="header_">
 <div id="slider" class="carousel slide" data-ride="carousel">
 	
 	<?php if(count($carousel) != 1) { ?>
@@ -36,6 +36,7 @@
 	<?php } ?>
 
 	<?php echo $this->load->view('website/breadcrumbs_view'); ?>
+</div>
 </div>
 <?php } ?>	
 

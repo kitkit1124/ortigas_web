@@ -63,6 +63,7 @@ class Properties_model extends BF_Model {
 			'property_status',
 			'property_alt_image',
 			'property_snippet_quote',
+			'price_range_min',
 
 
 			'property_created_on', 
@@ -73,7 +74,8 @@ class Properties_model extends BF_Model {
 
 			'property_estate_id',
 			'property_category_id',
-			'property_location_id'
+			'property_location_id',
+			
 		);
 
 		if(isset($fields_data['category']) && $fields_data['category']){
@@ -88,6 +90,7 @@ class Properties_model extends BF_Model {
 					->join('estates', 'estates.estate_id = property_estate_id', 'LEFT')
 					->join('property_categories', 'property_categories.category_id = property_category_id', 'LEFT')
 					->join('property_locations', 'property_locations.location_id = property_location_id', 'LEFT')
+					->join('price_range', 'price_range.price_range_id = property_price_range_id', 'LEFT')
 					->datatables($fields);
 	}
 
