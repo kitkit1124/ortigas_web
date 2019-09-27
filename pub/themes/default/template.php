@@ -76,6 +76,7 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 					</div>
 					<div class="footer_border"></div>
 					<div class="col-sm-4 link">
+						<h2>Explore</h2>
 						<ul>
 							<?php echo $this->navigations_model->get_footer_navigation(2); ?>
 						</ul>
@@ -85,7 +86,8 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 						<?php $subscribe = $this->partials_model->find(2); 
 							if($subscribe) {
 								$content = $subscribe->partial_content;
-								$input = '<input type="email" id="subscription_email" placeholder="your@email.com"><a class="subscribe_button">Subscribe</a>';
+								// $input = '<input type="email" id="subscription_email" placeholder="your@email.com"><a class="subscribe_button">Subscribe</a>';
+								$input = '<a class="subscribe_button">Subscribe</a>';
 								$content = preg_replace("{{{subscribe}}}", $input, $subscribe->partial_content);
 								echo parse_content($content); 
 							}

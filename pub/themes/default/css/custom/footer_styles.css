@@ -39,6 +39,12 @@
 	filter: brightness(0) invert(1);
 }
 
+.footer_content .link h2{
+	color: #FFF;
+	text-decoration: none;
+	margin-top: 12px;
+}
+
 .footer_content .link ul{
 	padding: 0;
 	margin-top: 16px;
@@ -104,6 +110,7 @@
 	cursor: pointer;
 	margin-left: 0 !important; 
 		margin-right: 0 !important; 
+	border: 1px solid #fff;
 }
 
 @media(max-width: 990px) {
