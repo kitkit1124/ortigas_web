@@ -127,8 +127,7 @@ $(function(){
         searchGlobal();
     });
 
-
-    $('.subscribe_button').click(function(){
+    $('.subscribe_button_modal').click(function(){
 
         $.ajax({method: "POST",url: site_url + 'subscribers/subscribers/form',
             data: { 
@@ -151,6 +150,8 @@ $(function(){
 
                     $('#error-' + form_name + ' .text-danger').append('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>');
                   }
+
+
                 }
             } else {
                  $('#subscribe_success').trigger('click');
