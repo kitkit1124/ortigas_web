@@ -40,10 +40,10 @@
 
 </div>
 
-<?php } //else { ?>
-	<!-- <div class="no-slider">
-	</div> -->
-<?php //} ?>
+<?php } else { ?>
+	<div class="no-slider">
+	</div>
+<?php } ?>
 
 
 <?php 
