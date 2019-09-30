@@ -76,6 +76,7 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 					</div>
 					<div class="footer_border"></div>
 					<div class="col-sm-4 link">
+						<h2>Explore</h2>
 						<ul>
 							<?php echo $this->navigations_model->get_footer_navigation(2); ?>
 						</ul>
@@ -85,7 +86,8 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 						<?php $subscribe = $this->partials_model->find(2); 
 							if($subscribe) {
 								$content = $subscribe->partial_content;
-								$input = '<input type="email" id="subscription_email" placeholder="your@email.com"><a class="subscribe_button">Subscribe</a>';
+								// $input = '<input type="email" id="subscription_email" placeholder="your@email.com"><a class="subscribe_button">Subscribe</a>';
+								$input = '<a class="subscribe_button" href="'.site_url().'website/page/show_modal?id=14" data-target="#modal-lg" data-toggle="modal">Subscribe</a>';
 								$content = preg_replace("{{{subscribe}}}", $input, $subscribe->partial_content);
 								echo parse_content($content); 
 							}
@@ -99,7 +101,7 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 		<?php $seo = $this->seo_model->find(4); echo parse_content(html_entity_decode(strip_tags($seo->seo_content)));  ?>
 	</footer>	
 
-		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
 		<div class="modal-dialog modal" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -108,6 +110,7 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
+
 				<div class="modal-body">
 					<div class="text-center">
 						<img src="<?php echo site_url('ui/images/loading3.gif')?>" alt="<?php echo lang('loading')?>"/>
@@ -150,11 +153,11 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 		</style>
 	<?php } ?>
 	<?php /*if($is_home){*/ ?>
-		<style type="text/css">
+		<!-- <style type="text/css">
 		body {  padding-top: 0px; } 
 		.navi-bar { background-color: transparent; border-bottom: 1px solid transparent; }
-		</style>
-	<?php/* }*/*/ ?>
+		</style> -->
+	<?php /* } */ ?>
 
 	<script>
 		var site_url = '<?php echo site_url(); ?>';

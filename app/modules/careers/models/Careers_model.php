@@ -98,4 +98,71 @@ class Careers_model extends BF_Model {
 
 	return $query;	
 	}
+
+	public function get_careers_datatables($form = null){
+
+		$fields = array(
+			'career_id',
+			'career_position_title',
+			'career_slug',
+			'career_dept',
+			'career_departments.department_name',
+			'career_div',
+			'career_divisions.division_name',
+			'career_divisions.division_slug',
+			'career_req',
+			'career_res',
+			'career_location',
+			'career_latitude',
+			'career_longitude',
+			'career_image',
+			'career_alt_image',
+			'career_status',
+
+			'career_created_on', 
+			'career_modified_on', 
+		);
+
+		if(isset($form['keyword']) && $form['keyword']){
+			
+			$f = $form['keyword'];
+			$this->where('('.
+				'career_position_title like "%'.$f.'%"'.' or '.
+				'career_location like "%'.$f.'%"'.' or '.
+				'career_req like "%'.$f.'%"'.' or '.
+				'career_res like "%'.$f.'%"'.' or '.
+				'department_name like "%'.$f.'%"'.' or '.
+				'division_name like "%'.$f.'%"'.
+			')');
+		}
+
+
+		if(isset($form['career_id']) && $form['career_id']){ 
+			$this->where('career_id', $form['career_id']);
+		}
+
+		if(isset($form['career_location']) && $form['career_location']){
+			$this->where('(career_location like "%'. $form['career_location'] .'%")');
+		}
+
+		if(isset($form['department_id']) && $form['department_id']){
+			$this->where('department_id', $form['department_id']);
+		}
+
+		if(isset($form['division_slug']) && $form['division_slug']){
+			$this->where('division_slug', $form['division_slug']);
+		}
+
+		if(isset($form['career_slug']) && $form['career_slug']){ 
+			$this->where('career_slug', $form['career_slug']);
+		}
+
+	return $this->where('career_status', 'Active')
+					->where('career_deleted', 0)
+					->order_by('career_position_title', 'ASC')
+					->join('career_departments', 'career_departments.department_id = career_dept')
+					->join('career_divisions', 'career_divisions.division_id = career_div')
+					->datatables($fields);
+
+	}
 }

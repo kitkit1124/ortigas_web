@@ -94,6 +94,15 @@ class Careers extends MX_Controller {
 
 			$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $data['careers_page']->page_id, 'related_link_section_type' => 'pages', 'related_link_status' => 'Active', 'related_link_deleted' => 0));
 
+
+			// add plugins
+			$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
+			$this->template->add_css('npm/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css');
+			$this->template->add_js('npm/datatables.net/js/jquery.dataTables.js');
+			$this->template->add_js('npm/datatables.net-bs4/js/dataTables.bootstrap4.js');
+			$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
+			$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
+
 			// render the page
 			$this->template->write('head', $metatags);
 			$this->template->add_css('npm/dropzone/dropzone.min.css');
@@ -220,6 +229,19 @@ class Careers extends MX_Controller {
 		else{
 			redirect(base_url().'page-not-found');
 		}
+	}
+
+	public function datatables()
+	{
+
+		$fields_data = [ 
+			'keyword' 			=> $this->input->get('keyword'),
+			'career_id' 		=> $this->input->get('career_id'),
+			'career_location' 	=> $this->input->get('career_location'),
+			'department_id' 	=> $this->input->get('department_id'),
+		]; 
+
+		echo $this->careers_model->get_careers_datatables();
 	}
 
 

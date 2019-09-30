@@ -39,8 +39,6 @@
 </div>
 
 </div>
-<?php } ?>	
-
 
 <?php } else { ?>
 	<div class="no-slider">
