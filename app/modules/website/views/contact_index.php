@@ -20,7 +20,18 @@
 				</div>
 
 			</div> -->
-			<div class="offset-sm-2 col-sm-8 contact_break">
+			<div class="col-md-6 text-left">
+				<div class="google-maps">
+					<div id="map"></div>
+				</div>
+				<p><br/>
+					Corporate Office<br/>
+					9th Floor, Ortigas Building,<br/>
+					Ortigas Avenue,<br/>
+					Pasig City 1600 Philippines<br/>
+				</p>
+			</div>
+			<div class="col-sm-6 contact_break mb-4">
 				<div class="page_content">
 					<?php echo parse_content($page_content->page_content); ?>
 				</div>
@@ -124,6 +135,24 @@
 					
 				</div>
 			</div>
+			<div class="col-md-6 text-left">
+				<div>
+					<img class="lazy w-100" data-src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/corporate_contact.PNG" draggable="false" alt="Corporate Contact" title="Corporate Contact"/>
+				</div>
+				<p><br/>
+					Corporate Sales<br/>
+					(+632) 477-1393<br/>
+				</p>
+			</div>
+			<div class="col-md-6 text-left">
+				<div>
+					<img class="lazy w-100" data-src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/international_contact.PNG" draggable="false" alt="Corporate Contact" title="Corporate Contact"/>
+				</div>
+				<p><br/>
+					International Sales USA Toll-free Number<br/>
+					1-800-459-2137<br/>
+				</p>
+			</div>
 		</div>
 
 
@@ -140,13 +169,13 @@
 
 </main>
 
-<div>
-	<div class="google-maps">
+<!-- <div>
+	<div class="google-maps"> -->
 	<!-- <textarea id="pac-input" placeholder="Ortigas & Company 9th Floor, Ortigas Building Ortigas Avenue, Pasig City 1600 Philippines"> <?php echo $page_content->page_map_name; ?></textarea> -->
-	<div id="map"></div>
+	<!-- <div id="map"></div> -->
 	<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.206901707607!2d121.07216671505488!3d14.587283081313162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c808abaef137%3A0xdd2ab4e5438fc1a8!2sValle+Verde+5!5e0!3m2!1sen!2sph!4v1505972548418" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
-	</div>
-</div>
+	<!-- </div>
+</div> -->
 
 <?php //if($record->page_uri == 'about-us'){ ?>
 	<?php if(isset($news_result) && $news_result){ ?>
