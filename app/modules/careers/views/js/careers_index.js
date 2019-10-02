@@ -183,7 +183,7 @@ var allTable = $('#allTable').dataTable({
 	"bInfo": false,
 	"bServerSide": true,
 	"sAjaxSource": site_url + "careers/datatables/",
-	"pageLength" : 6,
+	"pageLength" : 12,
 	// "lengthMenu": [[9, 18, -1], [9, 18, "All"]],
 	"pagingType": "simple_numbers",
 	"bAutoWidth": false,
