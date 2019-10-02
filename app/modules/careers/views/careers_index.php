@@ -58,10 +58,15 @@
 			 <div id="careers_content">
 
 			 <?php if(isset($careers) && $careers){ ?>
-					<div class='col-md-12 text-left'>
+					<div class='col-md-12 text-left mb-3'>
 						<span class="jobs_found">All Available Jobs (<?php echo count($careers);?> Found)</span>
 					</div>
-			 		<div id="wide" class="row text-center">
+					<div id="alldiv" class="row text-center">
+					</div>
+					<table class="table table-striped table-bordered table-hover dt-responsive" id="allTable">
+						<thead><tr><th class="all"></th></tr></thead>
+					</table>
+			 		<!-- <div id="wide" class="row text-center">
 					</div>
 					<table class="table table-striped table-bordered table-hover dt-responsive" id="widetable">
 						<thead><tr><th class="all"></th></tr></thead>
@@ -71,34 +76,50 @@
 					</div>
 					<table class="table table-striped table-bordered table-hover dt-responsive" id="narrowtable">
 						<thead><tr><th class="all"></th></tr></thead>
-					</table>
+					</table> -->
 					
-					<!-- <div id="wide" class="row">
+					<!-- <div id="wide" class="row"> -->
 						
-						<span class="col-md-12 jobs_found">All Available Jobs (<?php echo count($careers);?> Found)</span>
+						<!-- <span class="col-md-12 jobs_found mb-3">All Available Jobs (<?php echo count($careers);?> Found)</span> -->
 						<?php
 						foreach ($careers as $key => $val) { 
 						if($val->career_modified_on){ $dtraw = $val->career_modified_on; } else { $dtraw = $val->career_created_on; }		
 						$dtpost = date_create($dtraw);
 						?>
+							<!-- <div class="col-md-4">
+								<div class="card p-0 border-0 shadow rounded-0">
+									<div class="card-header border-0 text-center font-weight-bold">
+										<span class="title text-uppercase"><?php echo $val->career_position_title; ?></span>
+									</div>
+									<div class="card-body details">
+										<p class="dept"><?php echo $val->department_name; ?></p>
+										<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
+										<p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $val->career_location; ?></p>
+										<a href="<?php echo site_url('').'careers/'.$val->division_slug.'/'.$val->career_slug; ?>" class="default-button">View Details</a>
+									</div>
+								</div>								
+							</div> -->
+							
 
-							<div class="career_box col-sm-4">
+							<!-- <div class="career_box col-sm-4">
 								<div class="image_wrapper">
+									<div class="card-header">
+										<p class="title"><?php echo $val->career_position_title; ?></p>
+									</div>
 									<div class="details">
-										<p class="title"><?php //echo $val->career_position_title; ?></p>
-										<p class="dept"><?php //echo $val->department_name; ?></p>
-										<p class="divi"><?php //echo $val->division_name; ?></p> 
-										<p class="dtpost"><?php //echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
+										<p class="dept"><?php echo $val->department_name; ?></p>
+										<p class="divi"><?php echo $val->division_name; ?></p> 
+										<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
 										<p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i><?php //echo $val->career_location; ?></p>
-										<a href="<?php //echo site_url('').'careers/'.$val->division_slug.'/'.$val->career_slug; ?>" class="default-button">View Details</a>
+										<a href="<?php echo site_url('').'careers/'.$val->division_slug.'/'.$val->career_slug; ?>" class="default-button">View Details</a>
 									</div>
 									<div class="image_container">
 											<img src="<?php //echo  site_url().$val->career_image; ?>" width="100%" alt="" draggable="false"/>
 									 </div>
 								</div>
-							</div>
+							</div> -->
 							
-							<div class="container row col-md-12 <?php echo $key%2? 'flex-row':'flex-row-reverse'; ?>">
+							<!-- <div class="container row col-md-12 <?php echo $key%2? 'flex-row':'flex-row-reverse'; ?>">
 								<div class="career_box col-md-6">
 									<div class="image_wrapper">
 										<div class="details">
@@ -116,12 +137,12 @@
 										<img class="estate_banner_img lazy mh-100 mw-100" data-src="<?php echo getenv('UPLOAD_ROOT').$val->career_image; ?>" draggable="false" alt="<?php echo $val->career_alt_image; ?>" title="<?php echo $val->career_alt_image; ?>" />
 									</div>
 								</div>	
-							</div>					
+							</div>					 -->
 						
 						<?php } //end foreach ?>
-					</div>
+					<!-- </div> -->
 
-					<div id="narrow" class="row">
+					<!-- <div id="narrow" class="row">
 						<span class="col-md-12 jobs_found">All Available Jobs (<?php echo count($careers);?> Found)</span>
 						<?php
 							foreach ($careers as $key => $val) { 
