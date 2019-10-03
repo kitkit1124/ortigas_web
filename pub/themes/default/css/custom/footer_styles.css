@@ -101,16 +101,17 @@
 }
 
 .subscribe_button{
-    padding: 17px 14px  16px 14px;
+    padding: 14px 22px;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 11px !important;
 	/* background-color: #4a4a4a; */
-    background-color: #44675d;
-	width: 35%;
+    background-color: #39695d;
+	width: 37%;
 	cursor: pointer;
 	margin-left: 0 !important; 
-		margin-right: 0 !important; 
+	margin-right: 0 !important; 
+	margin-top: 15px;
 	border: 1px solid #fff;
 }
 
