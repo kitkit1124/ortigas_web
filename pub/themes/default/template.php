@@ -87,7 +87,7 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 							if($subscribe) {
 								$content = $subscribe->partial_content;
 								// $input = '<input type="email" id="subscription_email" placeholder="your@email.com"><a class="subscribe_button">Subscribe</a>';
-								$input = '<a class="subscribe_button" href="'.site_url().'website/page/show_modal?id=14" data-target="#modal-lg" data-toggle="modal">Subscribe</a>';
+								$input = '<a class="subscribe_button btn-block text-center" href="'.site_url().'website/page/show_modal?id=14" data-target="#modal-lg" data-toggle="modal">Subscribe</a>';
 								$content = preg_replace("{{{subscribe}}}", $input, $subscribe->partial_content);
 								echo parse_content($content); 
 							}
