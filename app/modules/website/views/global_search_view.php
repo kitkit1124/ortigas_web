@@ -23,7 +23,7 @@
 							if($val->property_modified_on){ $dtraw = $val->property_modified_on; } else { $dtraw = $val->property_created_on; }
 							$dtpost = date_create($dtraw);
 							?>
-								<div class="search_box col-lg-6">
+								<div class="search_box col-lg-6 px-5 pb-5">
 									<div class="row search_properties_row">
 										<div class="estates col-lg-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
