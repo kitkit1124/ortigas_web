@@ -76,18 +76,18 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 					</div>
 					<div class="footer_border"></div>
 					<div class="col-sm-4 link mt-2">
-						<h2>Explore</h2>
+						<h2 id="explore_title">Explore</h2>
 						<ul class="mt-4">
 							<?php echo $this->navigations_model->get_footer_navigation(2); ?>
 						</ul>
 					</div>
 					<div class="footer_border"></div>
-					<div class="col-sm-4 subscribe mt-2">
+					<div class="col-sm-4 subscribe mt-3 text-left">
 						<?php $subscribe = $this->partials_model->find(2); 
 							if($subscribe) {
 								$content = $subscribe->partial_content;
 								// $input = '<input type="email" id="subscription_email" placeholder="your@email.com"><a class="subscribe_button">Subscribe</a>';
-								$input = '<a class="subscribe_button btn-block text-center" href="'.site_url().'website/page/show_modal?id=14" data-target="#modal-lg" data-toggle="modal">Subscribe</a>';
+								$input = '<a class="subscribe_button text-center my-5" href="'.site_url().'website/page/show_modal?id=14" data-target="#modal-lg" data-toggle="modal">Subscribe</a>';
 								$content = preg_replace("{{{subscribe}}}", $input, $subscribe->partial_content);
 								echo parse_content($content); 
 							}
@@ -153,11 +153,11 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 		</style>
 	<?php } ?>
 	<?php /*if($is_home){*/ ?>
-		<!-- <style type="text/css">
+		<style type="text/css">
 		body {  padding-top: 0px; } 
 		.navi-bar { background-color: transparent; border-bottom: 1px solid transparent; }
-		</style> -->
-	<?php /* } */ ?>
+		</style>
+	<?php/* }*/*/ ?>
 
 	<script>
 		var site_url = '<?php echo site_url(); ?>';

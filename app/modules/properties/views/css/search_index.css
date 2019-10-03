@@ -63,7 +63,7 @@
 	color: #07793f;
 	border-bottom: 2px solid #b4d7c5;
 	margin-bottom: 50px;
-	font-size: 2rem;
+	font-size: 1.5rem;
 
 }
 
@@ -90,6 +90,11 @@
 
 	.property_details p{
 		font-size: .9rem;
+	}
+
+	.search_result_search_label{
+		font-size: 1.5rem;
+	
 	}
 }
 

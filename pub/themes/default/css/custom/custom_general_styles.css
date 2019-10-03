@@ -756,7 +756,7 @@ div.dataTables_wrapper .page-item.active .page-link{
 }
 
 .no-slider{
-    margin-bottom:4em;
+    margin-bottom:11em;
 }
 
 .subscribe_button_modal{
@@ -783,6 +783,14 @@ div.dataTables_wrapper .page-item.active .page-link{
     padding-left: 15px !important;
 }
 
+.w-40{
+    width:40%;
+}
+
+p em{
+    color: #07793f;
+}
+
 @media(max-width: 1440px) {
     .social_media_properties a{
         font-size: 1.8rem;
@@ -799,7 +807,7 @@ div.dataTables_wrapper .page-item.active .page-link{
 
 @media(max-width: 1170px) {
     .no-slider{
-        margin-bottom:2em;
+        margin-bottom:7em;
     }
 }
 

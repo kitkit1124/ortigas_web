@@ -1,5 +1,12 @@
 $(function() {
 
+	$('#clear_search').click(function(){
+		$(".search_tab #keyword").val('');
+		$(".search_tab #career_id").val('');
+		$(".search_tab #career_location").val('');
+		$(".search_tab #department_id").val('');
+	});
+
 	 $(".carousel-item").first().addClass('active');
 	 $(".carousel-indicator_button").first().addClass('active');
 
@@ -206,17 +213,17 @@ var allTable = $('#allTable').dataTable({
 				var year = date.getFullYear();
 				var date_posted = monthNames[month]+' '+day+', '+year;
 
-				div = '<div class="col-md-4">';
+				div = '<div class="col-lg-4 col-md-6 col-12 mb-2">';
 					div +=	'<div class="card p-0 border-0 shadow rounded-0">';
-						div +=	'<div class="card-header border-0 text-center font-weight-bold">';
-							div +=	'<span class="title text-uppercase">' + full[1] + '</span>' ; 
+						div +=	'<div class="card-header border-0 text-left font-weight-bold">';
+							div +=	'<p class="title text-uppercase my-2">' + full[1] + '</p>' ; 
 						div +=	'</div>';
 
 						div +=	'<div class="card-body details">';
 							div +=	'<p class="dept">' + full[4] +'</p>';
 							div +=	'<p class="dtpost">Date Posted ' + date_posted +'</p>';
 							div +=	'<p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i>' + full[10]+'</p>';
-							div +=	'<a href="' + site_url + 'careers/'+full[7]+'/'+full[2]+'" class="button default-button-2 pull pull-right mt-0">View Details</a>';
+							div +=	'<a href="' + site_url + 'careers/'+full[7]+'/'+full[2]+'" class="button default-button-2 pull pull-left mt-0">View Details</a>';
 						div +=	'</div>';
 					div +=	'</div>';
 				div +=	'</div>';
@@ -348,16 +355,16 @@ function searchCareer(){
 					
 					// $('#careers_content #narrow.row').append(html);
 
-					html = '<div class="col-md-4">'+
+					html = '<div class="col-lg-4 col-md-6 col-12 mb-2">'+
 					'<div class="card p-0 border-0 shadow rounded-0">'+
-					'<div class="card-header border-0 text-center font-weight-bold">'+
+					'<div class="card-header border-0 text-left font-weight-bold">'+
 					'<span class="title text-uppercase">' + value.career_position_title + '</span>' + 
 					'</div>'+
 					'<div class="card-body details">'+
 					'<p class="dept">' + value.department_name +'</p>'+
 					'<p class="dtpost">Date Posted ' + date_posted +'</p>'+
 					'<p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i>' + value.career_location+'</p>'+
-					'<a href="' + site_url + 'careers/'+value.division_slug+'/'+value.career_slug+'" class="button default-button-2 pull pull-right mt-0">View Details</a>'+
+					'<a href="' + site_url + 'careers/'+value.division_slug+'/'+value.career_slug+'" class="button default-button-2 pull pull-left mt-0">View Details</a>'+
 					'</div></div>';
 					
 					$('#careers_content #alldiv.row').append(html);

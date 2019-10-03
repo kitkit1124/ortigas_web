@@ -40,6 +40,7 @@ class Search extends MX_Controller {
 		$this->load->model('website/news_tags_model');
 		$this->load->model('website/post_tags_model');
 		$this->load->model('website/metatags_model');
+		$this->load->model('website/banners_model');
 	}
 	
 	// --------------------------------------------------------------------
@@ -181,6 +182,8 @@ class Search extends MX_Controller {
 		$data['select_locations']  = $this->locations_model->get_active_locations();
 		
 		$data['select_price_range'] = $this->price_range_model->get_active_price_range();
+		
+		$data['sliders'] = $this->banners_model->get_banners(0);
 
 		$page = $this->pages_model->find(13); 
 
@@ -211,6 +214,8 @@ class Search extends MX_Controller {
 			exit;			
 		}
 
+		$data['total'] = 0;
+
 		if($_GET){
 
 			if($_GET['search_filter'] == "search_properties" || $_GET['search_filter'] == "search_any"){
@@ -221,6 +226,7 @@ class Search extends MX_Controller {
 				'price_range_id' => isset($_GET['range']) ? $_GET['range'] : ''
 			];
 			$data['residences'] = $this->properties_model->get_search($fields);	
+			if($data['residences']) $data['total']+=count($data['residences']);
 	
 			$fields = [
 				'filter'		 => urldecode($_GET['keyword']),
@@ -229,7 +235,7 @@ class Search extends MX_Controller {
 				'price_range_id' => isset($_GET['range']) ? $_GET['range'] : '',
 			];
 			$data['malls'] = $this->properties_model->get_search($fields);	
-	
+			if($data['malls']) $data['total']+=count($data['malls']);
 
 	
 			$fields = [
@@ -239,7 +245,8 @@ class Search extends MX_Controller {
 				'price_range_id' => isset($_GET['range']) ? $_GET['range'] : '',
 			];
 
-			$data['offices'] = $this->properties_model->get_search($fields);	
+			$data['offices'] = $this->properties_model->get_search($fields);
+			if($data['offices']) $data['total']+=count($data['offices']);	
 			}
 
 			$fields = [
@@ -248,6 +255,7 @@ class Search extends MX_Controller {
 
 			if($_GET['search_filter'] == "search_articles" || $_GET['search_filter'] == "search_any"){
 				$data['news_result'] = $this->posts_model->get_active_news($fields);
+				if($data['news_result']) $data['total']+=count($data['news_result']);
 			}
 
 			$fields = [
@@ -256,6 +264,7 @@ class Search extends MX_Controller {
 
 			if($_GET['search_filter'] == "search_careers" || $_GET['search_filter'] == "search_any"){
 				$data['careers'] = $this->careers_model->get_careers($fields);
+				if($data['careers']) $data['total']+=count($data['careers']);
 			}
 
 		}

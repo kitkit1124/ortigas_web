@@ -53,6 +53,10 @@
 	color: #07793f;
 }
 
+.agreement input{
+    width: 20px;
+    height: 20px;
+  }
 
 .agreement label{
   cursor: pointer;
@@ -100,7 +104,13 @@
 
 .message_agreement_label{
   text-transform: unset !important;
+  font-size: .6rem !important;
+  letter-spacing: -2px;
 }
+
+.message_agreement_label span{
+    margin-left:0px !important;
+  }
 
 .contact_form span{
 	color: #b2b2b2;

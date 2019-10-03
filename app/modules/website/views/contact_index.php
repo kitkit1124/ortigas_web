@@ -115,11 +115,12 @@
 						<div id="error-message_captcha" class="error_field"></div>
 					</div>
 					
-					<div class="form-group agreement text-center">
-	          		<input type="checkbox" id="message_agreement" name="message_agreement" class="pointer message_agreement">
+					<div class="form-group row agreement text-justify">
+	          			<input type="checkbox" id="message_agreement" name="message_agreement" class="pointer message_agreement col-1">
 	          		
-					  <label for="message_agreement" class="pointer message_agreement_label">
-						  	<span class="color_default">* I Agree to the</span><a href="<?php echo base_url();?>oclp-data-privacy-policy" target="_blank"><span class="green">OCLP</span></a> <span class="color_default">and</span><a href="<?php echo base_url();?>oclp-data-privacy-policy" target="_blank"><span class="green">CCC<span></a><span class="color_default ml-0">Data Privacy.</span>
+					  <label for="message_agreement" class="pointer message_agreement_label col-11">
+							  <span class="color_default">By clicking on the button above, I give my consent to all divisions and organizations in Ortigas&Company, and their service provides and agents to collect, use and disclose the personal data as contained in this form, or as otherwise provided by me for the purpose of providing information on their products and services to me via email, including but not limited to offers, promotions, and new goods and services.</span>
+							  <!-- <span class="color_default">* I Agree to the</span><a href="<?php echo base_url();?>oclp-data-privacy-policy" target="_blank"><span class="green">OCLP</span></a> <span class="color_default">and</span><a href="<?php echo base_url();?>oclp-data-privacy-policy" target="_blank"><span class="green">CCC<span></a><span class="color_default ml-0">Data Privacy.</span> -->
 							<!-- <br><br> -->
 							<!-- <span class="color_default nomargin">By filling in my personal particulars above, I give my consent to all divisions and organizations in ORTIGAS & COMPANY, LIMITED PARTNERSHIP, and their service providers and agents, to collect, use and disclose the personal data as contained in this form, or as otherwise provided by me, for the purposes of providing information on their products and services to me via email, including but not limited to offers, promotions, and new goods and services.</span></label> -->
 	          		
