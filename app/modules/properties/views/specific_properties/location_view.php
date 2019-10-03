@@ -3,7 +3,9 @@
 	<div class="xrow location_heading">
 		<div class="col-sm-12 location_title">
 			<h2>LOCATION</h2>
+			<?php if(isset($properties->property_location_description) && $properties->property_location_description) : ?>
 			<p class="location_description"><?php echo $properties->property_location_description; ?></p>
+			<?php endif; ?>
 		</div>
 		<div class="xcol-sm-8 nearby_link hide">
 			<h3>What's Nearby</h3>
