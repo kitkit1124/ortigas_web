@@ -1,6 +1,15 @@
 .career_box {
 	padding: 15px 15px;
+}
 
+.new_career_box {
+	/* box-shadow: 0px 0px 7px 0px #CCC; */
+}
+
+.new_career_box .details p.title{
+	text-transform: uppercase;
+	font-family: Gotham-Medium;
+	font-size: 1.5rem;
 }
 
 .jobs_found {
@@ -17,7 +26,6 @@
 /** zoom **/
 .image_wrapper{
   overflow: hidden;
-  box-shadow: 4px 4px 7px -2px #CCC;
 }
 
 .image_wrapper .image_container {

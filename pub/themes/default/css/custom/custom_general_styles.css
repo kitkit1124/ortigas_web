@@ -467,6 +467,7 @@ a.inquiry_button {
 .global_search{
     background-color: #FFF;
     display: none;
+
     max-width: 1120px;
     padding: 40px 20px;
     margin: auto;
@@ -532,7 +533,7 @@ a.inquiry_button {
 
 .global_search_filters label{
     text-transform: uppercase;
-    margin: 0 15px;
+    margin: 0 5px;
     color: #666;
     cursor: pointer;
 }
