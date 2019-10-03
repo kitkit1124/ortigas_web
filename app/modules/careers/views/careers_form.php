@@ -22,7 +22,8 @@ $this->template->add_js(module_js('careers', 'careers_form'), 'embed');
           	<input type="hidden" id="csrf" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
           	<div class="row">
           		<div class="col-12">
-          			<label for="job_career_title">Position applying for*</label>
+					  <!-- <label for="job_career_title">Position applying for*</label> -->
+          			<span id="label_position" class="font-weight-bold"><label for="job_career_title">Position applying for*</label></span>
                
       				  <?php if(isset($career->career_position_title) && $career->career_position_title){ $select_careers = [$career->career_id =>  $career->career_position_title ]; } ?>
                 <?php echo form_dropdown('job_career_title', $select_careers, set_value('job_career_title', (isset($career->career_position_title)) ? $career->career_position_title : ''), 'id="job_career_title" class="form-control"'); ?>
@@ -32,26 +33,25 @@ $this->template->add_js(module_js('careers', 'careers_form'), 'embed');
           	</div>
           	<div class="row">
           		<div class="col-sm-6">
-          			<!-- <label for="job_referred">Referred by</label> -->
-          			<?php echo form_input('job_referred', '', 'id="job_referred" class="form-control" placeholder=" Referred by"'); ?>
-          		</div>
-          		<div class="col-sm-6">
           			<!-- <label for="job_applicant_name">Name*</label> -->
           			<?php echo form_input('job_applicant_name', '', 'id="job_applicant_name" class="form-control" placeholder=" Name*"'); ?>
                 <div id="error-job_applicant_name" class="error_field"></div>
           		</div>
-          	</div>
-          	<div class="row mb-4">
           		<div class="col-sm-6">
           			<!-- <label for="job_email">E-mail Address*</label> -->
           			<input type="email" id="job_email" class="form-control" name="job_email" placeholder=" E-mail Address*">
                 <div id="error-job_email" class="error_field"></div>
 				  </div>
-				  
+          	</div>
+          	<div class="row mb-4">				  
           		<div class="col-sm-6">
           			<!-- <label for="job_mobile">Mobile Number*</label> -->
           			<?php echo form_input('job_mobile', '', 'id="job_mobile" class="form-control" placeholder=" Mobile Number*"'); ?>
                 <div id="error-job_mobile" class="error_field"></div>
+          		</div>
+          		<div class="col-sm-6">
+          			<!-- <label for="job_referred">Referred by</label> -->
+          			<?php echo form_input('job_referred', '', 'id="job_referred" class="form-control" placeholder=" Referred by"'); ?>
           		</div>
 			  </div>
 			<div class="row">
@@ -73,11 +73,12 @@ $this->template->add_js(module_js('careers', 'careers_form'), 'embed');
         				<?php echo form_input('job_document','', 'id="job_document" style="display:none"'); ?>
         		</div>
 			  </div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="form-group job_agreement px-4">
+			  
+			<div class="row mt-4 mb-0">
+				<div class="col-md-12 px-md-5">
+					<div class="form-group job_agreement px-md-5">
 						<input type="checkbox" id="job_agreement" name="job_agreement" class="pointer">
-						<label for="job_agreement" class="pointer"><span class="color_default">* I accept the Website </span><a href="<?php echo base_url();?>oclp-data-privacy-policy" target="_blank"><span class="terms">Terms and Conditions</span></a> and <a href="<?php echo base_url();?>oclp-data-privacy-policy" target="_blank"><span class="privacy">Privacy Statement.</span></a></label>
+						<label for="job_agreement" class="pointer"><span class="color_default">By clicking on the button above, I give my consent to all divisions and organizations in Ortigas&Company, and their service provides and agents to collect, use and disclose the personal data as contained in this form, or as otherwise provided by me for the purpose of providing information on their products and services to me via email, including but not limited to offers, promotions, and new goods and services.</span></a></label>
 						<div id="error-job_agreement" class="error_field"></div>
 					</div>
 				</div>

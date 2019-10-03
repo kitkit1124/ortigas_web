@@ -297,7 +297,7 @@ class Page extends CI_Controller
 		$this->template->render();
 	}
 
-
+	
 	public function show_modal(){
 
 		// page title

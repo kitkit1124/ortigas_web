@@ -777,6 +777,14 @@ div.dataTables_wrapper .page-item.active .page-link{
     padding-left: 15px !important;
 }
 
+.w-40{
+    width:40%;
+}
+
+p em{
+    color: #07793f;
+}
+
 @media(max-width: 1440px) {
     .social_media_properties a{
         font-size: 1.8rem;

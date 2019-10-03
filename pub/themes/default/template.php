@@ -82,7 +82,7 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 						</ul>
 					</div>
 					<div class="footer_border"></div>
-					<div class="col-sm-4 subscribe mt-2">
+					<div class="col-sm-4 subscribe mt-3">
 						<?php $subscribe = $this->partials_model->find(2); 
 							if($subscribe) {
 								$content = $subscribe->partial_content;

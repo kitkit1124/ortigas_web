@@ -46,6 +46,9 @@
 							</div>
 						</div><!--advance_search-->
 					</form>
+					<div id="clear_search" class="mt-2">
+						<span class="ml-3"><label>Clear Search</label></span>
+					</div>
 				</div><!--search_tab_content-->
 			</div><!--search_tab-->
 

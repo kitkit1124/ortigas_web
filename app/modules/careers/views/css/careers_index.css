@@ -248,6 +248,10 @@ input.form-control::placeholder{
 	margin-top: 100px;
 	text-align: center;
 }
+
+#clear_search label{
+	cursor:pointer;
+}
 @media(max-width: 991px) {
 	a.default-button{
 		min-width: auto !important;

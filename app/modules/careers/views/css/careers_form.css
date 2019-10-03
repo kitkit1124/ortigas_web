@@ -20,11 +20,16 @@
 .modal-body label{
 	color: #666;
 	letter-spacing: 1px;
-	font-size: .7rem;
+	font-size: .8rem;
 	padding-top: 8px;
 	text-transform: uppercase;
 	text-align: left;
 	width: 99%;
+	font-weight: bold !important;
+}
+
+#label_position{
+	margin-left:15px;
 }
 
 .dropzone .dz-message .upload{
@@ -59,17 +64,20 @@
 input.form-control::placeholder{
     color: #666;
     text-transform: uppercase;
-    font-size: .8rem;
+	font-size: .8rem;
+	font-weight:bold;
 }
 
 .modal-body .job_agreement label{
 	width: auto !important;
-	font-size: 14px;
+	font-size: 8px;
 	padding-top: 4px;
+	margin-left:5px;
+	text-align: justify;
 }
 .modal-body #job_agreement{
-	height: 15px;
-    width: 15px;
+	height: 20px;
+    width: 20px;
     position: absolute;
     margin-left: -20px;
     margin-top: 8px;

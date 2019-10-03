@@ -1,5 +1,12 @@
 $(function() {
 
+	$('#clear_search').click(function(){
+		$(".search_tab #keyword").val('');
+		$(".search_tab #career_id").val('');
+		$(".search_tab #career_location").val('');
+		$(".search_tab #department_id").val('');
+	});
+
 	 $(".carousel-item").first().addClass('active');
 	 $(".carousel-indicator_button").first().addClass('active');
 
@@ -206,7 +213,7 @@ var allTable = $('#allTable').dataTable({
 				var year = date.getFullYear();
 				var date_posted = monthNames[month]+' '+day+', '+year;
 
-				div = '<div class="col-md-4">';
+				div = '<div class="col-lg-4 col-md-6 col-12 mb-2">';
 					div +=	'<div class="card p-0 border-0 shadow rounded-0">';
 						div +=	'<div class="card-header border-0 text-center font-weight-bold">';
 							div +=	'<span class="title text-uppercase">' + full[1] + '</span>' ; 
@@ -348,7 +355,7 @@ function searchCareer(){
 					
 					// $('#careers_content #narrow.row').append(html);
 
-					html = '<div class="col-md-4">'+
+					html = '<div class="col-lg-4 col-md-6 col-12 mb-2">'+
 					'<div class="card p-0 border-0 shadow rounded-0">'+
 					'<div class="card-header border-0 text-center font-weight-bold">'+
 					'<span class="title text-uppercase">' + value.career_position_title + '</span>' + 
