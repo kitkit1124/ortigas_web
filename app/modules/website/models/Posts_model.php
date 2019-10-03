@@ -126,6 +126,14 @@ class Posts_model extends BF_Model
 			$this->where_not_in('post_id', $fields['without_this_post_id']);
 		}
 
+		if(isset($fields['limit']) && $fields['limit']){
+			$this->limit($fields['limit']);
+		}
+
+		if(isset($fields['order_by']) && $fields['order_by']){
+			$this->order_by($fields['order_by'],'DESC');
+		}
+
 		$result = $this
 					->where('post_deleted',0)
 					->where('post_status', 'Posted')

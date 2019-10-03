@@ -71,9 +71,9 @@
 				<?php if($category) { echo parse_content($category->page_rear_content); } ?>
 			</div>
 
-			<div class="seo_content">
-				<?php if($category) { echo parse_content($category->page_bottom_content); } ?>
-			</div>
+			<!-- <div class="seo_content">
+				<?php //if($category) { echo parse_content($category->page_bottom_content); } ?>
+			</div> -->
 
 			<div class="inquiry_form_container">
 				<?php echo $this->load->view('messages/messages_form')?>
@@ -97,7 +97,7 @@
 				</div>
 			</div>
 		<?php } ?>
-		<?php echo $this->load->view('properties/recommended_links')?>
+		<?php //echo $this->load->view('properties/recommended_links')?>
 </section>
 
 <script type="text/javascript">

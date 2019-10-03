@@ -115,7 +115,8 @@
 														<ul class="ul_sub_menu_categ owl-carousel-style owl-carousel">
 																
 															<?php foreach ($locations as $key => $location) { 
-																$link = site_url('');
+																$location_name = str_replace(' ','-', strtolower($location->location_name));
+																$link = site_url('location/').$location_name;
 																$target = null;
 															?>
 																<a class="nav-link" target="<?php echo $target; ?>" href="<?php echo $link; ?>">

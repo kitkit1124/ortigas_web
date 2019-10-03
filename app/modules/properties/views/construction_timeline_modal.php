@@ -5,8 +5,6 @@
 </div>
 <div class="modal-body">
 	<div class="form">	
-			<center>
-				
-			</center>
+		<?php  echo $this->load->view('properties/specific_properties/slider_view'); ?>
 	</div>
 </div>

@@ -80,68 +80,100 @@ class Categories extends MX_Controller {
 		$this->session->set_userdata('redirect', current_url());
 
 
+
+	
 		if($params){
-			
-			$category = $this->categories_model->find_by('category_name', $params);
 
-			if($category){
+			if (strpos($_SERVER['REQUEST_URI'], 'location') !== FALSE) {
 
-				// page title
-				$data['page_heading'] = $category->category_name;
-				$data['page_subhead'] = lang('index_subhead');
+
+				$location = $this->locations_model->find_by('location_name', str_replace('-', ' ', $params));
+				$data['location'] = $location;
+
+			    $data['page_heading'] = $location->location_name;
+			    $data['page_subhead'] = lang('index_subhead');
 				$data['page_layout'] = 'full_width';
 
-				$estates_page = $this->pages_model->find_by('page_uri','estates');
-				$data['breadcrumbs']['heading'] = 'home';
-				// $data['breadcrumbs']['page_subhead'] = $estates_page->page_title;
-				// $data['breadcrumbs']['page_subhead_link'] = strtolower($estates_page->page_title);
-				$data['breadcrumbs']['subhead'] = $category->category_name;
-
-
-				$data['button_text'] = $this->partials_model->find(3); 
-
-				$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
-
-				$fields = ['limit' => 4];
-				$news = $this->posts_model->get_active_news($fields);
-
-				if($news){
-					foreach ($news as $key => $result) {
-						$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
-					}
-					
-					$data['news_result'] = $news;
-				}
-		       
-        		$metatags = $this->metatags_model->get_metatags($category->category_metatag_id);
-        		
-        		$meta_title = $this->metatags_model->find($category->category_metatag_id); 
-				$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $category->category_name;
-
-				$locations = $this->locations_model->get_active_locations();
-				$locations[''] = "VIEW ALL ".strtoupper($params);
-				$data['select_locations'] = $locations;
-
-				$fields = [ 'category_name' => $params, 'order_by' => 'property_name'];
-				$properties = $this->properties_model->get_properties($fields);
-				
-					if($properties){
-						$data['properties'] = $properties;
-						$data['category'] = $properties[0];
-					}
-					else{
-						redirect(base_url().'page-not-found');
-					}
-
-				$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $properties[0]->category_id, 'related_link_section_type' => 'categories', 'related_link_status' => 'Active', 'related_link_deleted' => 0));
-
 				$data['section_id'] = 0;
-				$data['section'] = $category->category_name;
+				$data['section'] = $location->location_name;
+
+				$metatags = $this->metatags_model->get_metatags($location->location_metatag_id);
+	        		
+        		$meta_title = $this->metatags_model->find($location->location_metatag_id); 
+				$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $location->location_name;
+
+
+				$this->template->write_view('content', 'locations_view', $data);
+			}
+			else{
+				$category = $this->categories_model->find_by('category_name', $params);
+
+				if($category){
+
+					// page title
+					$data['page_heading'] = $category->category_name;
+					$data['page_subhead'] = lang('index_subhead');
+					$data['page_layout'] = 'full_width';
+
+					$estates_page = $this->pages_model->find_by('page_uri','estates');
+					$data['breadcrumbs']['heading'] = 'home';
+					// $data['breadcrumbs']['page_subhead'] = $estates_page->page_title;
+					// $data['breadcrumbs']['page_subhead_link'] = strtolower($estates_page->page_title);
+					$data['breadcrumbs']['subhead'] = $category->category_name;
+
+
+					$data['button_text'] = $this->partials_model->find(3); 
+
+					$data['news_tags']	= $this->news_tags_model->find_all_by(array('news_tag_status' => 'Active', 'news_tag_deleted' => 0));
+
+					$fields = ['limit' => 4];
+					$news = $this->posts_model->get_active_news($fields);
+
+					if($news){
+						foreach ($news as $key => $result) {
+							$result->post_tags= $this->post_tags_model->get_current_tags($result->post_id);
+						}
+						
+						$data['news_result'] = $news;
+					}
+			       
+	        		$metatags = $this->metatags_model->get_metatags($category->category_metatag_id);
+	        		
+	        		$meta_title = $this->metatags_model->find($category->category_metatag_id); 
+					$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $category->category_name;
+
+					$locations = $this->locations_model->get_active_locations();
+					$locations[''] = "VIEW ALL ".strtoupper($params);
+					$data['select_locations'] = $locations;
+
+					$fields = [ 'category_name' => $params, 'order_by' => 'property_name'];
+					$properties = $this->properties_model->get_properties($fields);
+					
+						if($properties){
+							$data['properties'] = $properties;
+							$data['category'] = $properties[0];
+						}
+						else{
+							redirect(base_url().'page-not-found');
+						}
+
+					$data['recommended_links'] = $this->related_links_model->find_all_by(array('related_link_section_id' => $properties[0]->category_id, 'related_link_section_type' => 'categories', 'related_link_status' => 'Active', 'related_link_deleted' => 0));
+
+					$data['section_id'] = 0;
+					$data['section'] = $category->category_name;
 				}
 				else{
 					redirect(base_url().'page-not-found');
 				}
 			
+
+				// render the page
+				
+				
+				$this->template->write_view('content', 'categories_view', $data);
+	
+			}
+
 			// add plugins
 			$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
 			$this->template->add_css('npm/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css');
@@ -150,12 +182,10 @@ class Categories extends MX_Controller {
 			$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
 			$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
 
-			// render the page
 			$this->template->write('head', $metatags);
 			$this->template->add_css(module_css('properties', 'property_style'), 'embed');
 			$this->template->add_css(module_css('properties', 'categories_view'), 'embed');
 			$this->template->add_js(module_js('properties', 'estates_index'), 'embed');
-			$this->template->write_view('content', 'categories_view', $data);
 			$this->template->render();
 
 		}
@@ -170,7 +200,7 @@ class Categories extends MX_Controller {
 
 		$fields_data = [ 
 			'category' 	=> $this->input->get('category'),
-			'location' 	=> $this->input->get('location'),
+			'location' 	=> $this->input->get('location_id'),
 		]; 
 
 		echo $this->properties_model->get_datatables($fields_data);

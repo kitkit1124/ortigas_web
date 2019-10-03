@@ -358,6 +358,17 @@ class Properties extends MX_Controller {
 		$data['action'] = '';
 
 		$data['content'] = '';
+
+		if($this->input->get('id')):
+			$data['sliders'] = $this->image_sliders_model->find_all_by(
+				array(
+					'image_slider_section_id'=> $this->input->get('id'),
+					'image_slider_section_type'=>'properties',
+					'image_slider_deleted' => 0,
+					'image_slider_status' => 'Active'
+				)
+			);
+		endif;
 		
 		$this->template->set_template('modal');
 		$this->template->write_view('content', 'properties/construction_timeline_modal', $data);

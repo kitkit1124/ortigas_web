@@ -91,6 +91,9 @@ h1, p, span, a {
 	padding: 0 5px;
 }
 
+.specific_estate .btn_est a{
+	text-decoration: none;
+}
 .specific_estate .btn_est:first-child .estate_button{ 
    background-color: #0a4233;
 }
@@ -240,9 +243,6 @@ h1, p, span, a {
 
 #building-floorplan{ margin: 60px 0; }
 
-.floorplan_heading {
-	min-height: 360px;
-}
 .floorplan_heading h2{
 	text-align: left;
 	color: #07793f;
@@ -253,6 +253,7 @@ h1, p, span, a {
 #floorplan_image{
 	width: 100%;
 	max-width: 500px;
+	min-height: 360px;
 }
 
 #select-floorplan, #select-floorplan2{
@@ -273,7 +274,9 @@ h1, p, span, a {
 }
 
 #unit-img{
+	margin: auto;
 	margin-top: 20px;
+
 /*    -ms-flex: 100%;
     flex: 100%;
      width: 100%;
@@ -380,12 +383,13 @@ h1, p, span, a {
     text-decoration: none;
     margin: auto;
     width: 100%;
-    font-size: 24px;
+    font-size: 1.1rem;
     text-align: left;
     text-decoration: none;
     color: #666666;
     margin-top: 10px;
     text-transform: uppercase;
+    font-family: Gotham-Medium;
 }
 
 
@@ -710,6 +714,11 @@ h1, p, span, a {
 	font-family: Gotham-Medium;
 }
 
+.cont_malls .default-button{
+	display: inline-block;
+    margin-bottom: 40px;
+}
+
 .location_description{
 	max-width: 600px;
 	margin: auto;
@@ -760,6 +769,13 @@ h1, p, span, a {
 @media (max-width: 991px){
 	.amenities .row{
 		margin-left: 20px;
+	}
+
+	.floorplan_heading h2 {
+		text-align: center;
+	}
+	#select-floorplan, #select-floorplan2{
+		margin: auto;
 	}
 }
 @media (max-width: 768px){

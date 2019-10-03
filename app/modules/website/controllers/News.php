@@ -160,10 +160,11 @@ class News extends MX_Controller
 
 			$data['news_tags'] = $this->news_tags_model->find_all();
 
-			$fields = [ 'news_tag_id' => $news[0]->news_tag_id,
+			$fields = [ 'limit' => 4,
+						'order_by' => 'post_posted_on',
 						'without_this_post_id' => $news[0]->post_id
 					];
-			$data['suggested_news'] = $this->posts_model->get_specific_news($fields);
+			$data['latest_news'] = $this->posts_model->get_specific_news($fields);
 
 
 			$archive = $this->posts_model->get_archive_year();

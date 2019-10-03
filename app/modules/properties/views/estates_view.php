@@ -189,9 +189,9 @@
 			</div><!--map-location-->
 	<main role="main" class="container">
 		<div class="content">
-			<div class="seo_content">
-				<?php if($estates) { echo parse_content($estates->estate_bottom_text); } ?>
-			</div>
+			<!-- <div class="seo_content">
+				<?php //if($estates) { echo parse_content($estates->estate_bottom_text); } ?>
+			</div> -->
 
 			<div class="inquiry_form_container">
 				<?php echo $this->load->view('messages/messages_form')?>
@@ -215,5 +215,5 @@
 		</div>
 	</div>
 	<?php } */?>
-	<?php echo $this->load->view('properties/recommended_links')?>
+	<?php //echo $this->load->view('properties/recommended_links')?>
 </section>

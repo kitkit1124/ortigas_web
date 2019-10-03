@@ -38,21 +38,20 @@ $(function() {
 				"aTargets": [0],
 				"mRender": function (data, type, full) {
 		
-					div =  '<div class="news_result">';
+					div =  '<div class="news_result col-lg-6">';
 						div +=  '<div class="row">';
-							div +=  '<div class="news_image col-sm-4">';
+							div +=  '<div class="news_image col-lg-6">';
 								div += '<a href="' + site_url + 'news/' + full[2] +'">';
 									div += '<img class="lazy" src="' + upload_url + img_selector(full[5],'large') +'" width="100%" draggable="false" alt="' + full[6] + '" title="' + full[6] +'" />';
 								div += '</a>';
 							div += '</div>';
-							div +=  '<div class="news_details col-sm-8">';
+							div +=  '<div class="news_details col-lg-6">';
+								div += '<span class="news_tags" data-news-tag-id="' + full[0] + '"></span>';
 								div += '<a class="news_link_img" href="' + site_url + 'news/' + full[2] +'">';
 									div +=  '<h2>' + full[1] + '</h2>';
 								div += '</a>';
-							
 								div += '<label>';
 									div += '<span class="dtpost"><i>Date Posted '+ full[8] + '</i></span>';
-									div += '<i class="fa fa-tag"></i><span class="news_tags" data-news-tag-id="' + full[0] + '"></span>';
 								div += '</label>';
 							
 								div += '<div class="news_text">';
@@ -66,7 +65,7 @@ $(function() {
 							div += '</div>';
 						div += '</div>';
 					div += '</div>';
-							
+			
 					return div;
 				},
 			},

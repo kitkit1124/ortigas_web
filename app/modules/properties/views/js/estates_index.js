@@ -14,7 +14,7 @@ $(function() {
         "bFilter": true,
         "bInfo": false,
 		"bServerSide": true,
-		"sAjaxSource": site_url + "properties/categories/datatables?category="+category_name,
+		"sAjaxSource": site_url + "properties/categories/datatables?category="+category_name+"&location_id="+location_id,
 		"lengthMenu": [[6, 8, -1], [6, 8, "All"]],
 		"pagingType": "simple_numbers",
 		"bAutoWidth": false,

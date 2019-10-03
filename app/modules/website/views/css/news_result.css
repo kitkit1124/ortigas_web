@@ -18,8 +18,9 @@
 .news_content .news_title{ color: #07793f; }
 .news_content .news_filter_label { color: #666; }
 .news_content .news_filter {
-    padding: 4px 8px;
-    font-size: .8rem;
+    padding: 4px 12px;
+    font-size: .9rem;
+    margin-right: 15px;
     cursor: pointer;
     text-transform: uppercase;
     font-weight: bold;

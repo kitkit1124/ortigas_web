@@ -77,9 +77,9 @@
 
 
 
-			<div class="seo_content">
-				<?php if($category) { echo parse_content($category->category_bottom_description); } ?>
-			</div>
+			<!-- <div class="seo_content">
+				<?php //if($category) { echo parse_content($category->category_bottom_description); } ?>
+			</div> -->
 
 			<div class="inquiry_form_container">
 				<?php echo $this->load->view('messages/messages_form')?>
@@ -102,11 +102,12 @@
 				</div>
 			</div>
 		<?php }*/ ?>
-		<?php echo $this->load->view('properties/recommended_links')?>
+		<?php //echo $this->load->view('properties/recommended_links')?>
 </section>
 
 <script type="text/javascript">
 	var site_url = "<?php echo site_url(); ?>"
 	var upload_url = "<?php echo getenv('UPLOAD_ROOT'); ?>"
 	var category_name = "<?php echo $category->category_name; ?>"
+	var location_id = ""
 </script>
