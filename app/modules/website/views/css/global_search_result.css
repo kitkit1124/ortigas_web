@@ -6,9 +6,15 @@
 	text-align: left;
 }
 
+.result-title{
+    text-transform: uppercase;
+    font-size: 1.15rem;
+    margin-bottom:15px;
+}
+
 .search_box h2{
-	line-height: 1.5em;
-    height: 1.1em;
+	/* line-height: 1.5em; */
+    height: 1.25em;
     font-size: 1.2rem;
     overflow: hidden;
     font-weight: bold;
@@ -19,7 +25,7 @@
 .image_container, .image_wrapper .image_container img {
     object-fit: cover;
     width: 100%;
-    height: 183px !important;
+    height: 1000x !important;
 }
 
 .search_link{
@@ -42,4 +48,26 @@
 
 .dtpost{
     font-size: .7rem;
+}
+
+.estate_name{
+    font-size:1rem !important;
+    z-index:20002;
+}
+
+.prop_name{
+    text-transform:uppercase;
+    letter-spacing: 2px;
+    font-size:1.3rem !important;
+    z-index:20002;
+    color: #666
+}
+
+.category_name{
+    letter-spacing: 0px;
+    text-transform:uppercase;
+    letter-spacing: 2px;
+    font-size:.75rem !important;
+    z-index:20002;
+    color: #666
 }

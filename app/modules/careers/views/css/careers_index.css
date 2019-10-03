@@ -270,7 +270,7 @@ input.form-control::placeholder{
 }
 @media(max-width: 991px) {
 	a.default-button{
-		min-width: auto;
+		min-width: auto !important;
 	}
 	a.default-button-2{
 		max-width: 150px !important;

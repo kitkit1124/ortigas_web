@@ -1,4 +1,6 @@
 <section id="roles">
+	<?php echo $this->load->view('website/slider_index'); ?>
+	<?php $this->template->add_js(module_js('website', 'slider_index'), 'embed'); ?>
 	<main role="main" class="container mt-5">
 		<div class="content">	
 
@@ -8,12 +10,12 @@
 			<?php $true_result = 0; ?>
 			<div class="search_result">
 					<h1 class="hide">Search</h1>
-					<h2 class="search_result_search_label">Search results</h2>
+					<h2 class="search_result_search_label">Search results (<?php echo $total;?> results)</h2>
 						
 					<div class="properties_content">
 
 						<?php if(isset($residences) && $residences) {  $true_result++; ?>
-						<h2>Residences</h2>
+						<h2 class="result-title">Residences</h2>
 							
 						<div class="row ">
 							<?php
@@ -23,7 +25,7 @@
 							?>
 								<div class="search_box col-sm-6">
 									<div class="row search_properties_row">
-										<div class="estates col-sm-5">
+										<div class="estates col-sm-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 											<div class="image_wrapper">
 												<div class="image_container">
@@ -32,11 +34,12 @@
 											</div>
 											</a>
 										</div>
-										<div class="estates property_details col-sm-7">
+										<div class="estates property_details col-sm-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
-												<h2><?php echo $val->property_name; ?></h2>
-												<div class="property_overview"><?php echo $val->property_overview; ?></div>
-												<a class="green search_link" href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a>
+												<h2 class="mb-0"><span class="pull-left prop_name"><?php echo $val->property_name; ?></span><span class='pull-right'><h2 class='pull-right estate_name'><?php echo $val->estate_name; ?></h2></span></h2>
+												<h2><span class="category_name"><?php echo $val->category_name; ?></></span></h2>
+												<div class="property_overview mt-3"><?php echo $val->property_overview; ?></div>
+												<!-- <a class="green search_link" href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a> -->
 											</a>
 										</div>
 									</div>
@@ -47,7 +50,7 @@
 						<?php } ?>
 
 						<?php if(isset($malls) && $malls) {  $true_result++; ?>
-						<h2>Malls</h2>
+						<h2 class="result-title">Malls</h2>
 							
 						<div class="row ">
 							<?php
@@ -57,7 +60,7 @@
 							?>
 								<div class="search_box col-sm-6">
 									<div class="row search_properties_row">
-										<div class="estates col-sm-5">
+										<div class="estates col-sm-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 											<div class="image_wrapper">
 												<div class="image_container">
@@ -66,7 +69,7 @@
 											</div>
 											</a>
 										</div>
-										<div class="estates property_details col-sm-7">
+										<div class="estates property_details col-sm-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 												<h2><?php echo $val->property_name; ?></h2>
 												<div class="property_overview"><?php echo $val->property_overview; ?></div>
@@ -80,7 +83,7 @@
 						<?php } ?>
 
 						<?php if(isset($offices) && $offices) {  $true_result++; ?>
-						<h2>Offices</h2>
+						<h2 class="result-title">Offices</h2>
 							
 						<div class="row ">
 							<?php
@@ -90,7 +93,7 @@
 							?>
 								<div class="search_box col-sm-6">
 									<div class="row search_properties_row">
-										<div class="estates col-sm-5">
+										<div class="estates col-sm-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 											<div class="image_wrapper">
 												<div class="image_container">
@@ -99,7 +102,7 @@
 											</div>
 											</a>
 										</div>
-										<div class="estates property_details col-sm-7">
+										<div class="estates property_details col-sm-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 												<h2><?php echo $val->property_name; ?></h2>
 												<div class="property_overview"><?php echo $val->property_overview; ?></div>
@@ -116,7 +119,7 @@
 
 					<?php if(isset($news_result) && $news_result){ $true_result++; ?>
 
-			 		<h2>Articles</h2>
+			 		<h2 class="result-title">Articles</h2>
 					<div class="row ">
 						<?php
 						foreach ($news_result as $key => $val) {
@@ -125,7 +128,7 @@
 						?>
 							<div class="search_box col-sm-6">
 									<div class="row search_properties_row">
-										<div class="estates col-sm-5">
+										<div class="estates col-sm-12">
 											<a href="<?php echo site_url('').'news/'.$val->post_slug; ?>">
 											<div class="image_wrapper">
 												<div class="image_container">
@@ -134,7 +137,7 @@
 											</div>
 											</a>
 										</div>
-										<div class="estates property_details col-sm-7">
+										<div class="estates property_details col-sm-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->post_slug; ?>">
 												<h2><?php echo $val->post_title; ?></h2>
 												<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
@@ -152,7 +155,7 @@
 
 			 		<?php if(isset($careers) && $careers){ $true_result++; ?>
 
-			 		<h2>Careers</h2>
+			 		<h2 class="result-title">Careers</h2>
 					<div class="row ">
 						<?php
 						foreach ($careers as $key => $val) { 
@@ -161,7 +164,7 @@
 						?>
 							<div class="search_box col-sm-6">
 								<div class="row search_properties_row">
-									<div class="estates col-sm-5">
+									<div class="estates col-sm-12">
 										<a href="<?php echo site_url('').'careers/'.$val->career_slug; ?>">
 										<div class="image_wrapper">
 											<div class="image_container">
@@ -170,7 +173,7 @@
 										</div>
 										</a>
 									</div>
-									<div class="estates property_details col-sm-7">
+									<div class="estates property_details col-sm-12">
 										<a href="<?php echo site_url('').'careers/'.$val->career_slug; ?>">
 											<h2><?php echo $val->career_position_title; ?></h2>
 										<!-- <p class="link green"><?php //echo site_url().'careers/'.$val->career_slug; ?></p> -->
