@@ -70,10 +70,10 @@
 											</a>
 										</div>
 										<div class="estates property_details col-sm-12">
-											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
-												<h2><?php echo $val->property_name; ?></h2>
-												<div class="property_overview"><?php echo $val->property_overview; ?></div>
-												<a class="green search_link" href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a>
+												<h2 class="mb-0"><span class="pull-left prop_name"><?php echo $val->property_name; ?></span><span class='pull-right'><h2 class='pull-right estate_name'><?php echo $val->estate_name; ?></h2></span></h2>
+												<h2><span class="category_name"><?php echo $val->category_name; ?></></span></h2>
+												<div class="property_overview mt-3"><?php echo $val->property_overview; ?></div>
+												<!-- <a class="green search_link" href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a> -->
 											</a>
 										</div>
 									</div>	
@@ -104,9 +104,10 @@
 										</div>
 										<div class="estates property_details col-sm-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
-												<h2><?php echo $val->property_name; ?></h2>
-												<div class="property_overview"><?php echo $val->property_overview; ?></div>
-												<a class="green search_link" href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a>
+												<<h2 class="mb-0"><span class="pull-left prop_name"><?php echo $val->property_name; ?></span><span class='pull-right'><h2 class='pull-right estate_name'><?php echo $val->estate_name; ?></h2></span></h2>
+												<h2><span class="category_name"><?php echo $val->category_name; ?></></span></h2>
+												<div class="property_overview mt-3"><?php echo $val->property_overview; ?></div>
+												<!-- <a class="green search_link" href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a> -->
 											</a>
 										</div>
 									</div>	
