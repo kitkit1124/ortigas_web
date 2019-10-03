@@ -101,7 +101,7 @@
 }
 
 .subscribe_button{
-    padding: 14px 22px 14px 22px;
+    padding: 14px 22px;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 11px !important;
@@ -112,6 +112,7 @@
 	margin-top: 15px;
 	margin-left: 0 !important; 
 	margin-right: 0 !important; 
+	margin-top: 15px;
 	border: 1px solid #fff;
 }
 
