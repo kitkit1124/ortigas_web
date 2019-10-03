@@ -175,6 +175,9 @@ class Page extends CI_Controller
 
 		$data['news_result'] = $news;
 
+		$data['section_id'] = 0;
+		$data['section'] = 'General';
+
 		// template
 		$this->template->write('head', $metatags);
 		$this->template->add_css(module_css('website', 'page_index'), 'embed');
