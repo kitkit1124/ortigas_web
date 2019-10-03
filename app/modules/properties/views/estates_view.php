@@ -84,14 +84,17 @@
 			</div>
 			<div class="row residences_div">
 				<?php foreach ($residences as $key => $val) { ?>
-					<div class="estates residences col-sm-6">
+					<div class="estates residences col-lg-6">
 						<div class="residences">
 							<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 							<div class="image_wrapper">
 								<div class="image_container">
 										<img class="lazy" data-src="<?php echo  getenv('UPLOAD_ROOT').img_selector($val->property_image,'large'); ?>" width="100%" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
 								</div>
-								<div class="property"><label><?php echo $val->property_name; ?></label></div>
+							</div>
+							<div class="property_desc">
+								<h5><?php echo $val->property_name; ?></h5>
+								<span><?php echo $val->property_snippet_quote; ?></span>
 							</div>
 							</a>
 						</div>
@@ -110,14 +113,17 @@
 			</div>
 			<div class="row residences_div">
 				<?php foreach ($malls as $key => $val) { ?>
-					<div class="estates residences col-sm-6">
+					<div class="estates residences col-lg-6">
 						<div class="residences">
 							<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 							<div class="image_wrapper">
 								<div class="image_container">
 										<img class="lazy" data-src="<?php echo  getenv('UPLOAD_ROOT').img_selector($val->property_image,'large'); ?>" width="100%" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
 								</div>
-								<div class="property"><label><?php echo $val->property_name; ?></label></div>
+							</div>
+							<div class="property_desc">
+								<h5><?php echo $val->property_name; ?></h5>
+								<span><?php echo $val->property_snippet_quote; ?></span>
 							</div>
 							</a>
 						</div>
@@ -136,14 +142,17 @@
 			</div>
 			<div class="row residences_div">
 				<?php foreach ($offices as $key => $val) { ?>
-					<div class="estates residences col-sm-6">
+					<div class="estates residences col-lg-6">
 						<div class="residences">
 							<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 							<div class="image_wrapper">
 								<div class="image_container">
 										<img class="lazy" data-src="<?php echo  getenv('UPLOAD_ROOT').img_selector($val->property_image,'large'); ?>" width="100%" draggable="false" alt="<?php echo $val->property_alt_image; ?>" title="<?php echo $val->property_alt_image; ?>" />
 								</div>
-								<div class="property"><label><?php echo $val->property_name; ?></label></div>
+							</div>
+							<div class="property_desc">
+								<h5><?php echo $val->property_name; ?></h5>
+								<span><?php echo $val->property_snippet_quote; ?></span>
 							</div>
 							</a>
 						</div>

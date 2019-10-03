@@ -1,87 +1,166 @@
 <section id="roles">
 	<?php echo $this->load->view('properties/specific_properties/banner_view'); ?>
-	<div class="tabs_view_outer">
-		<?php echo $this->load->view('properties/specific_properties/tabs_view'); ?>
-	</div>
-	<main role="main" class="container">
+	<!-- <div class="tabs_view_outer">
+		<?php //echo $this->load->view('properties/specific_properties/tabs_view'); ?>
+	</div> -->
+<!-- 	<main role="main" class="container">
 		<div class="content">	
-			<div class="row">	
-				<?php if (isset($properties->category_id) && $properties->category_id ==1){ $cols='8'; } else { $cols = '12'; } ?>
-				<div class="property_view_content col-sm-<?php echo $cols; ?>">
-					<?php //if($properties->category_id==1) : ?>
-						<div class="tabs_view_inner">
-							<?php echo $this->load->view('properties/specific_properties/tabs_view'); ?>
+			<div class="row"> -->	
+				<div class="property_view_content ?>">
+					<?php if($properties->category_id==1) : ?>
+						<div class="container">
+							<div class="tabs_view_inner">
+								<?php echo $this->load->view('properties/specific_properties/tabs_view'); ?>
+							</div>
 						</div>
-					<?php //endif; ?>
+					<?php endif; ?>
 	
 					<?php if($properties->category_id!=1 && $properties->property_slug == "the-galleon") : ?>
-						<div class="inquiry_form_container">
-							<?php echo $this->load->view('messages/messages_form')?>
-						</div>
+							<div class="container">
+								<div class="inquiry_form_container">
+									<?php echo $this->load->view('messages/messages_form')?>
+								</div>
+							</div>
 					<?php endif; ?>
 
 					<?php
 					foreach($division_order as $key => $value){
 
-						if($value->setting_division == 'Overview Description'){
-							echo $this->load->view('properties/specific_properties/properties_overview');
+						if($value->setting_division == 'Overview Description' && $properties->category_id == 1){ 
+
+					?>
+
+						<div class="container">
+							<?php echo $this->load->view('properties/specific_properties/properties_overview'); ?>
+						</div>
+
+					<?php 
+
 						}
+
+
+						if($value->setting_division == 'Slider'){	
+							if($properties->category_id==1){
+						?>
+
+								<div class="container">
+									<?php if(isset($amenities) && $amenities): ?>
+									<div class="row">
+
+										<div class="col-lg-6">
+										<?php endif; ?>
+											<?php  echo $this->load->view('properties/specific_properties/slider_view'); ?>
+										<?php if(isset($amenities) && $amenities): ?>
+										</div>
+
+										<div class="col-lg-6">
+										<?php endif; ?>
+											<?php echo $this->load->view('properties/specific_properties/properties_amenities'); ?>
+
+										<?php if(isset($amenities) && $amenities): ?>
+										</div>
+									</div>
+									<?php endif; ?>
+								</div>
 					
-						if($value->setting_division == 'Amenities'){
-							// if($properties->category_id==1) :
-								echo $this->load->view('properties/specific_properties/properties_amenities');
-							// endif;
-						}				
+						<?php
+							}else{
+						?>
+								<div class="container">
+									<div class="row cont_malls">
+										<div class="col-lg-6">
+											<h2><?php echo $properties->property_name; ?></h2>
+											<?php echo $this->load->view('properties/specific_properties/properties_overview'); ?>
 
-						if($value->setting_division == 'Slider'){
-							echo $this->load->view('properties/specific_properties/slider_view');
+											<a class="default-button" href="<?php echo $properties->property_website; ?>">
+												DISCOVER <?php echo $properties->property_name; ?>
+											</a>
+										</div>
+										<div class="col-lg-6">
+											<?php  echo $this->load->view('properties/specific_properties/slider_view'); ?>
+										</div>
+									</div>
+								</div>
+						<?php
+							}
 						}
+						?>
 
+						<?php
 						if($value->setting_division == 'Locations'){
 							echo $this->load->view('properties/specific_properties/location_view');
 						}
+						?>
+
+						<?php
 						if($value->setting_division == 'Building Floorplan'){
 							// if($properties->category_id==1) :
-								echo $this->load->view('properties/specific_properties/floorplan_view');
+						?>
+							<div class="container">
+								<?php echo $this->load->view('properties/specific_properties/floorplan_view'); ?>
+							</div>
+						<?php
 							// endif;
 						}
 						if($value->setting_division == 'Unit Floorplan'){
 							// if($properties->category_id==1) :
-								echo $this->load->view('properties/specific_properties/unit-type_view');
+						?>
+							<div class="container">
+								<?php echo $this->load->view('properties/specific_properties/unit-type_view'); ?>
+							</div>
+						<?php
 							// endif;
 						}
 						if($value->setting_division == 'Construction Update'){
 							if($properties->category_id==1) :
-								echo $this->load->view('properties/specific_properties/construction_update');
+						?>
+							<div class="container">
+								<?php echo $this->load->view('properties/specific_properties/construction_update'); ?>
+							</div>
+						<?php
 							endif;
 						}
 						if($value->setting_division == 'SEO Content'){
-							echo $this->load->view('properties/specific_properties/seo_content');
+						?>
+							<div class="container">
+								<?php echo $this->load->view('properties/specific_properties/seo_content'); ?>
+							</div>
+						<?php
 						}
 						if($value->setting_division == 'Related News'){
 							// if($properties->category_id==1) :
-								echo $this->load->view('properties/specific_properties/news_related');
+						?>
+							<!-- <div class="container"> -->
+								<?php //echo $this->load->view('properties/specific_properties/news_related'); ?>
+							<!-- </div> -->
+						<?php
 							// endif;
 						}
 						if($value->setting_division == 'Related Residences'){
 							if($properties->category_id==1) :
-								echo $this->load->view('properties/specific_properties/other-residences_view');
-							endif;
+							?>
+							<div class="container">
+								<?php echo $this->load->view('properties/specific_properties/other-residences_view'); ?>
+							</div>
+						<?php
+							endif; 
 						}
 					}
 
 					?>
 
 
-					<?php if($properties->category_id!=1 && $properties->property_slug != "the-galleon") : ?>
-						<div class="inquiry_form_container">
-							<?php echo $this->load->view('messages/messages_form')?>
+					<?php if(/*$properties->category_id!=1 && */$properties->property_slug != "the-galleon") : ?>
+						<div class="container">
+							<div class="inquiry_form_container">
+								<?php echo $this->load->view('messages/messages_form')?>
+							</div>
 						</div>
 					<?php endif; ?>
 						
 				</div>
 
-				<?php if($properties->category_id==1) : ?>
+				<?php /*if($properties->category_id==1) : ?>
 				<style>
 					.inquiry_form .form_container{
 						flex: 100%;
@@ -109,11 +188,11 @@
 					</div>
 				</div>
 
-				<?php endif; ?>
-			</div>
+				<?php endif;*/ ?>
+		<!-- 	</div> -->
 
-		</div>
-	</main>
+		<!-- </div>
+	</main> -->
 </section>
 <script type="text/javascript">
 	var site_url = "<?php echo site_url(); ?>"

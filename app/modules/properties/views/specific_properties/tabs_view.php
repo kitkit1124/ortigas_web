@@ -14,7 +14,8 @@
 	<?php if(isset($floors) && $floors && count($floors) > 1 || isset($room_types) && $room_types) : ?>
 	<div class="<?php echo "col-sm-".$col_cnt; ?> btn_est">
 		<div class="estate_button" data-anchor="properties_overview">
-			<p>INFORMATION</p>
+			<p>OVERVIEW</p>
+			<span>360 Tour, Gallery & Amenities</span>
 		</div>
 	</div>
 	<?php endif; ?>
@@ -22,16 +23,20 @@
 	<?php if(isset($floors) && $floors && count($floors) > 1) : ?>
 	<div class="<?php echo "col-sm-".$col_cnt; ?> btn_est">
 		<div class="estate_button" data-anchor="building-floorplan">
-			<p>BUILDING FLOOR PLAN</p> 
+			<p>BUILDING & UNIT FLOOR PLAN</p> 
+			<span>View Floor Plans & Unit Sizes</span> 
 		</div>
 	</div>
 	<?php endif; ?>
 
 	<?php if(isset($room_types) && $room_types) : ?>
 	<div class="<?php echo "col-sm-".$col_cnt; ?> btn_est">
-		<div class="estate_button" data-anchor="unit-floorplan">
-			<p>UNIT FLOOR PLAN</p>
+		<a href="<?php echo site_url().'properties/construction_timeline_modal?id='.$properties->property_id; ?>" data-target="#modal-lg" data-toggle="modal">
+		<div class="estate_button" data-anchor="#">
+			<p>PROJECT UPDATES</p>
+			<span>Construction Timeline</span>
 		</div>
+		</a>
 	</div>
 	<?php endif; ?>
 

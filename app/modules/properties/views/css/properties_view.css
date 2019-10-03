@@ -92,53 +92,88 @@ h1, p, span, a {
 }
 
 .specific_estate .btn_est:first-child .estate_button{ 
-   background-color: #34644e;
+   background-color: #0a4233;
 }
 
 .specific_estate .btn_est:nth-child(2) .estate_button{ 
-    background-color: #34866b;
+    background-color: #0a4233;
 }
 
 .specific_estate .btn_est:last-child .estate_button{ 
-  background-color: #589980;
+  background-color: #0a4233;
 }
 
-.carousel-indicator_button{
-	border-bottom: 3px solid transparent;
-	margin: 0 10px;
-	object-fit: cover;
-	/*padding-bottom: 3px;*/
-}
+    .carousels #slider img{
+        max-height: 350px;
+    }
 
+    .slider {
+     width: 100%;
+       
+    }
 
+    .slick-slide {
+    }
 
-.carousel-indicator_button.active{
-	/*padding-bottom: 3px;*/
-	/*border-bottom: 3px solid #07793f;*/
-}
+    .slick-slide img {
+      width: 100%;
+      height: 100px !important;
+    }
 
-#slider .carousel-indicators img.slick-current{
+    .slick-prev:before, .slick-next:before {
+        border: 2px solid #00793f;
+        color: #07793f;
+        border-radius: 100%;
+        padding: 2px 3px 3px 3px;
+        font-size: 1rem;
+        opacity: .9;
+        content: none;
+    }
 
-	/*border-bottom: 3px solid #07793f;*/
-}
+    .slick-next, .slick-prev{
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 30px;
+        width: 30px;
+    }
 
-.carousel-indicators {
-	margin-right: 0;
-	margin-left: 0;
-/*	justify-content: flex-end;
-	margin-right: 7px !important;
-	margin-bottom: 14px !important;
-	bottom: 0px !important; */
-}
+    .slick-next,.slick-next:focus, .slick-next:hover{
+        background: url("/data/images/slider_right.png");
+        right: -35px;
+        background-size: contain;
+
+    }
+    .slick-prev, .slick-prev:focus, .slick-prev:hover{
+        background: url("/data/images/slider_left.png");
+        left: -35px;
+        background-size: contain;
+    }
+
+    .slick-next:focus, .slick-next:hover, .slick-prev:focus, .slick-prev:hover{
+        color: unset;
+        outline: 0;
+    }
+
+    .carousels .carousel-indicators {
+        position: initial; 
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .carousels .carousel-indicators img {
+        margin: 10px 2px 10px 2px;
+    }
 
 #unit-floorplan{
 	text-align: center;
 	margin-top: 40px;
 	margin-bottom: 60px;
+	min-height: 450px;
 }
 
 #unit-floorplan h2{
-	color: #07793f;
+	color: #666666;
+	font-family: Gotham-Medium;
+	text-transform: uppercase;
 }
 
 #unit-floorplan a{
@@ -156,6 +191,7 @@ h1, p, span, a {
 #unit-floorplan ul{
 	display: inline-flex;
 	text-align: center;
+	min-height: 34px;
 }
     
 
@@ -181,6 +217,15 @@ h1, p, span, a {
 	border-bottom: 3px solid #07793f;
 }
 
+#unit-floorplan .tab-content>.active{
+	min-height: 320px;
+}
+#unit-floorplan #range_size{
+	color: #666 !important;
+	font-size: .9rem;
+	font-family: Gotham-Medium;
+}
+
 #check_available_button{
 	padding: 20px 30px;
     height: 100px;
@@ -194,9 +239,15 @@ h1, p, span, a {
 }
 
 #building-floorplan{ margin: 60px 0; }
+
+.floorplan_heading {
+	min-height: 360px;
+}
 .floorplan_heading h2{
-	text-align: center;
+	text-align: left;
 	color: #07793f;
+	text-transform: uppercase;
+	font-family: Gotham-Medium
 }
 
 #floorplan_image{
@@ -205,10 +256,9 @@ h1, p, span, a {
 }
 
 #select-floorplan, #select-floorplan2{
-    height: 50px;
-    max-width: 270px;
-    margin: auto;
+    height: 45px;
     font-size: 12px;
+    max-width: 270px;
     padding: 5px 15px;
     border-radius: 0;
 }
@@ -322,7 +372,34 @@ h1, p, span, a {
 }
 
 #other-residences .image_wrapper .image_container img {
-	max-height: 240px;
+	max-height: 375px;
+}
+
+#other-residences .property_desc h5{
+    z-index: 1;
+    text-decoration: none;
+    margin: auto;
+    width: 100%;
+    font-size: 24px;
+    text-align: left;
+    text-decoration: none;
+    color: #666666;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+
+#other-residences .property_desc span{
+    z-index: 1;
+    text-decoration: none;
+    margin: auto;
+    width: 100%;
+    font-size: 14px;
+    text-align: left;
+    text-decoration: none;
+    margin-top: 10px;
+    color: #666666;
+    display: block;
 }
 
 .related_news_title{
@@ -411,7 +488,9 @@ h1, p, span, a {
 
 #location_view h2{
    border-right: 1px solid transparent;
+   text-align: center;
    color: #07793f;
+   font-family: Gotham-Medium;
 }
 
 #location_view h3{
@@ -546,24 +625,32 @@ h1, p, span, a {
 }
 
 .amenities{
-	margin: 40px auto;
+	margin: 20px auto 20px auto;
 	color: #666;
 	text-transform: capitalize;
 }
 .amenities h2{
 	text-align: left;
 	color: #07793f;
+	font-family: Gotham-Medium;
+	text-transform: uppercase;
+	font-size: 1.3rem;
 }
 .amenities i{
 	font-size: 7px;
     top: -3px;
     position: relative;
     margin-right: 10px;
-    color: #07793f;
+    color: #666;
 }
 
 .amenities .row{
 	text-align: left;
+	font-size: .9rem;
+}
+
+.amenities .row div{
+	margin: 5px 0;
 }
 
 .tabs_view_outer{ display: none; }
@@ -596,6 +683,7 @@ h1, p, span, a {
 
 .location_heading{
 	padding: 20px 0;
+	margin: 20px 0;
 }
 
 .estate_logo_div{
@@ -614,6 +702,23 @@ h1, p, span, a {
 .col-sm-6.news_result_container {
     flex: 0 0 100%;
     max-width: 100%;
+}
+
+.cont_malls h2{
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	font-family: Gotham-Medium;
+}
+
+.location_description{
+	max-width: 600px;
+	margin: auto;
+	text-align: center;
+}
+
+.amenities_description{
+	text-align: left;
+	font-size: .85rem;
 }
 
 @media (max-width: 1024px){
@@ -652,6 +757,11 @@ h1, p, span, a {
 	}
 }
 
+@media (max-width: 991px){
+	.amenities .row{
+		margin-left: 20px;
+	}
+}
 @media (max-width: 768px){
 	#location_view div{
 		-ms-flex: 0 0 100%;

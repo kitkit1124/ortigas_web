@@ -351,6 +351,19 @@ class Properties extends MX_Controller {
 		$this->template->render();
 	}
 
+	public function construction_timeline_modal(){
+		// page title
+		$data['page_heading'] = '';
+		$data['page_subhead'] = '';
+		$data['action'] = '';
+
+		$data['content'] = '';
+		
+		$this->template->set_template('modal');
+		$this->template->write_view('content', 'properties/construction_timeline_modal', $data);
+		$this->template->render();
+	}
+
 
 
 }

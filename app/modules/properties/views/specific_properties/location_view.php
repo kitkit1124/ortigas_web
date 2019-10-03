@@ -1,10 +1,11 @@
 <div id="location_view">
 	<?php if($properties->category_id==1) : ?>
-	<div class="row location_heading">
-		<div class="col-sm-4 location_title">
-			<h2>Location</h2>
+	<div class="xrow location_heading">
+		<div class="col-sm-12 location_title">
+			<h2>LOCATION</h2>
+			<p class="location_description"><?php echo $properties->property_location_description; ?></p>
 		</div>
-		<div class="col-sm-8 nearby_link hide">
+		<div class="xcol-sm-8 nearby_link hide">
 			<h3>What's Nearby</h3>
 	
 		    <ul class="nav" role="tablist">
