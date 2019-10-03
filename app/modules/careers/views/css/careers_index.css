@@ -105,8 +105,15 @@
 	margin-top: 8px;
 }
 
+#alldiv .card .card-header {
+	background-color: rgb(245, 245, 245);
+	padding:20px 40px 10px;
+  }
 
-  
+#alldiv .card .card-body {
+	padding:10px 40px 30px;
+  }
+
   .card .details{
 	color: #FFF;
 	top: 35px;
@@ -136,20 +143,21 @@
   
   .card .details p.dtpost{
 	  font-size: .9rem;
-	  margin-bottom: 15px;
+	  margin-bottom: 8px;
   }
   
   .card .details i{
-	  font-size: 1.8rem;
+	  font-size: 1.1rem;
 	  margin-right: 10px;
   }
   
   .card .details p.loc{
-	  font-size: 1.15rem;
+	  font-size: .9rem;
 	  text-transform: capitalize;
 	  font-weight: bold;
 	  color: #07793f;
-	  margin-top: 8px;
+	  margin-top: 3px;
+	  margin-bottom: 10px;
   }
   
 
@@ -172,6 +180,7 @@
 .search_tab{ 
 	margin: 20px 0;
 	text-align: left;
+	background-color:  rgb(245, 245, 245);
 }
 
 input.form-control::placeholder{
@@ -185,6 +194,7 @@ input.form-control::placeholder{
     border: 0;
     border-radius: 0;
     border-bottom: 2px solid #b2b2b2;
+	background-color:  rgb(245, 245, 245);
 }
 
 .search_tab input:focus, .search_tab select:focus{ 
@@ -192,6 +202,7 @@ input.form-control::placeholder{
     outline: none;
     box-shadow: none;
     border-bottom: 2px solid #b2b2b2;
+	background-color:  rgb(245, 245, 245);
 }
 
 .search_tab .default_search{
@@ -215,6 +226,7 @@ input.form-control::placeholder{
 
 .search_tab .button_search{
 
+	min-width: auto !important;
     display: block;
     padding: 8px;
     text-align: center;
@@ -252,8 +264,24 @@ input.form-control::placeholder{
 #clear_search label{
 	cursor:pointer;
 }
+
+#career_search_button{
+	display:none;
+}
 @media(max-width: 991px) {
 	a.default-button{
-		min-width: auto !important;
+		min-width: auto;
+	}
+	a.default-button-2{
+		max-width: 150px !important;
+	}
+	#career_search_button{
+		display:inline;
+	}	
+	#clear_search{
+		text-align: center;
+	}
+	#clear_search span{
+		margin-left: 0px !important;
 	}
 }

@@ -117,6 +117,15 @@
 }
 
 @media(max-width: 990px) {
+	#explore_title{
+		margin-left: 19px;
+	}
+	.footer_content .link{
+		padding: 0px;
+	}
+	.footer_content .subscribe{
+		padding: 0px 10px 0px;
+	}
 	.footer_content .subscribe input{
 		width: 50%;
 	}
@@ -148,12 +157,18 @@
 	}
 
 	.footer_content .subscribe{
-		padding-top: 15px;
+		padding: 0px 35px 0px;
 		border-bottom: 0;
+		text-align: left;
 	}
 
 	.footer_content table{
 		text-align: center;
+		margin: auto;
+	}
+
+	.footer_content table td p{
+		text-align: left;
 		margin: auto;
 	}
 

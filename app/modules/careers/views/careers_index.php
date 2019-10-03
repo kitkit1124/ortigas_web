@@ -13,7 +13,7 @@
 			</div>
 
 			<?php if(isset($careers) && $careers){ ?>
-			 <div class="search_tab">
+			 <div class="search_tab p-3 mb-4">
 				<div class="search_tab_content">
 					<form>
 						<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
@@ -23,25 +23,25 @@
 						</div>
 						<div class="advance_search">
 							<div class="row">
-								<div class="col-md-10">
+								<div class="col-lg-11">
 									<div class="row">
-										<div class="col-md-4 mt-3">
+										<div class="col-lg-4 mt-3">
 											<!-- <label>Select Job Title</label> -->
 											<?php echo form_dropdown('career_id', $select_careers, '', 'id="career_id" class="form-control"'); ?>
 										</div>
-										<div class="col-md-4 mt-3">
+										<div class="col-lg-4 mt-3">
 											<!-- <label>Location</label> -->
 											<?php echo form_dropdown('career_location', $select_locations, '', 'id="career_location" class="form-control"'); ?>
 										</div>
-										<div class="col-md-4 mt-3">
+										<div class="col-lg-4 mt-3">
 											<!-- <label>Departments</label> -->
 											<?php echo form_dropdown('department_id', $select_departments, '', 'id="department_id" class="form-control"'); ?>
 										</div>
 									</div>
 								</div>
-								<div class="col-md-2 mt-3">
+								<div class="col-lg-1 mt-3">
 									<!-- <label>&nbsp;</label> -->
-									<a class="button_search default-button" ><i class="fa fa-search"></i></a>
+									<a class="button_search default-button-2" ><span id="career_search_button">SEARCH </span><i class="fa fa-search"></i></a>
 								</div>
 							</div>
 						</div><!--advance_search-->
@@ -52,7 +52,7 @@
 				</div><!--search_tab_content-->
 			</div><!--search_tab-->
 
-			<div class="page_overview">
+			<div class="page_overview mb-3">
 				<?php if(isset($careers) && $careers){ ?>
 				<label><a class="page_overview_button default-button" data-toggle="modal" data-target="#form_application">Submit Resume</a></label>		
 				<?php } ?>	

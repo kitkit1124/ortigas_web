@@ -750,7 +750,7 @@ div.dataTables_wrapper .page-item.active .page-link{
 }
 
 .no-slider{
-    margin-bottom:4em;
+    margin-bottom:11em;
 }
 
 .subscribe_button_modal{
@@ -801,7 +801,7 @@ p em{
 
 @media(max-width: 1170px) {
     .no-slider{
-        margin-bottom:2em;
+        margin-bottom:7em;
     }
 }
 
