@@ -178,9 +178,10 @@
 										<a href="<?php echo site_url('').'careers/'.$val->career_slug; ?>">
 											<h2><?php echo $val->career_position_title; ?></h2>
 										<!-- <p class="link green"><?php //echo site_url().'careers/'.$val->career_slug; ?></p> -->
-										<!-- <p class="dept"><?php //echo $val->department_name; ?></p> -->
-										<!-- <p class="dtpost"><?php //echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p> -->
-											<p><i class="fa fa-map-marker green" aria-hidden="true"></i>&nbsp;<?php echo $val->career_location; ?></p>
+											<p class="dept"><?php echo $val->department_name; ?></p>
+											<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
+											<p class="loc green"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $val->career_location; ?></p>
+											<!-- <span><i class="fa fa-map-marker green" aria-hidden="true"></i><?php echo $val->career_location; ?></span> -->
 											<a class="green search_link" href="<?php echo site_url('').'careers/'.$val->career_slug; ?>">View Details ></a>
 										</a>
 									</div>
