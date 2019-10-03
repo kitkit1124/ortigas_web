@@ -9,11 +9,11 @@
 
 <div class="default_search row">
 	
-	<span class='ml-3'><label>WHAT ARE YOU LOOKING FOR?</label></span>
-	<div class="col-sm-12 gsearch_labels">
+	<span class='ml-3 font-weight-bold'><label>WHAT ARE YOU LOOKING FOR?</label></span>
+	<div class="col-lg-12 gsearch_labels">
 		<input type="hidden" id="csrf" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 	</div>
-	<div class="col-sm-12 gsearch_inputs">
+	<div class="col-lg-12 gsearch_inputs">
 		<input class="form-control" type="text" aria-label="Search" id="keyword" value="<?php echo isset($_GET['keyword']) ? $_GET['keyword'] : ''?>">
 		<i class="fa fa-search"></i>
 		<div class="global_search_filters">

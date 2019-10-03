@@ -23,9 +23,9 @@
 							if($val->property_modified_on){ $dtraw = $val->property_modified_on; } else { $dtraw = $val->property_created_on; }
 							$dtpost = date_create($dtraw);
 							?>
-								<div class="search_box col-sm-6">
+								<div class="search_box col-lg-6">
 									<div class="row search_properties_row">
-										<div class="estates col-sm-12">
+										<div class="estates col-lg-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 											<div class="image_wrapper">
 												<div class="image_container">
@@ -34,7 +34,7 @@
 											</div>
 											</a>
 										</div>
-										<div class="estates property_details col-sm-12">
+										<div class="estates property_details col-lg-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 												<h2 class="mb-0"><span class="pull-left prop_name"><?php echo $val->property_name; ?></span><span class='pull-right'><h2 class='pull-right estate_name'><?php echo $val->estate_name; ?></h2></span></h2>
 												<h2><span class="category_name"><?php echo $val->category_name; ?></></span></h2>
@@ -58,9 +58,9 @@
 							if($val->property_modified_on){ $dtraw = $val->property_modified_on; } else { $dtraw = $val->property_created_on; }
 							$dtpost = date_create($dtraw);
 							?>
-								<div class="search_box col-sm-6">
+								<div class="search_box col-lg-6">
 									<div class="row search_properties_row">
-										<div class="estates col-sm-12">
+										<div class="estates col-lg-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 											<div class="image_wrapper">
 												<div class="image_container">
@@ -69,7 +69,7 @@
 											</div>
 											</a>
 										</div>
-										<div class="estates property_details col-sm-12">
+										<div class="estates property_details col-lg-12">
 												<h2 class="mb-0"><span class="pull-left prop_name"><?php echo $val->property_name; ?></span><span class='pull-right'><h2 class='pull-right estate_name'><?php echo $val->estate_name; ?></h2></span></h2>
 												<h2><span class="category_name"><?php echo $val->category_name; ?></></span></h2>
 												<div class="property_overview mt-3"><?php echo $val->property_overview; ?></div>
@@ -91,9 +91,9 @@
 							if($val->property_modified_on){ $dtraw = $val->property_modified_on; } else { $dtraw = $val->property_created_on; }
 							$dtpost = date_create($dtraw);
 							?>
-								<div class="search_box col-sm-6">
+								<div class="search_box col-lg-6">
 									<div class="row search_properties_row">
-										<div class="estates col-sm-12">
+										<div class="estates col-lg-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 											<div class="image_wrapper">
 												<div class="image_container">
@@ -102,7 +102,7 @@
 											</div>
 											</a>
 										</div>
-										<div class="estates property_details col-sm-12">
+										<div class="estates property_details col-lg-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 												<<h2 class="mb-0"><span class="pull-left prop_name"><?php echo $val->property_name; ?></span><span class='pull-right'><h2 class='pull-right estate_name'><?php echo $val->estate_name; ?></h2></span></h2>
 												<h2><span class="category_name"><?php echo $val->category_name; ?></></span></h2>
@@ -127,9 +127,9 @@
 						if($val->post_modified_on){ $dtraw = $val->post_modified_on; } else { $dtraw = $val->post_created_on; }
 						$dtpost = date_create($dtraw);
 						?>
-							<div class="search_box col-sm-6">
+							<div class="search_box col-lg-6">
 									<div class="row search_properties_row">
-										<div class="estates col-sm-12">
+										<div class="estates col-lg-12">
 											<a href="<?php echo site_url('').'news/'.$val->post_slug; ?>">
 											<div class="image_wrapper">
 												<div class="image_container">
@@ -138,7 +138,7 @@
 											</div>
 											</a>
 										</div>
-										<div class="estates property_details col-sm-12">
+										<div class="estates property_details col-lg-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->post_slug; ?>">
 												<h2><?php echo $val->post_title; ?></h2>
 												<p class="dtpost"><?php echo 'Date Posted '. date_format($dtpost,"F j, Y"); ?></p>
@@ -163,9 +163,9 @@
 						if($val->career_modified_on){ $dtraw = $val->career_modified_on; } else { $dtraw = $val->career_created_on; }		
 						$dtpost = date_create($dtraw);
 						?>
-							<div class="search_box col-sm-6">
+							<div class="search_box col-lg-6">
 								<div class="row search_properties_row">
-									<div class="estates col-sm-12">
+									<div class="estates col-lg-12">
 										<a href="<?php echo site_url('').'careers/'.$val->career_slug; ?>">
 										<div class="image_wrapper">
 											<div class="image_container">
@@ -174,7 +174,7 @@
 										</div>
 										</a>
 									</div>
-									<div class="estates property_details col-sm-12">
+									<div class="estates property_details col-lg-12">
 										<a href="<?php echo site_url('').'careers/'.$val->career_slug; ?>">
 											<h2><?php echo $val->career_position_title; ?></h2>
 										<!-- <p class="link green"><?php //echo site_url().'careers/'.$val->career_slug; ?></p> -->
