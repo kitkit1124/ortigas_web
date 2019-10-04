@@ -102,6 +102,9 @@ class Categories extends MX_Controller {
         		$meta_title = $this->metatags_model->find($location->location_metatag_id); 
 				$data['page_heading'] = isset($meta_title->metatag_title) ? $meta_title->metatag_title : $location->location_name;
 
+				
+				$data['section_id'] = 0;
+				$data['section'] = $location->location_name;
 
 				$this->template->write_view('content', 'locations_view', $data);
 			}
