@@ -16,6 +16,39 @@
 			<a class="oclogo_img" href="<?php echo site_url(''); ?>">
 				<img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/ortigaslogo.png">
 			</a>
+
+			
+	<div id="new_search" class='d-flex flex-row-reverse align-items-center'>
+				<i class="nav_search_button fa fa-search" aria-hidden="true"></i>
+				<div class="default_search mt-4">
+					<div class="gsearch_inputs">
+						<input class="form-control" type="text" aria-label="Search" id="keyword" placeholder="WHAT ARE YOU LOOKING FOR?" value="<?php echo isset($_GET['keyword']) ? $_GET['keyword'] : ''?>">
+						<div class="global_search_filters mt-0">
+							<span>
+							<input type="radio" id="search_any" class="checkbox-round search_any" name="global_search_filter" value="search_any" checked/>
+							<label for="search_any">Any</label>
+							</span>
+							<span>
+							<input type="radio" id="search_properties" class="checkbox-round search_properties" name="global_search_filter" value="search_properties" />
+							<label for="search_properties">Malls</label>
+							</span>
+							<span>
+							<input type="radio" id="search_properties" class="checkbox-round search_properties" name="global_search_filter" value="search_properties" />
+							<label for="search_properties">Properties</label>
+							</span>
+							<span>
+							<input type="radio" id="search_articles" class="checkbox-round search_articles" name="global_search_filter" value="search_articles" />
+							<label for="search_articles">Articles</label>
+							</span>
+							<span>
+							<input type="radio" id="search_careers" class="checkbox-round search_careers" name="global_search_filter" value="search_careers"/>
+							<label for="search_careers">Careers</label>
+							</span>
+						</div>
+					</div>
+				</div>				
+				<button type="button" class="btn font-weight-bold mr-2" id="back_to_top_button">BACK TO TOP</button>
+			</div>
 			
 			<div class="main_menu" id="main_navbar">
 		<ul class="navbar-nav mr-auto">
@@ -297,9 +330,10 @@
 		</form> -->
 	</div>
 
-		</div>	
-		<div class="nav_search_button">
+
+	<!-- <div class="nav_search_button">
 			<i class="fa fa-search " aria-hidden="true"></i>
+		</div>	 -->
 		</div>	
 	</div>
 

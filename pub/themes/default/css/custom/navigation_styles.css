@@ -94,7 +94,7 @@
     color: #d3d3d3;
     cursor: pointer;
     float: right;
-    margin-top: -66px;
+    margin-top: -110px;
 }
 
 .nav_search_button_mobile{
@@ -570,7 +570,7 @@ ul.ul_sub_menu_categ.owl-carousel .owl-item.active:nth-child(4) {
     margin: 0px;
   }
   #back_to_top_button{
-    background-color: #FFF;
+    /* background-color: #f8f9fa; */
     color: #666;
   }
   #back_to_top_button:focus{
