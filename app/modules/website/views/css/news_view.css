@@ -1,3 +1,10 @@
+#news{
+	margin-top: 200px;
+}
+
+.base_nav{
+	color: #666 !important;
+}
 .news_content{
 	color: #666;
 	text-align: left;

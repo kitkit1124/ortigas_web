@@ -98,7 +98,7 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 				</div>
 			</div>
 		</div>
-		<?php $seo = $this->seo_model->find(4); echo parse_content(html_entity_decode(strip_tags($seo->seo_content)));  ?>
+		<?php //$seo = $this->seo_model->find(4); echo parse_content(html_entity_decode(strip_tags($seo->seo_content)));  ?>
 	</footer>	
 
 	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">

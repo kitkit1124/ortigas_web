@@ -223,6 +223,15 @@ class Properties extends MX_Controller {
 						'image_slider_status' => 'Active'
 					)
 				);
+
+				$data['construction_sliders'] = $this->image_sliders_model->find_all_by(
+					array(
+						'image_slider_section_id'=> $id,
+						'image_slider_section_type'=>'construction',
+						'image_slider_deleted' => 0,
+						'image_slider_status' => 'Active'
+					)
+				);
 				
 				$data['room_types'] = $this->room_types_model->where('room_type_deleted',0)->where('room_type_status','Active')->find_all_by('room_type_property_id', $id);	
 				
@@ -353,17 +362,16 @@ class Properties extends MX_Controller {
 
 	public function construction_timeline_modal(){
 		// page title
-		$data['page_heading'] = '';
-		$data['page_subhead'] = '';
+		$data['page_heading'] = 'Contruction Timeline';
+		$data['page_subhead'] = 'Contruction Timeline';
 		$data['action'] = '';
 
-		$data['content'] = '';
 
 		if($this->input->get('id')):
 			$data['sliders'] = $this->image_sliders_model->find_all_by(
 				array(
 					'image_slider_section_id'=> $this->input->get('id'),
-					'image_slider_section_type'=>'properties',
+					'image_slider_section_type'=>'construction',
 					'image_slider_deleted' => 0,
 					'image_slider_status' => 'Active'
 				)
@@ -371,6 +379,8 @@ class Properties extends MX_Controller {
 		endif;
 		
 		$this->template->set_template('modal');
+		$this->template->add_css(module_css('properties', 'construction_view'), 'embed');
+		$this->template->add_js(module_js('properties', 'construction_view'), 'embed');
 		$this->template->write_view('content', 'properties/construction_timeline_modal', $data);
 		$this->template->render();
 	}
