@@ -95,6 +95,10 @@ table{
 
 .ccc_content{display: none;}
 
+.base_nav{
+	color: #666 !important;
+}
+
 @media (max-width: 1024px){
     .data_privacy .col-sm-4 , .data_privacy .dp_head{
         -ms-flex: 0 0 50%;

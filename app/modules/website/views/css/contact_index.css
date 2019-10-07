@@ -183,6 +183,11 @@ textarea.form-control::placeholder{
     display: inline-block;
 }
 
+#special_contacts img{
+    height:240px;
+    width:565px;
+}
+
 .contact_form span.nomargin{
     margin-left: 0px;
     padding-left: 10px;

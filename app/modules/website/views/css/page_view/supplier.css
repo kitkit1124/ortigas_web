@@ -33,6 +33,22 @@ table h2{
 }
 
 
+.content img{
+    width:80px !important;
+    height:82px;
+    display: block;
+    margin: auto;
+}
+
+.content .col-sm-6 .col-sm-6 p{
+    text-align: center;
+    border: 3px solid #34644e;
+    border-radius: 10px;
+    padding: 25px;
+    margin:3px;
+}
+
+/* 
 @media (max-width: 1024px){
 
 	.content table td{
@@ -53,4 +69,4 @@ table h2{
 	#table3 td{
 		padding: 20px;
 	}
-}
+} */

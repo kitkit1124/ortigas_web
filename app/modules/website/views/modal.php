@@ -14,7 +14,7 @@
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
 		</button>
-		<div class="form mt-3">
+		<div id="modal_subs" class="form mt-3">
 				<center>
 				<?php 
 					$input = '<input type="email" id="subscription_email" placeholder="Enter your E-mail Address">';

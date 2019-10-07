@@ -125,10 +125,34 @@
 	  padding: 0px;
 	   color: #666;
   }
+
+  	#alldiv p.title{
+		line-height: 2.5ex;
+		height: 5ex; /* 2.5ex for each visible line */
+		overflow: hidden;
+	}
+
+	#alldiv p.dept{
+		line-height: 2.5ex;
+		height: 5ex; /* 2.5ex for each visible line */
+		overflow: hidden;
+	}
+
+	#alldiv p.dtpost{
+		line-height: 2.5ex;
+		height: 2.5ex; /* 2.5ex for each visible line */
+		overflow: hidden;
+	}
+
+	#alldiv p.loc{
+		line-height: 2.5ex;
+		height: 5ex; /* 2.5ex for each visible line */
+		overflow: hidden;
+	}
   
   .card .details p.title{
-	  text-transform: uppercase;
-	  font-size: 1.5rem;
+	  	text-transform: uppercase;
+	  	font-size: 1.5rem;
   }
   
   .card .details p.dept{
