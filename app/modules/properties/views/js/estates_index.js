@@ -25,12 +25,16 @@ $(function() {
 				"aTargets": [0],
 				"mRender": function (data, type, full) {
 
+
 					var price ='&nbsp;';
 					if(full[24]){
 						price = full[24].replace("000000","M");
 						price = price.replace("500000",".5M");
 						price = 'PRICE STARTS AT PHP '+ price;
 					}
+
+					if(full[3] == 'Residences'){}
+					else{ price = ""; }
 
 					div =  '<div class="estates properties col-lg-6">';
 						div += '<a href="' + site_url + 'estates/property/' + full[5] +'">';
@@ -44,7 +48,7 @@ $(function() {
 								div += '<div class="property_title">'+ full[1] +'<span><i class="fa fa-map-marker" aria-hidden="true"></i> '+ full[4] + '</span></div>';
 								div += '<div class="estate_title_dup">'+ full[2] +'</div>';
 								div += '<div class="property_price"><i>'+ price +'</i></div>';
-								div += '<div class="estate_content">'+ full[23] +'</div>';
+								div += '<div class="estate_content">'+ full[23].replace(/<[^>]*>?/gm, ''); +'</div>';
 							div += '</div>'; //property_content_wrapper
 					
 						div += '</a>';

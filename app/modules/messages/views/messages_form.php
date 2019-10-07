@@ -24,7 +24,7 @@
 
 	<div class="form_container">
 		<!-- <label for="inquiry_message">Your Message*</label> -->
-		<?php echo form_textarea(array('id'=>'inquiry_message', 'name'=>'inquiry_message', 'rows'=>'1', 'value'=>set_value('inquiry_message', isset($record->inquiry_message) ? $record->inquiry_message : '', false), 'class'=>'form-control','placeholder'=>'Your Message*')); ?>
+		<?php echo form_textarea(array('id'=>'inquiry_message', 'name'=>'inquiry_message', 'rows'=>'3', 'value'=>set_value('inquiry_message', isset($record->inquiry_message) ? $record->inquiry_message : '', false), 'class'=>'form-control','placeholder'=>'Your Message*')); ?>
 		<div id="error-message_content" class="error_field"></div>
 	</div>
 	

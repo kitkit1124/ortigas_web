@@ -1,5 +1,10 @@
 img.not_found_img{ width: 100%; max-width: 400px; margin: 20px auto 40px auto;}
-
+.content{
+	margin-top: 200px;
+}
+.base_nav{
+	color: #666 !important;
+}
 .content p{
 	color: #07793f;
 	font-size: 1.1rem;

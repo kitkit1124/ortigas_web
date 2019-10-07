@@ -419,7 +419,7 @@ animation-delay: 1.25s;
 
 .sub_menu_categ ul.ul_sub_menu_categ span{
   margin-top: 15px;
-  display: inline-block;
+  display: block;
 }
 
 .owl-stage{

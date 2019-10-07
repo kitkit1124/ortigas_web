@@ -74,7 +74,7 @@
 				</div>
 				<div class="col-lg-4">
 					<a class="oclogo_img" href="<?php echo site_url(''); ?>">
-						<img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/ortigaslogo.png">
+						<img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/ortigaslogo-white.png">
 					</a>
 				</div>
 				<div class="col-lg-4">

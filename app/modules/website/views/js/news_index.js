@@ -20,6 +20,10 @@ $(function() {
 		q_string = '?qdate='+param_date;
 	}
 
+	$('.news_filter').change(function(){
+		location.href = $(this).val();
+	});
+
 
   	var oTable = $('#dt-images').dataTable({
 		"bProcessing": false,

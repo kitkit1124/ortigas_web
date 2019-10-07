@@ -8,14 +8,19 @@
 					<h2 class="news_title">What's New in Ortigas and Company</h2>
 					<p class="news_filter_label">Filter by Category:</p>
 					<div class="news_filter_container">
-						<a class="news_filter" data-id="0" href="/news">ALL</a>
+						<select class="news_filter">
+						<option data-id="0" value="/news">ALL</a>
+						
 						<?php
 						if($news_tags){
 							foreach ($news_tags as $key => $value) { ?>
-								<a href="/news/tags/<?php echo $value->news_tag_slug; ?>" class="news_filter" data-id = "<?php echo $value->news_tag_id; ?>"><?php echo $value->news_tag_name; ?></a>
+								<option value="/news/tags/<?php echo $value->news_tag_slug; ?>" class="news_filter" 
+									<?php echo (uri_string() == 'news/tags/'.$value->news_tag_slug) ? 'selected' : ''; ?>
+									data-id = "<?php echo $value->news_tag_id; ?>"> <?php echo $value->news_tag_name; ?></option>
 						<?php 
 							} 
 						} ?>
+						</select>
 					</div>
 
 					<div class="news_border"></div>

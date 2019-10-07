@@ -312,6 +312,8 @@ function img_selector(img,size)
 function default_theme(){
     $(".navi-bar").css({"background-color": "#f8f9fa", "border-bottom":"1px solid #C0C0C0"});
 
+    $('.oclogo_img img').attr('src',upload_url+'/data/images/ortigaslogo.png')
+
     if(nav_color_theme=="White"){
         // $(".oclogo img").css({"filter": "unset"});
         $("a.nav-link.base_nav.nav_estates").css({"color": "#646263"});
@@ -320,18 +322,40 @@ function default_theme(){
     }
 }
 
+
+
 function white_theme(){
     $(".navi-bar").css({"background-color": "transparent", "border-bottom":"1px solid transparent"});
+
+    
 
     if(nav_color_theme=="White"){
     // $(".oclogo img").css({"filter": "brightness(0) invert(1)"});
     $("a.nav-link.base_nav.nav_estates").css({"color": "#FFF"});
     $(".nav_search_button i, .nav_close_button i").css({"color": "#FFF"});
-    //$(".navbar-nav li.base_nav_li:last-child a").css({"border": "2px solid #FFF"});
+    //$(".navbar-nav li.base_nav_li:last-child a").css({"border": "2px solid #FFF"});    
     }
+
+    nav_color_override();
 }
 
+nav_color_override();
 
+function nav_color_override(){
+    if(uri_string == 'oclp-data-privacy-policy' || (uri_string.includes("careers") == true && uri_string.length > 8) || (uri_string.includes("news") == true && uri_string.length > 5) ){
+        $('.oclogo_img img').attr('src',upload_url+'/data/images/ortigaslogo.png');
+        $("a.nav-link.base_nav.nav_estates").css({"color": "#646263"});
+        $(".nav_search_button i, .nav_close_button i").css({"color": "#d3d3d3"});
+        if(uri_string.includes("news/tags") == true){
+            $('.oclogo_img img').attr('src',upload_url+'/data/images/ortigaslogo-green-white.svg')
+            $("a.nav-link.base_nav.nav_estates").css({"color": "#FFF"});
+            $(".nav_search_button i, .nav_close_button i").css({"color": "#FFF"});
+        }
+    }
+    else{
+        $('.oclogo_img img').attr('src',upload_url+'/data/images/ortigaslogo-green-white.svg')
+    }
+}
 
 function transparent_nav(){
     if($(window).width() > 1170) {
@@ -339,8 +363,10 @@ function transparent_nav(){
             $('#back_to_top_button').fadeIn(500);
             $('.main_menu').css('display','');
             default_theme();
+             
         }
         else{
+             
             $('#back_to_top_button').fadeOut(500);
             $('.main_menu').css('display','block');
              $('.oclogo:hover li.nav-item.base_nav_li').css('animation-name','');
