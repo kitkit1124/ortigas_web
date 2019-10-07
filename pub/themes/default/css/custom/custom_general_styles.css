@@ -756,7 +756,7 @@ div.dataTables_wrapper .page-item.active .page-link{
 }
 
 .no-slider{
-    margin-bottom:11em;
+    margin-bottom:13em;
 }
 
 .subscribe_button_modal{
@@ -771,17 +771,34 @@ div.dataTables_wrapper .page-item.active .page-link{
 	cursor: pointer;
 	margin-left: 0 !important; 
 	margin-right: 0 !important; 
+	margin-top: 15px !important; 
 	border: 1px solid #fff;
 }
 
 #subscription_email{
     padding: 2px;
     font-size: 1.5rem;
-    height: 50px;
+    height: 65px;
     border: 2px solid #0a4233;
     width: 100%;
-    padding-left: 15px !important;
+    padding-left: 20px !important;
+    margin-top:10px;
+    margin-bottom:0px;
 }
+
+#subscription_email::placeholder{
+    color: rgb(187, 187, 187);
+}
+
+#modal_subs tr:nth-child(2) p{
+    padding: 0px 100px 0px !important;
+}
+
+#modal_subs tr:nth-child(4) td{
+    padding: 0px 20px 0px;
+    line-height: 80%;
+}
+
 
 .w-40{
     width:40%;

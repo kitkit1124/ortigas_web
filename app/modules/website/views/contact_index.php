@@ -136,7 +136,10 @@
 					
 				</div>
 			</div>
-			<div class="col-md-6 text-left">
+			<div id="special_contacts" class="container-fluid text-left">
+				<?php echo parse_content($page_content->page_rear_content); ?>
+			</div>
+			<!-- <div class="col-md-6 text-left">
 				<div>
 					<img class="lazy w-100" data-src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/corporate_contact.PNG" draggable="false" alt="Corporate Contact" title="Corporate Contact"/>
 				</div>
@@ -153,7 +156,7 @@
 					International Sales USA Toll-free Number<br/>
 					1-800-459-2137<br/>
 				</p>
-			</div>
+			</div> -->
 		</div>
 
 
