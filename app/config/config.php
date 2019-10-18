@@ -46,6 +46,7 @@ $config['cache_drivers'] = array('adapter' => getenv('CACHE_ADAPTER'), 'backup' 
 // NOTE: Do not change this unless it's a new project. 
 //       Please configure your web server to use this path
 $config['base_url'] = getenv('BASE_URL');
+//$config['assets_url'] = getenv('UPLOAD_ROOT');
 
 /*
 |--------------------------------------------------------------------------
@@ -461,14 +462,15 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_regenerate' = Regenerate token on every submission
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
-$config['csrf_protection'] = TRUE;
+$config['csrf_protection'] = FALSE;
 $config['csrf_token_name'] = PREFIX . 'csrf_token';
 $config['csrf_cookie_name'] = 'csrf_cookie';
 $config['csrf_expire'] = 3600; // 7200;
 $config['csrf_regenerate'] = FALSE;
 $config['csrf_exclude_uris'] = array(
 	'files/images/upload',
-	'users/roles/update_access'
+	'users/roles/update_access',
+	'reservations/submit/',
 	// TODO: implement csrf here
 	// 'website/navigations/save',
 );
