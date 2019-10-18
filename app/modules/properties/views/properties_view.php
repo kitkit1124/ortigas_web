@@ -6,7 +6,7 @@
 <!-- 	<main role="main" class="container">
 		<div class="content">	
 			<div class="row"> -->	
-				<div class="property_view_content ?>">
+				<div id="property_view_content" class="property_view_content ?>">
 					<?php if($properties->category_id==1) : ?>
 						<div class="container">
 							<div class="tabs_view_inner">

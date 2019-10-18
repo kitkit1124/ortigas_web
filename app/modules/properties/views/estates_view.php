@@ -80,7 +80,7 @@
 			</div>-->
 			<div class="cat_heading">
 				<div class="cat_title"><h2><?php echo $category_residence->category_name; ?></h2></div>
-				<div class="cat_desc"><?php echo $category_residence->category_snippet_quote; ?></div>
+				<div class="cat_desc"><?php echo strip_tags($category_residence->category_snippet_quote); ?></div>
 			</div>
 			<div class="row residences_div">
 				<?php foreach ($residences as $key => $val) { ?>
@@ -94,7 +94,7 @@
 							</div>
 							<div class="property_desc">
 								<h5><?php echo $val->property_name; ?></h5>
-								<span><?php echo $val->property_snippet_quote; ?></span>
+								<span><?php echo strip_tags($val->property_snippet_quote); ?></span>
 							</div>
 							</a>
 						</div>
@@ -109,7 +109,7 @@
 		<div class="content_residence">
 			<div class="cat_heading">
 				<div class="cat_title"><h2><?php echo $category_mall->category_name; ?></h2></div>
-				<div class="cat_desc"><?php echo $category_mall->category_snippet_quote; ?></div>
+				<div class="cat_desc"><?php echo strip_tags($category_mall->category_snippet_quote); ?></div>
 			</div>
 			<div class="row residences_div">
 				<?php foreach ($malls as $key => $val) { ?>
@@ -123,7 +123,7 @@
 							</div>
 							<div class="property_desc">
 								<h5><?php echo $val->property_name; ?></h5>
-								<span><?php echo $val->property_snippet_quote; ?></span>
+								<span><?php echo strip_tags($val->property_snippet_quote); ?></span>
 							</div>
 							</a>
 						</div>
@@ -138,7 +138,7 @@
 		<div class="content_residence">
 			<div class="cat_heading">
 				<div class="cat_title"><h2><?php echo $category_office->category_name; ?></h2></div>
-				<div class="cat_desc"><?php echo $category_office->category_snippet_quote; ?></div>
+				<div class="cat_desc"><?php echo strip_tags($category_office->category_snippet_quote); ?></div>
 			</div>
 			<div class="row residences_div">
 				<?php foreach ($offices as $key => $val) { ?>
@@ -152,7 +152,7 @@
 							</div>
 							<div class="property_desc">
 								<h5><?php echo $val->property_name; ?></h5>
-								<span><?php echo $val->property_snippet_quote; ?></span>
+								<span><?php echo strip_tags($val->property_snippet_quote); ?></span>
 							</div>
 							</a>
 						</div>

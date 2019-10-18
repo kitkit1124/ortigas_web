@@ -1,0 +1,19 @@
+.contruction{
+	width: 90%;
+    margin: auto;
+    height: 350px;
+}
+
+.contruction img{
+	width: 100%;
+	height: 350px;
+	object-fit: cover;
+}
+
+   .slick-dots li button:before
+    {
+        font-family: 'slick';
+        font-size: 30px;
+        line-height: 20px;
+        ...
+    }
