@@ -34,41 +34,6 @@ class Reservations extends MX_Controller {
 	{
 		return Key::loadFromAsciiSafeString($key);
 	}
-	public function decode()
-	{
-		$encoded= explode(" ",'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48U2VydmljZVJlc3BvbnNlV1BGIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiPjxhcHBsaWNhdGlvbj48bWVyY2hhbnRpZD4wMDAwMDAwMzAxMTk5RThEQjgwQjwvbWVyY2hhbnRpZD48cmVxdWVzdF9pZD4xMTM2MzI2PC9yZXF1ZXN0X2lkPjxyZXNwb25zZV9pZD4xNDQzOTg5Mzg5MTg5MjM2NTU0NTwvcmVzcG9uc2VfaWQ PHRpbWVzdGFtcD4yMDE5LTEwLTE4VDA5OjAxOjAwLjAwMDAwMCswODowMDwvdGltZXN0YW1wPjxyZWJpbGxfaWQgLz48c2lnbmF0dXJlPmEyODE4ZDM4ZDUwZDRlNDM3ZDI1M2I2ZDk1NDgxMzU5ZjMwMzkyMmUyZmM2Mzg1ZGY1ZTcxOTczYjE2ZjhkOTM1MTQzMGI0MDgyYTU2NzE5MmQyZWU0MzBhZTdmODdiZTUxMzFlNGFmNTExYjcyNTMxNTY3YTE2YmIxZTRhOWM0PC9zaWduYXR1cmU PHB0eXBlIC8 PC9hcHBsaWNhdGlvbj48cmVzcG9uc2VTdGF0dXM PHJlc3BvbnNlX2NvZGU R1IwNTM8L3Jlc3BvbnNlX2NvZGU PHJlc3BvbnNlX21lc3NhZ2U VHJhbnNhY3Rpb24gY2FuY2VsbGVkIGJ5IHVzZXIuPC9yZXNwb25zZV9tZXNzYWdlPjxyZXNwb25zZV9hZHZpc2U VGhlIHRyYW5zYWN0aW9uIHdhcyBjYW5jZWxsZWQgYnkgdGhlIHVzZXIuPC9yZXNwb25zZV9hZHZpc2U PHByb2Nlc3Nvcl9yZXNwb25zZV9pZCAvPjxwcm9jZXNzb3JfcmVzcG9uc2VfYXV0aGNvZGUgLz48L3Jlc3BvbnNlU3RhdHVzPjxzdWJfZGF0YSAvPjx0cmFuc2FjdGlvbkhpc3Rvcnk PHRyYW5zYWN0aW9uIC8 PC90cmFuc2FjdGlvbkhpc3Rvcnk PC9TZXJ2aWNlUmVzcG9uc2VXUEY ');
-
-
-		$strxml = "";
-		for ($i=0; $i < count($encoded); $i++) { 
-			$decoded = base64_decode($encoded[$i]);
-			$count = count($encoded) - 1;
-			$strxml .= $decoded.($count == $i ?'' : '>');
-		}
-
-		$xml = simplexml_load_string($strxml);
-		$json = json_encode($xml);
-		$array = json_decode($json,TRUE);
-		$a = array();
-		foreach ($array as $key ) {
-			foreach ($key as $k => $val) {
-				$a[$k] = $val;
-			}	
-		}
-		extract($a);
-		echo '<pre>';
-		print_r($a);
-		echo '</pre>';
-		$data = array(
-			'payment_reservation_id' => $request_id,
-			'payment_paynamics_no' => $response_id,
-			'payment_encoded_details'=> 'test',//$this->input->post('paymentresponse'),
-			'payment_status' => $response_message,
-			'payment_type' => (isset($ptype)  ? (is_array($ptype) ? 'N/A': $ptype) : 'N/A')
-				
-			);
-		$this->payments_model->insert($data);
-	} 
 
     public function form($ref_no = null)
 	{
@@ -161,7 +126,8 @@ class Reservations extends MX_Controller {
 		
 	}
 
-	Public function getUserIpAddr(){
+	Public function getUserIpAddr()
+	{
 
     if(!empty($_SERVER['HTTP_CLIENT_IP'])){
         //ip from share internet
@@ -173,40 +139,12 @@ class Reservations extends MX_Controller {
         $ip = $_SERVER['REMOTE_ADDR'];
     }
     return $ip;
-}
-
-	Public function accept_terms() {
-
-    if (isset($_POST['agreement'])) return true;
-   	 $this->form_validation->set_message('agreement', 'Please read and accept our terms and conditions.');
-   	 return false;
 	}
+
 
 	Public function submit()
 	{
-		//PERSONAL DETAILS
 		
-		// $this->form_validation->set_rules('firstname', 'First Name', 'required');
-		// $this->form_validation->set_rules('lastname', 'Last Name', 'required');
-		// $this->form_validation->set_rules('phonenumber', 'Phone Number', 'required');
-		// $this->form_validation->set_rules('mobilenumber', 'Mobile Number', 'required');
-		// $this->form_validation->set_rules('email', 'Email Address', 'required');
-		// $this->form_validation->set_rules('idtype', 'ID Type', 'required');
-		// $this->form_validation->set_rules('idnumber', 'ID Number', 'required');
-		// $this->form_validation->set_rules('country', 'Country', 'required');
-		// $this->form_validation->set_rules('house_no', 'House Number', 'required');
-		// $this->form_validation->set_rules('street', 'Street', 'required');
-		// $this->form_validation->set_rules('city', 'Cityr', 'required');
-		// $this->form_validation->set_rules('barangay', 'Barangay', 'required');
-		// $this->form_validation->set_rules('postal_zip', 'Zip Postal Code', 'required');
-		// //PROPERTY RESERVATION DETAILS
-		// $this->form_validation->set_rules('project', 'Project', 'required');
-		// $this->form_validation->set_rules('sellers_group', 'Sellers_Group', 'required');
-		// $this->form_validation->set_rules('allocation', 'Allocation', 'required');
-		// $this->form_validation->set_rules('unit_details', 'unit_details', 'required');
-		// $this->form_validation->set_rules('reservation_fee', 'Reservation Fee', 'required');
-		// $this->form_validation->set_rules('notes', 'Notes', 'required');
-		// //BILLING ADDRESS DETAILS
 		$this->form_validation->set_rules('billing_country', 'Country', 'required');
 		$this->form_validation->set_rules('billing_house_no', 'House Number', 'required');
 		$this->form_validation->set_rules('billing_street', 'Billing Street', 'required');
@@ -229,17 +167,13 @@ class Reservations extends MX_Controller {
 	$data['requestid'] 	= $this->input->post('reference_no');
 	$data['ipaddress'] 	= $this->getUserIpAddr();
 	$data['noturl'] 	= base_url('reservations/notif'); // url where response is posted
-	$data['resurl'] 	= base_url('reservations/return'); //url of merchant landing page
-	$data['cancelurl'] 	= base_url('reservations/cancel'); //url of merchant landing page
+	$data['resurl'] 	= base_url('reservations/payment_callback'); //url of merchant landing page
+	$data['cancelurl'] 	= base_url('reservations/payment_cancel'); //url of merchant landing page
 	$data['fname'] 		= $this->input->post('firstname'); 
-	// $data['mname'] 		= "d"; 
+
 	$data['lname'] 		= $this->input->post('lastname');
-	//$data['addr1'] 		= $this->input->post('house_no') .' '.$this->input->post('street');
-	//$data['addr2'] 		= $this->input->post('barangay'); 
-	//$data['city'] 		=  $this->input->post('city'); 
+	
 	$data['state'] 		= ""; 
-	//$data['country'] 		= $this->input->post('country'); 
-	//$data['zip'] 			= $this->input->post('postal_zip'); 
 	$data['sec3d'] 		= "enabled"; 
 	if($this->input->post('biller_email'))
 	{
@@ -265,26 +199,17 @@ class Reservations extends MX_Controller {
 	$data['barangay'] =  $this->input->post('billing_barangay');
 	$data['zip'] =  $this->input->post('billing_postal_zip');
 	$data['project'] =  $this->input->post('project');
-	 // echo '<pre>';
-	 // print_r($data);
-	 // echo '</pre>';
-	 // exit;
+
 	extract($data);
       $forSign = $mid . $requestid . $ipaddress . $noturl . $resurl .  $fname . $lname . $addr1 . $addr2 . $city . $state . $country . $zip . $email . $phone . $clientip . $amount . $currency . $sec3d;
 			$cert = "FD2CE586D02AEC25B87D392AF95D69DB"; 
 
-			// $_mid . "<hr />";
-			//echo $cert . "<hr />";
-			//echo $forSign . "<hr />";
-
+			
 
       $_sign = hash("sha512", $forSign.$cert);
 		      
       $xml = $this->create_xml($_sign,$data);
-// echo '<pre>';
-// 	print_r($_sign);
-// 	echo '</pre>';
-// 	exit;
+
 		$form = '<form name="paygate_frm" method="POST" action="https://testpti.payserv.net/webpayment/default.aspx">';
         $form .= '<input type="hidden" name="paymentrequest" value="' . $xml . '">';
         $form .= '</form>';
@@ -292,7 +217,7 @@ class Reservations extends MX_Controller {
         echo $form;
 	 
 	}
-	public function cancel()
+	public function payment_cancel()
 	{	
 		$data['page_heading'] = 'Payment Cancelled';
 		$data['page_subhead'] = lang('index_subhead');
@@ -354,7 +279,7 @@ class Reservations extends MX_Controller {
 			);
 		$this->payments_model->insert($data);
 	}
-	public function return()
+	public function payment_callback()
 	{	
 		
 		$data['page_subhead'] = lang('index_subhead');
@@ -386,6 +311,7 @@ class Reservations extends MX_Controller {
 		$this->template->render();
 		 
 	}
+
 	Public function create_xml($_sign,$data)
 	{
 				$xmlstr = "";
