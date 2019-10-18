@@ -155,8 +155,6 @@ class Reservations extends MX_Controller {
 		$this->form_validation->set_message('required', 'This field is required');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
 
-		$this->form_validation->set_rules('agreement', '...', 'callback_accept_terms');
-
 		if ($this->form_validation->run($this) == FALSE)
 		{
 			
