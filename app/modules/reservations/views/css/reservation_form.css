@@ -1,0 +1,248 @@
+
+
+label{
+	font-size: 12px;
+    font-weight: 600;
+}
+body{
+font-family: Gotham-Book;
+}
+.header_logo{
+	width: 	30%;
+}
+input,select,textarea{
+ border-radius: 0px !important;
+}
+.border-left-line{
+  border-left: 1px solid #0a4233;
+}
+.border-line{
+  border: 4px solid #0a4233;
+  height: 100%;
+  padding-bottom: 5%;
+}
+.secondrow > .row >.col-sm > .form-group > input {
+ background-color: 	#f2f2ed;
+}
+.secondrow > .row >.col-sm > .form-group > select {
+ background-color: 	#f2f2ed;
+}
+.secondrow > .form-group > textarea {
+ background-color: 	#f2f2ed;
+}
+
+
+
+.img-responsive {
+    width: auto;
+    height: 50px;
+	 vertical-align: middle;
+}
+.fit-image{
+width: 100%;
+object-fit: cover;
+ vertical-align: middle;
+/*height: 300px;  only if you want fixed height */
+}
+.col{
+background-color: 	#fff;
+padding: 	2%;
+ vertical-align: middle;
+}
+.property {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  /* no standardized syntax available, no ie-friendly solution available */
+}
+
+select + i.fa {
+  float: right;
+  margin-top: -30px;
+  //margin-right: 5px;
+  /* this is so when you click on the chevron, your click actually goes on the dropdown menu */
+  pointer-events: none;
+  /* everything after this is just to cover up the original arrow */
+  /* (for browsers that don't support the syntax used above) */
+  
+  padding-right: 5px;
+}
+.disclaimer-box{
+margin-right:5%;padding-left:3%;padding-right:3%;padding-top:3% 
+}
+.form-checkbox input {
+  padding: 0;
+  height: initial;
+  width: initial;
+  margin-bottom: 0;
+  display: none;
+  cursor: pointer;
+}
+
+.form-checkbox label {
+  position: relative;
+  cursor: pointer;
+}
+
+.form-checkbox label:before {
+  content:'';
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 2px solid #0079bf;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.form-checkbox input:checked + label:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 9px;
+  width: 6px;
+  height: 14px;
+  border: solid #0079bf;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.selectwidth{
+/*width: 8vw;*/
+}
+.bg {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+input[type=checkbox] + label {
+  display: block;
+  margin: 0.2em;
+  cursor: pointer;
+  padding: 0.2em;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox] + label:before {
+    content: "\2714";
+    border: 0.09em solid #d8cdcd;
+    border-radius: 0;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    padding-left: 0.3em;
+    padding-bottom: 0.4em;
+    margin-right: 0.3em;
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s;
+}
+
+.agreement + label:before {
+    content: "\2714";
+	background-color: #fff;
+    border: 0.1em solid #fff !important;
+    border-radius: 0;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    padding-left: 0.3em;
+    padding-bottom: 0.4em;
+    margin-right: 0.3em;
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s;
+}
+
+
+input[type=checkbox] + label:active:before {
+  transform: scale(0);
+}
+
+input[type=checkbox]:checked + label:before {
+  background-color: #12402d;
+  border-color: #12402d;
+  color: #fff;
+}
+
+input[type=checkbox]:disabled + label:before {
+  transform: scale(1);
+  border-color: #aaa;
+}
+
+input[type=checkbox]:checked:disabled + label:before {
+  transform: scale(1);
+  background-color: #0079bf;
+  border-color: #0079bf;
+}
+
+.submit_button{
+	margin-top:2%;
+	border-radius:0px;
+	background-color: #6b8577;
+	border:6px solid #fff;
+	font-size:12px;
+	padding:1% 4% 1% 4%;
+	font-weight: 600;
+}
+.font-29px{
+	font-size: 29px;
+}
+.font-18-9px{
+	font-size: 18.9px;
+}
+.font-17px{
+	font-size: 17px;
+}
+.font-14px{
+	font-size: 14px;
+}
+.font-13px{
+	font-size: 13px;
+}
+.font-12px{
+	font-size: 12px;
+}
+.font-11px{
+	font-size: 11px;
+}
+.font-9px{
+	font-size: 9px;
+}
+
+
+@media screen and (max-width: 600px) {
+ .disclaimer-box{
+		margin-right:0% !important; 
+		}
+	.border-left-line{
+  border-left: 1px solid #fff;
+}
+	.card-title{
+				font-size: 	16px;
+	}		
+	.m-t-15pc{
+		margin-top: 15%;
+	}
+}
+@media screen and (max-width: 990px) {
+ .disclaimer-box{
+		margin-right:0% !important; 
+		}
+	.border-left-line{
+  border-left: 1px solid #fff;
+}
+	.card-title{
+font-size: 	16px;
+		}
+}

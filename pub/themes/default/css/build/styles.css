@@ -10368,6 +10368,7 @@ body {
     color: black;
 }
 
+/* This is a compiled file, you should be editing the file in the templates directory */
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;
@@ -10381,7 +10382,7 @@ body {
 }
 
 .pace .pace-progress {
-  background: #06713c;
+  background: #22df80;
   position: fixed;
   z-index: 2000;
   top: 0;
@@ -10396,7 +10397,7 @@ body {
   right: 0px;
   width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px #06713c, 0 0 5px #06713c;
+  box-shadow: 0 0 10px #22df80, 0 0 5px #22df80;
   opacity: 1.0;
   -webkit-transform: rotate(3deg) translate(0px, -4px);
   -moz-transform: rotate(3deg) translate(0px, -4px);
@@ -10414,8 +10415,8 @@ body {
   width: 14px;
   height: 14px;
   border: solid 2px transparent;
-  border-top-color: #06713c;
-  border-left-color: #06713c;
+  border-top-color: #22df80;
+  border-left-color: #22df80;
   border-radius: 10px;
   -webkit-animation: pace-spinner 400ms linear infinite;
   -moz-animation: pace-spinner 400ms linear infinite;
@@ -10444,6 +10445,7 @@ body {
   0% { transform: rotate(0deg); transform: rotate(0deg); }
   100% { transform: rotate(360deg); transform: rotate(360deg); }
 }
+
 /**
  * Owl Carousel v2.3.4
  * Copyright 2013-2018 David Deutsch
