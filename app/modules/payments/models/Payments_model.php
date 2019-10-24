@@ -54,4 +54,6 @@ class Payments_model extends BF_Model {
 					->join('users as modifier', 'modifier.id = payment_modified_by', 'LEFT')
 					->datatables($fields);
 	}
+
+	
 }
