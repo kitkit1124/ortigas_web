@@ -5,7 +5,15 @@ function IsEmail(email) {
   if(!regex.test(email)) {
     return false;
   }else{
-    return true;
+	
+	if(email.length < 1 || email.length > 50) 
+	{
+		return false;		
+	}
+	
+     return true;
+
+	// }
   }
 }
 	$('#form-submit').click(function(e){
