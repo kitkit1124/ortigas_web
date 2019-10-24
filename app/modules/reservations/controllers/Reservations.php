@@ -145,12 +145,12 @@ class Reservations extends MX_Controller {
 	Public function submit()
 	{
 		
-		$this->form_validation->set_rules('billing_country', 'Country', 'required');
-		$this->form_validation->set_rules('billing_house_no', 'House Number', 'required');
-		$this->form_validation->set_rules('billing_street', 'Billing Street', 'required');
-		$this->form_validation->set_rules('billing_city', 'Billing City', 'required');
-		$this->form_validation->set_rules('billing_barangay', 'Billing Barangay', 'required');
-		$this->form_validation->set_rules('billing_postal_zip', 'Zip Postal Code', 'required');
+		$this->form_validation->set_rules('billing_country', 'Country', 'required|max_length[50]');
+		$this->form_validation->set_rules('billing_house_no', 'House Number', 'required|max_length[50]');
+		$this->form_validation->set_rules('billing_street', 'Billing Street', 'required|max_length[50]');
+		$this->form_validation->set_rules('billing_city', 'Billing City', 'required|max_length[50]');
+		$this->form_validation->set_rules('billing_barangay', 'Billing Barangay', 'required|max_length[50]');
+		$this->form_validation->set_rules('billing_postal_zip', 'Zip Postal Code', 'required|max_length[50]');
 
 		$this->form_validation->set_message('required', 'This field is required');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
