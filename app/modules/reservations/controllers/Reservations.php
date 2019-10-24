@@ -151,6 +151,8 @@ class Reservations extends MX_Controller {
 		$this->form_validation->set_rules('billing_city', 'Billing City', 'required|max_length[50]');
 		$this->form_validation->set_rules('billing_barangay', 'Billing Barangay', 'required|max_length[50]');
 		$this->form_validation->set_rules('billing_postal_zip', 'Zip Postal Code', 'required|max_length[50]');
+		
+
 
 		$this->form_validation->set_message('required', 'This field is required');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

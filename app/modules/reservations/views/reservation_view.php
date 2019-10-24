@@ -198,7 +198,7 @@
 				<div class="form-group">
 					<label for="billing_country" class="font-11px">COUNTRY</label>
 				
-					<?php $options = create_dropdown('array', ',PHILIPPINES,THAILAND,SINGAPORE,TAIWAN'); ?>					
+					<?php $options = create_dropdown('array', ',Philippines,Thailand,SINGAPORE,Taiwan'); ?>					
 					<?php  echo form_dropdown('billing_country', $options, set_value('billing_country', isset($reservations->customer_billing_country) ? $reservations->customer_billing_country : ''), 'id="billing_country" class="form-control property" '); ?>
 					<i class="fa fa-angle-down"></i>
 					<?php echo form_error('billing_country'); ?>
