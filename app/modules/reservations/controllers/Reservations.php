@@ -151,7 +151,7 @@ class Reservations extends MX_Controller {
 		$this->form_validation->set_rules('billing_city', 'Billing City', 'required|max_length[50]');
 		$this->form_validation->set_rules('billing_barangay', 'Billing Barangay', 'required|max_length[50]');
 		$this->form_validation->set_rules('billing_postal_zip', 'Zip Postal Code', 'required|max_length[50]');
-		
+
 
 
 		$this->form_validation->set_message('required', 'This field is required');
@@ -174,7 +174,7 @@ class Reservations extends MX_Controller {
 	$data['lname'] 		= $this->input->post('lastname');
 	
 	$data['state'] 		= ""; 
-	$data['sec3d'] 		= "enabled"; 
+	$data['sec3d'] 		= "try3d"; 
 	if($this->input->post('biller_email'))
 	{
 		$data['email'] 		= $this->input->post('biller_email'); 
@@ -316,7 +316,7 @@ class Reservations extends MX_Controller {
 	{
 				$xmlstr = "";
 		      
-			    $strxml = "";
+			  $strxml = "";
 		      $data = (object) $data;
 		      $strxml = $strxml . "<?xml version=\"1.0\" encoding=\"utf-8\" ?>";
 		      $strxml = $strxml . "<Request>";
@@ -334,7 +334,6 @@ class Reservations extends MX_Controller {
 		      $strxml = $strxml . "<response_url>" . $data->resurl . "</response_url>";
 		      $strxml = $strxml . "<cancel_url>" . $data->cancelurl . "</cancel_url>";
 		      $strxml = $strxml . "<mtac_url>https://www.google.com</mtac_url>"; // pls set this to the url where your terms and conditions are hosted
-		    
 		      $strxml = $strxml . "<fname>" . $data->fname . "</fname>";
 		      $strxml = $strxml . "<lname>" . $data->lname . "</lname>";
 		      //$strxml = $strxml . "<mname>" . $data->mname . "</mname>";
