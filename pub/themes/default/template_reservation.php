@@ -90,7 +90,8 @@ header('X-Frame-Options: SAMEORIGIN'); // FF 3.6.9+ Chrome 4.1+ IE 8+ Safari 4+ 
 	
 	<script src="<?php echo site_url('themes/default/js/scripts.js'); ?>"></script>
 	<script src="<?php echo site_url('themes/default/js/scripts.min.js'); ?>"></script>
-	
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" crossorigin="anonymous"></script>
+
 	<?php echo $_scripts; // loads additional js files from the module ?>
 
 

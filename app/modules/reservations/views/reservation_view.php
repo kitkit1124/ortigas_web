@@ -4,8 +4,9 @@
 <a class="navbar-brand text-center" href="#"><img  class="header_logo" src="<?php echo $this->config->item('assets_url'); ?>data/images/ortigaslogo.png"></a>
 
 </nav>
+
 <div class="container">
-	<form id="reservation-form" method="post">
+	<form id="reservation-form" method="post" action="<?php base_url('/reservations/form/').$this->uri->segment(3) ?>" >
 	<div class="card text-center">
   		<div class="card-header text-center" style="background-color:#0a4233;color:#fff">
     		<h4 class="font-weight-bold font-29px">RESERVATION PAYMENT FORM</h4>
@@ -197,7 +198,7 @@
 				<div class="form-group">
 					<label for="billing_country" class="font-11px">COUNTRY</label>
 				
-					<?php $options = create_dropdown('array', ',PHILIPPINES,THAILAND,SINGAPORE,TAIWAN'); ?>					
+					<?php $options = create_dropdown('array', ',Philippines,Thailand,SINGAPORE,Taiwan'); ?>					
 					<?php  echo form_dropdown('billing_country', $options, set_value('billing_country', isset($reservations->customer_billing_country) ? $reservations->customer_billing_country : ''), 'id="billing_country" class="form-control property" '); ?>
 					<i class="fa fa-angle-down"></i>
 					<?php echo form_error('billing_country'); ?>
@@ -240,9 +241,9 @@
  				 <label for="same-email">Same as Mailing Address</label>
 				
 				<div class="form-group">
-				<input class="form-control" type="hidden" name="biller_email" id="biller-email" placeholder="ENTER YOUR BILLING EMAIL">
+				<input class="form-control" type="hidden" name="biller_email" id="biller-email" placeholder="ENTER YOUR BILLING EMAIL" required>
 				</div>
-				<?php echo form_error('same-email'); ?>
+				<span id="error-same-email" style="display: none">The Email Address field must contain a valid email address.</span>
 				
 			</div>
 			<div class="col-sm text-left border-line disclaimer-box" style="">
@@ -277,7 +278,7 @@
   			
 	
 		<div class="form-group">
-			<button type="submit"  class="btn btn-success btn-lg submit_button font-12px" id="form-submit"> PROCEED TO PAYMENT </button>
+			<a type="submit"  class="btn btn-success btn-lg submit_button font-12px" id="form-submit"> PROCEED TO PAYMENT </a>
 			
 		</div>
 		<div class="form-group">
