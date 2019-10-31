@@ -109,7 +109,7 @@ $(function() {
 			if (o.success === false) {
 				// shows the error message
 		        // alertify.error(o.message);
-		         $('#message_denied').trigger('click')
+		         $('#message_denied').trigger('click');
 		         
 		        // displays individual error messages
 		        if (o.errors) {
@@ -120,7 +120,26 @@ $(function() {
 		          }
 		        }
 			} else {
-           		  $('#message_success').trigger('click');
+
+					var post_data = {
+						'elqFormName': 'ortigascontactus',
+						'elqSiteId': '1319205889',
+						'inquiryType': $('#message_section').val(),
+						'project': $('#message_section_id option:selected').text(),
+						'fullName': $('#message_name').val(),
+						'emailAddress': $('#message_email').val(),
+						'mobilePhone': $('#message_mobile').val(),
+						'yourLocation': $('#message_location').val(),
+						'message': $('#message_content').val(),
+						'privacyConsent': 1,
+					};
+
+					$.ajax({method: 'POST',url: 'https://s1319205889.t.eloqua.com/e/f2',
+						data: post_data,
+						success: function(msg){  $('#message_success').trigger('click'); },
+						error: function(XMLHttpRequest, textStatus, errorThrown) { $('#message_denied').trigger('click'); }
+					});
+           		 
            		  // $('.contact_form form').find("input[type=text], textarea").val("");
            		  // setTimeout(function(){ location.reload(); }, 4000);
 

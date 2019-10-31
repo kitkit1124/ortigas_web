@@ -381,7 +381,47 @@
 														
 												<?php	
 													} //endforeach
-			
+												?>
+
+														<li class="estate_links nav-item li_nav_estates_active_list img_link">
+
+															<a class="nav-link a_sub_menu_estates" href="#">Explore by location</a>
+
+
+															<div class = "sub_menu_categ sub_nav_estates_active<?php echo $key; ?>">
+																
+																<?php
+															
+																$locations = $this->locations_model->get_locations();
+																if($locations){
+																
+																?>
+
+																<ul class="ul_sub_menu_categ owl-carousel-style owl-carousel">
+																		
+																	<?php foreach ($locations as $key => $location) { 
+																		$location_name = str_replace(' ','-', strtolower($location->location_name));
+																		$link = site_url('location/').$location_name;
+																		$target = null;
+																	?>
+																		<a class="nav-link" target="<?php echo $target; ?>" href="<?php echo $link; ?>">
+																			<img src="<?php echo isset($location->location_image) ? getenv('UPLOAD_ROOT').$location->location_image : "ui/images/placeholder.png" ?>" />
+																			
+																			<span><?php echo $location->location_name; ?></span>
+																		</a>
+														
+
+																	<?php }//endforeach ?>
+																		
+																	
+																</ul> 
+																<?php }//ifproperties ?>
+															</div>
+
+														</li>
+
+
+											<?php
 												}//ifestates
 											?>
 										</ul>

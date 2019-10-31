@@ -11,24 +11,31 @@
 			<a href="<?php echo $video->video_link; ?>" class="default-button"><?php echo $video->video_button_text; ?></a>
 		</div>
 	</div>
+
+	
 <?php } else{ ?>
 
-			<?php $this->template->add_js(module_js('website', 'slider_index'), 'embed'); ?>
-			<?php echo $this->load->view('website/slider_index'); ?>
+		<?php $this->template->add_js(module_js('website', 'slider_index'), 'embed'); ?>
+		<?php echo $this->load->view('website/slider_index'); ?>
 
-			<div id="video_label" class="noselect">
-				<div class="<?php echo $video_details->video_text_pos; ?>">
-					<h2><?php echo $video_details->video_title; ?></h2>
-					<p><?php echo $video_details->video_caption; ?></p>
-					<a href="<?php echo $video_details->video_link; ?>" class="default-button"><?php echo $video_details->video_button_text; ?></a>
-				</div>
+		<div id="video_label" class="noselect">
+			<div class="<?php echo $video_details->video_text_pos; ?>">
+				<h2><?php echo $video_details->video_title; ?></h2>
+				<p><?php echo $video_details->video_caption; ?></p>
+				<a href="<?php echo $video_details->video_link; ?>" class="default-button"><?php echo $video_details->video_button_text; ?></a>
 			</div>
+
+		</div>
+		<div class="scroll_down" data-anchor="page_content">
+			<img src="/data/images/down-arrow.png">
+			<p>SCROLL DOWN</p>
+		</div>
 
 <?php } ?>
 
 <main role="main" class="container">
 	<div class="content">	
-		<div class="page_content">
+		<div id="page_content" class="page_content">
 			<?php if($page_content) { echo parse_content($page_content->page_content); } ?>
 			<br>
 			<?php if($page_content) { echo '<h1>'.parse_content($page_content->page_heading_text).'</h1>'; } ?>
@@ -165,7 +172,7 @@
 				<div class="estates offices col-sm-6">
 					<div class="mo_title"><h2><?php echo $category_office->category_name; ?></h2></div>
 					<div class="mo_desc"><?php echo $category_mall->category_snippet_quote; ?></div>
-					<a class ="mo_link default-button" href="<?php echo site_url('').strtolower($category_mall->category_name); ?>">View All</a>
+					<a class ="mo_link default-button" href="<?php echo site_url('').strtolower($category_office->category_name); ?>">View All</a>
 				</div>
 			</div>
 		<?php	} //end foreach ?>
