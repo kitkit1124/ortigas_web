@@ -95,15 +95,6 @@
 				</div>
 			
 				<div class="news_sidebar col-lg-4">
-					<?php if($news_tags) : ?>
-					<div class="news_filter_division">
-						<h5 class="news_sidebar_heading">Categories</h5>
-						<?php foreach ($news_tags as $key => $value) { ?>
-							<a href="/news/tags/<?php echo $value->news_tag_slug; ?>" class="news_filter news_filter_list"><?php echo $value->news_tag_name; ?></a>
-						<?php } ?>
-					</div>
-					<?php endif; ?>
-
 					<?php if($latest_news) : ?>
 					<div class="latest_news">
 						<h5 class="news_sidebar_heading">Latest Articles</h5>
@@ -113,6 +104,15 @@
 									<?php $dtpost = date_create($value->post_posted_on); ?>
 									<br><span><?php echo date_format($dtpost,"F j, Y");  ?></span>
 							</a>
+						<?php } ?>
+					</div>
+					<?php endif; ?>
+
+					<?php if($news_tags) : ?>
+					<div class="news_filter_division">
+						<h5 class="news_sidebar_heading">Categories</h5>
+						<?php foreach ($news_tags as $key => $value) { ?>
+							<a href="/news/tags/<?php echo $value->news_tag_slug; ?>" class="news_filter news_filter_list"><?php echo $value->news_tag_name; ?></a>
 						<?php } ?>
 					</div>
 					<?php endif; ?>

@@ -152,6 +152,11 @@
   color: #646263;
 }
 
+.navbar-expand-lg .navbar-nav .sub_menu_estates .owl-carousel-style .nav-link {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .nav-link:hover{
   color: rgba(0,0,0,.8);
 }
@@ -419,7 +424,7 @@ animation-delay: 1.25s;
 
 .sub_menu_categ ul.ul_sub_menu_categ span{
   margin-top: 15px;
-  display: inline-block;
+  display: block;
 }
 
 .owl-stage{
@@ -431,7 +436,9 @@ animation-delay: 1.25s;
 }
 
 .sub_menu_categ ul.ul_sub_menu_categ.owl-carousel-style{
+    display: flex;
     max-width: 1000px;
+    justify-content: center;
 }
 
 .sub_menu_categ ul.ul_sub_menu_categ.owl-carousel-style img{

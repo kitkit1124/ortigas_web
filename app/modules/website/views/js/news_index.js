@@ -20,6 +20,10 @@ $(function() {
 		q_string = '?qdate='+param_date;
 	}
 
+	$('.news_filter').change(function(){
+		location.href = $(this).val();
+	});
+
 
   	var oTable = $('#dt-images').dataTable({
 		"bProcessing": false,
@@ -47,7 +51,7 @@ $(function() {
 							div += '</div>';
 							div +=  '<div class="news_details col-lg-6">';
 								div += '<span class="news_tags" data-news-tag-id="' + full[0] + '"></span>';
-								div += '<a class="news_link_img" href="' + site_url + 'news/' + full[2] +'">';
+								div += '<a class="news_link_img" href="' + site_url + 'news/' + full[2].toLowerCase() +'">';
 									div +=  '<h2>' + full[1] + '</h2>';
 								div += '</a>';
 								div += '<label>';
@@ -58,7 +62,7 @@ $(function() {
 									div += full[7];
 								div += '</div>'; 
 
-								div += '<a class="default-button" href="' + site_url + 'news/' + full[2] +'" >';
+								div += '<a class="default-button" href="' + site_url + 'news/' + full[2].toLowerCase() +'" >';
 									div +=  'Read More';
 								div += '</a>';
 
