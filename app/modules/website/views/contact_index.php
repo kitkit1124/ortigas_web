@@ -39,7 +39,7 @@
 				<div class="contact_form">
 
 					<?php $return = ($this->input->get('return')) ? '?return=' . urlencode($this->input->get('return')) : ''; ?>
-					<?php echo form_open(current_url() . $return);?>
+					<?php echo form_open(current_url() . $return,array('name' => 'contact_us'));?>
 
 					<input type="hidden" id="csrf" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 					<div class="row">
