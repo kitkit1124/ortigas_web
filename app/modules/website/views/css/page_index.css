@@ -29,6 +29,7 @@ video{
   cursor: default;
   padding: 0 40px;
   opacity: 0;
+  z-index: 2 !important;
 }
 
 #video_label .Left{
@@ -66,7 +67,7 @@ color: #FFF !important;
 
 .scroll_down{
   position: absolute;
-  bottom: 20px;
+  bottom: 240px;
   margin: auto;
   text-align: center;
   width: 100%;
@@ -74,6 +75,7 @@ color: #FFF !important;
   letter-spacing: 1px;
   font-size: 14px;
   font-weight: bold;
+  z-index: 2 !important;
 }
 
 .scroll_down img{
