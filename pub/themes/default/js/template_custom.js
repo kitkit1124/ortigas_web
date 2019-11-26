@@ -7,6 +7,7 @@ $(document).ready(function(){
     
     });
       set_banner_position(); 
+    
 });
 
 $(document).mouseup(function(e) 
@@ -180,48 +181,41 @@ $(function(){
         searchGlobal();
     });
 
-    $('.subscribe_button_modal').click(function(){
+    // $('.subscribe_button_modal').click(function(){
 
-        $.ajax({method: "POST",url: site_url + 'subscribers/subscribers/form',
-            data: { 
-                subscriber_email     : $('#subscription_email').val(),
-                [csrf_name]: $('#csrf').val()
-            } 
-        })
-        .done(function(data) {
+    //     $.ajax({method: "POST",url: site_url + 'subscribers/subscribers/form',
+    //         data: { 
+    //             subscriber_email     : $('#subscription_email').val(),
+    //             [csrf_name]: $('#csrf').val()
+    //         } 
+    //     })
+    //     .done(function(data) {
+    //         var o = jQuery.parseJSON(data);
+    //         if (o.success === false) {
+    //             // shows the error message
+    //             // alertify.error(o.message);
+    //              $('#subscribe_denied').trigger('click');
+    //             // displays individual error messages
+    //             if (o.errors) {
+    //               for (var form_name in o.errors) {
 
-            var o = jQuery.parseJSON(data);
-            if (o.success === false) {
-                // shows the error message
-                // alertify.error(o.message);
-                 $('#subscribe_denied').trigger('click');
-                // displays individual error messages
-                if (o.errors) {
-                  for (var form_name in o.errors) {
+    //                  $('#error-' + form_name).html(o.errors[form_name]);
 
-                     $('#error-' + form_name).html(o.errors[form_name]);
+    //                 $('#error-' + form_name + ' .text-danger').append('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>');
+    //               }
+    //             }
+    //         } else {
+    //              $('#subscribe_success').trigger('click');
 
-                    $('#error-' + form_name + ' .text-danger').append('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>');
-                  }
-
-
-                }
-            } else {
-                 $('#subscribe_success').trigger('click');
-
-                 $.ajax({method: "GET",url: site_url + 'subscribers/subscribers/form',
-                    data: { 
-                        subscriber_email     : $('#subscription_email').val(),
-                        [csrf_name]: $('#csrf').val()
-                    } 
-                })
-
-                 
-
-            }
-        });
-
-    });
+    //              $.ajax({method: "GET",url: site_url + 'subscribers/subscribers/form',
+    //                 data: { 
+    //                     subscriber_email     : $('#subscription_email').val(),
+    //                     [csrf_name]: $('#csrf').val()
+    //                 } 
+    //             })
+    //         }
+    //     });
+    // });
 
    
 
@@ -383,7 +377,7 @@ function transparent_nav(){
 
 
 function set_video_height(){
-    var height = $(window).height();
+    var height = $(window).height() - ($(window).height() * 0.27);
     var width = $(window).width();
     $('#video_player').css({'height': height,'width':width});
     $(' #banner_image img, #header_ #slider img').css({'height' : height, 'max-height' : height});
