@@ -744,13 +744,13 @@ div.dataTables_wrapper .page-item.active .page-link{
 .breadcrumbs_content {display: none;}
 
 .career_content_details ul{
-    list-style: none;
-    padding-left: 0px;
+    /* list-style: none;
+    padding-left: 0px; */
 }
 
 .career_content_details ul li{
-    background: url("../../img/ortigas-bullet.png") no-repeat left;
-    padding: 1px 0px 0px 35px;
+    /* background: url("../../img/ortigas-bullet.png") no-repeat left;
+    padding: 1px 0px 0px 35px; */
     /* list-style-image: url("../../img/ortigas-bullet.png") !important;
     margin-left: 10em; */
 }
