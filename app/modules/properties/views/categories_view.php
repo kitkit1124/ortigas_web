@@ -4,7 +4,7 @@
 		<div id="banner_logo_image"></div>
 		<div class="banner_margin container"><h1><?php echo $category->category_name; ?></h1></div>
 		<div class="banner_gradient"></div>
-		<img class="estate_banner_img lazy" data-src="<?php echo  getenv('UPLOAD_ROOT').$category->category_image; ?>" draggable="false" alt="<?php echo $category->category_alt_image; ?>" title="<?php echo $category->category_alt_image; ?>"/>
+		<img class="estate_banner_img lazy parallax-window"  data-parallax="scroll" data-image-src="<?php echo  getenv('UPLOAD_ROOT').$category->category_image; ?>" data-z-index="1" data-src="<?php echo  getenv('UPLOAD_ROOT').$category->category_image; ?>" draggable="false" alt="<?php echo $category->category_alt_image; ?>" title="<?php echo $category->category_alt_image; ?>"/>
 		<?php echo $this->load->view('website/breadcrumbs_view'); ?>			
 	</div>
 	<?php } ?>

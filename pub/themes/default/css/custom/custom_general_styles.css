@@ -808,6 +808,10 @@ p em{
     color: #07793f;
 }
 
+.carousel-control-prev, .carousel-control-next{
+    z-index: 100;
+}
+
 @media(max-width: 1440px) {
     .social_media_properties a{
         font-size: 1.8rem;

@@ -13,7 +13,7 @@
 		<div class="banner_gradient"></div>
 		<?php } ?>
 		
-		<img class="estate_banner_img lazy" data-src="<?php echo getenv('UPLOAD_ROOT').$estates->estate_image; ?>" draggable="false" alt="<?php echo $estates->estate_alt_image; ?>" title="<?php echo $estates->estate_alt_image; ?>"/>
+		<img class="estate_banner_img lazy parallax-window" data-parallax="scroll" data-image-src="<?php echo getenv('UPLOAD_ROOT').$estates->estate_image; ?>" data-z-index="1" data-src="<?php echo getenv('UPLOAD_ROOT').$estates->estate_image; ?>" draggable="false" alt="<?php echo $estates->estate_alt_image; ?>" title="<?php echo $estates->estate_alt_image; ?>"/>
 		<?php echo $this->load->view('website/breadcrumbs_view'); ?>					
 	</div>
 	<?php } ?>
