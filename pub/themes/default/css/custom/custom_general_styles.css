@@ -797,6 +797,7 @@ div.dataTables_wrapper .page-item.active .page-link{
 #modal_subs tr:nth-child(4) td{
     padding: 0px 20px 0px;
     line-height: 80%;
+    letter-spacing: 1.25px;
 }
 
 

@@ -27,6 +27,8 @@ $(function(){
     $('#new_search .default_search').hide();
     $('#back_to_top_button').hide();
 
+    // $('.sub_menu_estates').css({ 'opacity' : 0 });
+
     $("img.lazy").lazy({
       effect: "fadeIn",
       effectTime: 500,
@@ -347,7 +349,8 @@ function nav_color_override(){
         }
     }
     else{
-        $('.oclogo_img img').attr('src',upload_url+'data/images/ortigaslogo-green-white.svg')
+        // $('.oclogo_img img').attr('src',upload_url+'data/images/ortigaslogo-green-white.svg')
+        $('.oclogo_img img').attr('src',upload_url+'data/images/ortigaslogo-white.png')
     }
 }
 
