@@ -72,6 +72,11 @@
 	
 
 		<?php if(isset($residences) && $residences){ ?>
+		<?php 
+			$resi_margin 	= count($residences)>1? "estates":"";
+			$resi_spacing 	= count($residences)>1? "":"offset-lg-3";
+			$resi_align 	= count($residences)>1? "":"text-center";
+		?>	
 		<div class="content_residence">
 			<!--<div class="row cat_heading_res hide">
 				 <div class="col-sm-4 res_title"><h2><?php echo $category_residence->category_name; ?></h2></div>
@@ -84,7 +89,7 @@
 			</div>
 			<div class="row residences_div">
 				<?php foreach ($residences as $key => $val) { ?>
-					<div class="estates residences col-lg-6">
+					<div class="<?php echo $resi_margin; ?> residences <?php echo $resi_spacing; ?> col-lg-6 ">
 						<div class="residences">
 							<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 							<div class="image_wrapper">
@@ -93,8 +98,8 @@
 								</div>
 							</div>
 							<div class="property_desc">
-								<h5><?php echo $val->property_name; ?></h5>
-								<span><?php echo strip_tags($val->property_snippet_quote); ?></span>
+								<h5 class="<?php echo $resi_align; ?>"><?php echo $val->property_name; ?></h5>
+								<span class="<?php echo $resi_align; ?>"><?php echo strip_tags($val->property_snippet_quote); ?></span>
 							</div>
 							</a>
 						</div>
@@ -106,6 +111,11 @@
 		<?php } ?>
 
 		<?php if(isset($malls) && $malls){ ?>
+		<?php 
+			$mall_margin 	= count($malls)>1? "estates":"";
+			$mall_spacing 	= count($malls)>1? "":"offset-lg-3";
+			$mall_align 	= count($malls)>1? "":"text-center";
+		?>	
 		<div class="content_residence">
 			<div class="cat_heading">
 				<div class="cat_title"><h2><?php echo $category_mall->category_name; ?></h2></div>
@@ -113,7 +123,7 @@
 			</div>
 			<div class="row residences_div">
 				<?php foreach ($malls as $key => $val) { ?>
-					<div class="estates residences col-lg-6">
+					<div class="<?php echo $mall_margin; ?> residences <?php echo $mall_spacing; ?> col-lg-6">
 						<div class="residences">
 							<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 							<div class="image_wrapper">
@@ -122,8 +132,8 @@
 								</div>
 							</div>
 							<div class="property_desc">
-								<h5><?php echo $val->property_name; ?></h5>
-								<span><?php echo strip_tags($val->property_snippet_quote); ?></span>
+								<h5 class="<?php echo $mall_align; ?>"><?php echo $val->property_name; ?></h5>
+								<span class="<?php echo $mall_align; ?>"><?php echo strip_tags($val->property_snippet_quote); ?></span>
 							</div>
 							</a>
 						</div>
@@ -135,6 +145,11 @@
 		<?php } ?>
 
 		<?php if(isset($offices) && $offices){ ?>
+		<?php 
+			$offi_margin 	= count($offices)>1? "estates":"";
+			$offi_spacing 	= count($offices)>1? "":"offset-lg-3";
+			$offi_align 	= count($offices)>1? "":"text-center";
+		?>	
 		<div class="content_residence">
 			<div class="cat_heading">
 				<div class="cat_title"><h2><?php echo $category_office->category_name; ?></h2></div>
@@ -142,7 +157,7 @@
 			</div>
 			<div class="row residences_div">
 				<?php foreach ($offices as $key => $val) { ?>
-					<div class="estates residences col-lg-6">
+					<div class="<?php echo $offi_margin; ?> residences <?php echo $offi_spacing; ?> col-lg-6">
 						<div class="residences">
 							<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
 							<div class="image_wrapper">
@@ -151,8 +166,8 @@
 								</div>
 							</div>
 							<div class="property_desc">
-								<h5><?php echo $val->property_name; ?></h5>
-								<span><?php echo strip_tags($val->property_snippet_quote); ?></span>
+								<h5 class="<?php echo $offi_align; ?>"><?php echo $val->property_name; ?></h5>
+								<span class="<?php echo $offi_align; ?>"><?php echo strip_tags($val->property_snippet_quote); ?></span>
 							</div>
 							</a>
 						</div>
