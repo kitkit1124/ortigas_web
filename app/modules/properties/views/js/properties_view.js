@@ -91,16 +91,19 @@ $(function() {
     });
 
     $('#select-floorplan').change(function() {
-  
     	if($('#check_available_button').attr('data-action') == "check"){
     		var id = $(this).val();
+    		// var id = $('#select-floorplan2').val();
+            console.log(id);
+            get_specific_floor(id);
+            get_available_units(id);
     	}
     	else{
-    		var id = $('#select-floorplan2').val();
+    		var id = $(this).val();
+            console.log(id);
+            get_specific_floor(id);
     	}
 
-    	get_specific_floor(id);
-    	get_available_units(id);
     });
 
     $('#check_available_button').click(function(){
@@ -208,7 +211,8 @@ function get_specific_floor($id){
 	if(id){
 		$.ajax({method: "GET",url: site_url + "properties/properties/get_specific_floor",data: { floor_id : id } })
 		.done(function( data ) {
-			data = jQuery.parseJSON(data);
+            data = jQuery.parseJSON(data);
+            console.log(data);
 			$('#floorplan_image').fadeOut(100, function(){
 				$('#floorplan_image')
                     .attr("src", upload_url + data.floor_image)
