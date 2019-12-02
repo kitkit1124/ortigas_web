@@ -158,8 +158,19 @@ a.default-button-2{
 #banner_image img, #slider img{
     z-index: 10;
 	width: 100%;
-	object-fit: cover;
+	/* object-fit: cover; */
+	object-fit: fill !important;
 	object-position: 50% 50%;
+}
+
+/* .parallax-mirror{
+	 width: auto !important; 
+	 height: auto !important;
+	 object-fit: fill !important;
+} */
+
+.parallax-slider{
+	 max-height: 101vh !important
 }
 
 #banner_image h1, #slider h1, #banner_image h3, #slider h3 {
@@ -744,13 +755,13 @@ div.dataTables_wrapper .page-item.active .page-link{
 .breadcrumbs_content {display: none;}
 
 .career_content_details ul{
-    list-style: none;
-    padding-left: 0px;
+    /* list-style: none;
+    padding-left: 0px; */
 }
 
 .career_content_details ul li{
-    background: url("../../img/ortigas-bullet.png") no-repeat left;
-    padding: 1px 0px 0px 35px;
+    /* background: url("../../img/ortigas-bullet.png") no-repeat left;
+    padding: 1px 0px 0px 35px; */
     /* list-style-image: url("../../img/ortigas-bullet.png") !important;
     margin-left: 10em; */
 }
@@ -797,6 +808,7 @@ div.dataTables_wrapper .page-item.active .page-link{
 #modal_subs tr:nth-child(4) td{
     padding: 0px 20px 0px;
     line-height: 80%;
+    /* letter-spacing: 1.25px; */
 }
 
 
@@ -806,6 +818,10 @@ div.dataTables_wrapper .page-item.active .page-link{
 
 p em{
     color: #07793f;
+}
+
+.carousel-control-prev, .carousel-control-next{
+    z-index: 100;
 }
 
 @media(max-width: 1440px) {

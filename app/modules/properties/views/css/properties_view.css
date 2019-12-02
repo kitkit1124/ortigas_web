@@ -83,7 +83,7 @@ h1, p, span, a {
 
 
 #slider img{
-	object-fit: cover;
+	object-fit: cover !important;
 }
 
 

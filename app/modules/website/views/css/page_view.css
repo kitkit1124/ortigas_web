@@ -96,7 +96,7 @@ table{
 .ccc_content{display: none;}
 
 .base_nav{
-	color: #666 !important;
+	/* color: #666 !important; */
 }
 
 @media (max-width: 1024px){

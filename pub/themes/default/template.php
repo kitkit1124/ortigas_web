@@ -178,6 +178,8 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 	<script src="<?php echo site_url('themes/default/js/scripts.js'); ?>"></script>
 	<script src="<?php echo site_url('themes/default/js/scripts.min.js'); ?>"></script>
 
+	<script src="<?php echo site_url('themes/default/js/parallax.min.js'); ?>"></script>
+
 	<script src="<?php echo site_url('themes/default/js/template_custom.js'); ?>"></script>
 
 	<?php echo $_scripts; // loads additional js files from the module ?>
