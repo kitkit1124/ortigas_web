@@ -39,7 +39,10 @@
 				<div class="contact_form">
 
 					<?php $return = ($this->input->get('return')) ? '?return=' . urlencode($this->input->get('return')) : ''; ?>
-					<?php echo form_open(current_url() . $return,array('name' => 'contact_us'));?>
+					<?php echo form_open('https://s1319205889.t.eloqua.com/e/f2' . $return,array('name' => 'contact_us'));?>
+					<?php //echo form_open(current_url() . $return,array('name' => 'contact_us'));?>
+					<input type="hidden" name="elqCustomerGUID" value="">
+					<input type="hidden" name="elqCookieWrite" value="0">
 
 					<input type="hidden" id="csrf" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 					<div class="row">
@@ -128,12 +131,12 @@
 	    		    </div>
 
 					<div class="form-group text-center">
-						 <a class="btn contact_submit default-button">SUBMIT</a>
+						 <a type="submit" class="btn contact_submit default-button">SUBMIT</a>
 					</div>
 
 					<?php echo form_hidden('submit', 1); ?>
 					<?php echo form_hidden('return', ($this->input->get('return') ? $this->input->get('return') : '')); ?>
-					
+					<?php echo form_close(); ?>
 				</div>
 			</div>
 			<div id="special_contacts" class="container-fluid text-left">
