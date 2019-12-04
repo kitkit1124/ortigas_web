@@ -10,7 +10,26 @@ $(function() {
       location.reload();
 	});
 
-	
+	var timerId = null, timeout = 5;
+
+	function WaitUntilCustomerGUIDIsRetrieved() {
+	if (!!(timerId)) {
+	   if (timeout == 0) {
+	return;
+	}
+	if (typeof this.GetElqCustomerGUID === 'function') {
+	       document.forms["ortigascontactus"].elements["elqCustomerGUID"].value = GetElqCustomerGUID();
+	return;
+	}
+	timeout -= 1;
+	}
+	timerId = setTimeout("WaitUntilCustomerGUIDIsRetrieved()", 500);
+	return;
+	}
+	window.onload = WaitUntilCustomerGUIDIsRetrieved;
+	_elqQ.push(['elqGetCustomerGUID']);
+
+
 	// $('#message_section').change(function(){
 	// 	$.ajax({method: "POST",url: "website/contact/get_projects",
 	// 		data: { 

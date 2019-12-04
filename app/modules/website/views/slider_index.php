@@ -19,7 +19,9 @@
 			<div class="carousel-item">
 				<div class="banner_gradient"></div>
 				<div class="banner_gradient"></div>
-			 	<img class="carousel-indicator_button" data-target="#slider" data-slide-to="<?php echo $key; ?>" src="<?php echo getenv('UPLOAD_ROOT').$value->banner_image; ?>" alt="<?php echo $value->banner_alt_image; ?>" title="<?php echo $value->banner_alt_image; ?>" />
+				<!-- <img class="parallax-window" data-parallax="scroll" data-image-src="<?php echo getenv('UPLOAD_ROOT').$value->banner_image; ?>" data-z-index="-5" /> -->
+				 <!-- <img class="carousel-indicator_button" data-target="#slider" data-slide-to="<?php echo $key; ?>" src="<?php echo getenv('UPLOAD_ROOT').$value->banner_image; ?>" alt="<?php echo $value->banner_alt_image; ?>" title="<?php echo $value->banner_alt_image; ?>" /> -->
+				 <img class="carousel-indicator_button parallax-window" data-parallax="scroll" data-image-src="<?php echo getenv('UPLOAD_ROOT').$value->banner_image; ?>" data-z-index="1"  data-target="#slider" data-slide-to="<?php echo $key; ?>" src="<?php echo getenv('UPLOAD_ROOT').$value->banner_image; ?>" alt="<?php echo $value->banner_alt_image; ?>" title="<?php echo $value->banner_alt_image; ?>" />
 			</div>
 		<?php } ?>	
 	</div>

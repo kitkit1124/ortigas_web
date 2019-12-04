@@ -91,7 +91,8 @@ class Careers_model extends BF_Model {
 
 	$query = $this->where('career_status', 'Active')
 					->where('career_deleted', 0)
-					->order_by('career_position_title', 'ASC')
+					// ->order_by('career_position_title', 'ASC')
+					->order_by('career_created_on', 'DESC')
 					->join('career_departments', 'career_departments.department_id = career_dept')
 					->join('career_divisions', 'career_divisions.division_id = career_div')
 					->find_all();
@@ -159,7 +160,8 @@ class Careers_model extends BF_Model {
 
 	return $this->where('career_status', 'Active')
 					->where('career_deleted', 0)
-					->order_by('career_position_title', 'ASC')
+					// ->order_by('career_position_title', 'ASC')
+					->order_by('career_created_on', 'DESC')
 					->join('career_departments', 'career_departments.department_id = career_dept')
 					->join('career_divisions', 'career_divisions.division_id = career_div')
 					->datatables($fields);
