@@ -53,11 +53,11 @@
 		<?php } ?>
 
 		
-		<?php if($record->page_bottom_content && $record->page_id != 11) { ?>
+		<?php /*if($record->page_bottom_content && $record->page_id != 11) { ?>
 			<div class="seo_content">
 			<?php echo parse_content($record->page_bottom_content); ?>
 			</div>
-		<?php } ?>
+		<?php }*/ ?>
 		
 
 	</div>
@@ -65,7 +65,7 @@
 </main>
 
 <?php //if($record->page_uri == 'about-us'){ ?>
-	<?php if(isset($news_result) && $news_result){ ?>
+	<?php /*if(isset($news_result) && $news_result){ ?>
 		<div class="news_related">
 			<h2 class="related_news_title">Related News</h2>
 			<div class="news_related_content">
@@ -77,8 +77,8 @@
 				?>
 			</div>
 		</div>
-	<?php } ?>
+	<?php }*/ ?>
 <?php //} ?>
 
-<?php echo $this->load->view('properties/recommended_links')?>
+<?php //echo $this->load->view('properties/recommended_links')?>
 

@@ -7,6 +7,7 @@ $(document).ready(function(){
     
     });
       set_banner_position(); 
+    
 });
 
 $(document).mouseup(function(e) 
@@ -180,48 +181,41 @@ $(function(){
         searchGlobal();
     });
 
-    $('.subscribe_button_modal').click(function(){
+    // $('.subscribe_button_modal').click(function(){
 
-        $.ajax({method: "POST",url: site_url + 'subscribers/subscribers/form',
-            data: { 
-                subscriber_email     : $('#subscription_email').val(),
-                [csrf_name]: $('#csrf').val()
-            } 
-        })
-        .done(function(data) {
+    //     $.ajax({method: "POST",url: site_url + 'subscribers/subscribers/form',
+    //         data: { 
+    //             subscriber_email     : $('#subscription_email').val(),
+    //             [csrf_name]: $('#csrf').val()
+    //         } 
+    //     })
+    //     .done(function(data) {
+    //         var o = jQuery.parseJSON(data);
+    //         if (o.success === false) {
+    //             // shows the error message
+    //             // alertify.error(o.message);
+    //              $('#subscribe_denied').trigger('click');
+    //             // displays individual error messages
+    //             if (o.errors) {
+    //               for (var form_name in o.errors) {
 
-            var o = jQuery.parseJSON(data);
-            if (o.success === false) {
-                // shows the error message
-                // alertify.error(o.message);
-                 $('#subscribe_denied').trigger('click');
-                // displays individual error messages
-                if (o.errors) {
-                  for (var form_name in o.errors) {
+    //                  $('#error-' + form_name).html(o.errors[form_name]);
 
-                     $('#error-' + form_name).html(o.errors[form_name]);
+    //                 $('#error-' + form_name + ' .text-danger').append('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>');
+    //               }
+    //             }
+    //         } else {
+    //              $('#subscribe_success').trigger('click');
 
-                    $('#error-' + form_name + ' .text-danger').append('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>');
-                  }
-
-
-                }
-            } else {
-                 $('#subscribe_success').trigger('click');
-
-                 $.ajax({method: "GET",url: site_url + 'subscribers/subscribers/form',
-                    data: { 
-                        subscriber_email     : $('#subscription_email').val(),
-                        [csrf_name]: $('#csrf').val()
-                    } 
-                })
-
-                 
-
-            }
-        });
-
-    });
+    //              $.ajax({method: "GET",url: site_url + 'subscribers/subscribers/form',
+    //                 data: { 
+    //                     subscriber_email     : $('#subscription_email').val(),
+    //                     [csrf_name]: $('#csrf').val()
+    //                 } 
+    //             })
+    //         }
+    //     });
+    // });
 
    
 
@@ -312,7 +306,7 @@ function img_selector(img,size)
 function default_theme(){
     $(".navi-bar").css({"background-color": "#f8f9fa", "border-bottom":"1px solid #C0C0C0"});
 
-    $('.oclogo_img img').attr('src',upload_url+'/data/images/ortigaslogo.png')
+    $('.oclogo_img img').attr('src',upload_url+'data/images/ortigasland.svg')
 
     if(nav_color_theme=="White"){
         // $(".oclogo img").css({"filter": "unset"});
@@ -343,17 +337,18 @@ nav_color_override();
 
 function nav_color_override(){
     if(uri_string == 'oclp-data-privacy-policy' || (uri_string.includes("careers") == true && uri_string.length > 8) || (uri_string.includes("news") == true && uri_string.length > 5) ){
-        $('.oclogo_img img').attr('src',upload_url+'/data/images/ortigaslogo.png');
+        $('.oclogo_img img').attr('src',upload_url+'data/images/ortigasland.svg');
         $("a.nav-link.base_nav.nav_estates").css({"color": "#646263"});
         $(".nav_search_button i, .nav_close_button i").css({"color": "#d3d3d3"});
         if(uri_string.includes("news/tags") == true){
-            $('.oclogo_img img').attr('src',upload_url+'/data/images/ortigaslogo-green-white.svg')
+            $('.oclogo_img img').attr('src',upload_url+'data/images/ortigasland-green-white.svg')
             $("a.nav-link.base_nav.nav_estates").css({"color": "#FFF"});
             $(".nav_search_button i, .nav_close_button i").css({"color": "#FFF"});
         }
     }
     else{
-        $('.oclogo_img img').attr('src',upload_url+'/data/images/ortigaslogo-green-white.svg')
+        $('.oclogo_img img').attr('src',upload_url+'data/images/ortigasland-green-white.svg')
+        // $('.oclogo_img img').attr('src',upload_url+'data/images/ortigasland-white.png')
     }
 }
 
@@ -383,7 +378,7 @@ function transparent_nav(){
 
 
 function set_video_height(){
-    var height = $(window).height();
+    var height = $(window).height() - ($(window).height() * 0.27);
     var width = $(window).width();
     $('#video_player').css({'height': height,'width':width});
     $(' #banner_image img, #header_ #slider img').css({'height' : height, 'max-height' : height});

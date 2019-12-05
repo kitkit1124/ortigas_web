@@ -43,7 +43,7 @@ class Reservations extends MX_Controller {
 		$key = getenv('KEY');
 		$key  =	$this->Key($key);
 
-		
+	
 		if ($this->input->post())
 		{
 			if($this->submit())
@@ -70,7 +70,14 @@ class Reservations extends MX_Controller {
 
 				foreach ($reservations as $k => $value) {
 						if (strpos($k, 'customer') !== false) {
-							$array[$k] =  Crypto::decrypt($value,$key);
+							if($value == '')
+							{
+								$array[$k] =  $value;
+							}
+							else
+							{
+								$array[$k] =  Crypto::decrypt($value,$key);
+							}
 						}
 						else
 						{
@@ -105,7 +112,14 @@ class Reservations extends MX_Controller {
 
 				foreach ($reservations as $k => $value) {
 						if (strpos($k, 'customer') !== false) {
-							$array[$k] =  Crypto::decrypt($value,$key);
+							if($value == '')
+							{
+								$array[$k] =  $value;
+							}
+							else
+							{
+								$array[$k] =  Crypto::decrypt($value,$key);
+							}
 						}
 						else
 						{
@@ -163,7 +177,7 @@ class Reservations extends MX_Controller {
 			return FALSE;
 		}
 		
-	$data['mid'] 			= "0000000301199E8DB80B"; 
+	$data['mid'] 			= getenv('MID'); 
 	$data['requestid'] 	= $this->input->post('reference_no');
 	$data['ipaddress'] 	= $this->getUserIpAddr();
 	$data['noturl'] 	= base_url('reservations/notif'); // url where response is posted
@@ -202,7 +216,7 @@ class Reservations extends MX_Controller {
 
 	extract($data);
       $forSign = $mid . $requestid . $ipaddress . $noturl . $resurl .  $fname . $lname . $addr1 . $addr2 . $city . $state . $country . $zip . $email . $phone . $clientip . $amount . $currency . $sec3d;
-			$cert = "FD2CE586D02AEC25B87D392AF95D69DB"; 
+			$cert = getenv('CERT'); 
 
 			
 
@@ -210,7 +224,7 @@ class Reservations extends MX_Controller {
 		      
       $xml = $this->create_xml($_sign,$data);
 
-		$form = '<form name="paygate_frm" method="POST" action="https://testpti.payserv.net/webpayment/default.aspx">';
+		$form = '<form name="paygate_frm" method="POST" action="'.getenv('PAYMENT_URL').'">';
         $form .= '<input type="hidden" name="paymentrequest" value="' . $xml . '">';
         $form .= '</form>';
         $form .= '<script>document.paygate_frm.submit();</script>';
@@ -351,7 +365,7 @@ class Reservations extends MX_Controller {
 		      $strxml = $strxml . "<client_ip>" . $data->clientip . "</client_ip>";
 		      $strxml = $strxml . "<amount>" . $data->amount . "</amount>";
 		      $strxml = $strxml . "<currency>" . $data->currency . "</currency>";
-		      $strxml = $strxml . "<mlogo_url>https://assets.ortigas.com.ph/data/images/ortigaslogo.png</mlogo_url>";// pls set this to the url where your logo is hosted
+		      $strxml = $strxml . "<mlogo_url>https://assets.ortigas.com.ph/data/images/ortigasland.svg</mlogo_url>";// pls set this to the url where your logo is hosted
 		      $strxml = $strxml . "<pmethod></pmethod>";
 		      $strxml = $strxml . "<signature>" . $_sign . "</signature>";
 		      $strxml = $strxml . "</Request>";

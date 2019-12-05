@@ -24,7 +24,7 @@
     cursor: pointer;
     font-weight: bold;
     text-transform: uppercase;
-    box-shadow: 2px 2px 5px -1px #9a9a9a;
+    box-shadow: 2px 2px 5px -1px #d0d0d0;
     display: inline-block;
     margin-bottom: 30px;
     text-decoration: none !important;
@@ -58,6 +58,7 @@
 .news_filter_list{
 	color: #666;
 	margin-right: 10px;
+	margin-top: 5px;
 }
 
 .latest_news .news_sidebar_heading{

@@ -4,4 +4,15 @@ $(function() {
     $(".carousel-inner").click(function(){
     	location.href = $(this).attr('data-link');
     });
+
+    $('.scroll_down').click(function(){
+        var anchor = $(this).attr('data-anchor');
+        scrollToAnchor('#' + anchor);
+
+    });
+
+    function scrollToAnchor(hash){
+	    $('html,body').animate({scrollTop: $(hash).offset().top - 120}, 1000);
+	}
+
 });

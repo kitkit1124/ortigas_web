@@ -40,12 +40,16 @@ table h2{
     margin: auto;
 }
 
+.content a{
+	text-decoration: none;
+}
+
 .content .col-sm-6 .col-sm-6 p{
     text-align: center;
     border: 3px solid #34644e;
     border-radius: 10px;
     padding: 25px;
-    margin:3px;
+	margin:3px;
 }
 
 /* 

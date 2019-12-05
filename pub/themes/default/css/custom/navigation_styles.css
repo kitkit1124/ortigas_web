@@ -20,6 +20,7 @@
 }
 
 .oclogo_img img{
+  top: -10px;
   position: absolute;
   left: 20px;
 }
@@ -150,6 +151,11 @@
   padding-left: 0px;
   padding-right: 0px;
   color: #646263;
+}
+
+.navbar-expand-lg .navbar-nav .sub_menu_estates .owl-carousel-style .nav-link {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .nav-link:hover{
@@ -431,7 +437,9 @@ animation-delay: 1.25s;
 }
 
 .sub_menu_categ ul.ul_sub_menu_categ.owl-carousel-style{
+    display: flex;
     max-width: 1000px;
+    justify-content: center;
 }
 
 .sub_menu_categ ul.ul_sub_menu_categ.owl-carousel-style img{

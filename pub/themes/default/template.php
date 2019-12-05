@@ -70,7 +70,7 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 			<div class="footer_content container">
 				<div class="row">
 					<div class="col-sm-4 address">
-						<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/ortigaslogo.svg"></a>
+						<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/ortigasland.svg"></a>
 
 						<?php $footer = $this->partials_model->find(1); if($footer) { echo parse_content($footer->partial_content); } ?>
 					</div>
@@ -177,6 +177,8 @@ $nav_color_theme = $nav->nav_setting_color_theme;
 	
 	<script src="<?php echo site_url('themes/default/js/scripts.js'); ?>"></script>
 	<script src="<?php echo site_url('themes/default/js/scripts.min.js'); ?>"></script>
+
+	<script src="<?php echo site_url('themes/default/js/parallax.min.js'); ?>"></script>
 
 	<script src="<?php echo site_url('themes/default/js/template_custom.js'); ?>"></script>
 
