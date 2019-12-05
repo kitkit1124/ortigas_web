@@ -64,7 +64,7 @@
 
 
 	<div class="oclogo_mobile">
-		<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/ortigaslogo.png"></a>
+		<a class="" href="<?php echo site_url(''); ?>"><img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/ortigasland.svg"></a>
 	</div>
 
 	<div class="container">
@@ -74,7 +74,7 @@
 				</div>
 				<div class="col-lg-4">
 					<a class="oclogo_img" href="<?php echo site_url(''); ?>">
-						<img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/ortigaslogo-white.png">
+						<img src="<?php echo getenv('UPLOAD_ROOT'); ?>data/images/ortigasland-white.svg">
 					</a>
 				</div>
 				<div class="col-lg-4">
@@ -383,12 +383,12 @@
 													} //endforeach
 												?>
 
-														<li class="estate_links nav-item li_nav_estates_active_list img_link">
+														<li class="estate_links nav-item li_nav_estates_active_list img_link explore">
 
 															<a class="nav-link a_sub_menu_estates" href="#">Explore by location</a>
 
 
-															<div class = "sub_menu_categ sub_nav_estates_active<?php echo $key; ?>">
+															<div class = "sub_menu_categ sub_nav_estates_active">
 																
 																<?php
 															

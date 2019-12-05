@@ -20,6 +20,7 @@
 }
 
 .oclogo_img img{
+  top: -10px;
   position: absolute;
   left: 20px;
 }

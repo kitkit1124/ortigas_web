@@ -365,7 +365,7 @@ class Reservations extends MX_Controller {
 		      $strxml = $strxml . "<client_ip>" . $data->clientip . "</client_ip>";
 		      $strxml = $strxml . "<amount>" . $data->amount . "</amount>";
 		      $strxml = $strxml . "<currency>" . $data->currency . "</currency>";
-		      $strxml = $strxml . "<mlogo_url>https://assets.ortigas.com.ph/data/images/ortigaslogo.png</mlogo_url>";// pls set this to the url where your logo is hosted
+		      $strxml = $strxml . "<mlogo_url>https://assets.ortigas.com.ph/data/images/ortigasland.svg</mlogo_url>";// pls set this to the url where your logo is hosted
 		      $strxml = $strxml . "<pmethod></pmethod>";
 		      $strxml = $strxml . "<signature>" . $_sign . "</signature>";
 		      $strxml = $strxml . "</Request>";

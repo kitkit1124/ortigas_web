@@ -1,7 +1,7 @@
 <section id="roles">
 	<nav class="navbar navbar-expand-lg ">
 <div class="container">
-<span class="navbar-brand text-center" href="#"><img  class="header_logo" src="<?php echo $this->config->item('assets_url'); ?>data/images/ortigaslogo.png"></span>
+<span class="navbar-brand text-center" href="#"><img  class="header_logo" src="<?php echo $this->config->item('assets_url'); ?>data/images/ortigasland.svg"></span>
 
 </nav>
 
