@@ -1,7 +1,7 @@
 <section id="roles">
 	<nav class="navbar navbar-expand-lg ">
-<div class="container">
-<span class="navbar-brand text-center" href="#"><img  class="header_logo" src="<?php echo $this->config->item('assets_url'); ?>data/images/ortigasland.svg"></span>
+<div class="container text-center">
+<span class="navbar-brand " href="#"><img  style="width:100%" src="<?php echo $this->config->item('assets_url'); ?>data/images/ortigasland.svg"></span>
 
 </nav>
 
@@ -12,14 +12,17 @@
     		<h4 class="font-weight-bold font-29px">RESERVATION PAYMENT FORM</h4>
 			<div class="row justify-content-md-center">
     			<div class="col-md-9">
-					<p class="justify-content-md-center">Please ensure that the <b>Reservation Agreement Form</b> has been faxed to Ortigas & Company	before proceeding to fill out the items below</p>
+					<p class="justify-content-md-center">Please ensure that the Reservation Agreement Form has been acknowledged to Ortigas Land before proceeding to fill out the items below</p>
 				</div>
 			</div>
 			
 		
   		</div>
   		<div class="card-body" style="margin:1%">
-			<p class="card-text text-center"> Information in the reservation Agreement Form sent to Ortigas & Company should be reflected when filling out the fields.<br>	
+			<p class="card-text text-center"> 
+
+
+			Information in the reservation Agreement Form sent to Ortigas & Company should be reflected when filling out the fields.<br>	
 			Should there be any inconsistencies, reservation will not be accepted.</p>
 			<h5 class="card-title" style="color:#07793f;font-weight:900">REFERENCE NO.  <?php echo $reservations->reservation_reference_no; ?></h5>
   		</div>
