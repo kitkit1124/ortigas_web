@@ -20,7 +20,6 @@
   		</div>
   		<div class="card-body" style="margin:1%">
 			<p class="card-text text-center"> 
-			<?php print_r($reservations->firstname);?>
 
 			Information in the reservation Agreement Form sent to Ortigas & Company should be reflected when filling out the fields.<br>	
 			Should there be any inconsistencies, reservation will not be accepted.</p>
