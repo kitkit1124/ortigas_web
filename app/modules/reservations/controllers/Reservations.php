@@ -24,16 +24,191 @@ class Reservations extends MX_Controller {
 		$this->load->model('website/partials_model');
 		$this->load->model('website/metatags_model');
 		$this->load->model('payments/payments_model');
+		$this->load->model('countries_model');
     }
 
     public function index()
     {
-        redirect(site_url());
+       
+		$data['page_heading'] = 'reservation';
+		$data['page_subhead'] = lang('index_subhead');
+		$data['page_layout'] = 'full_width';
+		$key = getenv('KEY');
+		$key  =	$this->Key($key);
+
+	    $data['countries'] = $this->countries_model->where('country_deleted',0)->order_by('country_name', 'ASC')
+				->format_dropdown('country_name', 'country_name', TRUE);;
+		if ($this->input->post())
+		{
+			if($this->submit_form())
+			{
+				
+				
+				
+				$this->template->set_template('template_reservation');
+				$this->template->add_css(module_css('reservations', 'reservation_form'), 'embed');
+				$this->template->add_js(module_js('reservations', 'reservation_form'), 'embed');
+				$this->template->write_view('content', 'reservation_blank_view',$data);
+				$this->template->render();
+
+				//echo 'success';
+			}
+			else
+			{
+
+				$data['reservations'] = (object) array
+										(
+											
+											'firstname'		=> $this->input->post('firstname'),
+											'lastname'		=> $this->input->post('lastname'),
+											'phonenumber'		=> $this->input->post('phonenumber'),
+											'mobilenumber'		=> $this->input->post('mobilenumber'),
+											'email'		=> $this->input->post('email'),
+											'idtype'		=> $this->input->post('idtype'),
+											'idnumber'		=> $this->input->post('idnumber'),
+											'country'		=> $this->input->post('country'),
+											'house_no'		=> $this->input->post('house_no'),
+											'street'		=> $this->input->post('street'),
+											'city'		=> $this->input->post('city'),
+											'barangay'		=> $this->input->post('barangay'),
+											'postal_zip'		=> $this->input->post('postal_zip'),
+											'billing_country'		=> $this->input->post('billing_country'),
+											'billing_house_no'		=> $this->input->post('billing_house_no'),
+											'billing_street'		=> $this->input->post('billing_street'),
+											'billing_city'		=> $this->input->post('billing_city'),
+											'billing_barangay'		=>  $this->input->post('billing_barangay'),
+											'billing_postal_zip'		=> $this->input->post('billing_postal_zip'),
+
+									
+											'project'		=> $this->input->post('project'),
+											'property_specialist'		=> $this->input->post('property_specialist'),
+											'sellers_group'		=> $this->input->post('sellers_group'),
+											'unit_details'		=> $this->input->post('unit_details'),
+											'allocation'		=> $this->input->post('allocation'),
+											'fee'		=> $this->input->post('reservation_fee'),
+											'notes'		=> $this->input->post('notes'),									
+		
+										);
+
+
+				$this->template->set_template('template_reservation');
+				$this->template->add_css(module_css('reservations', 'reservation_form'), 'embed');
+				$this->template->add_js(module_js('reservations', 'reservation_form'), 'embed');
+				$this->template->write_view('content', 'reservation_blank_view',$data);
+				$this->template->render();
+				
+			}
+		}
+		else
+		{
+
+		
+
+				
+				$this->template->set_template('template_reservation');
+				$this->template->add_css(module_css('reservations', 'reservation_form'), 'embed');
+				$this->template->add_js(module_js('reservations', 'reservation_form'), 'embed');
+				$this->template->write_view('content', 'reservation_blank_view',$data);
+				$this->template->render();
+		}
+		
     }
+
+	Public function submit_form()
+	{
+		//personal
+		$this->form_validation->set_rules('firstname', 'First Name', 'required|max_length[50]');
+		$this->form_validation->set_rules('lastname', 'Last Name', 'required|max_length[50]');
+		$this->form_validation->set_rules('phonenumber', 'Phone Number', 'required|max_length[50]');
+		$this->form_validation->set_rules('mobilenumber', 'Mobile Number', 'required|max_length[50]');
+		$this->form_validation->set_rules('email', 'Email Address', 'required|max_length[50]');
+		$this->form_validation->set_rules('idtype', 'ID Type', 'required|max_length[50]');
+		$this->form_validation->set_rules('idnumber', 'ID Number', 'required|max_length[50]');
+		//mailing
+		$this->form_validation->set_rules('country', 'Country', 'required|max_length[50]');
+		$this->form_validation->set_rules('house_no', 'House Number', 'required|max_length[50]');
+		$this->form_validation->set_rules('street', 'Street', 'required|max_length[50]');
+		$this->form_validation->set_rules('city', 'City', 'required|max_length[50]');
+		$this->form_validation->set_rules('barangay', 'Barangay', 'required|max_length[50]');
+		$this->form_validation->set_rules('postal_zip', 'Zip Code', 'required|max_length[50]');
+		
+		//Project Details
+		$this->form_validation->set_rules('project', 'Project', 'required|max_length[50]');
+		$this->form_validation->set_rules('sellers_group', 'Seller Group', 'required|max_length[50]');
+		$this->form_validation->set_rules('allocation', 'Allocation', 'required|max_length[50]');
+		$this->form_validation->set_rules('property_specialist', 'Property Specialist', 'required|max_length[50]');
+		$this->form_validation->set_rules('unit_details', 'Unit Details', 'required|max_length[50]');
+		$this->form_validation->set_rules('reservation_fee', 'Reservation Fee', 'required|max_length[50]');
+		$this->form_validation->set_rules('notes', 'Notes', 'required|max_length[50]');
+		//Billing Details
+		$this->form_validation->set_rules('billing_country', 'Country', 'required|max_length[50]');
+		$this->form_validation->set_rules('billing_house_no', 'House Number', 'required|max_length[50]');
+		$this->form_validation->set_rules('billing_street', 'Billing Street', 'required|max_length[50]');
+		$this->form_validation->set_rules('billing_city', 'Billing City', 'required|max_length[50]');
+		$this->form_validation->set_rules('billing_barangay', 'Billing Barangay', 'required|max_length[50]');
+		$this->form_validation->set_rules('billing_postal_zip', 'Zip Postal Code', 'required|max_length[50]');
+	
+
+		$this->form_validation->set_message('required', 'This field is required');
+		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+
+		if ($this->form_validation->run($this) == FALSE)
+		{
+			
+			return FALSE;
+		}
+
+		$key = getenv('KEY');
+		$key  =	$this->Key($key);
+
+		$data = array(
+			'customer_fname'		=> Crypto::encrypt($this->input->post('firstname'), $key),
+			'customer_lname'		=> Crypto::encrypt($this->input->post('lastname'), $key),
+			'customer_telno'		=> Crypto::encrypt($this->input->post('phonenumber'), $key),
+			'customer_mobileno'		=> Crypto::encrypt($this->input->post('mobilenumber'), $key),
+			'customer_email'		=> Crypto::encrypt($this->input->post('email'), $key),
+			'customer_id_type'		=> Crypto::encrypt($this->input->post('idtype'), $key),
+			'customer_id_details'		=> Crypto::encrypt($this->input->post('idnumber'), $key),
+			'customer_mailing_country'		=> Crypto::encrypt($this->input->post('country'), $key),
+			'customer_mailing_house_no'		=> Crypto::encrypt($this->input->post('house_no'), $key),
+			'customer_mailing_street'		=> Crypto::encrypt($this->input->post('street'), $key),
+			'customer_mailing_city'		=> Crypto::encrypt($this->input->post('city'), $key),
+			'customer_mailing_brgy'		=> Crypto::encrypt($this->input->post('barangay'), $key),
+			'customer_mailing_zip_code'		=> Crypto::encrypt($this->input->post('postal_zip'), $key),
+			'customer_billing_country'		=> Crypto::encrypt($this->input->post('billing_country'), $key),
+			'customer_billing_house_no'		=> Crypto::encrypt($this->input->post('billing_house_no'), $key),
+			'customer_billing_street'		=> Crypto::encrypt($this->input->post('billing_street'), $key),
+			'customer_billing_city'		=> Crypto::encrypt($this->input->post('billing_city'), $key),
+			'customer_billing_brgy'		=>  Crypto::encrypt($this->input->post('billing_barangay'), $key),
+			'customer_billing_zip_code'		=> Crypto::encrypt($this->input->post('billing_postal_zip'), $key),
+
+			 
+		);
+
+		$customer_id = $this->customers_model->insert($data);
+
+		$reservation_data = array(
+			'reservation_customer_id'		=>$customer_id,
+			'reservation_reference_no'		=> rand(10000,99999).$customer_id,
+			'reservation_project'		=> $this->input->post('project'),
+			'reservation_property_specialist'		=> $this->input->post('property_specialist'),
+			'reservation_sellers_group'		=> $this->input->post('sellers_group'),
+			'reservation_unit_details'		=> $this->input->post('unit_details'),
+			'reservation_allocation'		=> $this->input->post('allocation'),
+			'reservation_fee'		=> number_format($this->input->post('reservation_fee'), 2, '.', ''),
+			'reservation_notes'		=> $this->input->post('notes'),
+		);
+
+	$id =	$this->reservations_model->insert($reservation_data);
+
+	return $id;
+	}
 	private function key($key)
 	{
 		return Key::loadFromAsciiSafeString($key);
 	}
+
+	
 
     public function form($ref_no = null)
 	{
@@ -180,15 +355,17 @@ class Reservations extends MX_Controller {
 	$data['mid'] 			= getenv('MID'); 
 	$data['requestid'] 	= $this->input->post('reference_no');
 	$data['ipaddress'] 	= $this->getUserIpAddr();
-	$data['noturl'] 	= base_url('reservations/notif'); // url where response is posted
-	$data['resurl'] 	= base_url('reservations/payment_callback'); //url of merchant landing page
-	$data['cancelurl'] 	= base_url('reservations/payment_cancel'); //url of merchant landing page
+	$data['noturl'] 	= base_url('/reservations/notif'); // url where response is posted
+	$data['resurl'] 	= base_url('/reservations/payment_callback'); //url of merchant landing page
+	$data['cancelurl'] 	= base_url('/reservations/payment_cancel'); //url of merchant landing page
+	$data['mtac_url']	= base_url('/payment-terms-and-conditions');
 	$data['fname'] 		= $this->input->post('firstname'); 
 
 	$data['lname'] 		= $this->input->post('lastname');
 	
 	$data['state'] 		= ""; 
-	$data['sec3d'] 		= "try3d"; 
+	//$data['sec3d'] 		= "try3d"; 
+	$data['sec3d'] = "enabled";
 	if($this->input->post('biller_email'))
 	{
 		$data['email'] 		= $this->input->post('biller_email'); 
@@ -233,6 +410,7 @@ class Reservations extends MX_Controller {
 	}
 	public function payment_cancel()
 	{	
+
 		$data['page_heading'] = 'Payment Cancelled';
 		$data['page_subhead'] = lang('index_subhead');
 		$data['page_layout'] = 'full_width';
@@ -347,7 +525,7 @@ class Reservations extends MX_Controller {
 		      $strxml = $strxml . "<notification_url>" . $data->noturl . "</notification_url>";
 		      $strxml = $strxml . "<response_url>" . $data->resurl . "</response_url>";
 		      $strxml = $strxml . "<cancel_url>" . $data->cancelurl . "</cancel_url>";
-		      $strxml = $strxml . "<mtac_url>https://www.google.com</mtac_url>"; // pls set this to the url where your terms and conditions are hosted
+		      $strxml = $strxml . "<mtac_url>". $data->mtac_url."</mtac_url>"; // pls set this to the url where your terms and conditions are hosted
 		      $strxml = $strxml . "<fname>" . $data->fname . "</fname>";
 		      $strxml = $strxml . "<lname>" . $data->lname . "</lname>";
 		      //$strxml = $strxml . "<mname>" . $data->mname . "</mname>";
