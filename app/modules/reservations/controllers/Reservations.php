@@ -27,6 +27,14 @@ class Reservations extends MX_Controller {
 		$this->load->model('countries_model');
     }
 
+	public function pdf()
+	{
+		$data['page_heading'] = 'PDF';
+	
+		$this->load->view('../../modules/reservations/views/pdf', $data);
+		
+	}
+
     public function index()
     {
        
@@ -37,7 +45,7 @@ class Reservations extends MX_Controller {
 		$key  =	$this->Key($key);
 
 	    $data['countries'] = $this->countries_model->where('country_deleted',0)->order_by('country_name', 'ASC')
-				->format_dropdown('country_name', 'country_name', TRUE);;
+				->format_dropdown('country_name', 'country_name', TRUE);
 		if ($this->input->post())
 		{
 			if($this->submit_form())
@@ -138,7 +146,7 @@ class Reservations extends MX_Controller {
 		$this->form_validation->set_rules('allocation', 'Allocation', 'required|max_length[50]');
 		$this->form_validation->set_rules('property_specialist', 'Property Specialist', 'required|max_length[50]');
 		$this->form_validation->set_rules('unit_details', 'Unit Details', 'required|max_length[50]');
-		$this->form_validation->set_rules('reservation_fee', 'Reservation Fee', 'required|max_length[50]');
+		$this->form_validation->set_rules('reservation_fee', 'Reservation Fee', 'required|max_length[50]|numeric');
 		$this->form_validation->set_rules('notes', 'Notes', 'required|max_length[50]');
 		//Billing Details
 		$this->form_validation->set_rules('billing_country', 'Country', 'required|max_length[50]');
@@ -217,7 +225,8 @@ class Reservations extends MX_Controller {
 		$data['page_layout'] = 'full_width';
 		$key = getenv('KEY');
 		$key  =	$this->Key($key);
-
+		 $data['countries'] = $this->countries_model->where('country_deleted',0)->order_by('country_name', 'ASC')
+				->format_dropdown('country_name', 'country_name', TRUE);
 	
 		if ($this->input->post())
 		{
@@ -263,7 +272,6 @@ class Reservations extends MX_Controller {
 				$ref_no	= ['reservation_reference_no' => $this->input->post('reference_no')]; 
 				//$data['reservations'] = (object) $ref_no;	
 				$data['reservations'] = (object) $array;
-	
 				$this->template->set_template('template_reservation');
 				$this->template->add_css(module_css('reservations', 'reservation_form'), 'embed');
 				$this->template->add_js(module_js('reservations', 'reservation_form'), 'embed');

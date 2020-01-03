@@ -12,7 +12,7 @@
     		<h4 class="font-weight-bold font-29px">RESERVATION PAYMENT FORM</h4>
 			<div class="row justify-content-md-center">
     			<div class="col-md-9">
-					<p class="justify-content-md-center">Please ensure that the Reservation Agreement Form has been acknowledged to Ortigas Land before proceeding to fill out the items below</p>
+					<p class="justify-content-md-center">Please ensure that the <a href="<?php echo base_url('reservations/reservations/pdf')?>" data-toggle="modal" data-target="#modal-lg" tooltip-toggle="tooltip" data-placement="top" title="View"> Reservation Agreement Form</a> has been acknowledged to Ortigas Land before proceeding to fill out the items below</p>
 				</div>
 			</div>
 			
@@ -21,7 +21,7 @@
   		<div class="card-body" style="margin:1%">
 			<p class="card-text text-center"> 
 
-			Information in the reservation Agreement Form sent to Ortigas & Company should be reflected when filling out the fields.<br>	
+			Information in the reservation Agreement Form sent to Ortigas Land should be reflected when filling out the fields.<br>	
 			Should there be any inconsistencies, reservation will not be accepted.</p>
 
   		</div>
@@ -276,7 +276,7 @@
 		<div class="form-group"> 
 			<div class="chiller_cb">
 		    <input id="agreement" type="checkbox"  name="agreement" class="agreement" >
-		    <label for="agreement" class="font-17px ml-4"> I agree with Ortigas & Company's <a href="https://www.ortigas.com.ph/oclp-data-privacy-policy" target="_blank">Data Policy</a> and <a href="https://www.ortigas.com.ph/oclp-data-privacy-policy" target="_blank">Terms & Conditions </a>.</label>
+		    <label for="agreement" class="font-17px ml-4"> I agree with Ortigas & Company's <a href="https://www.ortigas.com.ph/oclp-data-privacy-policy" target="_blank">Data Policy</a> and <a href="https://www.ortigas.com.ph/payment-terms-and-conditions" target="_blank">Terms & Conditions </a>.</label>
 		    <span></span>
 		 </div>
     		

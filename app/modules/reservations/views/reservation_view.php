@@ -12,7 +12,7 @@
     		<h4 class="font-weight-bold font-29px">RESERVATION PAYMENT FORM</h4>
 			<div class="row justify-content-md-center">
     			<div class="col-md-9">
-					<p class="justify-content-md-center">Please ensure that the Reservation Agreement Form has been acknowledged to Ortigas Land before proceeding to fill out the items below</p>
+					<p class="justify-content-md-center">Please ensure that the <a href="<?php echo base_url('reservations/reservations/pdf')?>" data-toggle="modal" data-target="#modal-lg" tooltip-toggle="tooltip" data-placement="top" title="View"> Reservation Agreement Form</a> has been acknowledged to Ortigas Land before proceeding to fill out the items below</p>
 				</div>
 			</div>
 			
@@ -22,7 +22,7 @@
 			<p class="card-text text-center"> 
 
 
-			Information in the reservation Agreement Form sent to Ortigas & Company should be reflected when filling out the fields.<br>	
+			Information in the reservation Agreement Form sent to Ortigas Land should be reflected when filling out the fields.<br>	
 			Should there be any inconsistencies, reservation will not be accepted.</p>
 			<h5 class="card-title" style="color:#07793f;font-weight:900">REFERENCE NO.  <?php echo $reservations->reservation_reference_no; ?></h5>
   		</div>
@@ -106,7 +106,7 @@
 
 			<div class="form-group">
 				<label for="country" class="font-11px">COUNTRY*</label>
-				<input type="text" class="form-control" id="country" name="country" placeholder="" ="true" value="<?php echo (isset($reservations->customer_mailing_country) ? $reservations->customer_mailing_country : ''); ?>">
+				<input type="text" class="form-control" id="country" name="country" placeholder="" value="<?php echo (isset($reservations->customer_mailing_country) ? $reservations->customer_mailing_country : ''); ?>">
 				<?php echo form_error('country'); ?>
 			</div>
 			<div class="form-group">
@@ -199,12 +199,10 @@
 
 				
 				<div class="form-group">
-					<label for="billing_country" class="font-11px">COUNTRY</label>
-				
-					<?php $options = create_dropdown('array', ',Philippines,Thailand,SINGAPORE,Taiwan'); ?>					
-					<?php  echo form_dropdown('billing_country', $options, set_value('billing_country', isset($reservations->customer_billing_country) ? $reservations->customer_billing_country : ''), 'id="billing_country" class="form-control property" '); ?>
+					<label for="billing_country" class="font-11px">COUNTRY</label>				
+					<?php  echo form_dropdown('billing_country', $countries, set_value('billing_country', isset($reservations->customer_billing_country) ? $reservations->customer_billing_country : ''), 'id="billing_country" class="form-control property" '); ?>
 					<i class="fa fa-angle-down"></i>
-					<?php echo form_error('billing_country'); ?>
+					<?php echo form_error('billing_country'); ?> 
 
       			</div>
 				<div class="form-group">
@@ -271,7 +269,7 @@
 		<div class="form-group"> 
 			<div class="chiller_cb">
 		    <input id="agreement" type="checkbox"  name="agreement" class="agreement" >
-		    <label for="agreement" class="font-17px ml-4"> I agree with Ortigas & Company's <a href="https://www.ortigas.com.ph/oclp-data-privacy-policy" target="_blank">Data Policy</a> and <a href="https://www.ortigas.com.ph/oclp-data-privacy-policy" target="_blank">Terms & Conditions </a>.</label>
+		    <label for="agreement" class="font-17px ml-4"> I agree with Ortigas & Company's <a href="<?php echo base_url('oclp-data-privacy-policy');?>" target="_blank">Data Policy</a> and <a href="<?php echo base_url('payment-terms-and-conditions');?>" target="_blank">Terms & Conditions </a>.</label>
 		    <span></span>
 		 </div>
     		
