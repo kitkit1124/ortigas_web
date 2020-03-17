@@ -68,7 +68,10 @@ table{
 }
 
 .oclp span, .ccc span{
-    vertical-align: -8px;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 .dp_active{

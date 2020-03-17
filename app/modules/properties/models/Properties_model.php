@@ -251,4 +251,16 @@ class Properties_model extends BF_Model {
 		return $query;
 		
 	}
+
+	public function get_select_property_val(){
+		$query = $this
+				->where('property_status', 'Active')
+				->where('property_deleted', 0)
+				->where_not_in('property_availability','Sold-out')
+				->order_by('property_order', 'ASC')
+				->format_dropdown('property_name', 'property_name', TRUE);
+
+		return $query;
+		
+	}
 }
