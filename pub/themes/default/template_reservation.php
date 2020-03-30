@@ -66,6 +66,28 @@ header('X-Frame-Options: SAMEORIGIN'); // FF 3.6.9+ Chrome 4.1+ IE 8+ Safari 4+ 
 </div>
  
 
+<div class="modal" id="modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span>
+							<span class="sr-only"><?php echo lang('close')?></span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel"><?php echo lang('loading')?></h4>
+					</div>
+					<div class="modal-body">
+						<div class="text-center">
+							<img src="<?php echo site_url('ui/images/loading3.gif')?>" alt="<?php echo lang('loading')?>" />
+							<p><?php echo lang('loading')?></p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
 	<script>
 		var site_url = '<?php echo site_url(); ?>';
 		var uri_string = '<?php echo uri_string(); ?>';

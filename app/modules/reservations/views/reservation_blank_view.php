@@ -6,7 +6,7 @@
 </nav>
 
 <div class="container">
-	<form id="reservation-form" method="post" action="<?php base_url('/reservations/form/').$this->uri->segment(3) ?>" >
+	<form id="reservation-form" method="post" action="<?php base_url('/reservations/index') ?>" >
 	<div class="card text-center">
   		<div class="card-header text-center" style="background-color:#0a4233;color:#fff">
     		<h4 class="font-weight-bold font-29px">RESERVATION PAYMENT FORM</h4>
@@ -21,10 +21,9 @@
   		<div class="card-body" style="margin:1%">
 			<p class="card-text text-center"> 
 
-
 			Information in the reservation Agreement Form sent to Ortigas Land should be reflected when filling out the fields.<br>	
 			Should there be any inconsistencies, reservation will not be accepted.</p>
-			<h5 class="card-title" style="color:#07793f;font-weight:900">REFERENCE NO.  <?php echo $reservations->reservation_reference_no; ?></h5>
+
   		</div>
   		<div class="card-body" style="margin:6%;margin-top: 0%;">
     
@@ -39,43 +38,43 @@
 				    </div>
 				</div>
 				
-      			<input type="hidden" class="form-control" id="reference_no" name="reference_no" value ="<?php echo (isset($reservations->reservation_reference_no) ? $reservations->reservation_reference_no : ''); ?>" >
+      		
 				<div class="form-row">
 				    <div class="form-group col-6 col-md-6">
-						<input type="hidden" class="form-control" id="reference_no" name="reference_no" value ="<?php echo (isset($reservations->reservation_reference_no) ? $reservations->reservation_reference_no : ''); ?>" >
+						
 				       <label for="firstname" class="font-11px">FIRST NAME*</label>
-				    	<input type="text" class="form-control" id="firstname" name="firstname" value ="<?php echo (isset($reservations->customer_fname) ? $reservations->customer_fname : ''); ?>" >
+				    	<input type="text" class="form-control" id="firstname" name="firstname" value ="<?php echo (isset($reservations->firstname) ? $reservations->firstname : ''); ?>" >
 						<?php echo form_error('firstname'); ?>
 				    </div>
 				    <div class="form-group col-6 col-md-6">
 				       <label for="lastname" class="font-11px">LAST NAME*</label>
-				    	<input type="text" class="form-control" id="lastname" name="lastname" placeholder="" value ="<?php echo (isset($reservations->customer_lname) ? $reservations->customer_lname : ''); ?>" >
+				    	<input type="text" class="form-control" id="lastname" name="lastname" placeholder="" value ="<?php echo (isset($reservations->lastname) ? $reservations->lastname : ''); ?>" >
 						<?php echo form_error('lastname'); ?>
 				    </div>
 				</div>
 				<div class="form-group">
 				    <label for="phonenumber" class="font-11px">TELEPHONE NUMBER*</label>
-				    <input type="text" class="form-control" id="phonenumber"  name="phonenumber" placeholder="" value ="<?php echo (isset($reservations->customer_telno) ? $reservations->customer_telno : ''); ?>" >
+				    <input type="text" class="form-control" id="phonenumber"  name="phonenumber" placeholder="" value ="<?php echo (isset($reservations->phonenumber) ? $reservations->phonenumber : ''); ?>" >
 					<?php echo form_error('phonenumber'); ?>
 				</div>
 				<div class="form-group">
 				    <label for="mobilenumber" class="font-11px">MOBILE NUMBER*</label>
-				    <input type="text" class="form-control" id="mobilenumber"  name="mobilenumber" placeholder="" value ="<?php echo (isset($reservations->customer_mobileno) ? $reservations->customer_mobileno : ''); ?>" >
+				    <input type="text" class="form-control" id="mobilenumber"  name="mobilenumber" placeholder="" value ="<?php echo (isset($reservations->mobilenumber) ? $reservations->mobilenumber : ''); ?>" >
 					<?php echo form_error('mobilenumber'); ?>
 				</div>
 				<div class="form-group">
 				    <label for="email" class="font-11px">EMAIL ADDRESS*</label>
-				    <input type="text" class="form-control" id="email" name="email" placeholder="" value ="<?php echo (isset($reservations->customer_email) ? $reservations->customer_email : ''); ?>" >
+				    <input type="text" class="form-control" id="email" name="email" placeholder="" value ="<?php echo (isset($reservations->email) ? $reservations->email : ''); ?>" >
 					<?php echo form_error('email'); ?>
 				</div>
 				  <label for="idtype" class="font-11px">ID TYPE AND DETAILS</label>
 				  <div class="input-group">
 			        <div class="input-group-prepend">
         				<?php $options = create_dropdown('array', ',TIN,SSS,Postal ID'); ?>					
-						<?php echo form_dropdown('idtype', $options, 'id="idtype" class="form-control input-group-text selectwidth" disabled="true"'); ?>
+						<?php echo form_dropdown('idtype', $options,set_value('idtype', (isset($reservations->idtype)) ? $reservations->idtype : '') ,'id="idtype" class="form-control input-group-text selectwidth" '); ?>
 			        </div>
 					
-			        <input type="text" class="form-control" id="idnumber" placeholder="ENTER YOUR ID NUMBER" aria-describedby="idnumber" name="idnumber" value ="<?php echo (isset($reservations->customer_id_details) ? $reservations->customer_id_details : ''); ?>" >
+			        <input type="text" class="form-control" id="idnumber" placeholder="ENTER YOUR ID NUMBER" aria-describedby="idnumber" name="idnumber" value ="<?php echo (isset($reservations->idnumber) ? $reservations->idnumber : ''); ?>" >
 					
 			      </div>
 					<?php echo form_error('idtype'); ?> 
@@ -106,32 +105,34 @@
 
 			<div class="form-group">
 				<label for="country" class="font-11px">COUNTRY*</label>
-				<input type="text" class="form-control" id="country" name="country" placeholder="" value="<?php echo (isset($reservations->customer_mailing_country) ? $reservations->customer_mailing_country : ''); ?>">
+				<?php  echo form_dropdown('country', $countries, set_value('country', isset($reservations->country) ? $reservations->country : ''), 'id="country" class="form-control property" '); ?>
+					<i class="fa fa-angle-down"></i>
 				<?php echo form_error('country'); ?>
 			</div>
 			<div class="form-group">
 				<label for="house_no" class="font-11px">HOUSE/UNIT NUMBER*</label>
-				<input type="text" class="form-control" id="house_no" name="house_no" placeholder=""  value ="<?php echo (isset($reservations->customer_mailing_house_no) ? $reservations->customer_mailing_house_no : ''); ?>" >
+				<input type="text" class="form-control" id="house_no" name="house_no" placeholder=""  value ="<?php echo (isset($reservations->house_no) ? $reservations->house_no : ''); ?>" >
 				<?php echo form_error('house_no'); ?>
 			</div>
 			<div class="form-group">
 				<label for="street" class="font-11px">STREET*</label>
-				<input type="text" class="form-control" id="street" name="street" placeholder="" value ="<?php echo (isset($reservations->customer_mailing_street) ? $reservations->customer_mailing_street : ''); ?>" >
+				<input type="text" class="form-control" id="street" name="street" placeholder="" value ="<?php echo (isset($reservations->street) ? $reservations->street : ''); ?>" >
 				<?php echo form_error('street'); ?>
 			</div>
 			<div class="form-group">
 				<label for="city" class="font-11px">CITY*</label>
-				<input type="text" class="form-control" id="city" name="city" placeholder="" value ="<?php echo (isset($reservations->customer_mailing_city) ? $reservations->customer_mailing_city : ''); ?>" >
+				<input type="text" class="form-control" id="city" name="city" placeholder="" value ="<?php echo (isset($reservations->city) ? $reservations->city : ''); ?>" >
+				<?php echo form_error('city'); ?>
 			</div>
 			<div class="form-row">
 				    <div class="form-group col-6 col-md-6">
 				       <label for="barangay" class="font-11px">BARANGAY*</label>
-				    	<input type="text" class="form-control" id="barangay" name="barangay" placeholder="" value ="<?php echo (isset($reservations->customer_mailing_brgy) ? $reservations->customer_mailing_brgy : ''); ?>" >
+				    	<input type="text" class="form-control" id="barangay" name="barangay" placeholder="" value ="<?php echo (isset($reservations->barangay) ? $reservations->barangay : ''); ?>" >
 						<?php echo form_error('barangay'); ?>
 				    </div>
 				    <div class="form-group col-6 col-md-6">
 				       <label for="postal_zip" class="font-11px">ZIP POSTAL CODE*</label>
-				    		<input type="text" class="form-control" id="postal_zip" name="postal_zip" placeholder="" value ="<?php echo (isset($reservations->customer_mailing_zip_code) ? $reservations->customer_mailing_zip_code : ''); ?>" >
+				    		<input type="text" class="form-control" id="postal_zip" name="postal_zip" placeholder="" value ="<?php echo (isset($reservations->postal_zip) ? $reservations->postal_zip : ''); ?>" >
 						<?php echo form_error('postal_zip'); ?>
 				    </div>
 			</div>
@@ -152,37 +153,42 @@
 			<div class="form-group">
 				<label for="project" class="font-11px">PROJECT*</label>
 					
-				<input type="text" class="form-control" id="project" name="project" placeholder="" value ="<?php echo (isset($reservations->reservation_project) ? $reservations->reservation_project : ''); ?>" >
+				<input type="text" class="form-control" id="project" name="project" placeholder="" value ="<?php echo (isset($reservations->project) ? $reservations->project : ''); ?>" >
+				<?php echo form_error('project'); ?>
       		</div>
 			<div class="form-group">
 				<label for="sellers_group" class="font-11px">SELLERS GROUP*</label>	
-				<input type="text" class="form-control" id="sellers_group" name="sellers_group" placeholder="" value ="<?php echo (isset($reservations->reservation_sellers_group) ? $reservations->reservation_sellers_group : ''); ?>" >
+				<input type="text" class="form-control" id="sellers_group" name="sellers_group" placeholder="" value ="<?php echo (isset($reservations->sellers_group) ? $reservations->sellers_group : ''); ?>" >
+				<?php echo form_error('sellers_group'); ?>
       		</div>
 			<div class="form-group">
 			 	<label for="allocation" class="font-11px">ALLOCATION*</label>
-				<input type="text" class="form-control" id="allocation" name="allocation" placeholder="" value ="<?php echo (isset($reservations->reservation_allocation) ? $reservations->reservation_allocation : ''); ?>" >
+				<input type="text" class="form-control" id="allocation" name="allocation" placeholder="" value ="<?php echo (isset($reservations->allocation) ? $reservations->allocation : ''); ?>" >
+				<?php echo form_error('allocation'); ?>
       		</div>
 	 	</div>
 	  	<div class="col-sm text-left">
 			<div class="form-group">
 				<label for="property_specialist" class="font-11px">PROPERTY SPECIALIST*</label>
-				<input type="text" class="form-control" id="property_specialist" name="property_specialist" placeholder="" value ="<?php echo (isset($reservations->reservation_property_specialist) ? $reservations->reservation_property_specialist : ''); ?>" >
+				<input type="text" class="form-control" id="property_specialist" name="property_specialist" placeholder="" value ="<?php echo (isset($reservations->property_specialist) ? $reservations->property_specialist : ''); ?>" >
+				<?php echo form_error('property_specialist'); ?>
 			</div>
 			<div class="form-group">
 				<label for="unit_details" class="font-11px">COMPLETE UNIT DETAILS*</label>
-				<input type="text" class="form-control" id="unit_details" name="unit_details" placeholder="" value ="<?php echo (isset($reservations->reservation_unit_details) ? $reservations->reservation_unit_details : ''); ?>" >
+				<input type="text" class="form-control" id="unit_details" name="unit_details" placeholder="" value ="<?php echo (isset($reservations->unit_details) ? $reservations->unit_details : ''); ?>" ><?php echo form_error('unit_details'); ?>
 			</div>
 			<div class="form-group">
 				<label for="reservation_fee" class="font-11px">RESERVATION FEE*</label>
 				<input type="text" class="form-control" id="reservation_fee" name="reservation_fee" placeholder="" value ="<?php echo (isset($reservations->reservation_fee) ? $reservations->reservation_fee : ''); ?>" >
+				<?php echo form_error('reservation_fee'); ?>
 			</div>
 		</div>
 		</div>
 		<div class="form-group text-left">
 			<label for="notes" class="font-11px">NOTES</label>
-			<textarea  style="white-space: unset;" class="form-control test-left" id="notes" name="notes" placeholder="" rows='10' value ="<?php echo (isset($reservations->reservation_notes) ? $reservations->reservation_notes : ''); ?>" >	
-			<?php echo (isset($reservations->reservation_notes) ? $reservations->reservation_notes : ''); ?>
-			</textarea>
+			<textarea  style="white-space: unset;" class="form-control test-left" id="notes" name="notes" placeholder="" rows='10' value ="<?php echo (isset($reservations->notes) ? $reservations->notes : ''); ?>" >	
+			<?php echo (isset($reservations->notes) ? $reservations->notes : ''); ?>
+			</textarea><?php echo form_error('notes'); ?>
 		</div>
   </div>
 <div class="card-body" >
@@ -199,37 +205,38 @@
 
 				
 				<div class="form-group">
-					<label for="billing_country" class="font-11px">COUNTRY</label>				
-					<?php  echo form_dropdown('billing_country', $countries, set_value('billing_country', isset($reservations->customer_billing_country) ? $reservations->customer_billing_country : ''), 'id="billing_country" class="form-control property" '); ?>
+					<label for="billing_country" class="font-11px">COUNTRY</label>
+								
+					<?php  echo form_dropdown('billing_country', $countries, set_value('billing_country', isset($reservations->billing_country) ? $reservations->billing_country : ''), 'id="billing_country" class="form-control property" '); ?>
 					<i class="fa fa-angle-down"></i>
-					<?php echo form_error('billing_country'); ?> 
+					<?php echo form_error('billing_country'); ?>
 
       			</div>
 				<div class="form-group">
 					<label for="billing_house_no" class="font-11px">HOUSE/UNIT NUMBER*</label>
-					<input type="text" class="form-control" id="billing_house_no" name="billing_house_no" placeholder=""  value ="<?php echo (isset($reservations->customer_billing_house_no) ? $reservations->customer_billing_house_no : ''); ?>" >
+					<input type="text" class="form-control" id="billing_house_no" name="billing_house_no" placeholder=""  value ="<?php echo (isset($reservations->billing_house_no) ? $reservations->billing_house_no : ''); ?>" >
 					<?php echo form_error('billing_house_no'); ?>
 				</div>
 				<div class="form-group">
 					<label for="billing_street" class="font-11px">STREET*</label>
-					<input type="text" class="form-control" id="billing_street" name="billing_street" placeholder="" value ="<?php echo (isset($reservations->customer_billing_street) ? $reservations->customer_billing_street : ''); ?>" >
+					<input type="text" class="form-control" id="billing_street" name="billing_street" placeholder="" value ="<?php echo (isset($reservations->billing_street) ? $reservations->billing_street : ''); ?>" >
 					<?php echo form_error('billing_street'); ?>
 				</div>
 				<div class="form-group">
 					<label for="billing_city" class="font-11px">CITY*</label>
-					<input type="text" class="form-control" id="billing_city"  name="billing_city" placeholder="" value ="<?php echo (isset($reservations->customer_billing_city) ? $reservations->customer_billing_city : ''); ?>">
+					<input type="text" class="form-control" id="billing_city"  name="billing_city" placeholder="" value ="<?php echo (isset($reservations->billing_city) ? $reservations->billing_city : ''); ?>">
 					<?php echo form_error('billing_city'); ?>
 				</div>
 				<div class="form-row">
 					    <div class="form-group col-6 col-md-6">
 					       <label for="billing_barangay" class="font-11px">BARANGAY*</label>
-					    	<input type="text" class="form-control" id="billing_barangay" name="billing_barangay" placeholder=""  value ="<?php echo (isset($reservations->customer_billing_brgy) ? $reservations->customer_billing_brgy : ''); ?>">
+					    	<input type="text" class="form-control" id="billing_barangay" name="billing_barangay" placeholder=""  value ="<?php echo (isset($reservations->billing_barangay) ? $reservations->billing_barangay : ''); ?>">
 							<?php echo form_error('billing_barangay'); ?>
 					    </div>
 						
 					    <div class="form-group col-6 col-md-6">
 					       <label for="billing_postal_zip" class="font-11px">ZIP POSTAL CODE*</label>
-					    		<input type="text" class="form-control" id="billing_postal_zip" name="billing_postal_zip" placeholder="" value ="<?php echo (isset($reservations->customer_billing_zip_code) ? $reservations->customer_billing_zip_code : ''); ?>">
+					    		<input type="text" class="form-control" id="billing_postal_zip" name="billing_postal_zip" placeholder="" value ="<?php echo (isset($reservations->billing_postal_zip) ? $reservations->billing_postal_zip : ''); ?>">
 							<?php echo form_error('billing_postal_zip'); ?>
 					    </div>
 				</div>
@@ -269,7 +276,7 @@
 		<div class="form-group"> 
 			<div class="chiller_cb">
 		    <input id="agreement" type="checkbox"  name="agreement" class="agreement" >
-		    <label for="agreement" class="font-17px ml-4"> I agree with Ortigas & Company's <a href="<?php echo base_url('oclp-data-privacy-policy');?>" target="_blank">Data Policy</a> and <a href="<?php echo base_url('payment-terms-and-conditions');?>" target="_blank">Terms & Conditions </a>.</label>
+		    <label for="agreement" class="font-17px ml-4"> I agree with Ortigas & Company's <a href="https://www.ortigas.com.ph/oclp-data-privacy-policy" target="_blank">Data Policy</a> and <a href="https://www.ortigas.com.ph/payment-terms-and-conditions" target="_blank">Terms & Conditions </a>.</label>
 		    <span></span>
 		 </div>
     		

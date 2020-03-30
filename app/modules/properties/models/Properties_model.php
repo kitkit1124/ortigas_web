@@ -170,6 +170,7 @@ class Properties_model extends BF_Model {
 								->join('estates', 'estates.estate_id = property_estate_id', 'LEFT')
 								->join('property_locations', 'property_locations.location_id = property_location_id', 'LEFT')
 								->join('property_categories', 'property_categories.category_id = property_category_id', 'LEFT')
+								->join('property_pages', 'property_pages.page_id = property_page_id', 'LEFT')
 								->find_all();
 
 		return $query;		
@@ -247,6 +248,18 @@ class Properties_model extends BF_Model {
 				->order_by('property_order', 'ASC')
 /*				->order_by('property_name', 'ASC')*/
 				->format_dropdown('property_id', 'property_name', TRUE);
+
+		return $query;
+		
+	}
+
+	public function get_select_property_val(){
+		$query = $this
+				->where('property_status', 'Active')
+				->where('property_deleted', 0)
+				->where_not_in('property_availability','Sold-out')
+				->order_by('property_order', 'ASC')
+				->format_dropdown('property_name', 'property_name', TRUE);
 
 		return $query;
 		

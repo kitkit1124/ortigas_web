@@ -14,7 +14,7 @@
 					</div>
 					<div class="col-lg-4 col-md-5 col-12 mt-3">
 						<div class="ccc dp_inactive">
-							<span>CCC DATA PRIVACY POLICY</span>
+							<span>OCC DATA PRIVACY POLICY</span>
 						</div>
 					</div>
 				</div>

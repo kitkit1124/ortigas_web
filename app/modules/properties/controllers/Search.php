@@ -247,7 +247,20 @@ class Search extends MX_Controller {
 
 			$data['offices'] = $this->properties_model->get_search($fields);
 			if($data['offices']) $data['total']+=count($data['offices']);	
+
+			$fields = [
+				'filter'		 => urldecode($_GET['keyword']),
+				'category_id' 	 => 4, 
+				'location_id' 	 => isset($_GET['location']) ? $_GET['location'] : '', 
+				'price_range_id' => isset($_GET['range']) ? $_GET['range'] : '',
+			];
+
+			$data['amenities'] = $this->properties_model->get_search($fields);
+			if($data['amenities']) $data['total']+=count($data['amenities']);	
+
 			}
+
+
 
 			$fields = [
 				'keyword'		 => urldecode($_GET['keyword']),
