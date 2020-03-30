@@ -104,7 +104,41 @@
 										</div>
 										<div class="estates property_details col-lg-12">
 											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
-												<<h2 class="mb-0"><span class="pull-left prop_name"><?php echo $val->property_name; ?></span><span class='pull-right'><h2 class='pull-right estate_name'><?php echo $val->estate_name; ?></h2></span></h2>
+												<h2 class="mb-0"><span class="pull-left prop_name"><?php echo $val->property_name; ?></span><span class='pull-right'><h2 class='pull-right estate_name'><?php echo $val->estate_name; ?></h2></span></h2>
+												<h2><span class="category_name"><?php echo $val->category_name; ?></></span></h2>
+												<div class="property_overview mt-3"><?php echo $val->property_overview; ?></div>
+												<!-- <a class="green search_link" href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a> -->
+											</a>
+										</div>
+									</div>	
+								</div>
+							<?php	} //end foreach ?>
+						</div>
+						<?php } ?>
+
+
+						<?php if(isset($amenities) && $amenities) {  $true_result++; ?>
+						<h2 class="result-title">Amenities</h2>
+							
+						<div class="row ">
+							<?php
+							foreach ($amenities as $key => $val) {
+							if($val->property_modified_on){ $dtraw = $val->property_modified_on; } else { $dtraw = $val->property_created_on; }
+							$dtpost = date_create($dtraw);
+							?>
+								<div class="search_box col-lg-6 px-4 pb-4">
+									<div class="row search_properties_row">
+										<div class="estates col-lg-12">
+											<a href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">
+											<div class="image_wrapper">
+												<div class="image_container">
+													<img class="lazy" data-src="<?php echo getenv('UPLOAD_ROOT').img_selector($val->property_image,'medium'); ?>" width="100%" alt="" draggable="false"/>
+												</div>
+											</div>
+											</a>
+										</div>
+										<div class="estates property_details col-lg-12">
+												<h2 class="mb-0"><span class="pull-left prop_name"><?php echo $val->property_name; ?></span><span class='pull-right'><h2 class='pull-right estate_name'><?php echo $val->estate_name; ?></h2></span></h2>
 												<h2><span class="category_name"><?php echo $val->category_name; ?></></span></h2>
 												<div class="property_overview mt-3"><?php echo $val->property_overview; ?></div>
 												<!-- <a class="green search_link" href="<?php echo site_url('').'estates/property/'.$val->property_slug; ?>">View Property ></a> -->

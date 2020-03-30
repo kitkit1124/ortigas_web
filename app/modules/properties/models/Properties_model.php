@@ -170,6 +170,7 @@ class Properties_model extends BF_Model {
 								->join('estates', 'estates.estate_id = property_estate_id', 'LEFT')
 								->join('property_locations', 'property_locations.location_id = property_location_id', 'LEFT')
 								->join('property_categories', 'property_categories.category_id = property_category_id', 'LEFT')
+								->join('property_pages', 'property_pages.page_id = property_page_id', 'LEFT')
 								->find_all();
 
 		return $query;		

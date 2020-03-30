@@ -66,7 +66,8 @@
     letter-spacing: 1.3px;
     font-size:1.3rem !important;
     z-index:20002;
-    color: #666
+    color: #666;
+    max-width: 370px;
 }
 
 .category_name{

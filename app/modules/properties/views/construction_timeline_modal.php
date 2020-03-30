@@ -5,7 +5,7 @@
 </div>
 <div class="modal-body">
 	<div class="form">	
-		    <?php if(count($sliders) > 1 ) { ?>
+		    <?php if(count($sliders) >= 1 ) { ?>
 		          <div class="contruction">
 		        <?php foreach ($sliders as $key => $value) {  ?>
 		          <img class="carousel-indicator_button" src="<?php echo getenv('UPLOAD_ROOT').$value->image_slider_image; ?>"  width="100" height="100" alt="<?php echo $value->image_slider_alt_image; ?>" title="<?php echo $value->image_slider_alt_image; ?>" >
